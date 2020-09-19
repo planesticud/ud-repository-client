@@ -134,8 +134,11 @@ export default {
       localStorage.setItem('name',name)
       localStorage.setItem('url_image',url_image)
       localStorage.setItem('rol',rol)
-      }
       this.$router.push({ name: 'files' })
+      this.$router.go(this.$router.currentRoute)
+      }
+      //this.$router.push({ name: 'files' })
+      
     }
     
   }
