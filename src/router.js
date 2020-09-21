@@ -8,7 +8,12 @@ export default new Router({
   routes: [
     {
       path: "/",
-      alias: "/files",
+      alias: "/index",
+      name: "index",
+      component: () => import("./components/Login")
+    },
+    {
+      path: "/files",
       name: "files",
       component: () => import("./components/FilesList")
     },

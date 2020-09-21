@@ -1,51 +1,18 @@
-<template>
-  <div v-if="currentFile" class="edit-form">
-    <h4>File</h4>
-    <form>
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" id="title"
-          v-model="currentFile.title"
-        />
-      </div>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <input type="text" class="form-control" id="description"
-          v-model="currentFile.description"
-        />
-      </div>
-      <div class="form-group">
-        <label for="language">Language</label>
-        <input type="text" class="form-control" id="language"
-          v-model="currentFile.language"
-        />
-      </div>
-
-    </form>
-
-
-    <button class="badge badge-danger mr-2"
-      @click="deleteFile"
-    >
-      Delete
-    </button>
-
-    <button type="submit" class="badge badge-success"
-      @click="updateFile"
-    >
-      Update
-    </button>
-    <p>{{ message }}</p>
-  </div>
-
-  <div v-else>
-    <br />
-    <p>Please click on a File...</p>
+<template>  
+  <div class= "container">
+    <div class = "text-access center">
+    <p> Acceso Rápido con </p>
+    </div>
+    <div class ="google-icon center">
+    
+    <a href="www.google.com"><img class = "google-icon center" src="../assets/images/googleicon.png" ></a>
+    </div>
   </div>
 </template>
 
 <script>
 import FileDataService from "../services/FileDataService";
+
 
 export default {
   name: "file",
@@ -100,6 +67,7 @@ export default {
     this.message = '';
     this.getFile(this.$route.params.id);
   }
+
 };
 </script>
 
@@ -107,5 +75,17 @@ export default {
 .edit-form {
   max-width: 300px;
   margin: auto;
+}
+.google-icon {
+  width: 70px;
+  height: 70px;
+}
+.center {
+  margin: auto;
+  padding: 10px;
+}
+.text-access {
+  max-width:300px;
+  margin:auto;
 }
 </style>

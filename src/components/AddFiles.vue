@@ -23,6 +23,16 @@
           name="description"
         />
       </div>
+      <div class="form-group">
+        <label for="language">Language</label>
+        <input
+          class="form-control"
+          id="language"
+          required
+          v-model="file.language"
+          name="language"
+        />
+      </div>
 
       <button @click="saveFile" class="btn btn-success">Submit</button>
     </div>
@@ -45,7 +55,7 @@ export default {
         id: null,
         title: "",
         description: "",
-        published: false
+        language: "",
       },
       submitted: false
     };
@@ -54,9 +64,10 @@ export default {
     saveFile() {
       var data = {
         title: this.file.title,
-        description: this.File.description
+        description: this.file.description,
+        language: this.file.language
       };
-
+      console.log(data)
       FileDataService.create(data)
         .then(response => {
           this.file.id = response.data.id;

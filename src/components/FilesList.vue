@@ -40,8 +40,9 @@
           <label><strong>Description:</strong></label> {{ currentFile.description }}
         </div>
         <div>
-          <label><strong>Status:</strong></label> {{ currentFile.published ? "Published" : "Pending" }}
+          <label><strong>Language:</strong></label> {{ currentFile.language }}
         </div>
+
 
         <a class="badge badge-warning"
           :href="'/files/' + currentFile.id"

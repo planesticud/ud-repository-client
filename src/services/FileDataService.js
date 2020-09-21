@@ -2,31 +2,31 @@ import http from "../http-common";
 
 class FileDataService {
     getAll() {
-      return http.get("/files");
+      return http.get("/general");
     }
   
     get(id) {
-      return http.get(`/files/${id}`);
+      return http.get(`/general?id=${id}`);
     }
   
     create(data) {
-      return http.post("/files", data);
+      return http.post("/general", data);
     }
   
     update(id, data) {
-      return http.put(`/files/${id}`, data);
+      return http.put(`/general?id=${id}`, data);
     }
   
     delete(id) {
-      return http.delete(`/files/${id}`);
+      return http.delete(`/general?id=${id}`);
     }
   
     deleteAll() {
-      return http.delete(`/files`);
+      return http.delete(`/general`);
     }
   
     findByTitle(title) {
-      return http.get(`/files?title=${title}`);
+      return http.get(`/general?title=${title}`);
     }
   }
   
