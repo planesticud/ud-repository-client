@@ -53,6 +53,10 @@
       <div v-else>
         <br />
         <p>Please click on a File...</p>
+         <p>HOLA {{ name || "no name" }}</p>
+         <p>ROL {{ rol || "NO ROL" }}</p>
+         <img :src="url_image">
+
       </div>
     </div>
   </div>
@@ -68,7 +72,10 @@ export default {
       files: [],
       currentFile: null,
       currentIndex: -1,
-      title: ""
+      title: "",
+      name: localStorage.name,
+      url_image: localStorage.url_image,
+      rol: localStorage.rol
     };
   },
   methods: {
@@ -118,6 +125,23 @@ export default {
   },
   mounted() {
     this.retrieveFiles();
+    console.log(this.$route.query.token)
+    if(this.$route.query.token){
+      console.log('entro al if')
+      if(!localStorage.token){
+         const { token, name, url_image, rol } = this.$route.query
+      console.log(this.$route.query)
+      localStorage.setItem('token',token)
+      localStorage.setItem('name',name)
+      localStorage.setItem('url_image',url_image)
+      localStorage.setItem('rol',rol)
+      this.$router.push({ name: 'files' })
+      this.$router.go(this.$router.currentRoute)
+      }
+      //this.$router.push({ name: 'files' })
+      
+    }
+    
   }
 };
 </script>

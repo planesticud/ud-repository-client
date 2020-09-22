@@ -15,6 +15,9 @@
         <li class="nav-item">
           <a href="/add" class="nav-link">Add</a>
         </li>
+         <li class="nav-item">
+          <a href="https://apirepository.damillano.com/api/google" class="nav-link">Inicio de Sesion</a>
+        </li>
       </div>
     </nav>
     </div>
