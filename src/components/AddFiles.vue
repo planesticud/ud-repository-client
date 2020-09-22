@@ -33,19 +33,60 @@
           name="language"
         />
       </div>
+       
 
       <button @click="saveFile" class="btn btn-success">Submit</button>
     </div>
-
     <div v-else>
       <h4>You submitted successfully!</h4>
       <button class="btn btn-success" @click="newFile">Add</button>
     </div>
+    <div v-if="currentFile" class="progress">
+    <div
+        class="progress-bar progress-bar-info progress-bar-striped"
+        role="progressbar"
+        :aria-valuenow="progress"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        :style="{ width: progress + '%' }"
+      >
+        {{ progress }}%
+      </div>
+    </div>
+
+    
+    <!-- Continue the upload view -->
+    <label class="btn btn-default">
+      <input type="file" ref="file" @change="selectFile" />
+    </label>
+
+    <button class="btn btn-success" :disabled="!selectedFiles" @click="upload">
+      Upload
+    </button>
+    <div class="alert alert-light" role="alert">{{ message }}</div>
+
+    <div class="card">
+      <div class="card-header">List of Files</div>
+      <ul class="list-group list-group-flush">
+        <li
+          class="list-group-item"
+          v-for="(file, index) in fileInfos"
+          :key="index"
+        >
+          <a :href="file.url">{{ file.name }}</a>
+        </li>
+      </ul>
+    </div>
+  
+
   </div>
+  
+
 </template>
 
 <script>
 import FileDataService from "../services/FileDataService";
+import UploadService from "../services/UploadFilesService";
 
 export default {
   name: "add-file",
@@ -57,7 +98,13 @@ export default {
         description: "",
         language: "",
       },
-      submitted: false
+      submitted: false,
+      selectedFiles: undefined,
+      currentFile: undefined,
+      progress: 0,
+      message: "",
+
+      fileInfos: []
     };
   },
   methods: {
@@ -82,7 +129,40 @@ export default {
     newFile() {
       this.submitted = false;
       this.file = {};
-    }
+    },
+    selectFile() {
+      this.selectedFiles = this.$refs.file.files;
+      console.log(this.selectedFiles)
+    },
+    upload() {
+      this.progress = 0;
+
+      this.currentFile = this.selectedFiles.item(0);
+      UploadService.upload(this.currentFile, event => {
+        this.progress = Math.round((100 * event.loaded) / event.total);
+      })
+        .then(response => {
+          this.message = response.data.message;
+          console.log(response)
+          return UploadService.getFiles();
+        })
+        .then(files => {
+          this.fileInfos = files.data;
+        })
+        .catch(() => {
+          this.progress = 0;
+          this.message = "Could not upload the file!";
+          this.currentFile = undefined;
+        });
+
+      this.selectedFiles = undefined;
+    },
+    mounted() {
+    UploadService.getFiles().then(response => {
+      this.fileInfos = response.data;
+    });
+  }
+
   }
 };
 </script>
