@@ -33,36 +33,35 @@
           name="language"
         />
       </div>
-       
+        <div v-if="currentFile" class="progress">
+        <div
+            class="progress-bar progress-bar-info progress-bar-striped"
+            role="progressbar"
+            :aria-valuenow="progress"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            :style="{ width: progress + '%' }"
+          >
+            {{ progress }}%
+          </div>
+        </div>
+              <!-- Continue the upload view -->
+          <label class="btn btn-default">
+            <input type="file" ref="file" @change="selectFile" />
+          </label>
+          <button class="btn btn-success" :disabled="!selectedFiles" @click="upload">
+            Upload
+           </button>
 
-      <button @click="saveFile" class="btn btn-success">Submit</button>
+      <!--<button @click="saveFile" class="btn btn-success">Submit</button>-->
     </div>
     <div v-else>
       <h4>You submitted successfully!</h4>
       <button class="btn btn-success" @click="newFile">Add</button>
     </div>
-    <div v-if="currentFile" class="progress">
-    <div
-        class="progress-bar progress-bar-info progress-bar-striped"
-        role="progressbar"
-        :aria-valuenow="progress"
-        aria-valuemin="0"
-        aria-valuemax="100"
-        :style="{ width: progress + '%' }"
-      >
-        {{ progress }}%
-      </div>
-    </div>
+   
 
     
-    <!-- Continue the upload view -->
-    <label class="btn btn-default">
-      <input type="file" ref="file" @change="selectFile" />
-    </label>
-
-    <button class="btn btn-success" :disabled="!selectedFiles" @click="upload">
-      Upload
-    </button>
     <div class="alert alert-light" role="alert">{{ message }}</div>
 
     <div class="card">
@@ -73,7 +72,7 @@
           v-for="(file, index) in fileInfos"
           :key="index"
         >
-          <a :href="file.url">{{ file.name }}</a>
+          <a :href="file.meta_metadata">{{ file.email }}</a>
         </li>
       </ul>
     </div>
@@ -94,10 +93,12 @@ export default {
     return {
       file: {
         id: null,
+
         title: "",
         description: "",
         language: "",
       },
+    
       submitted: false,
       selectedFiles: undefined,
       currentFile: undefined,
@@ -110,9 +111,11 @@ export default {
   methods: {
     saveFile() {
       var data = {
-        title: this.file.title,
-        description: this.file.description,
-        language: this.file.language
+        //title: this.file.title,
+        //description: this.file.description,
+        //language: this.file.language
+        email:this.file.title,
+        general:this.file.description
       };
       console.log(data)
       FileDataService.create(data)
@@ -136,17 +139,58 @@ export default {
     },
     upload() {
       this.progress = 0;
-
       this.currentFile = this.selectedFiles.item(0);
       UploadService.upload(this.currentFile, event => {
         this.progress = Math.round((100 * event.loaded) / event.total);
       })
         .then(response => {
-          this.message = response.data.message;
+          this.message = response.data.url;
+          console.log(response)
+        })
+        .catch(() => {
+          this.progress = 0;
+          this.message = "Could not upload the file!";
+          this.currentFile = undefined;
+        });
+      var data = {
+        //title: this.file.title,
+        //description: this.file.description,
+        //language: this.file.language
+        email:this.file.title,
+        general:this.file.description,
+        meta_metadata:this.message
+      };
+      console.log(data)
+      FileDataService.create(data)
+      .then(response => {
+          this.file.id = response.data.id;
+          console.log(response.data);
+          this.submitted = true;
+        })
+        .then(response => {
+          this.message = response.data.url;
           console.log(response)
           return UploadService.getFiles();
         })
         .then(files => {
+          console.log(files)
+          this.fileInfos = files.data;
+        })
+        .catch(e => {
+          console.log(e);
+        });
+      this.progress = 0;
+      this.currentFile = this.selectedFiles.item(0);
+      UploadService.upload(this.currentFile, event => {
+        this.progress = Math.round((100 * event.loaded) / event.total);
+      })
+        .then(response => {
+          this.message = response.data.url;
+          console.log(response)
+          return UploadService.getFiles();
+        })
+        .then(files => {
+          console.log(files)
           this.fileInfos = files.data;
         })
         .catch(() => {

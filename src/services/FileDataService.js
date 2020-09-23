@@ -2,7 +2,7 @@ import http from "../http-common";
 
 class FileDataService {
     getAll() {
-      return http.get("/general");
+      return http.get("/files");
     }
   
     get(id) {
@@ -10,7 +10,7 @@ class FileDataService {
     }
   
     create(data) {
-      return http.post("/general", data);
+      return http.post("/files", data);
     }
   
     update(id, data) {
