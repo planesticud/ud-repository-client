@@ -125,7 +125,7 @@ export default {
       })
         .then(response => {
           this.message = response.status;
-          console.log(response)
+          console.log(response.status)
           //console.log(this.message
           var data = {
             //title: this.file.title,
