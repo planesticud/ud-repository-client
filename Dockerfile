@@ -1,4 +1,4 @@
-FROM node:12 as ui-builder
+FROM node:lts as ui-builder
 RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
@@ -8,7 +8,7 @@ RUN npm install -g @vue/cli
 COPY . /usr/src/app
 RUN npm run build
  
-FROM nginx
+FROM nginx:latest
 ADD ./nginx.conf /etc/nginx/conf.d
 COPY  --from=ui-builder /usr/src/app/dist /usr/share/nginx/html
 EXPOSE 80
