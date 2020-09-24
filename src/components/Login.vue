@@ -7,6 +7,9 @@
     
     <a href="www.google.com"><img class = "google-icon center" src="../assets/images/googleicon.png" ></a>
     </div>
+     <button class="btn btn-success"  @click="test_local">
+            Test Local
+           </button>
   </div>
 </template>
 
@@ -32,6 +35,9 @@ export default {
         .catch(e => {
           console.log(e);
         });
+    },
+    test_local(){
+      console.log(localStorage)
     },
 
 

@@ -72,7 +72,7 @@
           v-for="(file, index) in fileInfos"
           :key="index"
         >
-          <a :href="file.meta_metadata">{{ file.email }}</a>
+          <a :href="file.anotation">{{ file.email }}</a>
         </li>
       </ul>
     </div>
@@ -104,30 +104,10 @@ export default {
       currentFile: undefined,
       progress: 0,
       message: "",
-
       fileInfos: []
     };
   },
   methods: {
-    saveFile() {
-      var data = {
-        //title: this.file.title,
-        //description: this.file.description,
-        //language: this.file.language
-        email:this.file.title,
-        general:this.file.description
-      };
-      console.log(data)
-      FileDataService.create(data)
-        .then(response => {
-          this.file.id = response.data.id;
-          console.log(response.data);
-          this.submitted = true;
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    },
     
     newFile() {
       this.submitted = false;
@@ -135,7 +115,7 @@ export default {
     },
     selectFile() {
       this.selectedFiles = this.$refs.file.files;
-      console.log(this.selectedFiles)
+      //console.log(this.selectedFiles)
     },
     upload() {
       this.progress = 0;
@@ -144,60 +124,37 @@ export default {
         this.progress = Math.round((100 * event.loaded) / event.total);
       })
         .then(response => {
-          this.message = response.data.url;
+          this.message = response.status;
           console.log(response)
+          //console.log(this.message
+          var data = {
+            //title: this.file.title,
+            //description: this.file.description,
+            //language: this.file.language
+            email:this.file.title,
+            general:this.file.description,
+            anotation:response.data.url
+          };
+          return FileDataService.create(data)
+        })
+        .then(response => {
+          this.file.id = response.data.id;
+          console.log(response.data);
+          this.submitted = true;
+          return UploadService.getFiles();
+        })
+        .then(files => {
+          this.fileInfos = files.data;
         })
         .catch(() => {
           this.progress = 0;
           this.message = "Could not upload the file!";
           this.currentFile = undefined;
-        });
-      var data = {
-        //title: this.file.title,
-        //description: this.file.description,
-        //language: this.file.language
-        email:this.file.title,
-        general:this.file.description,
-        meta_metadata:this.message
-      };
-      console.log(data)
-      FileDataService.create(data)
-      .then(response => {
-          this.file.id = response.data.id;
-          console.log(response.data);
-          this.submitted = true;
-        })
-        .then(response => {
-          this.message = response.data.url;
-          console.log(response)
-          return UploadService.getFiles();
-        })
-        .then(files => {
-          console.log(files)
-          this.fileInfos = files.data;
         })
         .catch(e => {
           console.log(e);
         });
-      this.progress = 0;
-      this.currentFile = this.selectedFiles.item(0);
-      UploadService.upload(this.currentFile, event => {
-        this.progress = Math.round((100 * event.loaded) / event.total);
-      })
-        .then(response => {
-          this.message = response.data.url;
-          console.log(response)
-          return UploadService.getFiles();
-        })
-        .then(files => {
-          console.log(files)
-          this.fileInfos = files.data;
-        })
-        .catch(() => {
-          this.progress = 0;
-          this.message = "Could not upload the file!";
-          this.currentFile = undefined;
-        });
+     
 
       this.selectedFiles = undefined;
     },
