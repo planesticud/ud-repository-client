@@ -1,15 +1,14 @@
-FROM node:lts as ui-builder
-RUN mkdir /usr/src/app
-WORKDIR /usr/src/app
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
-COPY package.json /usr/src/app/package.json
+# etapa de compilación
+FROM node:9.11.1-alpine as build-stage
+WORKDIR /app
+COPY package*.json ./
 RUN npm install
-RUN npm install -g @vue/cli
-COPY . /usr/src/app
+COPY . .
 RUN npm run build
- 
-FROM nginx:latest
+
+# etapa de producción
+FROM nginx:1.13.12-alpine as production-stage
 ADD ./nginx.conf /etc/nginx/conf.d
-COPY  --from=ui-builder /usr/src/app/dist /usr/share/nginx/html
+COPY --from=build-stage /app/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
