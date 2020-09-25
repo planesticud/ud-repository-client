@@ -8,15 +8,12 @@
     </div>
     <nav class="navbar navbar-expand navbar-dark bg-dark">
       <a href="/" class="navbar-brand"> UD JUST LOVE </a>
-      <div class="navbar-nav mr-auto">
+      <div v-if="!localstorageName" class="navbar-nav mr-auto">
         <li class="nav-item">
           <a href="/files" class="nav-link">Files</a>
         </li>
         <li class="nav-item">
           <a href="/add" class="nav-link">Add</a>
-        </li>
-         <li class="nav-item">
-          <a href="https://apirepository.damillano.com/api/google" class="nav-link">Inicio de Sesion</a>
         </li>
       </div>
     </nav>
@@ -30,8 +27,10 @@
 </template>
 
 <script>
+
 export default {
   name: 'app',
+  
   data(){
        return{
          myStyle:{
@@ -44,10 +43,21 @@ export default {
           },
           container:{
             height:100
-          }
+          },
+          
+          localstorageName:false,
            }
           
-         }
+         },
+  mounted(){
+    
+    let localStorageName = false
+    console.log(localStorageName)
+    if (localStorage.name){
+      localStorageName=true
+    }
+  }
+  
 }
 
 </script>

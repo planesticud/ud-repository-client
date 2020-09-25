@@ -58,25 +58,26 @@
     <div v-else>
       <h4>You submitted successfully!</h4>
       <button class="btn btn-success" @click="newFile">Add</button>
+        <!--<div class="alert alert-light" role="alert">{{ message }}</div>-->
+        <div class="card">
+          <div class="card-header">List of Files</div>
+          <ul class="list-group list-group-flush">
+            <li
+              class="list-group-item"
+              v-for="(file, index) in fileInfos"
+              :key="index"
+            >
+              <a :href="file.coverage">{{ file.title }}</a>
+            </li>
+          </ul>
+        </div>
     </div>
    
 
     
-    <div class="alert alert-light" role="alert">{{ message }}</div>
 
-    <div class="card">
-      <div class="card-header">List of Files</div>
-      <ul class="list-group list-group-flush">
-        <li
-          class="list-group-item"
-          v-for="(file, index) in fileInfos"
-          :key="index"
-        >
-          <a :href="file.anotation">{{ file.email }}</a>
-        </li>
-      </ul>
-    </div>
-  
+
+
 
   </div>
   
@@ -111,6 +112,7 @@ export default {
     
     newFile() {
       this.submitted = false;
+      this.currentFile = false;
       this.file = {};
     },
     selectFile() {
@@ -131,9 +133,10 @@ export default {
             //title: this.file.title,
             //description: this.file.description,
             //language: this.file.language
-            email:this.file.title,
-            general:this.file.description,
-            anotation:response.data.url
+            title:this.file.title,
+            description:this.file.description,
+            language:this.file.language,
+            coverage:response.data.url
           };
           return FileDataService.create(data)
         })

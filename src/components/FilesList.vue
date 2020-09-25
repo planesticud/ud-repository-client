@@ -125,23 +125,7 @@ export default {
   },
   mounted() {
     this.retrieveFiles();
-    console.log(this.$route.query.token)
-    if(this.$route.query.token){
-      console.log('entro al if')
-      if(!localStorage.token){
-         const { token, name, url_image, rol } = this.$route.query
-      console.log(this.$route.query)
-      localStorage.setItem('token',token)
-      localStorage.setItem('name',name)
-      localStorage.setItem('url_image',url_image)
-      localStorage.setItem('rol',rol)
-      this.$router.push({ name: 'files' })
-      this.$router.go(this.$router.currentRoute)
-      }
-      //this.$router.push({ name: 'files' })
-      
-    }
-    
+  
   }
 };
 </script>

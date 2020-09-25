@@ -3,9 +3,9 @@
     <div class = "text-access center">
     <p> Acceso Rápido con </p>
     </div>
-    <div class ="google-icon center">
+    <div @click="test_local" class ="google-icon center">
     
-    <a href="www.google.com"><img class = "google-icon center" src="../assets/images/googleicon.png" ></a>
+    <a href="https://apirepository.damillano.com/api/google" ><img  class = "google-icon center" src="../assets/images/googleicon.png" ></a> <!--href="https://apirepository.damillano.com/api/google"-->
     </div>
      <button class="btn btn-success"  @click="test_local">
             Test Local
@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import FileDataService from "../services/FileDataService";
 
 
 export default {
@@ -26,54 +25,29 @@ export default {
     };
   },
   methods: {
-    getFile(id) {
-      FileDataService.get(id)
-        .then(response => {
-          this.currentFile = response.data;
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    },
     test_local(){
-      console.log(localStorage)
-    },
-
-
-    updateFile() {
-      var data = {
-        title: this.currentFile.title,
-        description: this.currentFile.description,
-        language: this.currentFile.language
-      };
-      console.log(data)
-      FileDataService.update(this.currentFile[0].id, data)
-        .then(response => {
-          console.log(response.data);
-          this.message = 'The file was updated successfully!';
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    },
-
-    deleteFile() {
-      FileDataService.delete(this.currentFile.id)
-        .then(response => {
-          console.log(response.data);
-          this.$router.push({ name: "files" });
-        })
-        .catch(e => {
-          console.log(e);
-        });
+      console.log(localStorage.name),
+      localStorage.setItem('token','Test'),
+      localStorage.setItem('name','Name Test')
     }
   },
   mounted() {
-    this.message = '';
-    this.getFile(this.$route.params.id);
+    console.log(this.$route.query.token)
+    if(this.$route.query.token){
+      console.log('entro al if')
+      if(!localStorage.token){
+         const { token, name, url_image, rol } = this.$route.query
+      console.log(this.$route.query)
+      localStorage.setItem('token',token)
+      localStorage.setItem('name',name)
+      localStorage.setItem('url_image',url_image)
+      localStorage.setItem('rol',rol)
+      this.$router.push({ name: 'index' })
+      this.$router.go(this.$router.currentRoute)
+      }
+      //this.$router.push({ name: 'files' })
+    }
   }
-
 };
 </script>
 
@@ -88,7 +62,7 @@ export default {
 }
 .center {
   margin: auto;
-  padding: 10px;
+  padding: 1px;
 }
 .text-access {
   max-width:300px;
