@@ -1,15 +1,12 @@
 <template>  
   <div class= "container">
-    <div class = "text-access center">
-    <p> Acceso Rápido con </p>
-    </div>
-    <div @click="test_local" class ="google-icon center">
     
-    <a href="https://apirepository.damillano.com/api/google" ><img  class = "google-icon center" src="../assets/images/googleicon.png" ></a> <!--href="https://apirepository.damillano.com/api/google"-->
+    <div class ="google-icon center">
+    <a href="https://apirepository.damillano.com/api/google">
+    <button  class="btn btn-light" ><img  class = "google-icon center" src="../assets/images/googleicon.png" ><p> Inicio de sesión </p></button> <!--href="https://apirepository.damillano.com/api/google"-->
+    </a>
     </div>
-     <button class="btn btn-success"  @click="test_local">
-            Test Local
-           </button>
+
   </div>
 </template>
 
@@ -42,7 +39,7 @@ export default {
       localStorage.setItem('name',name)
       localStorage.setItem('url_image',url_image)
       localStorage.setItem('rol',rol)
-      this.$router.push({ name: 'index' })
+      this.$router.push({ name: 'files' })
       this.$router.go(this.$router.currentRoute)
       }
       //this.$router.push({ name: 'files' })

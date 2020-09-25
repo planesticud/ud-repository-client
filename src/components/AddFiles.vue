@@ -67,7 +67,7 @@
               v-for="(file, index) in fileInfos"
               :key="index"
             >
-              <a :href="file.coverage">{{ file.title }}</a>
+              <a :href="file.coverage" target="_blank">{{ file.title }}</a>
             </li>
           </ul>
         </div>

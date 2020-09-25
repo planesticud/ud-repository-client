@@ -42,6 +42,9 @@
         <div>
           <label><strong>Language:</strong></label> {{ currentFile.language }}
         </div>
+        <div>
+          <label><strong>Link File:</strong></label> <a :href="currentFile.coverage" target="_blank">Link</a>
+        </div>
 
 
         <a class="badge badge-warning"

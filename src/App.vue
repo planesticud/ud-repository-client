@@ -6,17 +6,27 @@
       <img class="logo-planestic2"  src="./assets/images/logo_planestic2-01.png">
     
     </div>
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <a href="/" class="navbar-brand"> UD JUST LOVE </a>
-      <div v-if="!localstorageName" class="navbar-nav mr-auto">
+    <nav class="navbar navbar-expand navbar-light bg-light border">
+      <a href="/" class="navbar-brand"> Inicio </a>
+      <div  class="navbar-nav mr-auto">
         <li class="nav-item">
           <a href="/files" class="nav-link">Files</a>
         </li>
         <li class="nav-item">
           <a href="/add" class="nav-link">Add</a>
         </li>
+        <div v-if="name" class="nav-item" >
+          <li  class="topnav-right">
+            <a class="nav-link">{{ name }}</a>
+          </li>
+
+        </div>
+               <!-- <button class="btn btn-warning nav-item" >
+              Log out
+            </button>-->
       </div>
     </nav>
+    
     </div>
 
     <div class="container mt-3">
@@ -45,17 +55,17 @@ export default {
             height:100
           },
           
-          localstorageName:false,
+          name: localStorage.name,
            }
           
          },
+  method:{
+    destroy() {
+      console.log(localStorage.name)
+    },
+  },
   mounted(){
     
-    let localStorageName = false
-    console.log(localStorageName)
-    if (localStorage.name){
-      localStorageName=true
-    }
   }
   
 }
