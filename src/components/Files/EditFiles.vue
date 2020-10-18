@@ -1,6 +1,6 @@
 <template>
  <v-container class="grey lighten-5">
-      <div>
+         <div>
     <h1>{{title}}</h1>
     </div>
   <v-row align="center" class="list px-3 mx-auto">
@@ -19,64 +19,54 @@
 </template>
 
 <script>
-import VueFormGenerator from "vue-form-generator";
-import MoodleService from "../services/moodle";
+import FilesService from "../../services/files";
 export default {
   data() {
     return {
       model: {},
-      title: 'ADD USERS',
+      title: 'EDIT USERS',
       result: { state: false},
       schema: {
         fields: [
           {
             type: "input",
             inputType: "text",
-            label: "Nombre de usuario",
-            model: "userName",
-            placeholder: "Your name",
+            label: "Titulo",
+            model: "general",
+            placeholder: "Titulo del recurso",
             featured: true,
             required: true,
           },
           {
             type: "input",
             inputType: "text",
-            label: "Contraseña",
-            model: "password",
-            min: 6,
-            required: true,
-            hint: "Minimo 6 caracteres",
-            validator: VueFormGenerator.validators.string,
-          },
-          {
-            type: "input",
-            inputType: "text",
-            label: "Nombres",
-            model: "firstName",
-            placeholder: "Your first name",
+            label: "Descripción",
+            model: "lifecycle",
+            placeholder: "Descripción del recurso",
             featured: true,
             required: true,
           },
           {
             type: "input",
             inputType: "text",
-            label: "Apellidos",
-            model: "lastName",
-            placeholder: "Your last name",
-            featured: true,
-            required: true,
-          },
-          {
-            type: "input",
-            inputType: "email",
-            label: "correo electronico",
+            label: "Correo electronico",
             model: "email",
-            placeholder: "Your mail",
-            validator: VueFormGenerator.validators.email,
+            placeholder: "Correo electronico",
+            featured: true,
+            required: true,
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Url recurso",
+            model: "anotation",
+            placeholder: "direccion web",
+            featured: true,
+            required: true,
           },
           {
             type: "submit",
-            buttonText: "Crear Usuario",
+            buttonText: "Actualizar Recurso",
             onSubmit: (model) => this.submit(model),
           },
         ],
@@ -90,24 +80,24 @@ export default {
   },
   methods: {
     submit(model) {
-      const user = MoodleService.mapDataUser(model);
-      MoodleService.createUser(user)
+      const data = {
+            general: model.general,
+            lifecycle: model.lifecycle,
+            anotation: model.anotation,
+            email: model.email
+      }
+      const id = this.$route.params.id
+      FilesService.updateFiles(data, id)
         .then(({ data }) => {
-           if (data.length) {
+           console.log(data)
             this.result = {
-              text: `el usuario ${data[0].username} fue creado con el id ${data[0].id}`,
+              text: `el recurso ${data}`,
               color: "green lighten-2",
               state: true
             }
             this.model = {};
-           }
-          else {
-            this.result = {
-              text: `error: ${data.message}`,
-              color: "red lighten-2",
-              state: true
-            };
-          }  
+        
+          
         })
         .catch((e) => {
           this.result = {
@@ -117,6 +107,30 @@ export default {
             };
         });
     },
+  
+    getFile(id){ 
+    FilesService.getFilesByid(id)
+        .then(({data}) => {
+          const response = data.filter(file => file.id == id)[0];
+          this.model = {
+            id: response.id,
+            general: response.general,
+            lifecycle: response.lifecycle,
+            anotation: response.anotation,
+            email: response.email
+            }
+        
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+  }
+  },
+
+
+  mounted() {
+    this.message = "";
+    this.getFile(this.$route.params.id);
   },
 };
 </script>

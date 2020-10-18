@@ -20,7 +20,7 @@
 
 <script>
 import VueFormGenerator from "vue-form-generator";
-import MoodleService from "../services/moodle";
+import MoodleService from "../../services/moodle";
 export default {
   data() {
     return {

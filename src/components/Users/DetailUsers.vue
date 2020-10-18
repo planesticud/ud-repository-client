@@ -32,8 +32,8 @@
 </template>
 
 <script>
-import moodle from '../services/moodle';
-import MoodleService from "../services/moodle";
+import moodle from '../../services/moodle';
+import MoodleService from "../../services/moodle";
 export default {
   data() {
     return {

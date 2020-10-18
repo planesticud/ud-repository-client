@@ -55,7 +55,7 @@ export default {
       buttons: [
         { text: "Home", route: "/home", description: "Home moodle CMS" },
         { text: "Users", route: "/users", description: "admin users" },
-        { text: "Courses", route: "/courses", description: "admin courses" },
+        { text: "Files", route: "/files", description: "admin files" },
       ],
     };
   },

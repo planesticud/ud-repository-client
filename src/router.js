@@ -9,22 +9,42 @@ export default new Router({
     {
       path: "/users",
       name: "users",
-      component: () => import("./components/Users")
+      component: () => import("./components/Users/Users")
     },
     {
       path: "/users/add",
       name: "addusers",
-      component: () => import("./components/AddUsers")
+      component: () => import("./components/Users/AddUsers")
     },
     {
       path: "/users/edit/:id",
       name: "editusers",
-      component: () => import("./components/EditUsers")
+      component: () => import("./components/Users/EditUsers")
     },
     {
       path: "/users/detail/:id",
       name: "detailusers",
-      component: () => import("./components/DetailUsers")
+      component: () => import("./components/Users/DetailUsers")
+    },
+    {
+      path: "/files",
+      name: "files",
+      component: () => import("./components/Files/Files")
+    },
+    {
+      path: "/files/add",
+      name: "addfiles",
+      component: () => import("./components/Files/AddFiles")
+    },
+    {
+      path: "/files/edit/:id",
+      name: "editfiles",
+      component: () => import("./components/Files/EditFiles")
+    },
+    {
+      path: "/files/detail/:id",
+      name: "detailfiles",
+      component: () => import("./components/Files/DetailFiles")
     },
     {
       path: "/home",
@@ -33,7 +53,7 @@ export default new Router({
     },
     {
       path: "/",
-      name: "home",
+      name: "init",
       component: () => import("./components/Home")
     }
   ]

@@ -25,7 +25,7 @@ export default {
       buttons:[
         {text:'Home', route:'/home'},
         {text:'Users', route:'/users'},
-        {text:'Courses', route:'/courses'},
+        {text:'Files', route:'/files'},
         ]
     }
   }
