@@ -1,25 +1,24 @@
 <template>
   <v-container class="grey lighten-5">
     <h1>{{title}}</h1>
-    <v-row align="center" class="list px-3 mx-auto">
-      <v-card class="mx-auto" max-width="344">
-        <v-img
-          src="https://cdn.vuetifyjs.com/images/cards/forest-art.jpg"
-        ></v-img>
+    <v-row align="center" class="list px-10 mx-auto">
+      <v-card class="mx-auto" max-width="800">
+
 
         <v-card-text>
-          <h3 class="title primary--text">
-            {{ text.general }} {{ model.general }}
+          <h3 class="title">
+            <strong>{{ text.general }} </strong> {{ model.general }}
           </h3>
-          <h3 class="title primary--text">
-            {{ text.lifecycle }} {{ model.lifecycle }}
+          <h3 class="title">
+           <strong>{{ text.lifecycle }} </strong> {{ model.lifecycle }}
           </h3>
-          <h3 class="title primary--text">
-            {{ text.email }} {{ model.email }}
+          <h3 class="title">
+           <strong>{{ text.email }} </strong> {{ model.email }}
           </h3>
-          <h3 class="title primary--text">
-            {{ text.anotation }} {{ model.anotation }}
+          <h3 class="title">
+            <strong>{{ text.anotation }} </strong>  <a :href="model.anotation">{{url}}</a>
           </h3>
+          <p>&nbsp;</p>
           <v-icon small class="mr-2" @click="editFile(model.id)"
             >mdi-pencil</v-icon
           >
@@ -36,13 +35,14 @@ import FilesService from '../../services/files';
 export default {
   data() {
     return {
-      title: 'DETAIL FILES',
+      title: 'Detalle de recurso',
       model: {},
+      url: 'Ver recurso',
       text: {
         email: "Email:",
         general: "Nombre:",
-        lifecycle: "Descripción",
-        anotation: "Url",
+        lifecycle: "Descripción:",
+        anotation: "Recurso:",
       },
     };
   },

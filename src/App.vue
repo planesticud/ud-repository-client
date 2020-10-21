@@ -21,11 +21,11 @@ export default {
   name: "app",
   data() {
     return {
-      title: 'MOODLE',
+      title: 'Repositorio UD',
       buttons:[
-        {text:'Home', route:'/home'},
-        {text:'Users', route:'/users'},
-        {text:'Files', route:'/files'},
+        {text:'Inicio', route:'/home'},
+        {text:'Usuarios', route:'/users'},
+        {text:'Recursos', route:'/files'},
         ]
     }
   }

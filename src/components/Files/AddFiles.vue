@@ -1,21 +1,30 @@
 <template>
- <v-container class="grey lighten-5">
-      <div>
-    <h1>{{title}}</h1>
-    </div>
-  <v-row align="center" class="list px-3 mx-auto">
-    <div class="panel-body">
-      <vue-form-generator :schema="schema" :model="model" :options="formOptions" >
-
-      </vue-form-generator>
-    </div>
+  <v-container class="grey lighten-5">
     <div>
-      <v-alert v-if="result.state" border="top" :color="result.color" dark>
-        {{ result.text }}
-      </v-alert>
+      <h1>{{ title }}</h1>
     </div>
-  </v-row>
- </v-container>
+    <v-row align="center" class="list px-3 mx-auto">
+      <div class="panel-body">
+       <p>    <label> <strong> Recurso </strong> </label> </p>
+      <input type="file" id="file" ref="file" @change="selectFile" title=" "/>
+      <p>&nbsp;</p>
+        <vue-form-generator
+          :schema="schema"
+          :model="model"
+          :options="formOptions"
+        >
+             
+        </vue-form-generator>
+
+
+      </div>
+      <div>
+        <v-alert v-if="result.state" border="top" :color="result.color" dark>
+          {{ result.text }}
+        </v-alert>
+      </div>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -23,9 +32,10 @@ import FilesService from "../../services/files";
 export default {
   data() {
     return {
+       file: '',
       model: {},
-      title: 'ADD FILES',
-      result: { state: false},
+      title: "Crear recursos",
+      result: { state: false },
       schema: {
         fields: [
           {
@@ -56,20 +66,12 @@ export default {
             required: true,
           },
           {
-            type: "input",
-            inputType: "text",
-            label: "Url recurso",
-            model: "anotation",
-            placeholder: "direccion web",
-            featured: true,
-            required: true,
-          },
-          {
             type: "submit",
             buttonText: "Crear Recurso",
             onSubmit: (model) => this.submit(model),
           },
         ],
+        
       },
       formOptions: {
         validateAfterLoad: false,
@@ -80,25 +82,45 @@ export default {
   },
   methods: {
     submit(model) {
-    
-      FilesService.createFile(model)
-        .then(( {data} ) => {
-            console.log(data)
-            this.result = {
-              text: `el recurso ${data}`,
-              color: "green lighten-2",
-              state: true
-            }
-            this.model = {};
-             
+      const file = this.file
+      FilesService.upload(file)
+        .then(({ data }) => {
+          console.log(data);
+          model.anotation = data.url
+           FilesService.createFile(model)
+        .then((response) => {
+          console.log(response.data);
+          this.result = {
+            text: `el recurso fue creado`,
+            color: "green lighten-2",
+            state: true,
+          };
+          this.model = {};
+          this.file = ""
         })
         .catch((e) => {
           this.result = {
-              text: `error: ${e}`,
-              color: "red lighten-2",
-              state: true
-            };
+            text: `error: ${e}`,
+            color: "red lighten-2",
+            state: true,
+          };
         });
+
+        })
+        .catch((e) => {
+          this.result = {
+            text: `error: ${e}`,
+            color: "red lighten-2",
+            state: true,
+          };
+        });
+
+     
+    },
+    selectFile() {
+              this.file = this.$refs.file.files[0];
+
+      console.log(this.selectedFiles);
     },
   },
 };

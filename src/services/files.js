@@ -17,13 +17,19 @@ class FilesService {
     getFilesByEmail(email){
         return axios.get(`${repositoryUrl}/files`, { params: {email:email} })
     }
-    createFile(data){
+     createFile(data){
         return axios.post(`${repositoryUrl}/files`, data)
     }
 
     updateFiles(data, id){
         return axios.put(`${repositoryUrl}/files`, data,  { params: { id } })
     }
+
+    upload(file) {
+        let formData = new FormData();  
+        formData.append("file", file);
+        return axios.post(`${repositoryUrl}/upload`, formData, { })
+      }
 }
 
 export default new FilesService();

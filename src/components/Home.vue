@@ -51,11 +51,13 @@
 export default {
   data() {
     return {
-      title: "HOLA",
+      title: "Bienvenido",
       buttons: [
-        { text: "Home", route: "/home", description: "Home moodle CMS" },
-        { text: "Users", route: "/users", description: "admin users" },
-        { text: "Files", route: "/files", description: "admin files" },
+        { text: "Inicio", route: "/home", description: "Inicio repositorio" },
+        { text: "Usuarios", route: "/users", description: "Administración de usuarios" },
+        { text: "Recursos", route: "/files", description: "Administración de recursos" },
+        { text: "Estadisticas", route: "/statistics", description: "Uso de los recursos" },
+        { text: "Historial", route: "/hisotry", description: "Historial de acciones en el repositorio" },
       ],
     };
   },
