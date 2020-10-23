@@ -72,6 +72,7 @@ export default {
   methods:{
      logout() {
        localStorage.clear();
+       
        location.reload()
     },
   },
