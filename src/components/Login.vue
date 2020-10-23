@@ -1,65 +1,54 @@
 <template>  
   <div class= "container">
     
-    <div class ="google-icon center">
+    <div class ="center">
     <a href="https://apirepository.damillano.com/api/google">
-    <button  class="btn btn-light" ><img  class = "google-icon center" src="../assets/images/googleicon.png" ><p> Inicio de sesión </p></button> <!--href="https://apirepository.damillano.com/api/google"-->
+    <div id='icon-div'>
+    <img  class = "google-icon " src="../assets/images/googleicon.png" >
+    </div>
+    <button class="google-signin-button"> Continue with Google</button>
     </a>
+    
     </div>
 
   </div>
 </template>
 
-<script>
 
-
-export default {
-  name: "file",
-  data() {
-    return {
-      currentFile: null,
-      message: ''
-    };
-  },
-  methods: {
-    test_local(){
-      console.log(localStorage.name),
-      localStorage.setItem('token','Test'),
-      localStorage.setItem('name','Name Test')
-    }
-  },
-  mounted() {
-    console.log(this.$route.query.token)
-    if(this.$route.query.token){
-      console.log('entro al if')
-      if(!localStorage.token){
-         const { token, name, url_image, rol } = this.$route.query
-      console.log(this.$route.query)
-      localStorage.setItem('token',token)
-      localStorage.setItem('name',name)
-      localStorage.setItem('url_image',url_image)
-      localStorage.setItem('rol',rol)
-      this.$router.push({ name: 'files' })
-      this.$router.go(this.$router.currentRoute)
-      }
-      //this.$router.push({ name: 'files' })
-    }
-  }
-};
-</script>
 
 <style>
+.google-signin-button {
+  display: inline-block;
+  color: white;
+  background-color:#8b1919;
+  height: 50px;
+  width: 200px;
+  font-size: 16px;
+  padding: 10px 20px 25px 20px;
+  
+}
 .edit-form {
   max-width: 300px;
   margin: auto;
 }
+#icon-div{
+  display: inline-block;
+  background-color: white;
+}
 .google-icon {
-  width: 70px;
-  height: 70px;
+  display: inline-block;
+  margin-right:1px;
+  width: 50px;
+  height: 50px;
+  background-color: white;
 }
 .center {
+  width:253px;
+  height:52px;
   margin: auto;
   padding: 1px;
+  background-color: #8b1919;
+  
 }
 .text-access {
   max-width:300px;

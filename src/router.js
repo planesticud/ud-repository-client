@@ -3,15 +3,21 @@ import Router from "vue-router";
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: "history",
   routes: [
     {
       path: "/",
       alias: "/index",
       name: "index",
+      component: () => import("./components/Home")
+    },
+    {
+      path: "/login",
+      name: "login",
       component: () => import("./components/Login")
     },
+
     {
       path: "/files",
       name: "files",
@@ -29,3 +35,16 @@ export default new Router({
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  console.log(localStorage.getItem('name'))
+  let ls = localStorage.getItem('name');
+  
+  console.log(to.name)
+  if (to.name !=='login' && ls === null) next({name:'login'})
+  else if (to.name ==='login' && ls!== null) next({name:'files'})
+  else next()
+
+});
+
+export default router;

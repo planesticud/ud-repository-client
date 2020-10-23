@@ -8,23 +8,33 @@
     </div>
     <nav class="navbar navbar-expand navbar-light bg-light border">
       <a href="/" class="navbar-brand"> Inicio </a>
-      <div  class="navbar-nav mr-auto">
+      <div  class="navbar-nav mr-auto" v-if = "name"> <!--&& token-->
         <li class="nav-item">
           <a href="/files" class="nav-link">Files</a>
         </li>
         <li class="nav-item">
           <a href="/add" class="nav-link">Add</a>
         </li>
-        <div v-if="name" class="nav-item" >
+        
+        
+        
+        
+        <!-- <div  class="nav-item" v-if = "name && token">
           <li  class="topnav-right">
-            <a class="nav-link">{{ name }}</a>
+            <a class="nav-link">{{ name }} 1</a>
           </li>
 
-        </div>
+        </div> -->
                <!-- <button class="btn btn-warning nav-item" >
               Log out
             </button>-->
       </div>
+      <div class="pull-right" v-if = "name">
+          <a class="btn navbar-btn btn-danger navbar-right " role="button" @click="logout">Logout</a>
+        </div>
+      <!-- <li class="nav-item">
+          <a href="/login" class="nav-link">Login</a>
+        </li> -->
     </nav>
     
     </div>
@@ -40,7 +50,6 @@
 
 export default {
   name: 'app',
-  
   data(){
        return{
          myStyle:{
@@ -55,17 +64,30 @@ export default {
             height:100
           },
           
-          name: localStorage.name,
+          name: '',
+          token:'',
            }
           
          },
-  method:{
-    destroy() {
-      console.log(localStorage.name)
+  methods:{
+     logout() {
+       localStorage.removeItem('name');
+       location.reload()
     },
   },
   mounted(){
+    if (localStorage.name){
+      this.name=localStorage.name;
+    }
+     if (localStorage.token){
+      this.token=localStorage.token;
+    }
     
+  },
+  watch:{
+    name(newName){
+      localStorage.name=newName
+    }
   }
   
 }
@@ -77,7 +99,7 @@ export default {
   margin: auto;
 }
 .banner-all {
-  backgroundColor:"#8b1919";
+  background-Color:"#8b1919";
   max-height: 170px;
 }
 .logo-planestic1 {
@@ -88,6 +110,9 @@ export default {
   margin:auto;
   margin-top:5px;
   float:right;
+}
+.pull-right {
+  margin-left:auto;
 }
 </style>
 
