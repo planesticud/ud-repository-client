@@ -8,7 +8,7 @@
     </div>
     <nav class="navbar navbar-expand navbar-light bg-light border">
       <a href="/" class="navbar-brand"> Inicio </a>
-      <div  class="navbar-nav mr-auto" v-if = "name"> <!--&& token-->
+      <div  class="navbar-nav mr-auto" v-if = "token"> <!--&& token-->
         <li class="nav-item">
           <a href="/files" class="nav-link">Files</a>
         </li>
@@ -29,7 +29,7 @@
               Log out
             </button>-->
       </div>
-      <div class="pull-right" v-if = "name">
+      <div class="pull-right" v-if = "token">
           <a class="btn navbar-btn btn-danger navbar-right " role="button" @click="logout">Logout</a>
         </div>
       <!-- <li class="nav-item">
@@ -71,7 +71,7 @@ export default {
          },
   methods:{
      logout() {
-       localStorage.removeItem('name');
+       localStorage.clear();
        location.reload()
     },
   },
