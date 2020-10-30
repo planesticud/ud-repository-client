@@ -1,50 +1,243 @@
 <template>
- <v-container class="grey lighten-5">
-         <div>
-    <h1>{{title}}</h1>
-    </div>
-  <v-row align="center" class="list px-3 mx-auto">
-    <div class="panel-body">
-      <vue-form-generator :schema="schema" :model="model" :options="formOptions" >
-
-      </vue-form-generator>
-    </div>
+  <v-container class="grey lighten-5">
     <div>
-      <v-alert v-if="result.state" border="top" :color="result.color" dark>
-        {{ result.text }}
-      </v-alert>
+      <h1>{{ title }}</h1>
     </div>
-  </v-row>
- </v-container>
+    <v-row align="center" class="list px-3 mx-auto">
+      <div class="panel-body">
+        <vue-form-generator
+          :schema="schema"
+          :model="model"
+          :options="formOptions"
+        >
+        </vue-form-generator>
+      </div>
+      <div>
+        <v-alert v-if="result.state" border="top" :color="result.color" dark>
+          {{ result.text }}
+        </v-alert>
+      </div>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
 import FilesService from "../../services/files";
+//import EditFilesModel from "../../models/editFilesModel"
 export default {
   data() {
     return {
-      model: {},
-      title: 'EDIT USERS',
-      result: { state: false},
+      file: "",
+      model: {
+        entity: "Universidad Distrital Francisco José de Caldas",
+      },
+      title: "Crear recursos",
+      result: { state: false },
       schema: {
         fields: [
+          {
+            type: "label",
+            label: "<h3>General</h3>",
+            model: "created",
+            styleClasses: "blue lighten-4 text-md-center",
+          },
           {
             type: "input",
             inputType: "text",
             label: "Titulo",
-            model: "general",
+            model: "title",
             placeholder: "Titulo del recurso",
+            featured: true,
+            required: true,
+          },
+          {
+            type: "select",
+            inputType: "text",
+            label: "Idioma",
+            model: "language",
+            placeholder: "Idioma del recurso",
+            featured: true,
+            required: true,
+            values: ["Español", "Inlges"],
+            default: "Español",
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Descripción",
+            model: "description",
+            placeholder: "Descripción del recurso",
+            featured: true,
+            required: true,
+          },
+          {
+            type: "textArea",
+            label: "Palabras clave",
+            model: "key_words",
+            hint: "Maximo 5 palabras",
+            max: 200,
+            placeholder: "Maximo 5 palabras separadas por ,",
+            rows: 2,
+          },
+          {
+            type: "label",
+            label: "<h3>Ciclo de vida</h3>",
+            model: "created",
+            styleClasses: "blue lighten-4 text-md-center",
+          },
+          {
+            type: "input",
+            inputType: "number",
+            label: "Versión",
+            model: "version",
+            min: 0,
+            max: 200,
+            placeholder: "Numero de la version del recurso",
+            featured: true,
+            required: true,
+          },
+          {
+            type: "select",
+            inputType: "text",
+            label: "Estado",
+            model: "state",
+            placeholder: "Estado del del recurso",
+            featured: true,
+            required: true,
+            values: ["Activo", "Inactivo"],
+            default: "Activo",
+          },
+          {
+            type: "textArea",
+            label: "Autores",
+            model: "participants",
+            hint: "Autores del recurso",
+            max: 200,
+            placeholder: "Nombres de los utores separados por coma",
+            rows: 2,
+          },
+          {
+            type: "label",
+            label: "<h3>Características pedagógicas</h3>",
+            model: "created",
+            styleClasses: "blue lighten-4 text-md-center",
+          },
+          {
+            type: "select",
+            inputType: "text",
+            label: "Tipo de aprendizaje",
+            model: "class_learning",
+            placeholder:
+              "El tipo de aprendizaje predominante soportado por este recurso.",
+            featured: true,
+            required: true,
+            values: ["Activo", "Expositivo", "Combinado"],
+            default: "Activo",
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Tipo de recurso educativo",
+            model: "type_of_educational_resource",
+            placeholder: "Tipo de recurso educativo",
+            featured: true,
+            required: true,
+          },
+          {
+            type: "select",
+            inputType: "text",
+            label: "Nivel de interación",
+            model: "level_of_interaction",
+            placeholder:
+              "El tipo de aprendizaje predominante soportado por este recurso.",
+            featured: true,
+            required: true,
+            values: ["Muy bajo", "Bajo", "Medio Alto", "Muy alto"],
+            default: "Muy bajo",
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Población objetivo",
+            model: "objetive_poblation",
+            placeholder:
+              "El usuario principal para el que ha sido diseñado este recurso.",
             featured: true,
             required: true,
           },
           {
             type: "input",
             inputType: "text",
-            label: "Descripción",
-            model: "lifecycle",
-            placeholder: "Descripción del recurso",
+            label: "Contexto",
+            model: "context",
+            placeholder: "El entorno principal en el que se utilizará.",
             featured: true,
             required: true,
+          },
+          {
+            type: "label",
+            label: "<h3>Derechos de uso</h3>",
+            model: "created",
+            styleClasses: "blue lighten-4 text-md-center",
+          },
+          {
+            type: "select",
+            inputType: "text",
+            label: "Copyright",
+            model: "copyright",
+            placeholder: "Tipo de derechos",
+            featured: true,
+            required: true,
+            values: [
+              "Atribución",
+              "Atribución-CompartirIgual",
+              "Atribución-SinDerivadas",
+              "Atribución-NoComercial",
+              "Atribución-NoComercial-CompartirIgual",
+              "Atribución-NoComercial-SinDerivadas",
+            ],
+            default: "Atribución",
+            help: `para mas información <a target="_blank" href="https://creativecommons.org/licenses/?lang=es">Creative Commons</a>`,
+          },
+          {
+            type: "label",
+            label: "<h3>Anotación</h3>",
+            model: "created",
+            styleClasses: "blue lighten-4 text-md-center",
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Entidad",
+            model: "entity",
+            placeholder: "Entidad",
+            value: "Universidad Distrital Francisco José de Caldas",
+            disabled: true,
+            featured: true,
+            required: true,
+          },
+          {
+            type: "input",
+            inputType: "date",
+            label: "Fecha",
+            model: "date",
+          },
+          {
+            type: "checklist",
+            label: "Clasificación",
+            model: "purpose",
+            listBox: true,
+            values: [
+              "Agronomía, Veterinaria y afines",
+              "Bellas Artes",
+              "Ciencias de la Educación",
+              "Ciencias de la Salud",
+              "Ciencias Sociales y Humanas",
+              "Economía, Administración, Contaduría y afines",
+              "Ingeniería, Arquitectura, Urbanismo y afines",
+              "Matemáticas y Ciencia Naturales",
+            ],
+            help: `para mas información <a target="_blank" href="https://creativecommons.org/licenses/?lang=es">Areas del conocimiento</a>`,
           },
           {
             type: "input",
@@ -56,17 +249,8 @@ export default {
             required: true,
           },
           {
-            type: "input",
-            inputType: "text",
-            label: "Url recurso",
-            model: "anotation",
-            placeholder: "direccion web",
-            featured: true,
-            required: true,
-          },
-          {
             type: "submit",
-            buttonText: "Actualizar Recurso",
+            buttonText: "Crear Recurso",
             onSubmit: (model) => this.submit(model),
           },
         ],
@@ -80,53 +264,61 @@ export default {
   },
   methods: {
     submit(model) {
-      const data = {
-            general: model.general,
-            lifecycle: model.lifecycle,
-            anotation: model.anotation,
-            email: model.email
-      }
-      const id = this.$route.params.id
-      FilesService.updateFiles(data, id)
+      const id = this.$route.params.id;
+            console.log(model)
+      FilesService.updateFiles(model, id)
         .then(({ data }) => {
-           console.log(data)
-            this.result = {
-              text: `el recurso ${data}`,
-              color: "green lighten-2",
-              state: true
-            }
-            this.model = {};
-        
-          
+          console.log(data);
+          this.result = {
+            text: `el recurso ${data}`,
+            color: "green lighten-2",
+            state: true,
+          };
+          this.model = {};
         })
         .catch((e) => {
           this.result = {
-              text: `error: ${e}`,
-              color: "red lighten-2",
-              state: true
-            };
+            text: `error: ${e}`,
+            color: "red lighten-2",
+            state: true,
+          };
         });
     },
-  
-    getFile(id){ 
-    FilesService.getFilesByid(id)
-        .then(({data}) => {
-          const response = data.filter(file => file.id == id)[0];
+
+    getFile(id) {
+      FilesService.getFilesByid(id)
+        .then(({ data }) => {
+          const response = data.filter((file) => file.id == id)[0];
           this.model = {
-            id: response.id,
-            general: response.general,
-            lifecycle: response.lifecycle,
-            anotation: response.anotation,
-            email: response.email
-            }
-        
+            title: response.title,
+            language: response.language,
+            description: response.description,
+            key_words: response.key_words,
+            version: response.version,
+            state: response.state,
+            participants: response.participants,
+            format: response.format,
+            size: response.size,
+            location: response.location,
+            requierements: response.requierements || "",
+            class_learning: response.class_learning,
+            type_of_educational_resource: response.type_of_educational_resource,
+            level_of_interaction: response.level_of_interaction,
+            objetive_poblation: response.objetive_poblation,
+            context: response.context,
+            cost: response.cost || "",
+            copyright: response.copyright,
+            entity: response.entity,
+            date: response.date,
+            purpose: response.purpose,
+            email: response.email,
+          };
         })
         .catch((e) => {
           console.log(e);
         });
-  }
+    },
   },
-
 
   mounted() {
     this.message = "";

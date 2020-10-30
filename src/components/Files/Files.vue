@@ -27,7 +27,7 @@
             :items="files"
             :hide-default-footer="true"
           >
-            <template #item.anotation="{ value }">
+            <template #item.location="{ value }">
               <a target="_blank" :href="value">
                 {{ url }}
               </a>
@@ -56,6 +56,7 @@ export default {
   name: "files-list",
   data() {
     return {
+      filEmail: "",
       h1: "Listado de recursos",
       search: { label: "Buscar por email", button: "Buscar" },
       add: { button: "Agregar", route: "/files/add" },
@@ -63,15 +64,16 @@ export default {
       title: "",
       url: "Ver recurso",
       headers: [
-        { text: "Título", value: "general", align: "start", sortable: false },
+        { text: "Título", value: "title", align: "start", sortable: false },
         {
           text: "Descripción",
-          value: "lifecycle",
+          value: "description",
           align: "start",
           sortable: false,
         },
-        { text: "Correo electronico", value: "email", sortable: false },
-        { text: "Recurso", value: "anotation", sortable: false },
+        { text: "Formato", value: "format", sortable: false },
+        { text: "Clasificación", value: "purpose", sortable: false },
+        { text: "Recurso", value: "location", sortable: false },
         { text: "Acciones", value: "actions", sortable: false },
       ],
     };

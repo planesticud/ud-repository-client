@@ -5,7 +5,7 @@ class FilesService {
 
     getFiles() {
         const data = {}
-        return axios.get(`${repositoryUrl}/files`, { params: data })
+        return axios.get(`${repositoryUrl}/files/all`, { params: data })
     }
     deleteFilesById(id) {
         return axios.delete(`${repositoryUrl}/files`, { params: { id } })
@@ -18,12 +18,7 @@ class FilesService {
         return axios.get(`${repositoryUrl}/files`, { params: { email: email } })
     }
     createFile(data) {
-        const body = {
-            anotation: data.anotation,
-            email: data.email,
-            general: data.general
-        }
-        return axios.post(`${repositoryUrl}/files`, body)
+        return axios.post(`${repositoryUrl}/files`, data)
     }
 
     updateFiles(data, id) {

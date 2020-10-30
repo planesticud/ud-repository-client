@@ -1,43 +1,55 @@
 <template>
   <v-container class="grey lighten-5">
-    <h1>{{title}}</h1>
-    <v-row align="center" class="list px-10 mx-auto">
-      <v-card class="mx-auto" max-width="800">
-
-
-        <v-card-text>
-          <h3 class="title">
-            <strong>{{ text.general }} </strong> {{ model.general }}
-          </h3>
-          <h3 class="title">
-           <strong>{{ text.lifecycle }} </strong> {{ model.lifecycle }}
-          </h3>
-          <h3 class="title">
-           <strong>{{ text.email }} </strong> {{ model.email }}
-          </h3>
-          <h3 class="title">
-            <strong>{{ text.anotation }} </strong>  <a :href="model.anotation">{{url}}</a>
-          </h3>
-          <p>&nbsp;</p>
-          <v-icon small class="mr-2" @click="editFile(model.id)"
-            >mdi-pencil</v-icon
-          >
-          <v-icon small @click="deleteFile(mddel.id)">mdi-delete</v-icon>
-        </v-card-text>
-
-      </v-card>
-    </v-row>
+    <div>
+      <h1>{{ title }}</h1>
+      <template v-for="item in header">
+        <p :class="item.class" v-if="item" :key="item">
+          <strong v-if="item.value" :key="item.value">{{ item.value }} </strong>
+          {{ model[item.key] }}
+        </p>
+      </template>
+    </div>
   </v-container>
 </template>
 
 <script>
-import FilesService from '../../services/files';
+import FilesService from "../../services/files";
 export default {
   data() {
     return {
-      title: 'Detalle de recurso',
+      title: "Detalle de recurso",
       model: {},
-      url: 'Ver recurso',
+      header: [
+        { class:"blue lighten-4 text-md-center",value: "General" },
+        { class:"",key: "title", value: "Titulo:" },
+        { class:"",key: "language", value: "Idioma:" },
+        { class:"",key: "description", value: "Descripción:" },
+        { class:"",key: "key_words", value: "Palabras clave:" },
+        { class:"blue lighten-4 text-md-center",value: "Ciclo de vida" },
+        { class:"",key: "version", value: "Versión:" },
+        { class:"",key: "state", value: "Estado:" },
+        { class:"",key: "participants", value: "Autores:" },
+        { class:"blue lighten-4 text-md-center",value: "Requerimientos tecnicos" },
+        { class:"",key: "format", value: "Formato:" },
+        { class:"",key: "size", value: "Tamaño:" },
+        { class:"",key: "location", value: "Ubicacion:" },
+        { class:"blue lighten-4 text-md-center",value: "Caracteristicas pedagogicas" },
+        { class:"",key: "class_learning", value: "Tipo de apdrendizaje:" },
+        { class:"",key: "type_of_educational_resource", value: "Tipo de recurso educacional:" },
+        { class:"",key: "level_of_interaction", value: "Nivel de interación:" },
+        { class:"",key: "objetive_poblation", value: "Población objetivo:" },
+        { class:"",key: "context", value: "Contexto:" },
+        { class:"blue lighten-4 text-md-center",value: "Derechos de uso" },
+        { class:"",key: "copyright", value: "Copyright:" },
+        { class:"blue lighten-4 text-md-center",value: "Anotación" },
+        { class:"",key: "entity", value: "Entidad:" },
+        { class:"",key: "date", value: "Fecha:" },
+        { class:"blue lighten-4 text-md-center",value: "Clasificación" },
+        { class:"",key: "purpose", value: "Clasificación:" },
+        { class:"",key: "email", value: "Correo electronico:" },
+      ],
+
+      url: "Ver recurso",
       text: {
         email: "Email:",
         general: "Nombre:",
@@ -49,17 +61,34 @@ export default {
   methods: {
     getFile(id) {
       FilesService.getFilesByid(id)
-        .then(({data}) => {
-          console.log(data)
-         const response = data.filter(file => file.id == id)[0];
-         console.log(response)
+        .then(({ data }) => {
+          console.log(data);
+          const response = data.filter((file) => file.id == id)[0];
+          console.log(response);
           this.model = {
-            id: response.id,
-            general: response.general,
-            lifecycle: response.lifecycle,
-            anotation: response.anotation,
-            email: response.email
-            }
+            title: response.title,
+            language: response.language,
+            description: response.description,
+            key_words: response.key_words,
+            version: response.version,
+            state: response.state,
+            participants: response.participants,
+            format: response.format,
+            size: response.size,
+            location: response.location,
+            requierements: response.requierements || "",
+            class_learning: response.class_learning,
+            type_of_educational_resource: response.type_of_educational_resource,
+            level_of_interaction: response.level_of_interaction,
+            objetive_poblation: response.objetive_poblation,
+            context: response.context,
+            cost: response.cost || "",
+            copyright: response.copyright,
+            entity: response.entity,
+            date: response.date,
+            purpose: response.purpose,
+            email: response.email,
+          };
         })
         .catch((e) => {
           console.log(e);
@@ -69,8 +98,7 @@ export default {
       this.$router.push({ name: "editfiles", params: { id: id } });
     },
     deleteFile(id) {
-      FilesService
-        .deleteFilesById(id)
+      FilesService.deleteFilesById(id)
         .then(() => {
           this.refreshList();
         })
