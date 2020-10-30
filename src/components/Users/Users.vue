@@ -30,8 +30,8 @@
           :hide-default-footer="true"
         >
           <template v-slot:[`item.actions`]="{ item }">
-            <v-icon small class="mr-2" @click="editUser(item.email)">mdi-pencil</v-icon>
-            <v-icon small class="mr-2" @click="detailUser(item.email)">mdi-domain</v-icon>
+            <v-icon small class="mr-2" @click="editUser(item.id)">mdi-pencil</v-icon>
+            <v-icon small class="mr-2" @click="detailUser(item.id)">mdi-domain</v-icon>
             <v-icon small @click="deleteUser(item.id)">mdi-delete</v-icon>
           </template>
         </v-data-table>
@@ -46,34 +46,18 @@
 </template>
 
 <script>
-import moodle from '../../services/moodle';
-import MoodleService from "../../services/moodle";
+import UserService from '../../services/users';
+import UserModel from "../../models/userModel"
 export default {
   name: "users-list",
   data() {
-    return {
-      h1: 'LIST USERS',
-      search: {label: 'Buscar por email', button: 'Buscar'},
-      add: {button: 'Agregar', route: '/users/add'},
-      users: [],
-      title: "",
-      headers: [
-        { text: "Nombre de usuario",  value: "username", align: "start", sortable: false },
-        { text: "email", value: "email", sortable: false },
-        { text: "firstname", value: "firstname", sortable: false },
-        { text: "ultimo acceso", value: "lastaccess", sortable: false },
-        { text: "Actions", value: "actions", sortable: false },
-      ],
-    };
+    return UserModel.ListUsersModel;
   },
   methods: {
-    retrieveUsers() {
-      
-          
-      
-      MoodleService.getUsers()
+    retrieveUsers() {   
+      UserService.getUsers()
         .then((response) => {
-          this.users = response.data.users
+          this.users = response.data
         })
         .catch((e) => {
           console.log(e);
@@ -90,9 +74,9 @@ export default {
     },
 
     searchTitle() {
-       MoodleService.getUsersByEmail(this.title)
+       UserService.getUsersByEmail(this.title)
         .then((response) => {
-          this.users = response.data.users
+          this.users = response.data
         })
         .catch((e) => {
           console.log(e);
@@ -106,7 +90,7 @@ export default {
       this.$router.push({ name: "detailusers", params: { id: id } });
     },
     deleteUser(id) {
-      moodle.deleteUsersById(id)
+      UserService.deleteUsersById(id)
         .then(() => {
           this.refreshList();
         })

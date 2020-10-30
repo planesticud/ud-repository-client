@@ -1,120 +1,51 @@
 <template>
- <v-container class="grey lighten-5">
-      <div>
-    <h1>{{title}}</h1>
-    </div>
-  <v-row align="center" class="list px-3 mx-auto">
-    <div class="panel-body">
-      <vue-form-generator :schema="schema" :model="model" :options="formOptions" >
-
-      </vue-form-generator>
-    </div>
+  <v-container class="grey lighten-5">
     <div>
-      <v-alert v-if="result.state" border="top" :color="result.color" dark>
-        {{ result.text }}
-      </v-alert>
+      <h1>{{ title }}</h1>
     </div>
-  </v-row>
- </v-container>
+    <v-row align="center" class="list px-3 mx-auto">
+      <div class="panel-body">
+        <vue-form-generator
+          :schema="schema"
+          :model="model"
+          :options="formOptions"
+        >
+        </vue-form-generator>
+      </div>
+      <div>
+        <v-alert v-if="result.state" border="top" :color="result.color" dark>
+          {{ result.text }}
+        </v-alert>
+      </div>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
-import VueFormGenerator from "vue-form-generator";
-import MoodleService from "../../services/moodle";
+//import VueFormGenerator from "vue-form-generator";
+import UserService from "../../services/users";
+import UserModel from "../../models/userModel"
 export default {
   data() {
-    return {
-      model: {},
-      title: 'ADD USERS',
-      result: { state: false},
-      schema: {
-        fields: [
-          {
-            type: "input",
-            inputType: "text",
-            label: "Nombre de usuario",
-            model: "userName",
-            placeholder: "Your name",
-            featured: true,
-            required: true,
-          },
-          {
-            type: "input",
-            inputType: "text",
-            label: "Contraseña",
-            model: "password",
-            min: 6,
-            required: true,
-            hint: "Minimo 6 caracteres",
-            validator: VueFormGenerator.validators.string,
-          },
-          {
-            type: "input",
-            inputType: "text",
-            label: "Nombres",
-            model: "firstName",
-            placeholder: "Your first name",
-            featured: true,
-            required: true,
-          },
-          {
-            type: "input",
-            inputType: "text",
-            label: "Apellidos",
-            model: "lastName",
-            placeholder: "Your last name",
-            featured: true,
-            required: true,
-          },
-          {
-            type: "input",
-            inputType: "email",
-            label: "correo electronico",
-            model: "email",
-            placeholder: "Your mail",
-            validator: VueFormGenerator.validators.email,
-          },
-          {
-            type: "submit",
-            buttonText: "Crear Usuario",
-            onSubmit: (model) => this.submit(model),
-          },
-        ],
-      },
-      formOptions: {
-        validateAfterLoad: false,
-        validateAfterChanged: true,
-        validateAsync: true,
-      },
-    };
+    return UserModel.CreateUsersModel;
   },
   methods: {
     submit(model) {
-      const user = MoodleService.mapDataUser(model);
-      MoodleService.createUser(user)
+      UserService.createUser(model)
         .then(({ data }) => {
-           if (data.length) {
-            this.result = {
-              text: `el usuario ${data[0].username} fue creado con el id ${data[0].id}`,
-              color: "green lighten-2",
-              state: true
-            }
-            this.model = {};
-           }
-          else {
-            this.result = {
-              text: `error: ${data.message}`,
-              color: "red lighten-2",
-              state: true
-            };
-          }  
+          this.result = {
+            text: `el usuario ${data[0].username} fue creado con el id ${data[0].id}`,
+            color: "green lighten-2",
+            state: true,
+          };
+          this.model = {};
         })
         .catch((e) => {
           this.result = {
-              text: `error: ${e}`,
-              color: "red lighten-2",
-              state: true
-            };
+            text: `error: ${e}`,
+            color: "red lighten-2",
+            state: true,
+          };
         });
     },
   },

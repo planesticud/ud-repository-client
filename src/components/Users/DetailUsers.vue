@@ -9,18 +9,15 @@
 
         <v-card-text>
           <h3 class="title primary--text">
-            {{ text.firstName }} {{ model.firstName }}
+            {{ text.name }} {{ model.name }}
           </h3>
           <h3 class="title primary--text">
-            {{ text.lastName }} {{ model.lastName }}
+            {{ text.rol }} {{ model.rol }}
           </h3>
           <h3 class="title primary--text">
             {{ text.email }} {{ model.email }}
           </h3>
-          <h3 class="title primary--text">
-            {{ text.userName }} {{ model.userName }}
-          </h3>
-          <v-icon small class="mr-2" @click="editUser(model.email)"
+          <v-icon small class="mr-2" @click="editUser(model.id)"
             >mdi-pencil</v-icon
           >
           <v-icon small @click="deleteUser(mddel.id)">mdi-delete</v-icon>
@@ -32,32 +29,21 @@
 </template>
 
 <script>
-import moodle from '../../services/moodle';
-import MoodleService from "../../services/moodle";
+import UserService from "../../services/users";
+import UserModel from "../../models/userModel" 
 export default {
   data() {
-    return {
-      title: 'DETAIL USER',
-      model: {},
-      text: {
-        firstName: "Nombre:",
-        lastName: "Apellido:",
-        email: "Email:",
-        userName: "Nombre de usuario:",
-      },
-    };
+    return UserModel.DetailUsersModel;
   },
   methods: {
-    getUser(email) {
-      MoodleService.getUsersByEmail(email)
+    getUser(id) {
+      UserService.getUsersByid(id)
         .then((response) => {
           this.model = {
-            id: response.data.users[0].id,
-            userName: response.data.users[0].username,
-            password: response.data.users[0].password,
-            firstName: response.data.users[0].firstname,
-            lastName: response.data.users[0].lastname,
-            email: response.data.users[0].email,
+            id: response.data[0].id,
+            name: response.data[0].name,
+            rol: response.data[0].rol,
+            email: response.data[0].email,
           };
         })
         .catch((e) => {
@@ -68,7 +54,7 @@ export default {
       this.$router.push({ name: "editusers", params: { id: id } });
     },
     deleteUser(id) {
-      moodle
+      UserService
         .deleteUsersById(id)
         .then(() => {
           this.refreshList();

@@ -19,89 +19,16 @@
 </template>
 
 <script>
-import VueFormGenerator from "vue-form-generator";
-import MoodleService from "../../services/moodle";
+import UsersService from "../../services/users";
+import UserModel from "../../models/userModel"
 export default {
   data() {
-    return {
-      model: {},
-      title: 'EDIT USERS',
-      result: { state: false},
-      schema: {
-        fields: [
-           {
-            type: "input",
-            inputType: "text",
-            label: "Id",
-            model: "id",
-            placeholder: "",
-            featured: true,
-            required: true,
-            enabled:false
-          },
-          {
-            type: "input",
-            inputType: "text",
-            label: "Nombre de usuario",
-            model: "userName",
-            placeholder: "Your name",
-            featured: true,
-            required: true,
-          },
-          {
-            type: "input",
-            inputType: "text",
-            label: "Contraseña",
-            model: "password",
-            min: 6,
-            required: true,
-            hint: "Minimo 6 caracteres",
-            validator: VueFormGenerator.validators.string,
-          },
-          {
-            type: "input",
-            inputType: "text",
-            label: "Nombres",
-            model: "firstName",
-            placeholder: "Your first name",
-            featured: true,
-            required: true,
-          },
-          {
-            type: "input",
-            inputType: "text",
-            label: "Apellidos",
-            model: "lastName",
-            placeholder: "Your last name",
-            featured: true,
-            required: true,
-          },
-          {
-            type: "input",
-            inputType: "email",
-            label: "correo electronico",
-            model: "email",
-            placeholder: "Your mail",
-            validator: VueFormGenerator.validators.email,
-          },
-          {
-            type: "submit",
-            buttonText: "Actualizar Usuario",
-            onSubmit: (model) => this.submit(model),
-          },
-        ],
-      },
-      formOptions: {
-        validateAfterLoad: false,
-        validateAfterChanged: true,
-        validateAsync: true,
-      },
-    };
+    return UserModel.UpdateUsersModel;
   },
   methods: {
     submit(model) {
-      //const user = MoodleService.mapDataUser(model);
-      MoodleService.updateUsers(model)
+
+      UsersService.updateUser(model, model.id)
         .then(({ data }) => {
         
             this.result = {
@@ -122,16 +49,15 @@ export default {
         });
     },
   
-    getUser(email){
-    MoodleService.getUsersByEmail(email)
+    getUser(id){
+    UsersService.getUsersByid(id)
         .then((response) => {
+          console.log(response.data)
           this.model = {
-            id: response.data.users[0].id,
-            userName: response.data.users[0].username,
-            password: response.data.users[0].password,
-            firstName: response.data.users[0].firstname,
-            lastName: response.data.users[0].lastname,
-            email: response.data.users[0].email
+            id: response.data[0].id,
+            name: response.data[0].name,
+            rol: response.data[0].rol,
+            email: response.data[0].email
             }
         
         })
