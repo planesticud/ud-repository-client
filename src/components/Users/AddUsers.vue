@@ -1,5 +1,5 @@
 <template>
-  <v-container class="grey lighten-5">
+  <v-container class="lighten-5">
     <div>
       <h1>{{ title }}</h1>
     </div>
@@ -22,12 +22,59 @@
 </template>
 
 <script>
-//import VueFormGenerator from "vue-form-generator";
+import VueFormGenerator from "vue-form-generator";
 import UserService from "../../services/users";
-import UserModel from "../../models/userModel"
+
 export default {
   data() {
-    return UserModel.CreateUsersModel;
+    return {
+      model: {},
+      title: "Crear usuario",
+      result: { state: false },
+      schema: {
+        fields: [
+          {
+            type: "input",
+            inputType: "text",
+            label: "Nombre Completo",
+            model: "name",
+            placeholder: "Escriba el nombre completo",
+            featured: true,
+            required: true,
+          },
+          {
+            type: "input",
+            inputType: "email",
+            label: "correo electronico",
+            model: "email",
+            placeholder: "Escriba el correo electronico",
+            validator: VueFormGenerator.validators.email,
+          },
+          {
+            type: "select",
+            inputType: "text",
+            label: "Rol",
+            model: "rol",
+            placeholder: "Rol del usuario en la plataforma",
+            featured: true,
+            required: true,
+            values: ["ESTUDIANTE", "DOCENTE", "ADMINISTRADOR"],
+            default: "ESTUDIANTE",
+            help: `rol que tendra el usuario en la plataforma`,
+          },
+          {
+            type: "submit",
+            buttonText: "Crear Usuario",
+            onSubmit: (model) => this.submit(model),
+          },
+        ],
+      },
+      formOptions: {
+        validateAfterLoad: false,
+        validateAfterChanged: true,
+        validateAsync: true,
+      },
+    }
   },
   methods: {
     submit(model) {

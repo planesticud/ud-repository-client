@@ -1,7 +1,7 @@
 <template>
-  <v-container class="grey lighten-5">
+  <v-container class="lighten-5">
     <div>
-      <h1>{{ h1 }}</h1>
+      <h1  align="center" >{{ h1.text }}  <v-icon :title="title.text" >{{h1.icon}}</v-icon></h1>
     </div>
     <v-row align="center" class="list px-3 mx-auto">
       <v-col cols="12" md="8">
@@ -18,7 +18,7 @@
         </v-btn>
       </v-col>
 
-      <v-col cols="14" sm="14">
+      <v-col cols="16" sm="16">
         <v-card class="mx-auto" tile>
           <v-card-title>{{ title }}</v-card-title>
 
@@ -33,13 +33,14 @@
               </a>
             </template>
             <template v-slot:[`item.actions`]="{ item }">
-              <v-icon small class="mr-2" @click="editFiles(item.id)"
+              <v-icon small class="mr-2"  title="Editar" @click="editFiles(item.id)"
                 >mdi-pencil</v-icon
               >
-              <v-icon small class="mr-2" @click="detailFiles(item.id)"
-                >mdi-domain</v-icon
+              <v-icon small class="mr-2" title="Detalle" @click="detailFiles(item.id)"
+                >mdi-format-list-bulleted</v-icon
               >
-              <v-icon small @click="deleteFiles(item.id)">mdi-delete</v-icon>
+             
+              <v-icon small  title="Eliminar" @click="deleteFiles(item.id)">mdi-delete</v-icon>
             </template>
           </v-data-table>
 
@@ -57,24 +58,24 @@ export default {
   data() {
     return {
       filEmail: "",
-      h1: "Listado de recursos",
-      search: { label: "Buscar por email", button: "Buscar" },
+      h1:{ text: "Listado de recursos", icon: "mdi-file-outline" },
+      search: { label: "Buscar por correo electronico", button: "Buscar" },
       add: { button: "Agregar", route: "/files/add" },
       files: [],
       title: "",
       url: "Ver recurso",
       headers: [
-        { text: "Título", value: "title", align: "start", sortable: false },
+        { text: "Título", value: "title", align: "start", sortable: true },
         {
           text: "Descripción",
           value: "description",
           align: "start",
-          sortable: false,
+          sortable: true,
         },
-        { text: "Formato", value: "format", sortable: false },
-        { text: "Clasificación", value: "purpose", sortable: false },
-        { text: "Recurso", value: "location", sortable: false },
-        { text: "Acciones", value: "actions", sortable: false },
+        { text: "Formato", value: "format", sortable: true ,align: "start"},
+        { text: "Clasificación", value: "purpose", sortable: true, align: "start" },
+        { text: "Recurso", value: "location", sortable: true , align: "start" },
+        { text: "Acciones", value: "actions", sortable: true , align: "start" },
       ],
     };
   },

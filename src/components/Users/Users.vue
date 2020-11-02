@@ -1,5 +1,5 @@
 <template>
- <v-container class="grey lighten-5">
+ <v-container class="lighten-5">
    <div>
     <h1>{{h1}}</h1>
     </div>
@@ -47,11 +47,23 @@
 
 <script>
 import UserService from '../../services/users';
-import UserModel from "../../models/userModel"
+
 export default {
   name: "users-list",
   data() {
-    return UserModel.ListUsersModel;
+    return {
+    h1: 'Ver usuarios',
+    search: { label: 'Buscar por email', button: 'Buscar' },
+    add: { button: 'Agregar', route: '/users/add' },
+    users: [],
+    title: "",
+    headers: [
+      { text: "Nombre", value: "name", align: "start", sortable: false },
+      { text: "email", value: "email", sortable: false },
+      { text: "Rol", value: "rol", sortable: false },
+      { text: "Actions", value: "actions", sortable: false },
+    ],
+  };
   },
   methods: {
     retrieveUsers() {   

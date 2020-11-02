@@ -1,13 +1,20 @@
 <template>
-  <v-container class="grey lighten-5">
+  <v-container class="lighten-5">
     <div>
-      <h1>{{ title }}</h1>
+      <h1>{{ title.text }}  <v-icon :title="title.text" >{{title.icon}}</v-icon> </h1>
       <template v-for="item in header">
         <p :class="item.class" v-if="item" :key="item">
-          <strong v-if="item.value" :key="item.value">{{ item.value }} </strong>
-          {{ model[item.key] }}
+          <strong v-if="item.value " :key="item.value">{{ item.value }} </strong>
+          <a v-if="item.key == 'location'" :href="model[item.key]" target="_blank" 
+          >
+           Ver recurso
+            <v-icon small class="mr-2" title="Copiar recurso" >mdi-checkbox-multiple-blank-outline</v-icon>
+           </a>
+          
+           <span v-else :class="item.class" >{{ model[item.key] }}</span>  
         </p>
       </template>
+    
     </div>
   </v-container>
 </template>
@@ -17,7 +24,7 @@ import FilesService from "../../services/files";
 export default {
   data() {
     return {
-      title: "Detalle de recurso",
+      title: {text: "Detalle de recurso", icon:"mdi-file-outline"},
       model: {},
       header: [
         { class:"blue lighten-4 text-md-center",value: "General" },
@@ -27,7 +34,7 @@ export default {
         { class:"",key: "key_words", value: "Palabras clave:" },
         { class:"blue lighten-4 text-md-center",value: "Ciclo de vida" },
         { class:"",key: "version", value: "Versión:" },
-        { class:"",key: "state", value: "Estado:" },
+        { class:"blue",key: "state", value: "Estado:" },
         { class:"",key: "participants", value: "Autores:" },
         { class:"blue lighten-4 text-md-center",value: "Requerimientos tecnicos" },
         { class:"",key: "format", value: "Formato:" },
@@ -65,6 +72,8 @@ export default {
           console.log(data);
           const response = data.filter((file) => file.id == id)[0];
           console.log(response);
+          var formatDate = new Date(parseInt(response.date, 10)).toLocaleDateString("en-US")
+
           this.model = {
             title: response.title,
             language: response.language,
@@ -74,7 +83,7 @@ export default {
             state: response.state,
             participants: response.participants,
             format: response.format,
-            size: response.size,
+            size: `${response.size/1024/1024} MB`,
             location: response.location,
             requierements: response.requierements || "",
             class_learning: response.class_learning,
@@ -85,7 +94,7 @@ export default {
             cost: response.cost || "",
             copyright: response.copyright,
             entity: response.entity,
-            date: response.date,
+            date: formatDate,
             purpose: response.purpose,
             email: response.email,
           };

@@ -1,5 +1,5 @@
 <template>
-  <v-container class="grey lighten-5">
+  <v-container class="lighten-5">
     <div>
       <h1>{{ title }}</h1>
     </div>
@@ -55,9 +55,9 @@ export default {
         {
           type: "input",
           inputType: "text",
-          label: "Titulo",
+          label: "Título",
           model: "title",
-          placeholder: "Titulo del recurso",
+          placeholder: "Título del recurso",
           featured: true,
           required: true,
         },
@@ -69,7 +69,7 @@ export default {
           placeholder: "Idioma del recurso",
           featured: true,
           required: true,
-          values: ["Español", "Inlges"],
+          values: ["Español", "Ingles", "Frances", "Aleman"],
           default: "Español",
         },
         {
@@ -103,7 +103,7 @@ export default {
           model: "version",
           min: 0,
           max: 200,
-          placeholder: "Numero de la version del recurso",
+          placeholder: "Número de la version del recurso",
           featured: true,
           required: true,
         },
@@ -112,7 +112,7 @@ export default {
           inputType: "text",
           label: "Estado",
           model: "state",
-          placeholder: "Estado del del recurso",
+          placeholder: "Estado del recurso",
           featured: true,
           required: true,
           values: ["Activo", "Inactivo"],
@@ -124,7 +124,7 @@ export default {
           model: "participants",
           hint: "Autores del recurso",
           max: 200,
-          placeholder: "Nombres de los utores separados por coma",
+          placeholder: "Nombres de los autores separados por coma",
           rows: 2,
         },
         {

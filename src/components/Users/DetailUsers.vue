@@ -1,5 +1,5 @@
 <template>
-  <v-container class="grey lighten-5">
+  <v-container class="lighten-5">
     <h1>{{title}}</h1>
     <v-row align="center" class="list px-3 mx-auto">
       <v-card class="mx-auto" max-width="344">
@@ -30,10 +30,17 @@
 
 <script>
 import UserService from "../../services/users";
-import UserModel from "../../models/userModel" 
 export default {
   data() {
-    return UserModel.DetailUsersModel;
+    return {
+    title: 'Detalle de usuario',
+    model: {},
+    text: {
+      name: "Nombres:",
+      rol: "Rol:",
+      email: "Email:",
+    },
+  };
   },
   methods: {
     getUser(id) {
