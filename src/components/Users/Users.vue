@@ -1,47 +1,36 @@
 <template>
  <v-container class="lighten-5">
    <div>
-    <h1>{{h1}}</h1>
+    <h1  align="center" >{{ h1.text }}  <v-icon :title="title.text" >{{h1.icon}}</v-icon></h1>
     </div>
   <v-row align="center" class="list px-3 mx-auto">
-    
-    <v-col cols="12" md="8">
-      <v-text-field v-model="title" :label="search.label"></v-text-field>
-    </v-col>
 
-    <v-col cols="12" md="4">
-      <v-btn small @click="searchTitle">
-        {{search.button}}
-      </v-btn>
-      &nbsp;
-      <v-btn small color="success" :href="add.route">
+      <v-text-field
+        v-model="search"
+        append-icon="mdi-magnify"
+        label="Buscar"
+        single-line
+        hide-details
+      ></v-text-field>
+             <v-btn small color="success" :href="add.route">
         {{add.button}}
       </v-btn>
-    </v-col>
 
-    <v-col cols="12" sm="12">
-      <v-card class="mx-auto" tile>
-        <v-card-title>{{title}}</v-card-title>
-
-        <v-data-table
-          :headers="headers"
-          :items="users"
-          disable-pagination
-          :hide-default-footer="true"
-        >
-          <template v-slot:[`item.actions`]="{ item }">
-            <v-icon small class="mr-2" @click="editUser(item.id)">mdi-pencil</v-icon>
-            <v-icon small class="mr-2" @click="detailUser(item.id)">mdi-domain</v-icon>
-            <v-icon small @click="deleteUser(item.id)">mdi-delete</v-icon>
-          </template>
-        </v-data-table>
-
-        <v-card-actions v-if="users.length > 0">
-
-        </v-card-actions>
-      </v-card>
-    </v-col>
   </v-row>
+  <v-spacer></v-spacer>
+   <v-spacer></v-spacer>
+   &nbsp;
+  <v-data-table
+      :headers="headers"
+      :items="users"
+      :search="search"
+    >
+     <template v-slot:[`item.actions`]="{ item }">
+            <v-icon small :title="actions.edit.title"  class="mr-2" @click="editUser(item.id)">{{actions.edit.icon}}</v-icon>
+            <v-icon small :title="actions.detail.title" class="mr-2" @click="detailUser(item.id)">{{actions.detail.icon}}</v-icon>
+            <v-icon small :title="actions.delete.title" class="mr-2" @click="deleteUser(item.id)">{{actions.delete.icon}}</v-icon>
+          </template>
+    </v-data-table>
  </v-container>
 </template>
 
@@ -52,8 +41,9 @@ export default {
   name: "users-list",
   data() {
     return {
-    h1: 'Ver usuarios',
-    search: { label: 'Buscar por email', button: 'Buscar' },
+    h1:{ text: "Listado de usuarios", icon: "mdi-account" },
+    search: '',
+    find: { label: 'Buscar por email', button: 'Buscar' },
     add: { button: 'Agregar', route: '/users/add' },
     users: [],
     title: "",
@@ -63,6 +53,11 @@ export default {
       { text: "Rol", value: "rol", sortable: false },
       { text: "Actions", value: "actions", sortable: false },
     ],
+    actions:{
+    edit: {  title: "Editar usuario", icon: "mdi-pencil" },
+    detail:{  title: "Detalle de usuario", icon: " mdi-format-list-bulleted" },
+    delete:{ title: "Eliminar usuario", icon: "mdi-delete" },
+    }
   };
   },
   methods: {

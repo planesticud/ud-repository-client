@@ -1,53 +1,49 @@
 <template>
   <v-container class="lighten-5">
     <div>
-      <h1  align="center" >{{ h1.text }}  <v-icon :title="title.text" >{{h1.icon}}</v-icon></h1>
+      <h1 align="center">
+        {{ h1.text }} <v-icon :title="title.text">{{ h1.icon }}</v-icon>
+      </h1>
     </div>
     <v-row align="center" class="list px-3 mx-auto">
-      <v-col cols="12" md="8">
-        <v-text-field v-model="filEmail" :label="search.label"></v-text-field>
-      </v-col>
-
-      <v-col cols="12" md="4">
-        <v-btn small @click="searchTitle">
-          {{ search.button }}
-        </v-btn>
-        &nbsp;
-        <v-btn small color="success" :href="add.route">
-          {{ add.button }}
-        </v-btn>
-      </v-col>
-
-      <v-col cols="16" sm="16">
-        <v-card class="mx-auto" tile>
-          <v-card-title>{{ title }}</v-card-title>
-
-          <v-data-table
-            :headers="headers"
-            :items="files"
-            :hide-default-footer="true"
-          >
-            <template #item.location="{ value }">
-              <a target="_blank" :href="value">
-                {{ url }}
-              </a>
-            </template>
-            <template v-slot:[`item.actions`]="{ item }">
-              <v-icon small class="mr-2"  title="Editar" @click="editFiles(item.id)"
-                >mdi-pencil</v-icon
-              >
-              <v-icon small class="mr-2" title="Detalle" @click="detailFiles(item.id)"
-                >mdi-format-list-bulleted</v-icon
-              >
-             
-              <v-icon small  title="Eliminar" @click="deleteFiles(item.id)">mdi-delete</v-icon>
-            </template>
-          </v-data-table>
-
-          <v-card-actions v-if="files.length > 0"> </v-card-actions>
-        </v-card>
-      </v-col>
+      <v-text-field
+        v-model="search"
+        append-icon="mdi-magnify"
+        label="Buscar"
+        single-line
+        hide-details
+      ></v-text-field>
+      <v-btn small color="success" :href="add.route">
+        {{ add.button }}
+      </v-btn>
+      &nbsp; &nbsp; &nbsp;
     </v-row>
+    <v-spacer></v-spacer>
+    <v-spacer></v-spacer>
+    &nbsp; &nbsp; &nbsp;
+
+    <v-data-table :headers="headers" :items="files" :search="search">
+          <template v-slot:[`item.state`]="{ item }">
+      <v-chip
+        :color="getColor(item.state)"
+        dark
+      >
+        {{ item.state }}
+      </v-chip>
+    </template>
+
+      <template v-slot:[`item.location`]="{ item }">
+        <a target="_blank" :href="item.location">
+          {{ url }}
+        </a>
+      </template>
+
+     <template v-slot:[`item.actions`]="{ item }">
+            <v-icon small :title="actions.edit.title"  class="mr-2" @click="editFiles(item.id)">{{actions.edit.icon}}</v-icon>
+            <v-icon small :title="actions.detail.title" class="mr-2" @click="detailFiles(item.id)">{{actions.detail.icon}}</v-icon>
+            <v-icon small :title="actions.delete.title" class="mr-2" @click="deleteFiles(item.id)">{{actions.delete.icon}}</v-icon>
+          </template>
+    </v-data-table>
   </v-container>
 </template>
 
@@ -58,8 +54,9 @@ export default {
   data() {
     return {
       filEmail: "",
-      h1:{ text: "Listado de recursos", icon: "mdi-file-outline" },
-      search: { label: "Buscar por correo electronico", button: "Buscar" },
+      h1: { text: "Listado de recursos", icon: "mdi-file-outline" },
+      search: "",
+      find: { label: "Buscar por correo electronico", button: "Buscar" },
       add: { button: "Agregar", route: "/files/add" },
       files: [],
       title: "",
@@ -72,12 +69,24 @@ export default {
           align: "start",
           sortable: true,
         },
-        { text: "Formato", value: "format", sortable: true ,align: "start"},
-        { text: "Clasificación", value: "purpose", sortable: true, align: "start" },
-        { text: "Recurso", value: "location", sortable: true , align: "start" },
-        { text: "Acciones", value: "actions", sortable: true , align: "start" },
+        { text: "Estado", value: "state", sortable: true, align: "start" },
+        { text: "Formato", value: "format", sortable: true, align: "start" },
+        {
+          text: "Clasificación",
+          value: "purpose",
+          sortable: true,
+          align: "start",
+        },
+        { text: "Recurso", value: "location", sortable: true, align: "start" },
+        { text: "Acciones", value: "actions", sortable: true, align: "start" },
       ],
+              actions:{
+    edit: {  title: "Editar recurso", icon: "mdi-pencil" },
+    detail:{  title: "Detalle de recurso", icon: " mdi-format-list-bulleted" },
+    delete:{ title: "Eliminar recurso", icon: "mdi-delete" },
+    },
     };
+    
   },
   methods: {
     retrieveFiles() {
@@ -138,6 +147,12 @@ export default {
             : files.description,
         status: files.published ? "Published" : "Pending",
       };
+    },
+    getColor(state) {
+      console.log(state);
+      if (state == "Inactivo") return "red";
+      if (state == "Activo") return "green";
+      else return "blue";
     },
   },
   mounted() {

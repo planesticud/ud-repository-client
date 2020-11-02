@@ -1,20 +1,32 @@
 <template>
   <v-container class="lighten-5">
     <div>
-      <h1>{{ title.text }}  <v-icon :title="title.text" >{{title.icon}}</v-icon> </h1>
+      <h1>
+        {{ title.text }} <v-icon :title="title.text">{{ title.icon }}</v-icon>
+      </h1>
       <template v-for="item in header">
         <p :class="item.class" v-if="item" :key="item">
-          <strong v-if="item.value " :key="item.value">{{ item.value }} </strong>
-          <a v-if="item.key == 'location'" :href="model[item.key]" target="_blank" 
+          <strong v-if="item.value" :key="item.value">{{ item.value }} </strong>
+          <a
+            v-if="item.key == 'location'"
+            :href="model[item.key]"
+            target="_blank"
           >
-           Ver recurso
-            <v-icon small class="mr-2" title="Copiar recurso" >mdi-checkbox-multiple-blank-outline</v-icon>
-           </a>
-          
-           <span v-else :class="item.class" >{{ model[item.key] }}</span>  
+            Ver recurso
+            <v-icon small class="mr-2" title="Copiar recurso"
+              >mdi-checkbox-multiple-blank-outline</v-icon
+            >
+          </a>
+          <v-chip
+            v-else-if="item.key == 'state'"
+            :color="getColor(model[item.key])"
+            dark
+          >
+            {{ model[item.key] }}
+          </v-chip>
+          <span v-else :class="item.class">{{ model[item.key] }}</span>
         </p>
       </template>
-    
     </div>
   </v-container>
 </template>
@@ -24,36 +36,50 @@ import FilesService from "../../services/files";
 export default {
   data() {
     return {
-      title: {text: "Detalle de recurso", icon:"mdi-file-outline"},
+      title: { text: "Detalle de recurso", icon: "mdi-file-outline" },
       model: {},
       header: [
-        { class:"blue lighten-4 text-md-center",value: "General" },
-        { class:"",key: "title", value: "Titulo:" },
-        { class:"",key: "language", value: "Idioma:" },
-        { class:"",key: "description", value: "Descripción:" },
-        { class:"",key: "key_words", value: "Palabras clave:" },
-        { class:"blue lighten-4 text-md-center",value: "Ciclo de vida" },
-        { class:"",key: "version", value: "Versión:" },
-        { class:"blue",key: "state", value: "Estado:" },
-        { class:"",key: "participants", value: "Autores:" },
-        { class:"blue lighten-4 text-md-center",value: "Requerimientos tecnicos" },
-        { class:"",key: "format", value: "Formato:" },
-        { class:"",key: "size", value: "Tamaño:" },
-        { class:"",key: "location", value: "Ubicacion:" },
-        { class:"blue lighten-4 text-md-center",value: "Caracteristicas pedagogicas" },
-        { class:"",key: "class_learning", value: "Tipo de apdrendizaje:" },
-        { class:"",key: "type_of_educational_resource", value: "Tipo de recurso educacional:" },
-        { class:"",key: "level_of_interaction", value: "Nivel de interación:" },
-        { class:"",key: "objetive_poblation", value: "Población objetivo:" },
-        { class:"",key: "context", value: "Contexto:" },
-        { class:"blue lighten-4 text-md-center",value: "Derechos de uso" },
-        { class:"",key: "copyright", value: "Copyright:" },
-        { class:"blue lighten-4 text-md-center",value: "Anotación" },
-        { class:"",key: "entity", value: "Entidad:" },
-        { class:"",key: "date", value: "Fecha:" },
-        { class:"blue lighten-4 text-md-center",value: "Clasificación" },
-        { class:"",key: "purpose", value: "Clasificación:" },
-        { class:"",key: "email", value: "Correo electronico:" },
+        { class: "blue lighten-4 text-md-center", value: "General" },
+        { class: "", key: "title", value: "Titulo:" },
+        { class: "", key: "language", value: "Idioma:" },
+        { class: "", key: "description", value: "Descripción:" },
+        { class: "", key: "key_words", value: "Palabras clave:" },
+        { class: "blue lighten-4 text-md-center", value: "Ciclo de vida" },
+        { class: "", key: "version", value: "Versión:" },
+        { class: "", key: "state", value: "Estado:" },
+        { class: "", key: "participants", value: "Autores:" },
+        {
+          class: "blue lighten-4 text-md-center",
+          value: "Requerimientos tecnicos",
+        },
+        { class: "", key: "format", value: "Formato:" },
+        { class: "", key: "size", value: "Tamaño:" },
+        { class: "", key: "location", value: "Ubicacion:" },
+        {
+          class: "blue lighten-4 text-md-center",
+          value: "Caracteristicas pedagogicas",
+        },
+        { class: "", key: "class_learning", value: "Tipo de apdrendizaje:" },
+        {
+          class: "",
+          key: "type_of_educational_resource",
+          value: "Tipo de recurso educacional:",
+        },
+        {
+          class: "",
+          key: "level_of_interaction",
+          value: "Nivel de interación:",
+        },
+        { class: "", key: "objetive_poblation", value: "Población objetivo:" },
+        { class: "", key: "context", value: "Contexto:" },
+        { class: "blue lighten-4 text-md-center", value: "Derechos de uso" },
+        { class: "", key: "copyright", value: "Copyright:" },
+        { class: "blue lighten-4 text-md-center", value: "Anotación" },
+        { class: "", key: "entity", value: "Entidad:" },
+        { class: "", key: "date", value: "Fecha:" },
+        { class: "blue lighten-4 text-md-center", value: "Clasificación" },
+        { class: "", key: "purpose", value: "Clasificación:" },
+        { class: "", key: "email", value: "Correo electronico:" },
       ],
 
       url: "Ver recurso",
@@ -72,7 +98,9 @@ export default {
           console.log(data);
           const response = data.filter((file) => file.id == id)[0];
           console.log(response);
-          var formatDate = new Date(parseInt(response.date, 10)).toLocaleDateString("en-US")
+          var formatDate = new Date(
+            parseInt(response.date, 10)
+          ).toLocaleDateString("en-US");
 
           this.model = {
             title: response.title,
@@ -83,7 +111,7 @@ export default {
             state: response.state,
             participants: response.participants,
             format: response.format,
-            size: `${response.size/1024/1024} MB`,
+            size: `${response.size / 1024 / 1024} MB`,
             location: response.location,
             requierements: response.requierements || "",
             class_learning: response.class_learning,
@@ -114,6 +142,12 @@ export default {
         .catch((e) => {
           console.log(e);
         });
+    },
+    getColor(state) {
+      console.log(state);
+      if (state == "Inactivo") return "red";
+      if (state == "Activo") return "green";
+      else return "blue";
     },
   },
 
