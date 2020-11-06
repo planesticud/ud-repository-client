@@ -3,7 +3,7 @@ import Router from "vue-router";
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: "history",
   routes: [
     {
@@ -63,3 +63,14 @@ export default new Router({
     }
   ]
 });
+router.beforeEach((to, from, next) => {
+  let ls = localStorage.getItem('token');
+  
+  console.log(to.name)
+  if (to.name !=='login' && ls === null) next({name:'login'})
+  else if (to.name ==='login' && ls!== null) next({name:'home'})
+  else next()
+
+});
+
+export default router;

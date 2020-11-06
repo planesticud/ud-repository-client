@@ -4,6 +4,7 @@
       <div class="d-flex align-center mr-2">
         {{ title }}
       </div>
+      <div v-if="token">
       <v-btn
         :to="button.route"
         v-for="(button, index) in buttons"
@@ -12,6 +13,7 @@
       >
         {{ button.text }}
       </v-btn>
+      </div>
       <div>
         <v-tooltip v-if="$vuetify.theme.dark" bottom>
           <template v-slot:activator="{ on }">
@@ -65,6 +67,8 @@ export default {
         { text: "Usuarios", route: "/users" },
         { text: "Recursos", route: "/files" },
       ],
+      name: '',
+      token: '',
     };
   },
   methods: {
@@ -83,9 +87,16 @@ export default {
        localStorage.clear();
        this.image();
        this.$router.push({ name: 'login' })
+       location.reload()
     },
   },
     mounted() {
+    if (localStorage.name){
+      this.name=localStorage.name;
+    }
+    if (localStorage.token){
+      this.token = localStorage.token;
+    }
     this.image();
   },
 };
