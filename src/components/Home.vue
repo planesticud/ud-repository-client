@@ -1,7 +1,7 @@
 <template>
   <v-container class="lighten-5">
     <v-container>
-      <h2>{{ title }}</h2>
+      <h2>{{ title }} {{name}}</h2>
     </v-container>
 
     <div class="row row--dense">
@@ -52,6 +52,8 @@ export default {
   data() {
     return {
       title: "Bienvenido",
+      name: "",
+      isLogin: false,
       buttons: [
         { text: "Inicio", route: "/home", description: "Inicio repositorio" },
         { text: "Usuarios", route: "/users", description: "Administración de usuarios" },
@@ -61,7 +63,23 @@ export default {
       ],
     };
   },
-  methods: {},
+  methods: {
+
+        getName() {
+      if (localStorage.name) {
+        this.isLogin = true;
+        this.name = localStorage.name
+      }
+    },
+
+  },
+      mounted() {
+          if (this.$route.query.reload && localStorage.reload !== 'OK') {
+            localStorage.reload = 'OK'
+            location.reload()
+          }
+    this.getName();
+  },
 };
 </script>
 

@@ -55,6 +55,11 @@ export default new Router({
       path: "/",
       name: "init",
       component: () => import("./components/Home")
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: () => import("./components/Login")
     }
   ]
 });
