@@ -95,9 +95,7 @@ export default {
     getFile(id) {
       FilesService.getFilesByid(id)
         .then(({ data }) => {
-          console.log(data);
           const response = data.filter((file) => file.id == id)[0];
-          console.log(response);
           var formatDate = new Date(
             parseInt(response.date, 10)
           ).toLocaleDateString("en-US");
@@ -144,7 +142,6 @@ export default {
         });
     },
     getColor(state) {
-      console.log(state);
       if (state == "Inactivo") return "red";
       if (state == "Activo") return "green";
       else return "blue";

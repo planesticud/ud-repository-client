@@ -1,7 +1,7 @@
 <template>
   <v-container class="lighten-5">
     <v-container>
-      <h2>{{ title }} {{name}}</h2>
+      <h2>{{ title }} {{ name }}</h2>
     </v-container>
 
     <div class="row row--dense">
@@ -54,30 +54,67 @@ export default {
       title: "Bienvenido",
       name: "",
       isLogin: false,
-      buttons: [
-        { text: "Inicio", route: "/home", description: "Inicio repositorio" },
-        { text: "Usuarios", route: "/users", description: "Administración de usuarios" },
-        { text: "Recursos", route: "/files", description: "Administración de recursos" },
-        { text: "Estadisticas", route: "/statistics", description: "Uso de los recursos" },
-        { text: "Historial", route: "/hisotry", description: "Historial de acciones en el repositorio" },
-      ],
+      buttons: [],
     };
   },
   methods: {
-
-        getName() {
+    getName() {
       if (localStorage.name) {
         this.isLogin = true;
-        this.name = localStorage.name
+        this.name = localStorage.name;
       }
     },
-
   },
-      mounted() {
-          if (this.$route.query.reload && localStorage.reload !== 'OK') {
-            localStorage.reload = 'OK'
-            location.reload()
-          }
+  mounted() {
+    if (this.$route.query.reload && localStorage.reload !== "OK") {
+      localStorage.reload = "OK";
+      location.reload();
+    }
+    if (localStorage.rol === "ADMINISTRADOR") {
+      this.buttons = [
+        { text: "Inicio", route: "/home", description: "Inicio repositorio" },
+        {
+          text: "Usuarios",
+          route: "/users",
+          description: "Administración de usuarios",
+        },
+        {
+          text: "Recursos",
+          route: "/files",
+          description: "Administración de recursos",
+        },
+        {
+          text: "Estadisticas",
+          route: "/statistics",
+          description: "Uso de los recursos",
+        },
+        {
+          text: "Historial",
+          route: "/hisotry",
+          description: "Historial de acciones en el repositorio",
+        },
+      ];
+    }
+    if (localStorage.rol === "PROFESOR") {
+      this.buttons = [
+        { text: "Inicio", route: "/home", description: "Inicio repositorio" },
+        {
+          text: "Recursos",
+          route: "/files",
+          description: "Administración de recursos",
+        },
+      ];
+    }
+        if (localStorage.rol === "ESTUDIANTE") {
+      this.buttons = [
+        { text: "Inicio", route: "/home", description: "Inicio repositorio" },
+        {
+          text: "Recursos",
+          route: "/files",
+          description: "Administración de recursos",
+        },
+      ];
+    }
     this.getName();
   },
 };

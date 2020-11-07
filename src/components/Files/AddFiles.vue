@@ -278,14 +278,11 @@ export default {
       const file = this.file;
       FilesService.upload(file)
         .then(({ data }) => {
-          console.log(data);
           model.format = data.format;
           model.location = data.url;
           model.size = data.size.size
-          console.log(model)
           FilesService.createFile(model)
             .then((response) => {
-              console.log(response.data);
               this.result = {
                 text: `el recurso fue creado ${response.data.id}`,
                 color: "green lighten-2",
@@ -313,7 +310,6 @@ export default {
     selectFile() {
       this.file = this.$refs.file.files[0];
 
-      console.log(this.selectedFiles);
     },
   },
 };

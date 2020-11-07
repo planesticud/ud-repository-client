@@ -91,7 +91,8 @@ export default {
   methods: {
     retrieveFiles() {
       filesService
-        .getFiles()
+        //.getFiles()
+        .getFilesByEmail(localStorage.email)
         .then((response) => {
           this.files = response.data;
         })
@@ -116,7 +117,6 @@ export default {
           console.log(e);
         });
     },
-
     editFiles(id) {
       this.$router.push({ name: "editfiles", params: { id: id } });
     },
@@ -133,23 +133,7 @@ export default {
           console.log(e);
         });
     },
-
-    getDisplayFiles(files) {
-      return {
-        id: files.id,
-        title:
-          files.title.length > 30
-            ? files.title.substr(0, 30) + "..."
-            : files.title,
-        description:
-          files.description.length > 30
-            ? files.description.substr(0, 30) + "..."
-            : files.description,
-        status: files.published ? "Published" : "Pending",
-      };
-    },
     getColor(state) {
-      console.log(state);
       if (state == "Inactivo") return "red";
       if (state == "Activo") return "green";
       else return "blue";

@@ -265,10 +265,8 @@ export default {
   methods: {
     submit(model) {
       const id = this.$route.params.id;
-            console.log(model)
       FilesService.updateFiles(model, id)
         .then(({ data }) => {
-          console.log(data);
           this.result = {
             text: `el recurso ${data}`,
             color: "green lighten-2",

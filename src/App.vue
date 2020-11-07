@@ -62,11 +62,7 @@ export default {
       title: "Repositorio UD",
       isLogin: false,
       url_image: "",
-      buttons: [
-        { text: "Inicio", route: "/home" },
-        { text: "Usuarios", route: "/users" },
-        { text: "Recursos", route: "/files" },
-      ],
+      buttons: [],
       name: '',
       token: '',
     };
@@ -96,6 +92,13 @@ export default {
     }
     if (localStorage.token){
       this.token = localStorage.token;
+      this.buttons = [
+        { text: "Inicio", route: "/home" },
+        { text: "Recursos", route: "/files" },
+      ]
+      if(localStorage.rol === 'ADMINISTRADOR'){
+         this.buttons.push({ text: "Usuarios", route: "/users" })
+      }
     }
     this.image();
   },

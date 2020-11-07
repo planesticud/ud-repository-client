@@ -65,8 +65,6 @@ const router = new Router({
 });
 router.beforeEach((to, from, next) => {
   let ls = localStorage.getItem('token');
-  
-  console.log(to.name)
   if (to.name !=='login' && ls === null) next({name:'login'})
   else if (to.name ==='login' && ls!== null) next({name:'home'})
   else next()

@@ -15,7 +15,7 @@ class FilesService {
         return axios.get(`${repositoryUrl}/files`, { params: { id } })
     }
     getFilesByEmail(email) {
-        return axios.get(`${repositoryUrl}/files`, { params: { email: email } })
+        return axios.get(`${repositoryUrl}/files/email`, { params: { email: email } })
     }
     createFile(data) {
         return axios.post(`${repositoryUrl}/files`, data)

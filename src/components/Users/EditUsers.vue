@@ -100,7 +100,6 @@ export default {
     getUser(id){
     UsersService.getUsersByid(id)
         .then((response) => {
-          console.log(response.data)
           this.model = {
             id: response.data[0].id,
             name: response.data[0].name,
