@@ -247,10 +247,11 @@ export default {
             placeholder: "Correo electronico",
             featured: true,
             required: true,
+                disabled: true,
           },
           {
             type: "submit",
-            buttonText: "Crear Recurso",
+            buttonText: "Actualizar Recurso",
             onSubmit: (model) => this.submit(model),
           },
         ],

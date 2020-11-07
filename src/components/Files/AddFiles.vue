@@ -41,6 +41,7 @@ export default {
     file: "",
     model: {
       entity: "Universidad Distrital Francisco José de Caldas",
+      email: localStorage.email,
     },
     title: "Crear recursos",
     result: { state: false },
@@ -258,6 +259,7 @@ export default {
           placeholder: "Correo electronico",
           featured: true,
           required: true,
+           disabled: true,
         },
         {
           type: "submit",
