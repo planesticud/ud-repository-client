@@ -25,10 +25,15 @@ class FilesService {
         return axios.put(`${repositoryUrl}/files`, data, { params: { id } })
     }
 
-    upload(file) {
+    upload(file, onUploadProgress) {
         let formData = new FormData();
         formData.append("file", file);
-        return axios.post(`${repositoryUrl}/upload`, formData, {})
+        return axios.post(`${repositoryUrl}/upload`, formData, {
+            headers: {
+              "Content-Type": "multipart/form-data"
+            },
+            onUploadProgress
+          })
     }
 }
 
