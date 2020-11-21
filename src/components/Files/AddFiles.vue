@@ -277,8 +277,8 @@ export default {
             listBox: true,
             values: [
               "Agronomía, Veterinaria y afines",
-              "Bellas Artes",
-              "Ciencias de la Educación",
+              "Artes",
+              "Ciencias y Educación",
               "Ciencias de la Salud",
               "Ciencias Sociales y Humanas",
               "Economía, Administración, Contaduría y afines",
