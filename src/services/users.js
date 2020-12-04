@@ -24,5 +24,5 @@ class UsersService {
         return axios.put(`${repositoryUrl}/users`, data, { params: { id } })
     }
 }
-
+   
 export default new UsersService();
