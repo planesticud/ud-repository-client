@@ -130,7 +130,7 @@ export default {
       },
       backStyle: {
           "background-color": "#F3F3F3"
-      }
+      },
     };
   },
   beforeDestroy() {

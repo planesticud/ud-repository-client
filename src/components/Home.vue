@@ -3,7 +3,13 @@
     <v-container>
       <h2>{{ title }} {{ name }}</h2>
     </v-container>
-
+              <v-carousel :show-arrows="false" v-if="!isMobile">
+    <v-carousel-item
+      v-for="(item,i) in items"
+      :key="i"
+      :src="item.src"
+    ></v-carousel-item>
+  </v-carousel>
     <div class="row row--dense">
       <div
         v-for="(button, index) in buttons"
@@ -42,6 +48,18 @@ export default {
       name: "",
       isLogin: false,
       buttons: [],
+      items: [
+          {
+            src: 'https://planestic.aulasvirtuales.udistrital.edu.co/sites/default/files/images/inicio/banner_cursos_carousel.jpg',
+          },
+          {
+            src: 'https://planestic.aulasvirtuales.udistrital.edu.co/sites/default/files/images/inicio/banner-blog.jpg',
+          },
+          {
+            src: 'https://planestic.aulasvirtuales.udistrital.edu.co/sites/default/files/images/inicio/banner-inicio.png',
+          },
+        ],
+        isMobile: false,
     };
   },
   methods: {
@@ -50,6 +68,9 @@ export default {
         this.isLogin = true;
         this.name = localStorage.name;
       }
+    },
+        onResize() {
+      this.isMobile = window.innerWidth < 800;
     },
   },
   mounted() {
@@ -124,6 +145,9 @@ export default {
       ];
     }
     this.getName();
+        this.onResize();
+
+    window.addEventListener("resize", this.onResize, { passive: true });
   },
 };
 </script>
