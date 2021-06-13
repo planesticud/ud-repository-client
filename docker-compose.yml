@@ -4,7 +4,7 @@ networks:
 
 services:
   ud-repository-client:
-     image: damillano93/ud-repository-client
+     build: .
      container_name: ud-repository-client
      restart: on-failure
      env_file:
