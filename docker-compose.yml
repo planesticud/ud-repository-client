@@ -1,22 +1,22 @@
 version: '3'
 networks:
- udrepository:
+ campus_virtual:
 
 services:
   ud-repository-client:
-     image: damillano93/ud-repository-client
+     build: .
      container_name: ud-repository-client
      restart: on-failure
      env_file:
         - .env
      networks:
-        - udrepository
+        - campus_virtual
      labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.ud-repository-client.rule=Host(`udrepository.com`)"
-      #- "traefik.http.routers.ud-repository-client.tls=true"
-      #- "traefik.http.routers.ud-repository-client.tls.certresolver=le"
+      - "traefik.http.routers.ud-repository-client.rule=Host(`repository.planestic.udistrital.edu.co`)"
+      - "traefik.http.routers.ud-repository-client.tls=true"
+      - "traefik.http.routers.ud-repository-client.tls.certresolver=le"
       - "traefik.http.services.ud-repository-client.loadbalancer.server.port=80"           
 networks:
-  udrepository:
+  campus_virtual:
     external: true

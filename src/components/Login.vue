@@ -2,7 +2,7 @@
   <div class= "container">
     
     <div class ="center">
-    <a href="https://apirepository.damillano.com/api/google">
+    <a href="https://apirepository.planestic.udistrital.edu.co/api/google">
     <div id='icon-div'>
     <img  class = "google-icon " src="../assets/images/googleicon.png" >
     </div>
