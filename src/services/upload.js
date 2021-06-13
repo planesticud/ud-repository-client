@@ -1,5 +1,5 @@
 import axios from "axios";
-const repositoryUrl = 'https://apirepository.damillano.com/api'
+const repositoryUrl = 'https://apirepository.planestic.udistrital.edu.co/api'
 
 class UploadFilesService {
   upload(file, onUploadProgress) {

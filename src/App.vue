@@ -74,7 +74,7 @@
           <a
             class="pull-right"
             v-else
-            href="https://apirepository.damillano.com/api/google"
+            href="https://apirepository.planestic.udistrital.edu.co/api/google"
           >
             Iniciar Sesion
           </a>
