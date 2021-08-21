@@ -95,7 +95,7 @@
       tile
     >
       <v-card-title class="teal">
-        <strong >© Copyright  {{ new Date().getFullYear() }} Planestic-UD / Sitio creado y administrado por Planestic UD</strong>
+        <strong >© Copyright  {{ new Date().getFullYear() }} Planestic-UD / Sitio creado y administrado por Planestic UD 2021</strong>
 
         <v-spacer></v-spacer>
        <img
