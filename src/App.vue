@@ -11,7 +11,7 @@
       />
     </div>
     <v-app>
-      <v-app-bar app  style="position: absolute;">
+      <v-app-bar app style="position: absolute">
         <div v-if="!isMobile" class="d-flex align-center mr-2">
           {{ title }}
         </div>
@@ -23,13 +23,13 @@
           </template>
 
           <v-list>
-            <v-list-item 
-             :to="button.route"
+            <v-list-item
+              :to="button.route"
               v-for="(button, index) in buttons"
               :key="index"
               text
             >
-              <v-list-item-title >{{ button.text }}</v-list-item-title>
+              <v-list-item-title>{{ button.text }}</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
@@ -80,35 +80,197 @@
           </a>
         </div>
       </v-app-bar>
-
       <v-main :style="backStyle">
+        <!-- cmbnoe1 -->
+        <v-carousel :show-arrows="true" v-if="!isMobile2">
+          <v-carousel-item
+            v-for="(item, i) in items"
+            :key="i"
+            :src="item.src"
+          ></v-carousel-item>
+        </v-carousel>
+        <!--Fin cmbnoe1 -->
         <router-view />
       </v-main>
+
+      <v-card dark padless>
+        <v-card flat tile color="#8b1919" class="white--text text-center">
+          <v-card-text>
+            <v-btn
+              :href="lik.route"
+              :target="lik.route"
+              v-for="lik in linkk"
+              :key="lik.icons"
+              class="mx-6 white--text"
+              icon
+            >
+              <v-icon size="36px" :title="lik.des">
+                {{ lik.icons }}
+              </v-icon>
+            </v-btn>
+          </v-card-text>
+        </v-card>
+      </v-card>
+      <v-footer dark padless>
+        <div class="row row--dense">
+          <!------------- columna 1 ---------------->
+          <div class="col-sm-4 col-lg-5 col-12">
+            <div class="overflow-hidden v-sheet v-sheet--outlined rounded">
+              <div>
+                <v-card-title class="justify-center">
+                  Universidad Distrital Francisco José de Caldas
+                </v-card-title>
+                <v-card-subtitle class="text-lg-center">
+                  NIT. 899.999.230.7
+                </v-card-subtitle>
+                <v-card-text class="text-lg-center">
+                  Institución de Eduación Superior sujeta a inspección y
+                  vigilancia por el Ministerio de Educación Nacional.
+                  <v-spacer></v-spacer>
+                  Acuerdo de creación Nº 10 de 1948 del Concejo de Bogotá.
+                  <v-spacer></v-spacer>
+                  Acreditación Institucional de Alta Calidad - Resolucion Nº
+                  23096 del 15 de diciembre de 2016.
+                </v-card-text>
+                <v-divider></v-divider>
+                <br />
+                <v-card-title class="justify-center">
+                  Planestic - UD
+                </v-card-title>
+                <v-card-text class="text-lg-center">
+                  Plan Estratégico en Tecnologías de la Información y la
+                  Comunicación
+                  <v-spacer></v-spacer>
+                  Resolución No. 053 - 2013
+                  <v-spacer></v-spacer>
+                  Acuerdo No. 001 de 2013
+                </v-card-text>
+                <v-divider></v-divider>
+              </div>
+            </div>
+          </div>
+          <!------------- Fin columna 1 ---------------->
+
+          <!------------- columna 2 ---------------->
+          <div class="col-sm-4 col-lg-4 col-12">
+            <div class="overflow-hidden v-sheet v-sheet--outlined rounded">
+              <div class="row row--dense">
+                <div class="col-sm-6 col-lg-4 col-12">
+                  <div
+                    class="overflow-hidden v-sheet v-sheet--outlined rounded"
+                  >
+                    <div>
+                      <v-card-title class="justify-center">
+                        Nosotros
+                      </v-card-title>
+                      <v-card-text class="text-lg-center">
+                        <v-spacer v-for="nos in nosotros" :key="nos.name">
+                          <a
+                            :target="nos.route"
+                            :href="nos.route"
+                            class="white--text sinLine"
+                          >
+                            {{ nos.name }}
+                          </a>
+                          <br /><br />
+                        </v-spacer>
+                      </v-card-text>
+                      <v-divider></v-divider>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 col-12">
+                  <div
+                    class="overflow-hidden v-sheet v-sheet--outlined rounded"
+                  >
+                    <div>
+                      <v-card-title class="justify-center">
+                        Servicios
+                      </v-card-title>
+                      <v-card-text class="text-lg-center">
+                        <v-spacer v-for="nos in servicios" :key="nos.name">
+                          <a
+                            :target="nos.route"
+                            :href="nos.route"
+                            class="white--text sinLine"
+                          >
+                            {{ nos.name }}
+                          </a>
+                          <br /><br />
+                        </v-spacer>
+                      </v-card-text>
+                      <v-divider></v-divider>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 col-12">
+                  <div
+                    class="overflow-hidden v-sheet v-sheet--outlined rounded"
+                  >
+                    <div>
+                      <v-card-title class="justify-center">
+                        Novedades
+                      </v-card-title>
+                      <v-card-text class="text-lg-center">
+                        <v-spacer v-for="nos in novedades" :key="nos.name">
+                          <a
+                            :target="nos.route"
+                            :href="nos.route"
+                            class="white--text sinLine"
+                          >
+                            {{ nos.name }}
+                          </a>
+                          <br /><br />
+                        </v-spacer>
+                      </v-card-text>
+                      <v-divider></v-divider>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!------------- Fin  columna 2 ---------------->
+          <!------------- columna 3 ---------------->
+          <div class="col-sm-4 col-lg-3 col-12">
+            <div class="overflow-hidden v-sheet v-sheet--outlined rounded">
+              <div>
+                <v-card-title class="justify-center">
+                  <strong>Contactenos</strong>
+                </v-card-title>
+                <v-card-text class="text-lg-center">
+                  Coordinador <br />
+                  José Ignacio Palacios <br />
+                  coordinadorplanestic@udistrital.edu.co
+                </v-card-text>
+                <v-divider></v-divider>
+                <v-card-text class="text-lg-center">
+                  Avenida Ciduad de quito # 64 - 81<br />
+                  Bogotá D.C. Republica de Colombia
+                </v-card-text>
+                <v-divider></v-divider>
+                <v-card-text class="text-lg-center">
+                  323 9300 ext: 6368<br />
+                  planesticud@udistrital.edu.co<br />
+                  Lunes a viernes de 8 a.m. a 5 p.m.
+                </v-card-text>
+                <v-divider></v-divider>
+              </div>
+            </div>
+          </div>
+          <!------------- Fin columna 3 ---------------->
+        </div>
+      </v-footer>
+
+      <v-card dark flat tile class="white--text text-center">
+        <v-card-text>
+          <strong>
+            © Copyright {{ new Date().getFullYear() }} — Sitio creado y
+            administrado por Planestic UD</strong
+          >
+        </v-card-text>
+      </v-card>
     </v-app>
-     <v-footer
-    dark
-    padless
-  >
-    <v-card
-      class="flex"
-      flat
-      tile
-    >
-      <v-card-title class="teal">
-        <strong >© Copyright  {{ new Date().getFullYear() }} Planestic-UD / Sitio creado y administrado por Planestic UD 2021</strong>
-
-        <v-spacer></v-spacer>
-       <img
-        class="logo-planestic2"
-        src="./assets/images/logo_planestic2-01.png"
-      />
-      </v-card-title>
-
-      <v-card-text class="py-2 white--text text-center">
-      
-      </v-card-text>
-    </v-card>
-  </v-footer>
   </div>
 </template>
 
@@ -117,6 +279,39 @@ export default {
   name: "app",
   data() {
     return {
+      linkk: [
+        {
+          icons: "mdi-home",
+          route: "https://planestic.udistrital.edu.co/",
+          des: "Inicio",
+        },
+        {
+          icons: "mdi-facebook",
+          route: "https://www.facebook.com/PlanesticudUniversidadDistrital",
+          des: "Facebook",
+        },
+        {
+          icons: "mdi-twitter",
+          route: "https://twitter.com/PlanEsTICUD",
+          des: "Twitter",
+        },
+        {
+          icons: "mdi-youtube",
+          route:
+            "https://www.youtube.com/channel/UCT75A2ENF7b0_NK9k0qrTVw/videos",
+          des: "YouTube",
+        },
+        {
+          icons: "mdi-instagram",
+          route: "https://www.instagram.com/planesticud/",
+          des: "Instagram",
+        },
+        {
+          icons: "mdi-email",
+          route: "https://planestic.udistrital.edu.co/contact",
+          des: "Contacto",
+        },
+      ],
       title: "Repositorio UD",
       isLogin: false,
       url_image: "",
@@ -129,13 +324,96 @@ export default {
         width: 700,
       },
       backStyle: {
-          "background-color": "#F3F3F3"
+        "background-color": "#F3F3F3",
       },
+      items: [
+        {
+          src: "https://planestic.aulasvirtuales.udistrital.edu.co/sites/default/files/images/inicio/banner_cursos_carousel.jpg",
+        },
+        {
+          src: "https://planestic.aulasvirtuales.udistrital.edu.co/sites/default/files/images/inicio/banner-blog.jpg",
+        },
+        {
+          src: "https://planestic.aulasvirtuales.udistrital.edu.co/sites/default/files/images/inicio/banner-inicio.png",
+        },
+      ],
+      isMobile2: false,
+      rol: "",
+      nosotros: [
+        {
+          name: "Acerca de Planestic",
+          route: "https://planestic.udistrital.edu.co/acerca-de-planestic",
+        },
+        {
+          name: "Comité Planestic",
+          route: "https://planestic.udistrital.edu.co/comite-planestic",
+        },
+        {
+          name: "Grupo Planestic",
+          route: "https://planestic.udistrital.edu.co/grupo_planestic",
+        },
+        {
+          name: "Campos de Acción",
+          route: "https://planestic.udistrital.edu.co/campos-de-accion",
+        },
+        {
+          name: "Observatorio UD",
+          route: "https://planestic.udistrital.edu.co/observatorio-ud",
+        },
+        {
+          name: "Eduación virtual",
+          route: "https://planestic.udistrital.edu.co/educaci%C3%B3n_virtual",
+        },
+      ],
+
+      servicios: [
+        {
+          name: "Solicitud Turnitin ",
+          route: "https://planestic.udistrital.edu.co/form/turnitin",
+        },
+        {
+          name: "Inscripción cursos ",
+          route: "https://planestic.udistrital.edu.co/cursos",
+        },
+        {
+          name: "Video tutoriales ",
+          route: "https://planestic.udistrital.edu.co/video_tutoriales",
+        },
+        {
+          name: "Centro de ayuda ",
+          route: "https://planestic-ud.tawk.help/",
+        },
+        {
+          name: "Facultades ",
+          route: "https://planestic.udistrital.edu.co/facultades",
+        },
+        {
+          name: "Portafolio de servicios",
+          route: "https://planestic.udistrital.edu.co/portafolio-servicio",
+        },
+      ],
+      novedades: [
+        {
+          name: "Noticias",
+          route: "https://planestic.udistrital.edu.co/noticias",
+        },
+        {
+          name: "Publicaciones",
+          route: "https://planestic.udistrital.edu.co/publicaciones",
+        },
+        {
+          name: "Galeria",
+          route: "https://planestic.udistrital.edu.co/galeria",
+        },
+        {
+          name: "Blog",
+          route: "https://planestic.udistrital.edu.co/blog",
+        },
+      ],
     };
   },
   beforeDestroy() {
     if (typeof window === "undefined") return;
-
     window.removeEventListener("resize", this.onResize, { passive: true });
   },
   methods: {
@@ -143,21 +421,24 @@ export default {
       if (localStorage.url_image) {
         this.isLogin = true;
         this.url_image = localStorage.url_image;
+        // cmbnoe1
+        this.isMobile2 = true;
+        this.rol = localStorage.rol.toLowerCase();
+        // fin cmbnoe1
       } else {
         this.isLogin = false;
       }
     },
     darkMode() {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
-      if(this.$vuetify.theme.dark){
-        this.backStyle =  {
-          "background-color": "#1e1e1e"
-      }
-      }
-      else{
-         this.backStyle =  {
-          "background-color": "#F3F3F3"
-      }
+      if (this.$vuetify.theme.dark) {
+        this.backStyle = {
+          "background-color": "#1e1e1e",
+        };
+      } else {
+        this.backStyle = {
+          "background-color": "#F3F3F3",
+        };
       }
     },
     logout() {
@@ -183,6 +464,9 @@ export default {
       if (localStorage.rol === "ADMINISTRADOR") {
         this.buttons.push({ text: "Usuarios", route: "/users" });
       }
+      if (localStorage.rol === "COORDINADOR") {
+        this.buttons.push({ text: "Revisar", route: "/revisar" });
+      }
     }
     this.image();
     this.onResize();
@@ -197,7 +481,7 @@ export default {
 }
 
 .banner-all {
-  backgroundcolor: "#8b1919";
+  background-color: #8b1919;
   max-height: 170px;
 }
 .logo-planestic1 {
@@ -210,7 +494,9 @@ export default {
   float: right;
 }
 .backStyle {
-    background-color: #F3F3F3;
+  background-color: #f3f3f3;
 }
-
+.sinLine {
+  text-decoration: none;
+}
 </style>
