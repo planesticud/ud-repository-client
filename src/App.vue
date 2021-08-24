@@ -133,7 +133,7 @@
                   23096 del 15 de diciembre de 2016.
                 </v-card-text>
                 <v-divider></v-divider>
-                <br />
+               
                 <v-card-title class="justify-center">
                   Planestic - UD
                 </v-card-title>
@@ -172,7 +172,7 @@
                           >
                             {{ nos.name }}
                           </a>
-                          <br /><br />
+                          
                         </v-spacer>
                       </v-card-text>
                       <v-divider></v-divider>
@@ -196,7 +196,7 @@
                           >
                             {{ nos.name }}
                           </a>
-                          <br /><br />
+                          
                         </v-spacer>
                       </v-card-text>
                       <v-divider></v-divider>
@@ -220,7 +220,7 @@
                           >
                             {{ nos.name }}
                           </a>
-                          <br /><br />
+                          
                         </v-spacer>
                       </v-card-text>
                       <v-divider></v-divider>
@@ -239,19 +239,19 @@
                   <strong>Contactenos</strong>
                 </v-card-title>
                 <v-card-text class="text-lg-center">
-                  Coordinador <br />
-                  José Ignacio Palacios <br />
+                  Coordinador 
+                  José Ignacio Palacios 
                   coordinadorplanestic@udistrital.edu.co
                 </v-card-text>
                 <v-divider></v-divider>
                 <v-card-text class="text-lg-center">
-                  Avenida Ciduad de quito # 64 - 81<br />
+                  Avenida Ciduad de quito # 64 - 81 
                   Bogotá D.C. Republica de Colombia
                 </v-card-text>
                 <v-divider></v-divider>
                 <v-card-text class="text-lg-center">
-                  323 9300 ext: 6368<br />
-                  planesticud@udistrital.edu.co<br />
+                  323 9300 ext: 6368 
+                  planesticud@udistrital.edu.co 
                   Lunes a viernes de 8 a.m. a 5 p.m.
                 </v-card-text>
                 <v-divider></v-divider>
