@@ -299,6 +299,7 @@ export default {
     submit(model) {
       this.dialog = false;
       const id = this.$route.params.id;
+      model.state = "SinRevisar";
       FilesService.updateFiles(model, id)
         .then(({ data }) => {
           this.result = {
