@@ -81,9 +81,10 @@ export default {
       dialog: false,
       model: {
         entity: "Universidad Distrital Francisco José de Caldas",
-        email: localStorage.email,
+        email: localStorage.email, 
+        state: "SinRevisar",
       },
-      state: "SinRevisar",
+     
       title: "Crear recursos",
       result: { state: false },
       schema: {

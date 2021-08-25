@@ -69,7 +69,7 @@
             <v-avatar class="pull-right">
               <img :src="url_image" :alt="name" />
             </v-avatar>
-            <a @click="logout"> Cerrar Sesion </a>
+            <a @click="logout"> Cerrar Sesion {{ rol }} </a>
           </div>
           <a
             class="pull-right"
