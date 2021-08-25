@@ -82,7 +82,9 @@
       </v-app-bar>
 
       <!-- cmbnoe1 -->
+      <br />
       <v-container class="lighten-5">
+        <br />
         <v-carousel :show-arrows="true" v-if="!isMobile2">
           <v-carousel-item
             v-for="(item, i) in items"

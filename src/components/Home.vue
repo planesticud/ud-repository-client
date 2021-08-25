@@ -3,13 +3,13 @@
     <v-container>
       <h2>{{ title }} {{ name }}</h2>
     </v-container>
-              <v-carousel :show-arrows="false" v-if="!isMobile">
-    <v-carousel-item
-      v-for="(item,i) in items"
-      :key="i"
-      :src="item.src"
-    ></v-carousel-item>
-  </v-carousel>
+    <v-carousel :show-arrows="true" v-if="!isMobile">
+      <v-carousel-item
+        v-for="(item, i) in items"
+        :key="i"
+        :src="item.src"
+      ></v-carousel-item>
+    </v-carousel>
     <div class="row row--dense">
       <div
         v-for="(button, index) in buttons"
@@ -49,17 +49,17 @@ export default {
       isLogin: false,
       buttons: [],
       items: [
-          {
-            src: 'https://planestic.aulasvirtuales.udistrital.edu.co/sites/default/files/images/inicio/banner_cursos_carousel.jpg',
-          },
-          {
-            src: 'https://planestic.aulasvirtuales.udistrital.edu.co/sites/default/files/images/inicio/banner-blog.jpg',
-          },
-          {
-            src: 'https://planestic.aulasvirtuales.udistrital.edu.co/sites/default/files/images/inicio/banner-inicio.png',
-          },
-        ],
-        isMobile: false,
+        {
+          src: "https://planestic.aulasvirtuales.udistrital.edu.co/sites/default/files/images/inicio/banner_cursos_carousel.jpg",
+        },
+        {
+          src: "https://planestic.aulasvirtuales.udistrital.edu.co/sites/default/files/images/inicio/banner-blog.jpg",
+        },
+        {
+          src: "https://planestic.aulasvirtuales.udistrital.edu.co/sites/default/files/images/inicio/banner-inicio.png",
+        },
+      ],
+      isMobile: false,
     };
   },
   methods: {
@@ -69,7 +69,7 @@ export default {
         this.name = localStorage.name;
       }
     },
-        onResize() {
+    onResize() {
       this.isMobile = window.innerWidth < 800;
     },
   },
@@ -112,6 +112,37 @@ export default {
         },
       ];
     }
+     //cmbnoe
+    if (localStorage.rol === "COORDINADOR") {
+      this.buttons = [
+        {
+          text: "Inicio",
+          route: "/home",
+          description: "Inicio repositorio",
+          icon: "mdi-home",
+        },
+        {
+          text: "Recursos",
+          route: "/files",
+          description: "Administración de recursos",
+          icon: "mdi-file",
+        },
+
+        {
+          text: "Revisar",
+          route: "/revisar",
+          description: "Revisar recursos",
+          icon: "mdi-file",
+        },
+        {
+          text: "Estadisticas",
+          route: "/statistics",
+          description: "Uso de los recursos",
+          icon: "mdi-elevation-rise",
+        },
+      ];
+    }
+    //fin cmbnoe
     if (localStorage.rol === "PROFESOR") {
       this.buttons = [
         {
@@ -145,7 +176,7 @@ export default {
       ];
     }
     this.getName();
-        this.onResize();
+    this.onResize();
 
     window.addEventListener("resize", this.onResize, { passive: true });
   },

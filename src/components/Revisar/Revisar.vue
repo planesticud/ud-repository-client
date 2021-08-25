@@ -2,7 +2,7 @@
   <v-container class="lighten-5">
     <div>
       <h1 align="center">
-        {{ h1.text }} <v-icon :title="title.text">{{ h1.icon }}</v-icon>
+        {{ h1.text }} <v-icon :title="title.text" medium> {{ h1.icon }}</v-icon>
       </h1>
     </div>
     <v-row align="center" class="list px-3 mx-auto">
@@ -13,9 +13,7 @@
         single-line
         hide-details
       ></v-text-field>
-      <v-btn small color="success" :href="add.route">
-        {{ add.button }}
-      </v-btn>
+
       &nbsp; &nbsp; &nbsp;
     </v-row>
     <v-spacer></v-spacer>
@@ -38,41 +36,13 @@
       <template v-slot:[`item.actions`]="{ item }">
         <v-icon
           medium
-          :title="actions.edit.title"
-          class="mr-2"
-          @click="editFiles(item.id)"
-          >{{ actions.edit.icon }}</v-icon
-        >
-        <v-icon
-          medium
           :title="actions.detail.title"
           class="mr-2"
-          @click="detailFiles(item.id)"
+          @click="detalleFiles(item.id)"
           >{{ actions.detail.icon }}</v-icon
-        >
-        <v-icon
-          medium
-          :title="actions.delete.title"
-          class="mr-2"
-          @click="deleteFiles(item.id)"
-          >{{ actions.delete.icon }}</v-icon
         >
       </template>
     </v-data-table>
-    <!-- cmbnoe --->
-    <!-- Dilog confirmacion-->
-    <v-dialog v-model="dialog" width="30%" persistent>
-      <v-card>
-        <v-card-title>¿Esta seguro de eliminar este recurso?</v-card-title>
-        <v-divider></v-divider>
-        <v-card-actions>
-          <v-btn @click="dialog = false">Cancelar</v-btn>
-          <v-btn @click="deleteFiles(elim)">Aceptar</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-    <!-- fin dialog --->
-    <!-- Fin cmbnoe --->
   </v-container>
 </template>
 
@@ -83,12 +53,8 @@ export default {
   data() {
     return {
       filEmail: "",
-      dialog: false,
-      elim: "",
-      h1: { text: "Listado de recursos", icon: "mdi-file-outline" },
-      search: "",
-      find: { label: "Buscar por correo electronico", button: "Buscar" },
-      add: { button: "Agregar", route: "/files/add" },
+      h1: { text: "Revisar recursos", icon: "mdi-notebook-check" },
+      search: "SinRevisar",
       files: [],
       title: "",
       url: "Ver recurso",
@@ -108,31 +74,20 @@ export default {
           sortable: true,
           align: "start",
         },
-        { text: "Recurso", value: "location", sortable: true, align: "start" },
         { text: "Acciones", value: "actions", sortable: true, align: "start" },
       ],
       actions: {
-        edit: { title: "Editar recurso", icon: "mdi-pencil" },
         detail: {
-          title: "Detalle de recurso",
-          icon: " mdi-format-list-bulleted",
+          title: "Revisar el recurso",
+          icon: " mdi-clipboard-edit-outline", // mdi-format-list-bulleted",
         },
-        delete: { title: "Eliminar recurso", icon: "mdi-delete" },
       },
     };
   },
   methods: {
     retrieveFiles() {
-      if (localStorage.rol == "DOCENTE" || localStorage.rol == "COORDINADOR") {
-        filesService
-          .getFilesByEmail(localStorage.email)
-          .then((response) => {
-            this.files = response.data;
-          })
-          .catch((e) => {
-            console.log(e);
-          });
-      } else if (localStorage.rol == "ADMINISTRADOR") {
+      //.getFiles()
+      if (localStorage.rol == "COORDINADOR") {
         filesService
           .getFiles()
           .then((response) => {
@@ -143,15 +98,10 @@ export default {
           });
       }
     },
-    eliminar(dato) {
-      this.dialog = true;
-      this.elim = dato;
-    },
+
     refreshList() {
       this.retrieveFiles();
     },
-
-    removeAllFiles() {},
 
     searchTitle() {
       filesService
@@ -163,22 +113,9 @@ export default {
           console.log(e);
         });
     },
-    editFiles(id) {
-      this.$router.push({ name: "editfiles", params: { id: id } });
-    },
-    detailFiles(id) {
-      this.$router.push({ name: "detailfiles", params: { id: id } });
-    },
-    deleteFiles(id) {
-      filesService
-        .deleteFilesById(id)
-        .then(() => {
-          this.refreshList();
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-      this.dialog = false;
+
+    detalleFiles(id) {
+      this.$router.push({ name: "valorar", params: { id: id } });
     },
     getColor(state) {
       if (state == "Inactivo") return "red";
@@ -194,6 +131,6 @@ export default {
 
 <style>
 .list {
-  max-width: 950px;
+  max-width: 750px;
 }
 </style>

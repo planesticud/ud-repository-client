@@ -53,8 +53,12 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-
-              <v-btn color="green darken-1" text @click="dialog = false">
+              <v-btn
+                v-if="result.state"
+                color="green darken-1"
+                text
+                @click="volver()"
+              >
                 Cerrar
               </v-btn>
             </v-card-actions>
@@ -79,6 +83,7 @@ export default {
         entity: "Universidad Distrital Francisco José de Caldas",
         email: localStorage.email,
       },
+      state: "SinRevisar",
       title: "Crear recursos",
       result: { state: false },
       schema: {
@@ -97,6 +102,7 @@ export default {
             placeholder: "Título del recurso",
             featured: true,
             required: true,
+            help: "Nombre asignado al recurso educativo",
           },
           {
             type: "select",
@@ -108,6 +114,7 @@ export default {
             required: true,
             values: ["Español", "Ingles", "Frances", "Aleman"],
             default: "Español",
+            help: "Idioma en que se presenta el contenido del recurso",
           },
           {
             type: "input",
@@ -117,6 +124,7 @@ export default {
             placeholder: "Descripción del recurso",
             featured: true,
             required: true,
+            help: "Corresponde a la información que describe el contenido del recurso educativo, generalmente corresponde a una sinopsis.",
           },
           {
             type: "textArea",
@@ -126,6 +134,7 @@ export default {
             max: 200,
             placeholder: "Maximo 5 palabras separadas por ,",
             rows: 2,
+            help: "Permite el listado de las palabras clave que describen el contenido del recurso.",
           },
           {
             type: "label",
@@ -143,17 +152,18 @@ export default {
             placeholder: "Número de la version del recurso",
             featured: true,
             required: true,
+            help: "Indica que el recurso fue mejorado",
           },
           {
-            type: "select",
+            type: "input",
             inputType: "text",
             label: "Estado",
             model: "state",
             placeholder: "Estado del recurso",
             featured: true,
             required: true,
-            values: ["Activo", "Inactivo"],
-            default: "Activo",
+            disabled: true,
+            help: "Estado o condición en el que se encuentra el recurso educativo en su ciclo de producción.",
           },
           {
             type: "textArea",
@@ -163,6 +173,7 @@ export default {
             max: 200,
             placeholder: "Nombres de los autores separados por coma",
             rows: 2,
+            help: "Personas o instituciones involucradas en el estado del recurso educativo a lo largo de su ciclo de vida. ",
           },
           {
             type: "label",
@@ -181,6 +192,7 @@ export default {
             required: true,
             values: ["Activo", "Expositivo", "Combinado"],
             default: "Activo",
+            help: "Tipo de interactividad que permite el recurso educativo. Sus atributos definen el esquema del vocabulario controlado que se está utilizando. ",
           },
           {
             type: "input",
@@ -202,6 +214,8 @@ export default {
             required: true,
             values: ["Muy bajo", "Bajo", "Medio Alto", "Muy alto"],
             default: "Muy bajo",
+                        help: `Nivel de complejidad del contenido del recurso educativo.`,
+
           },
           {
             type: "input",
@@ -221,6 +235,8 @@ export default {
             placeholder: "El entorno principal en el que se utilizará.",
             featured: true,
             required: true,
+                        help: "Entorno educativo en el que se utilizara el recurso.",
+
           },
           {
             type: "label",
@@ -285,7 +301,7 @@ export default {
               "Ingeniería, Arquitectura, Urbanismo y afines",
               "Matemáticas y Ciencia Naturales",
             ],
-            help: `para mas información <a target="_blank" href="https://creativecommons.org/licenses/?lang=es">Areas del conocimiento</a>`,
+            help: "Areas donde se determina que pertence el recurso",
           },
           {
             type: "input",
@@ -296,6 +312,8 @@ export default {
             featured: true,
             required: true,
             disabled: true,
+                        help: "Correo de quien clasifica y sube el recurso",
+
           },
           {
             type: "submit",
@@ -333,6 +351,8 @@ export default {
               };
               this.model = {};
               this.file = "";
+                this.progress = 0;
+              this.currentFile = undefined;
             })
             .catch((e) => {
               this.dialog = true;
@@ -354,6 +374,9 @@ export default {
     },
     selectFile() {
       this.file = this.$refs.file.files[0];
+    },
+        volver() {
+      this.$router.push({ name: "files" });
     },
   },
 };

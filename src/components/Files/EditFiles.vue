@@ -18,6 +18,33 @@
         </v-alert>
       </div>
     </v-row>
+
+    <!-- Dilog confirmacion-->
+    <v-dialog v-model="dialog" width="30%" persistent>
+      <v-card>
+        <v-card-title>Confirmar Acción</v-card-title>
+        <v-card-text>¿Desea guardar los cambios?</v-card-text>
+        <v-divider></v-divider>
+        <v-card-actions>
+          <v-btn @click="dialog = false">Cancelar</v-btn>
+          <v-btn @click="submit(mymodel)">Aceptar</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <!-- fin dialog --->
+
+    <!-- Dilog confirmacion resultado-->
+    <v-dialog v-model="result.state" width="30%" dark persistent>
+      <v-card>
+        <v-card-title>Resultado</v-card-title>
+        <v-card-text> {{ result.text }}</v-card-text>
+        <v-divider></v-divider>
+        <v-card-actions>
+          <v-btn @click="volver()">Aceptar</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <!-- fin dialog resultado--->
   </v-container>
 </template>
 
@@ -30,9 +57,14 @@ export default {
       file: "",
       model: {
         entity: "Universidad Distrital Francisco José de Caldas",
+        state: "SinRevisar",
       },
-      title: "Crear recursos",
+      title: "Editar recursos",
       result: { state: false },
+
+      dialog: false,
+      mymodel: { entity: "Universidad Distrital Francisco José de Caldas" },
+
       schema: {
         fields: [
           {
@@ -97,15 +129,14 @@ export default {
             required: true,
           },
           {
-            type: "select",
+            type: "input",
             inputType: "text",
             label: "Estado",
             model: "state",
             placeholder: "Estado del del recurso",
             featured: true,
             required: true,
-            values: ["Activo", "Inactivo"],
-            default: "Activo",
+            disabled: true,
           },
           {
             type: "textArea",
@@ -247,12 +278,13 @@ export default {
             placeholder: "Correo electronico",
             featured: true,
             required: true,
-                disabled: true,
+            disabled: true,
           },
           {
             type: "submit",
             buttonText: "Actualizar Recurso",
-            onSubmit: (model) => this.submit(model),
+            // onSubmit: (model) => this.submit(model),
+            onSubmit: (model) => this.editar(model),
           },
         ],
       },
@@ -265,11 +297,12 @@ export default {
   },
   methods: {
     submit(model) {
+      this.dialog = false;
       const id = this.$route.params.id;
       FilesService.updateFiles(model, id)
         .then(({ data }) => {
           this.result = {
-            text: `el recurso ${data}`,
+            text: `el recurso ${this.model.title} ${data}`,
             color: "green lighten-2",
             state: true,
           };
@@ -283,7 +316,14 @@ export default {
           };
         });
     },
+    editar(model) {
+      this.dialog = true;
+      this.mymodel = model;
+    },
 
+    volver() {
+      this.$router.push({ name: "files" });
+    },
     getFile(id) {
       FilesService.getFilesByid(id)
         .then(({ data }) => {

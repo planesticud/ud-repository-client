@@ -31,6 +31,18 @@ const router = new Router({
       name: "files",
       component: () => import("./components/Files/Files")
     },
+    // cmbnoe
+    {
+      path: "/revisar",
+      name: "revisar",
+      component: () => import("./components/Revisar/Revisar")
+    },
+    {
+      path: "/files/detail/:id",
+      name: "valorar",
+      component: () => import("./components/Revisar/DetailObserv")
+    },
+    //fin cmbnoe
     {
       path: "/files/add",
       name: "addfiles",
