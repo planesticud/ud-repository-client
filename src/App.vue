@@ -80,8 +80,9 @@
           </a>
         </div>
       </v-app-bar>
-      <v-main :style="backStyle">
-        <!-- cmbnoe1 -->
+
+      <!-- cmbnoe1 -->
+      <v-container class="lighten-5">
         <v-carousel :show-arrows="true" v-if="!isMobile2">
           <v-carousel-item
             v-for="(item, i) in items"
@@ -89,9 +90,9 @@
             :src="item.src"
           ></v-carousel-item>
         </v-carousel>
-        <!--Fin cmbnoe1 -->
-        <router-view />
-      </v-main>
+      </v-container>
+      <!--Fin cmbnoe1 -->
+      <router-view />
 
       <v-card dark padless>
         <v-card flat tile color="#8b1919" class="white--text text-center">
@@ -133,7 +134,7 @@
                   23096 del 15 de diciembre de 2016.
                 </v-card-text>
                 <v-divider></v-divider>
-               
+
                 <v-card-title class="justify-center">
                   Planestic - UD
                 </v-card-title>
@@ -172,7 +173,6 @@
                           >
                             {{ nos.name }}
                           </a>
-                          
                         </v-spacer>
                       </v-card-text>
                       <v-divider></v-divider>
@@ -196,7 +196,6 @@
                           >
                             {{ nos.name }}
                           </a>
-                          
                         </v-spacer>
                       </v-card-text>
                       <v-divider></v-divider>
@@ -220,7 +219,6 @@
                           >
                             {{ nos.name }}
                           </a>
-                          
                         </v-spacer>
                       </v-card-text>
                       <v-divider></v-divider>
@@ -239,20 +237,18 @@
                   <strong>Contactenos</strong>
                 </v-card-title>
                 <v-card-text class="text-lg-center">
-                  Coordinador 
-                  José Ignacio Palacios 
+                  Coordinador José Ignacio Palacios
                   coordinadorplanestic@udistrital.edu.co
                 </v-card-text>
                 <v-divider></v-divider>
                 <v-card-text class="text-lg-center">
-                  Avenida Ciduad de quito # 64 - 81 
-                  Bogotá D.C. Republica de Colombia
+                  Avenida Ciduad de quito # 64 - 81 Bogotá D.C. Republica de
+                  Colombia
                 </v-card-text>
                 <v-divider></v-divider>
                 <v-card-text class="text-lg-center">
-                  323 9300 ext: 6368 
-                  planesticud@udistrital.edu.co 
-                  Lunes a viernes de 8 a.m. a 5 p.m.
+                  323 9300 ext: 6368 planesticud@udistrital.edu.co Lunes a
+                  viernes de 8 a.m. a 5 p.m.
                 </v-card-text>
                 <v-divider></v-divider>
               </div>
