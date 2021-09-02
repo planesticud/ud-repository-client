@@ -127,13 +127,14 @@
                   NIT. 899.999.230.7
                 </v-card-subtitle>
                 <v-card-text class="text-lg-center">
-                  Institución de Eduacación Superior sujeta a inspección y
+                  Institución de Educación Superior sujeta a inspección y
                   vigilancia por el Ministerio de Educación Nacional.
                   <v-spacer></v-spacer>
                   Acuerdo de creación Nº 10 de 1948 del Concejo de Bogotá.
                   <v-spacer></v-spacer>
-                  Acreditación Institucional de Alta Calidad - Resolucion Nº
-                  23096 del 15 de diciembre de 2016.
+                  Acreditación Institucional de Alta Calidad
+                  <br />
+                  Resolución Nº 23096 del 15 de diciembre de 2016.
                 </v-card-text>
                 <v-divider></v-divider>
 
@@ -239,7 +240,7 @@
             <div class="overflow-hidden v-sheet v-sheet--outlined rounded">
               <div>
                 <v-card-title class="justify-center">
-                  <strong>Contactenos</strong>
+                  <strong>Contáctenos</strong>
                 </v-card-title>
                 <v-card-text class="text-lg-center">
                   Coordinador José Ignacio Palacios
@@ -254,8 +255,9 @@
                 </v-card-text>
                 <v-divider></v-divider>
                 <v-card-text class="text-lg-center">
-                  323 9300 ext: 6368 planesticud@udistrital.edu.co Lunes a
-                  viernes de 8 a.m. a 5 p.m.
+                  3239300 ext: 6368 planesticud@udistrital.edu.co 
+                  <br />
+                  Lunes a viernes de 8 a.m. a 5 p.m.
                 </v-card-text>
                 <v-divider></v-divider>
               </div>
@@ -269,7 +271,7 @@
         <v-card-text>
           <strong>
             © Copyright {{ new Date().getFullYear() }} — Sitio creado y
-            administrado por Planestic UD</strong
+            administrado por Planestic-UD</strong
           >
         </v-card-text>
       </v-card>
@@ -405,7 +407,7 @@ export default {
           route: "https://planestic.udistrital.edu.co/publicaciones",
         },
         {
-          name: "Galeria",
+          name: "Galería",
           route: "https://planestic.udistrital.edu.co/galeria",
         },
         {
