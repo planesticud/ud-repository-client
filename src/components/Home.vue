@@ -1,5 +1,5 @@
 <template>
-  <v-container class="lighten-5">
+  <v-container class="lighten-5 hcontainer">
     <v-container>
       <h2>{{ title }} {{ name }}</h2>
     </v-container>
@@ -183,7 +183,7 @@ export default {
 };
 </script>
 
- <style>
+ <style scoped>
 .v-list-item__content {
   align-items: center;
   align-self: center;
@@ -192,6 +192,14 @@ export default {
   flex: 1 1;
   overflow: hidden;
   padding: 12px 0;
+}
+
+.hcontainer {
+  max-width: 100%;
+  padding-right: 5%;
+  padding-left: 5%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .list-item__icon {

@@ -1,5 +1,5 @@
 <template>
-  <v-container class="lighten-5">
+  <v-container class="lighten-5 rvcontainer">
     <div>
       <h1 align="center">
         {{ h1.text }} <v-icon :title="title.text" medium> {{ h1.icon }}</v-icon>
@@ -20,7 +20,7 @@
     <v-spacer></v-spacer>
     &nbsp; &nbsp; &nbsp;
 
-    <v-data-table :headers="headers" :items="files" :search="search">
+    <v-data-table :headers="headers" :items="files" :search="search" class="text-h3">
       <template v-slot:[`item.state`]="{ item }">
         <v-chip :color="getColor(item.state)" dark>
           {{ item.state }}
@@ -59,22 +59,24 @@ export default {
       title: "",
       url: "Ver recurso",
       headers: [
-        { text: "Título", value: "title", align: "start", sortable: true },
+        { text: "Título", value: "title", align: "start", sortable: true, class:"text-button" },
         {
           text: "Descripción",
           value: "description",
           align: "start",
           sortable: true,
+          class:"text-button"
         },
-        { text: "Estado", value: "state", sortable: true, align: "start" },
-        { text: "Formato", value: "format", sortable: true, align: "start" },
+        { text: "Estado", value: "state", sortable: true, align: "start", class:"text-button" },
+        { text: "Formato", value: "format", sortable: true, align: "start", class:"text-button" },
         {
           text: "Clasificación",
           value: "purpose",
           sortable: true,
           align: "start",
+          class:"text-button"
         },
-        { text: "Acciones", value: "actions", sortable: true, align: "start" },
+        { text: "Acciones", value: "actions", sortable: true, align: "start", class:"text-button" },
       ],
       actions: {
         detail: {
@@ -129,8 +131,15 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .list {
   max-width: 750px;
+}
+.rvcontainer {
+  max-width: 1536px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 </style>

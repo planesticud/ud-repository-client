@@ -1,21 +1,24 @@
 <template>
- <v-container class="lighten-5">
-         <div>
-    <h1>{{title}}</h1>
-    </div>
-  <v-row align="center" class="list px-3 mx-auto">
-    <div class="panel-body">
-      <vue-form-generator :schema="schema" :model="model" :options="formOptions" >
-
-      </vue-form-generator>
-    </div>
+  <v-container class="lighten-5 container">
     <div>
-      <v-alert v-if="result.state" border="top" :color="result.color" dark>
-        {{ result.text }}
-      </v-alert>
+      <h1>{{ title }}</h1>
     </div>
-  </v-row>
- </v-container>
+    <v-row align="center" class="list px-3 mx-auto">
+      <div class="panel-body">
+        <vue-form-generator
+          :schema="schema"
+          :model="model"
+          :options="formOptions"
+        >
+        </vue-form-generator>
+      </div>
+      <div>
+        <v-alert v-if="result.state" border="top" :color="result.color" dark>
+          {{ result.text }}
+        </v-alert>
+      </div>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -26,7 +29,7 @@ export default {
   data() {
     return {
       model: {},
-      title: 'Editar Usuarios',
+      title: "Editar Usuarios",
       result: { state: false },
       schema: {
         fields: [
@@ -75,45 +78,39 @@ export default {
   },
   methods: {
     submit(model) {
-
       UsersService.updateUser(model, model.id)
         .then(({ data }) => {
-        
-            this.result = {
-              text: `el usuario ${data} fue actualizado con el id ${data}`,
-              color: "green lighten-2",
-              state: true
-            }
-            this.model = {};
-        
-          
+          this.result = {
+            text: `el usuario ${data} fue actualizado con el id ${data}`,
+            color: "green lighten-2",
+            state: true,
+          };
+          this.model = {};
         })
         .catch((e) => {
           this.result = {
-              text: `error: ${e}`,
-              color: "red lighten-2",
-              state: true
-            };
+            text: `error: ${e}`,
+            color: "red lighten-2",
+            state: true,
+          };
         });
     },
-  
-    getUser(id){
-    UsersService.getUsersByid(id)
+
+    getUser(id) {
+      UsersService.getUsersByid(id)
         .then((response) => {
           this.model = {
             id: response.data[0].id,
             name: response.data[0].name,
             rol: response.data[0].rol,
-            email: response.data[0].email
-            }
-        
+            email: response.data[0].email,
+          };
         })
         .catch((e) => {
           console.log(e);
         });
-  }
+    },
   },
-
 
   mounted() {
     this.message = "";
@@ -155,9 +152,9 @@ pre .key {
 }
 
 .container {
-  max-width: 970px;
-  padding-right: 15px;
-  padding-left: 15px;
+  max-width: 1024px;
+  padding-right: 5%;
+  padding-left: 5%;
   margin-right: auto;
   margin-left: auto;
 }

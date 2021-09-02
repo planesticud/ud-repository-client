@@ -127,7 +127,7 @@
                   NIT. 899.999.230.7
                 </v-card-subtitle>
                 <v-card-text class="text-lg-center">
-                  Institución de Eduación Superior sujeta a inspección y
+                  Institución de Eduacación Superior sujeta a inspección y
                   vigilancia por el Ministerio de Educación Nacional.
                   <v-spacer></v-spacer>
                   Acuerdo de creación Nº 10 de 1948 del Concejo de Bogotá.
@@ -175,6 +175,7 @@
                           >
                             {{ nos.name }}
                           </a>
+                          <br /><br />
                         </v-spacer>
                       </v-card-text>
                       <v-divider></v-divider>
@@ -198,6 +199,7 @@
                           >
                             {{ nos.name }}
                           </a>
+                          <br /><br />
                         </v-spacer>
                       </v-card-text>
                       <v-divider></v-divider>
@@ -221,6 +223,7 @@
                           >
                             {{ nos.name }}
                           </a>
+                          <br /><br />
                         </v-spacer>
                       </v-card-text>
                       <v-divider></v-divider>
@@ -240,12 +243,14 @@
                 </v-card-title>
                 <v-card-text class="text-lg-center">
                   Coordinador José Ignacio Palacios
+                  <br />
                   coordinadorplanestic@udistrital.edu.co
                 </v-card-text>
                 <v-divider></v-divider>
                 <v-card-text class="text-lg-center">
-                  Avenida Ciduad de quito # 64 - 81 Bogotá D.C. Republica de
-                  Colombia
+                  Avenida Ciudad de quito # 64 - 81 
+                  <br />
+                  Bogotá D.C. Republica de Colombia
                 </v-card-text>
                 <v-divider></v-divider>
                 <v-card-text class="text-lg-center">
@@ -359,7 +364,7 @@ export default {
           route: "https://planestic.udistrital.edu.co/observatorio-ud",
         },
         {
-          name: "Eduación virtual",
+          name: "Educación virtual",
           route: "https://planestic.udistrital.edu.co/educaci%C3%B3n_virtual",
         },
       ],

@@ -1,5 +1,5 @@
 <template>
-  <v-container class="lighten-5">
+  <v-container class="lighten-5 dtcontainer">
     <div>
       <h1>
         {{ title.text }} <v-icon :title="title.text">{{ title.icon }}</v-icon>
@@ -155,7 +155,7 @@ export default {
 };
 </script>
 
- <style>
+ <style scoped>
 html {
   font-family: Tahoma;
   font-size: 14px;
@@ -187,10 +187,10 @@ pre .key {
   color: green;
 }
 
-.container {
-  max-width: 970px;
-  padding-right: 15px;
-  padding-left: 15px;
+.dtcontainer {
+  max-width: 1021px;
+  padding-right: 5%;
+  padding-left: 5%;
   margin-right: auto;
   margin-left: auto;
 }

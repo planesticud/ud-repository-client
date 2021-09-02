@@ -1,5 +1,5 @@
 <template>
-  <v-container class="lighten-5">
+  <v-container class="lighten-5 efcontainer">
     <div>
       <h1>{{ title }}</h1>
     </div>
@@ -399,10 +399,10 @@ pre .key {
   color: green;
 }
 
-.container {
-  max-width: 970px;
-  padding-right: 15px;
-  padding-left: 15px;
+.efcontainer {
+  max-width: 1024px;
+  padding-right: 5%;
+  padding-left: 5%;
   margin-right: auto;
   margin-left: auto;
 }

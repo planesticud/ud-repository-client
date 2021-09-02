@@ -5,7 +5,7 @@
         {{ title.text }} <v-icon :title="title.text">{{ title.icon }}</v-icon>
       </h1>
       <template v-for="item in header">
-        <p :class="item.class" v-if="item" :key="item">
+        <p :class="item.class" v-if="item" :key="item.key">
           <strong v-if="item.value" :key="item.value">{{ item.value }} </strong>
           <a
             v-if="item.key == 'location'"
@@ -64,6 +64,29 @@
       </v-card>
     </v-dialog>
     <!-- fin dialog --->
+    <!-- Dialog de resultados-->
+    <v-dialog v-model="resdialog" max-width="290">
+      <v-card>
+        <v-card-title class="headline"> Resultado </v-card-title>
+        <v-card-text>
+          <v-alert v-if="result.state" border="top" :color="result.color" dark>
+            {{ result.text }}
+          </v-alert>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            v-if="result.state"
+            color="green darken-1"
+            text
+            @click="volver()"
+          >
+            Cerrar
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <!--- fin dialog resultados-->
   </v-container>
 </template>
 
@@ -82,8 +105,10 @@ export default {
         observacion: "",
         estado: "",
       },
+      result: { state: false },
       mymodel: {},
       dialog: false,
+      resdialog: false,
       header: [
         { class: "blue lighten-4 text-md-center ", value: "General" },
         { class: "", key: "title", value: "Titulo:" },
@@ -191,41 +216,42 @@ export default {
     },
     guardar(model, modrev) {
       this.dialog = false;
+      this.resdialog = true;
       const id = this.$route.params.id;
       this.modrev.idobj = "" + id;
       this.modrev.revisor = localStorage.email;
+      const titu = this.model.title;
       FilesService.updateFiles(model, id)
-        .then(({ data }) => {
-          this.result = {
-            text: `el recurso ${this.model.title} ${data}`,
-            color: "green lighten-2",
-            state: true,
-          };
-          this.model = {};
+        .then(({ dataupd }) => {
+          PublicarService.createPublicar(modrev)
+            .then(({ data }) => {
+              this.result = {
+                text: `la revision del recurso ${titu} fue creado con el id ${data[0].id} `,
+                color: "green lighten-2",
+                state: true,
+              };
+            })
+            .catch((e1) => {
+              this.result = {
+                text: `error e1: ${e1}`,
+                color: "red lighten-2",
+                state: true,
+              };
+            });
+          console.log(dataupd);
         })
-        .catch((e) => {
+        .catch((e2) => {
           this.result = {
-            text: `error: ${e}`,
+            text: `error e2: ${e2}`,
             color: "red lighten-2",
             state: true,
           };
         });
-      PublicarService.createPublicar(modrev)
-        .then(({ data2 }) => {
-          this.result2 = {
-            text: `la revision de ${data2[0].revisor} fue creado con el id ${data2[0].id}`,
-            color: "green lighten-2",
-            state: true,
-          };
-          this.modrev = {};
-        })
-        .catch((e1) => {
-          this.result2 = {
-            text: `error: ${e1}`,
-            color: "red lighten-2",
-            state: true,
-          };
-        });
+      this.model = {};
+      this.modrev = {};
+    },
+    volver() {
+      this.$router.push({ name: "revisar" });
     },
     getColor(state) {
       if (state == "Inactivo") return "red";
@@ -255,7 +281,7 @@ export default {
 };
 </script>
 
- <style>
+ <style scoped>
 html {
   font-family: Tahoma;
   font-size: 14px;
@@ -288,9 +314,9 @@ pre .key {
 }
 
 .container {
-  max-width: 94%;
-  padding-right: 5px;
-  padding-left: 5px;
+  max-width: 1024px;
+  padding-right: 5%;
+  padding-left: 5%;
   margin-right: auto;
   margin-left: auto;
 }
