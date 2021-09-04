@@ -20,7 +20,7 @@
     <v-spacer></v-spacer>
     <v-spacer></v-spacer>
     &nbsp;
-    <v-data-table :headers="headers" :items="users" :search="search" class="text-h3">
+    <v-data-table :headers="headers" :items="users" :search="search" >
       <template v-slot:[`item.actions`]="{ item }">
         <v-icon
           medium
@@ -62,9 +62,9 @@ export default {
       users: [],
       title: "",
       headers: [
-        { text: "Nombre", value: "name", align: "start", sortable: false, class:"text-button" },
-        { text: "email", value: "email", sortable: false, class:"text-button" },
-        { text: "Rol", value: "rol", sortable: false, class:"text-button" },
+        { text: "Nombre", value: "name", align: "start", sortable: true, class:"text-button" },
+        { text: "email", value: "email", sortable: true, class:"text-button" },
+        { text: "Rol", value: "rol", sortable: true, class:"text-button" },
         { text: "Actions", value: "actions", sortable: false, class:"text-button" },
       ],
       actions: {

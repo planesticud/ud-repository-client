@@ -33,6 +33,11 @@ const router = new Router({
     },
     // cmbnoe
     {
+      path: "/filesbuscar",
+      name: "filesbuscar",
+      component: () => import("./components/Files/FilesBuscar")
+    },
+    {
       path: "/revisar",
       name: "revisar",
       component: () => import("./components/Revisar/Revisar")
@@ -77,8 +82,8 @@ const router = new Router({
 });
 router.beforeEach((to, from, next) => {
   let ls = localStorage.getItem('token');
-  if (to.name !=='login' && ls === null) next({name:'login'})
-  else if (to.name ==='login' && ls!== null) next({name:'home'})
+  if (to.name !== 'login' && ls === null) next({ name: 'login' })
+  else if (to.name === 'login' && ls !== null) next({ name: 'home' })
   else next()
 
 });

@@ -17,6 +17,9 @@ class FilesService {
     getFilesByEmail(email) {
         return axios.get(`${repositoryUrl}/files/email`, { params: { email: email } })
     }
+    getFilesByState(state) {
+        return axios.get(`${repositoryUrl}/files/state`, { params: { state: state } })
+    }
     createFile(data) {
         return axios.post(`${repositoryUrl}/files`, data)
     }
@@ -30,10 +33,10 @@ class FilesService {
         formData.append("file", file);
         return axios.post(`${repositoryUrl}/upload`, formData, {
             headers: {
-              "Content-Type": "multipart/form-data"
+                "Content-Type": "multipart/form-data"
             },
             onUploadProgress
-          })
+        })
     }
 }
 

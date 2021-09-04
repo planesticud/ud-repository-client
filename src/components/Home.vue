@@ -122,7 +122,7 @@ export default {
           icon: "mdi-home",
         },
         {
-          text: "Recursos",
+          text: "Mis Recursos",
           route: "/files",
           description: "Administración de recursos",
           icon: "mdi-file",
@@ -152,7 +152,7 @@ export default {
           icon: "mdi-account",
         },
         {
-          text: "Recursos",
+          text: "Mis Recursos",
           route: "/files",
           description: "Administración de recursos",
           icon: "mdi-file",
@@ -193,7 +193,6 @@ export default {
   overflow: hidden;
   padding: 12px 0;
 }
-
 .hcontainer {
   max-width: 100%;
   padding-right: 5%;
@@ -201,7 +200,6 @@ export default {
   margin-right: auto;
   margin-left: auto;
 }
-
 .list-item__icon {
   display: inline-flex;
   min-width: 24px;

@@ -5,7 +5,7 @@
         {{ title.text }} <v-icon :title="title.text">{{ title.icon }}</v-icon>
       </h1>
       <template v-for="item in header">
-        <p :class="item.class" v-if="item" :key="item">
+        <p :class="item.class" v-if="item" :key="item.key">
           <strong v-if="item.value" :key="item.value">{{ item.value }} </strong>
           <a
             v-if="item.key == 'location'"

@@ -1,8 +1,8 @@
 <template>
-  <v-container class="lighten-5 rvcontainer">
+  <v-container class="lighten-5 flcontainer">
     <div>
       <h1 align="center">
-        {{ h1.text }} <v-icon :title="title.text" medium> {{ h1.icon }}</v-icon>
+        {{ h1.text }} <v-icon :title="title.text">{{ h1.icon }}</v-icon>
       </h1>
     </div>
     <v-row align="center" class="list px-3 mx-auto">
@@ -20,7 +20,7 @@
     <v-spacer></v-spacer>
     &nbsp; &nbsp; &nbsp;
 
-    <v-data-table :headers="headers" :items="files" :search="search" class="text-h3">
+    <v-data-table :headers="headers" :items="files" :search="search">
       <template v-slot:[`item.state`]="{ item }">
         <v-chip :color="getColor(item.state)" dark>
           {{ item.state }}
@@ -38,9 +38,9 @@
           medium
           :title="actions.detail.title"
           class="mr-2"
-          @click="detalleFiles(item.id)"
-          >{{ actions.detail.icon }}</v-icon
-        >
+          @click="detailFiles(item.id)"
+          >{{ actions.detail.icon }}
+        </v-icon>
       </template>
     </v-data-table>
   </v-container>
@@ -49,49 +49,82 @@
 <script>
 import filesService from "../../services/files";
 export default {
-  name: "files-list-revisar",
+  name: "files-list-buscar",
   data() {
     return {
-      filEmail: "",
-      h1: { text: "Revisar recursos", icon: "mdi-notebook-check" },
-      search: "SinRevisar",
+      h1: {
+        text: "Repositorio de Recusrsos Digitales",
+        icon: "mdi-file-outline",
+      },
+      search: "",
       files: [],
       title: "",
       url: "Ver recurso",
       headers: [
-        { text: "Título", value: "title", align: "start", sortable: true, class:"text-button" },
+        {
+          text: "Título",
+          value: "title",
+          align: "start",
+          sortable: true,
+          class: "text-button",
+        },
         {
           text: "Descripción",
           value: "description",
           align: "start",
           sortable: true,
-          class:"text-button"
+          class: "text-button",
         },
-        { text: "Estado", value: "state", sortable: true, align: "start", class:"text-button" },
-        { text: "Formato", value: "format", sortable: true, align: "start", class:"text-button" },
+        {
+          text: "Estado",
+          value: "state",
+          sortable: true,
+          align: "start",
+          class: "text-button",
+        },
+        {
+          text: "Formato",
+          value: "format",
+          sortable: true,
+          align: "start",
+          class: "text-button",
+        },
         {
           text: "Clasificación",
           value: "purpose",
           sortable: true,
           align: "start",
-          class:"text-button"
+          class: "text-button",
         },
-        { text: "Acciones", value: "actions", sortable: true, align: "start", class:"text-button" },
+        {
+          text: "Recurso",
+          value: "location",
+          sortable: true,
+          align: "start",
+          class: "text-button",
+        },
+        {
+          text: "Acciones",
+          value: "actions",
+          sortable: true,
+          align: "start",
+          class: "text-button",
+        },
       ],
       actions: {
+        edit: { title: "Editar recurso", icon: "mdi-pencil" },
         detail: {
-          title: "Revisar el recurso",
-          icon: " mdi-clipboard-edit-outline", // mdi-format-list-bulleted",
+          title: "Detalle de recurso",
+          icon: " mdi-format-list-bulleted",
         },
       },
     };
   },
   methods: {
     retrieveFiles() {
-      //.getFiles()
-      if (localStorage.rol == "COORDINADOR") {
+      if (localStorage.rol == "DOCENTE") {
         filesService
-          .getFiles()
+          .getFilesByState("Activo")
           .then((response) => {
             this.files = response.data;
           })
@@ -105,20 +138,10 @@ export default {
       this.retrieveFiles();
     },
 
-    searchTitle() {
-      filesService
-        .getFilesByEmail(this.filEmail)
-        .then((response) => {
-          this.files = response.data;
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+    detailFiles(id) {
+      this.$router.push({ name: "detailfiles", params: { id: id } });
     },
 
-    detalleFiles(id) {
-      this.$router.push({ name: "valorar", params: { id: id } });
-    },
     getColor(state) {
       if (state == "Inactivo") return "red";
       if (state == "Activo") return "green";
@@ -133,9 +156,9 @@ export default {
 
 <style scoped>
 .list {
-  max-width: 750px;
+  max-width: 800px;
 }
-.rvcontainer {
+.flcontainer {
   max-width: 1536px;
   padding-right: 15px;
   padding-left: 15px;

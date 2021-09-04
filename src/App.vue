@@ -464,13 +464,16 @@ export default {
       this.token = localStorage.token;
       this.buttons = [
         { text: "Inicio", route: "/home" },
-        { text: "Recursos", route: "/files" },
+        { text: "Mis Recursos", route: "/files" },
       ];
       if (localStorage.rol === "ADMINISTRADOR") {
         this.buttons.push({ text: "Usuarios", route: "/users" });
       }
       if (localStorage.rol === "COORDINADOR") {
         this.buttons.push({ text: "Revisar", route: "/revisar" });
+      }
+         if (localStorage.rol === "DOCENTE") {
+        this.buttons.push({ text: "Repositorio de Recursos", route: "/filesbuscar" });
       }
     }
     this.image();
