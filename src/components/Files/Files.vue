@@ -54,7 +54,7 @@
           medium
           :title="actions.delete.title"
           class="mr-2"
-          @click="deleteFiles(item.id)"
+          @click="eliminar(item.id)"
           >{{ actions.delete.icon }}</v-icon
         >
       </template>
@@ -63,7 +63,7 @@
     <!-- Dilog confirmacion-->
     <v-dialog v-model="dialog" width="30%" persistent>
       <v-card>
-        <v-card-title>¿Esta seguro de eliminar este recurso?</v-card-title>
+        <v-card-title>¿Seguro de eliminar este recurso?</v-card-title>
         <v-divider></v-divider>
         <v-card-actions>
           <v-btn @click="dialog = false">Cancelar</v-btn>
@@ -87,31 +87,61 @@ export default {
       elim: "",
       h1: { text: "Listado de recursos", icon: "mdi-file-outline" },
       search: "",
-      find: { label: "Buscar por correo electronico", button: "Buscar" },
+      find: { label: "Buscar por correo electrónico", button: "Buscar" },
       add: { button: "Agregar", route: "/files/add" },
       files: [],
       title: "",
       url: "Ver recurso",
       headers: [
-        { text: "Título", value: "title", align: "start", sortable: true, class:"text-button" },
+        {
+          text: "Título",
+          value: "title",
+          align: "start",
+          sortable: true,
+          class: "text-button",
+        },
         {
           text: "Descripción",
           value: "description",
           align: "start",
           sortable: true,
-          class:"text-button"
+          class: "text-button",
         },
-        { text: "Estado", value: "state", sortable: true, align: "start", class:"text-button" },
-        { text: "Formato", value: "format", sortable: true, align: "start", class:"text-button" },
+        {
+          text: "Estado",
+          value: "state",
+          sortable: true,
+          align: "start",
+          class: "text-button",
+        },
+        {
+          text: "Formato",
+          value: "format",
+          sortable: true,
+          align: "start",
+          class: "text-button",
+        },
         {
           text: "Clasificación",
           value: "purpose",
           sortable: true,
           align: "start",
-          class:"text-button"
+          class: "text-button",
         },
-        { text: "Recurso", value: "location", sortable: true, align: "start", class:"text-button" },
-        { text: "Acciones", value: "actions", sortable: true, align: "start", class:"text-button" },
+        {
+          text: "Recurso",
+          value: "location",
+          sortable: true,
+          align: "start",
+          class: "text-button",
+        },
+        {
+          text: "Acciones",
+          value: "actions",
+          sortable: true,
+          align: "start",
+          class: "text-button",
+        },
       ],
       actions: {
         edit: { title: "Editar recurso", icon: "mdi-pencil" },
@@ -183,8 +213,8 @@ export default {
       this.dialog = false;
     },
     getColor(state) {
-      if (state == "Inactivo") return "red";
-      if (state == "Activo") return "green";
+      if (state == "Sin aprobar") return "red";
+      if (state == "Aprobado") return "green";
       else return "blue";
     },
   },

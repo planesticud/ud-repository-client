@@ -40,7 +40,7 @@ export default {
       model: {},
       header: [
         { class: "blue lighten-4 text-md-center", value: "General" },
-        { class: "", key: "title", value: "Titulo:" },
+        { class: "", key: "title", value: "Título:" },
         { class: "", key: "language", value: "Idioma:" },
         { class: "", key: "description", value: "Descripción:" },
         { class: "", key: "key_words", value: "Palabras clave:" },
@@ -142,8 +142,8 @@ export default {
         });
     },
     getColor(state) {
-      if (state == "Inactivo") return "red";
-      if (state == "Activo") return "green";
+      if (state == "Sin aprobar") return "red";
+      if (state == "Aprobado") return "green";
       else return "blue";
     },
   },

@@ -57,7 +57,7 @@ export default {
       file: "",
       model: {
         entity: "Universidad Distrital Francisco José de Caldas",
-        state: "SinRevisar",
+        state: "Por aprobar",
       },
       title: "Editar recursos",
       result: { state: false },
@@ -76,7 +76,7 @@ export default {
           {
             type: "input",
             inputType: "text",
-            label: "Titulo",
+            label: "Título",
             model: "title",
             placeholder: "Titulo del recurso",
             featured: true,
@@ -90,7 +90,7 @@ export default {
             placeholder: "Idioma del recurso",
             featured: true,
             required: true,
-            values: ["Español", "Inlges"],
+            values: ["Español", "Inglés", "Francés", "Alemán"],
             default: "Español",
           },
           {
@@ -106,9 +106,9 @@ export default {
             type: "textArea",
             label: "Palabras clave",
             model: "key_words",
-            hint: "Maximo 5 palabras",
+            hint: "Máximo 5 palabras",
             max: 200,
-            placeholder: "Maximo 5 palabras separadas por ,",
+            placeholder: "Máximo 5 palabras separadas por ,",
             rows: 2,
           },
           {
@@ -124,7 +124,7 @@ export default {
             model: "version",
             min: 0,
             max: 200,
-            placeholder: "Numero de la version del recurso",
+            placeholder: "Número de la versión del recurso",
             featured: true,
             required: true,
           },
@@ -299,7 +299,7 @@ export default {
     submit(model) {
       this.dialog = false;
       const id = this.$route.params.id;
-      model.state = "SinRevisar";
+      model.state = "Por aprobar";
       FilesService.updateFiles(model, id)
         .then(({ data }) => {
           this.result = {
@@ -317,6 +317,7 @@ export default {
           };
         });
     },
+
     editar(model) {
       this.dialog = true;
       this.mymodel = model;
@@ -325,10 +326,14 @@ export default {
     volver() {
       this.$router.push({ name: "files" });
     },
+
     getFile(id) {
       FilesService.getFilesByid(id)
         .then(({ data }) => {
           const response = data.filter((file) => file.id == id)[0];
+          const formatDate = new Date(parseInt(response.date, 10))
+            .toISOString()
+            .slice(0, 10);
           this.model = {
             title: response.title,
             language: response.language,
@@ -349,7 +354,7 @@ export default {
             cost: response.cost || "",
             copyright: response.copyright,
             entity: response.entity,
-            date: response.date,
+            date: formatDate,
             purpose: response.purpose,
             email: response.email,
           };

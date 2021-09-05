@@ -81,10 +81,9 @@ export default {
       dialog: false,
       model: {
         entity: "Universidad Distrital Francisco José de Caldas",
-        email: localStorage.email, 
-        state: "SinRevisar",
+        email: localStorage.email,
+        state: "Por aprobar",
       },
-     
       title: "Crear recursos",
       result: { state: false },
       schema: {
@@ -113,7 +112,7 @@ export default {
             placeholder: "Idioma del recurso",
             featured: true,
             required: true,
-            values: ["Español", "Ingles", "Frances", "Aleman"],
+            values: ["Español", "Inglés", "Francés", "Alemán"],
             default: "Español",
             help: "Idioma en que se presenta el contenido del recurso",
           },
@@ -131,9 +130,9 @@ export default {
             type: "textArea",
             label: "Palabras clave",
             model: "key_words",
-            hint: "Maximo 5 palabras",
+            hint: "Máximo 5 palabras",
             max: 200,
-            placeholder: "Maximo 5 palabras separadas por ,",
+            placeholder: "Máximo 5 palabras separadas por ,",
             rows: 2,
             help: "Permite el listado de las palabras clave que describen el contenido del recurso.",
           },
@@ -150,7 +149,7 @@ export default {
             model: "version",
             min: 0,
             max: 200,
-            placeholder: "Número de la version del recurso",
+            placeholder: "Número de la versión del recurso",
             featured: true,
             required: true,
             help: "Indica que el recurso fue mejorado",
@@ -215,8 +214,7 @@ export default {
             required: true,
             values: ["Muy bajo", "Bajo", "Medio Alto", "Muy alto"],
             default: "Muy bajo",
-                        help: `Nivel de complejidad del contenido del recurso educativo.`,
-
+            help: `Nivel de complejidad del contenido del recurso educativo.`,
           },
           {
             type: "input",
@@ -236,8 +234,7 @@ export default {
             placeholder: "El entorno principal en el que se utilizará.",
             featured: true,
             required: true,
-                        help: "Entorno educativo en el que se utilizara el recurso.",
-
+            help: "Entorno educativo en el que se utilizara el recurso.",
           },
           {
             type: "label",
@@ -313,8 +310,7 @@ export default {
             featured: true,
             required: true,
             disabled: true,
-                        help: "Correo de quien clasifica y sube el recurso",
-
+            help: "Correo de quien clasifica y sube el recurso",
           },
           {
             type: "submit",
@@ -352,7 +348,7 @@ export default {
               };
               this.model = {};
               this.file = "";
-                this.progress = 0;
+              this.progress = 0;
               this.currentFile = undefined;
             })
             .catch((e) => {
@@ -376,7 +372,7 @@ export default {
     selectFile() {
       this.file = this.$refs.file.files[0];
     },
-        volver() {
+    volver() {
       this.$router.push({ name: "files" });
     },
   },

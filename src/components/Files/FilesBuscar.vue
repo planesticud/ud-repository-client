@@ -104,7 +104,7 @@ export default {
           class: "text-button",
         },
         {
-          text: "Acciones",
+          text: "Detalles",
           value: "actions",
           sortable: true,
           align: "start",
@@ -112,8 +112,7 @@ export default {
         },
       ],
       actions: {
-        edit: { title: "Editar recurso", icon: "mdi-pencil" },
-        detail: {
+          detail: {
           title: "Detalle de recurso",
           icon: " mdi-format-list-bulleted",
         },
@@ -122,11 +121,12 @@ export default {
   },
   methods: {
     retrieveFiles() {
-      if (localStorage.rol == "DOCENTE") {
+      if (localStorage.rol === "DOCENTE" || localStorage.rol === "ESTUDIANTE") {
         filesService
-          .getFilesByState("Activo")
+          .getFilesByState("Aprobado")
           .then((response) => {
             this.files = response.data;
+        
           })
           .catch((e) => {
             console.log(e);
@@ -143,8 +143,8 @@ export default {
     },
 
     getColor(state) {
-      if (state == "Inactivo") return "red";
-      if (state == "Activo") return "green";
+      if (state == "Sin aprobar") return "red";
+      if (state == "Aprobado") return "green";
       else return "blue";
     },
   },

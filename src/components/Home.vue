@@ -135,7 +135,7 @@ export default {
           icon: "mdi-file",
         },
         {
-          text: "Estadisticas",
+          text: "Estadísticas",
           route: "/statistics",
           description: "Uso de los recursos",
           icon: "mdi-elevation-rise",
@@ -143,7 +143,7 @@ export default {
       ];
     }
     //fin cmbnoe
-    if (localStorage.rol === "PROFESOR") {
+    if (localStorage.rol === "DOCENTE") {
       this.buttons = [
         {
           text: "Inicio",
@@ -168,9 +168,9 @@ export default {
           icon: "mdi-account",
         },
         {
-          text: "Recursos",
-          route: "/files",
-          description: "Administración de recursos",
+          text: "Busqueda de Recursos",
+          route: "/filesbuscar",
+          description: "Busqueda de recursos",
           icon: "mdi-file",
         },
       ];

@@ -163,7 +163,7 @@ export default {
 
       swi: {
         activar: false,
-        name: "inactivo",
+        name: "Sin aprobar",
       },
     };
   },
@@ -200,7 +200,7 @@ export default {
             purpose: response.purpose,
             email: response.email,
           };
-          if (response.state == "Activo") {
+          if (response.state == "Aprobado") {
             this.changeState(true);
           } else {
             this.changeState(false);
@@ -226,7 +226,7 @@ export default {
           PublicarService.createPublicar(modrev)
             .then(({ data }) => {
               this.result = {
-                text: `la revision del recurso ${titu} fue creado con el id ${data[0].id} `,
+                text: `la revisión del recurso ${titu} fue creado con el id ${data[0].id} `,
                 color: "green lighten-2",
                 state: true,
               };
@@ -254,8 +254,8 @@ export default {
       this.$router.push({ name: "revisar" });
     },
     getColor(state) {
-      if (state == "Inactivo") return "red";
-      if (state == "Activo") return "green";
+      if (state == "Sin aprobar") return "red";
+      if (state == "Aprobado") return "green";
       else return "blue";
     },
     changeState(valor) {
@@ -264,12 +264,12 @@ export default {
 
       if (this.swi.activar) {
         this.swi.name = "Publicar";
-        this.model.state = "Activo";
-        this.modrev.estado = "Activo";
+        this.model.state = "Aprobado";
+        this.modrev.estado = "Aprobado";
       } else {
-        this.swi.name = "Inactivo";
-        this.model.state = "Inactivo";
-        this.modrev.estado = "Inactivo";
+        this.swi.name = "Sin aprobar";
+        this.model.state = "Sin aprobar";
+        this.modrev.estado = "Sin aprobar";
       }
     },
   },

@@ -54,7 +54,7 @@ export default {
     return {
       filEmail: "",
       h1: { text: "Revisar recursos", icon: "mdi-notebook-check" },
-      search: "SinRevisar",
+      search: "Por aprobar",
       files: [],
       title: "",
       url: "Ver recurso",
@@ -120,8 +120,8 @@ export default {
       this.$router.push({ name: "valorar", params: { id: id } });
     },
     getColor(state) {
-      if (state == "Inactivo") return "red";
-      if (state == "Activo") return "green";
+      if (state == "Sin aprobar") return "red";
+      if (state == "Aprobado") return "green";
       else return "blue";
     },
   },

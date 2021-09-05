@@ -456,24 +456,27 @@ export default {
       this.isMobile = window.innerWidth < 800;
     },
   },
-  mounted() {
+ mounted() {
     if (localStorage.name) {
       this.name = localStorage.name;
     }
     if (localStorage.token) {
       this.token = localStorage.token;
-      this.buttons = [
-        { text: "Inicio", route: "/home" },
-        { text: "Mis Recursos", route: "/files" },
-      ];
+      this.buttons = [{ text: "Inicio", route: "/home" }];
       if (localStorage.rol === "ADMINISTRADOR") {
+        this.buttons.push({ text: "Administrar Recursos", route: "/files" });
         this.buttons.push({ text: "Usuarios", route: "/users" });
       }
       if (localStorage.rol === "COORDINADOR") {
         this.buttons.push({ text: "Revisar", route: "/revisar" });
+        this.buttons.push({ text: "Mis Recursos", route: "/files" });
       }
-         if (localStorage.rol === "DOCENTE") {
-        this.buttons.push({ text: "Repositorio de Recursos", route: "/filesbuscar" });
+      if (localStorage.rol === "DOCENTE") {
+        this.buttons.push({ text: "Busqueda de Recursos", route: "/filesbuscar" });
+        this.buttons.push({ text: "Mis Recursos", route: "/files" });
+      }
+      if (localStorage.rol === "ESTUDIANTE") {
+        this.buttons.push({ text: "Busqueda de Recursos", route: "/filesbuscar" });
       }
     }
     this.image();
