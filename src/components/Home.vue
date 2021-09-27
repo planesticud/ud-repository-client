@@ -82,8 +82,7 @@ export default {
       location.reload();
     }
     if (localStorage.rol === "ADMINISTRADOR") {
-      global = str.get("luna");
-      console.log("exito: "+global.setActUser());
+     
       this.buttons = [
         {
           text: "Inicio",
