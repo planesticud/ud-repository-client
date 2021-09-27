@@ -41,8 +41,6 @@
 </template>
 
 <script>
-import str from "good-storage";
-import global from "../golba";
 
 export default {
   data() {
