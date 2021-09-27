@@ -17,8 +17,6 @@
 </template>
 
 <script >
-import str from "good-storage";
-import global from "../golba";
 
 export default {
   name: "file",
@@ -44,10 +42,6 @@ export default {
         localStorage.setItem("url_image", url_image);
         localStorage.setItem("rol", rol);
         localStorage.setItem("email", email);
-        console.log("Inicio de sesión exitoso");
-        global.setActUser(rol);
-       
-        str.set("luna", global);
 
         // this.$router.go(this.$router.currentRoute);
       }
