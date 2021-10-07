@@ -91,6 +91,9 @@ export default {
             featured: true,
             required: true,
             values: ["Español", "Inglés", "Francés", "Alemán"],
+            selectOptions: {
+              noneSelectedText: "Haga clic para seleccionar una opción",
+            },
             default: "Español",
           },
           {
@@ -122,7 +125,7 @@ export default {
             inputType: "number",
             label: "Versión",
             model: "version",
-            min: 0,
+            min: 1,
             max: 200,
             placeholder: "Número de la versión del recurso",
             featured: true,
@@ -153,6 +156,7 @@ export default {
             model: "created",
             styleClasses: "blue lighten-4 text-md-center",
           },
+          /*
           {
             type: "select",
             inputType: "text",
@@ -163,18 +167,35 @@ export default {
             featured: true,
             required: true,
             values: ["Activo", "Expositivo", "Combinado"],
+              selectOptions: {
+              noneSelectedText: "Haga clic para seleccionar una opción",
+            },
             default: "Activo",
           },
+          */
           {
-            type: "input",
+            type: "select",
             inputType: "text",
             label: "Tipo de recurso educativo",
             model: "type_of_educational_resource",
-            placeholder: "Tipo de recurso educativo",
+            placeholder: "Seleccione la tipología de su recurso",
             featured: true,
             required: true,
+            values: [
+              "OVA",
+              "Video",
+              "Videotutorial",
+              "Manual",
+              "Plantilla",
+              "Infografía",
+              "podcast",
+            ],
+            selectOptions: {
+              noneSelectedText: "Haga clic para seleccionar una opción",
+            },
+            help: "Seleccione la tipología de su recurso.",
           },
-          {
+          /* {
             type: "select",
             inputType: "text",
             label: "Nivel de interación",
@@ -184,52 +205,43 @@ export default {
             featured: true,
             required: true,
             values: ["Muy bajo", "Bajo", "Medio Alto", "Muy alto"],
+              selectOptions: {
+              noneSelectedText: "Haga clic para seleccionar una opción",
+            },
             default: "Muy bajo",
-          },
+          },*/
           {
-            type: "input",
+            type: "select",
             inputType: "text",
             label: "Población objetivo",
             model: "objetive_poblation",
-            placeholder:
-              "El usuario principal para el que ha sido diseñado este recurso.",
             featured: true,
             required: true,
-          },
-          {
-            type: "input",
-            inputType: "text",
-            label: "Contexto",
-            model: "context",
-            placeholder: "El entorno principal en el que se utilizará.",
-            featured: true,
-            required: true,
-          },
-          {
-            type: "label",
-            label: "<h3>Derechos de uso</h3>",
-            model: "created",
-            styleClasses: "blue lighten-4 text-md-center",
+            values: ["Estudiantes", "Docentes", "Investigadores"],
+            selectOptions: {
+              noneSelectedText: "Haga clic para seleccionar una opción",
+            },
+            help: "Seleccione la población a quien va dirigido este recurso.",
           },
           {
             type: "select",
             inputType: "text",
-            label: "Copyright",
-            model: "copyright",
-            placeholder: "Tipo de derechos",
+            label: "Contexto",
+            model: "context",
             featured: true,
             required: true,
             values: [
-              "Atribución",
-              "Atribución-CompartirIgual",
-              "Atribución-SinDerivadas",
-              "Atribución-NoComercial",
-              "Atribución-NoComercial-CompartirIgual",
-              "Atribución-NoComercial-SinDerivadas",
+              "Educación superior",
+              "Educación tecnológica",
+              "Educación media",
+              "Educación Inicial",
             ],
-            default: "Atribución",
-            help: `para mas información <a target="_blank" href="https://creativecommons.org/licenses/?lang=es">Creative Commons</a>`,
+            selectOptions: {
+              noneSelectedText: "Haga clic para seleccionar una opción",
+            },
+            help: "Entorno educativo en el que se utilizara el recurso.",
           },
+
           {
             type: "label",
             label: "<h3>Anotación</h3>",
@@ -247,12 +259,12 @@ export default {
             featured: true,
             required: true,
           },
-          {
+          /*{
             type: "input",
             inputType: "date",
             label: "Fecha",
             model: "date",
-          },
+          },*/
           {
             type: "checklist",
             label: "Clasificación",
@@ -279,6 +291,34 @@ export default {
             featured: true,
             required: true,
             disabled: true,
+          },
+          {
+            type: "label",
+            label: "<h3>Derechos de uso</h3>",
+            model: "created",
+            styleClasses: "blue lighten-4 text-md-center",
+          },
+          {
+            type: "select",
+            inputType: "text",
+            label: "Copyright",
+            model: "copyright",
+            placeholder: "Tipo de derechos",
+            featured: true,
+            required: true,
+            values: [
+              "Atribución",
+              "Atribución-CompartirIgual",
+              "Atribución-SinDerivadas",
+              "Atribución-NoComercial",
+              "Atribución-NoComercial-CompartirIgual",
+              "Atribución-NoComercial-SinDerivadas",
+            ],
+            selectOptions: {
+              noneSelectedText: "Haga clic para seleccionar una opción",
+            },
+            default: "Atribución",
+            help: `para mas información <a target="_blank" href="https://creativecommons.org/licenses/?lang=es">Creative Commons</a>`,
           },
           {
             type: "submit",

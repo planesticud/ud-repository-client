@@ -59,17 +59,17 @@ export default {
           class: "blue lighten-4 text-md-center",
           value: "Caracteristicas pedagogicas",
         },
-        { class: "", key: "class_learning", value: "Tipo de apdrendizaje:" },
+       /* { class: "", key: "class_learning", value: "Tipo de apdrendizaje:" },*/
         {
           class: "",
           key: "type_of_educational_resource",
           value: "Tipo de recurso educacional:",
         },
-        {
+        /*{
           class: "",
           key: "level_of_interaction",
           value: "Nivel de interación:",
-        },
+        },*/
         { class: "", key: "objetive_poblation", value: "Población objetivo:" },
         { class: "", key: "context", value: "Contexto:" },
         { class: "blue lighten-4 text-md-center", value: "Derechos de uso" },
