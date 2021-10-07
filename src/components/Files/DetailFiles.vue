@@ -142,7 +142,7 @@ export default {
         });
     },
     getColor(state) {
-      if (state == "Sin aprobar") return "red";
+      if (state == "No aprobado") return "red";
       if (state == "Aprobado") return "green";
       else return "blue";
     },

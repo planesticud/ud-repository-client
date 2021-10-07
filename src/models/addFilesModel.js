@@ -77,8 +77,8 @@ const addFiles = {
           placeholder: "Estado del del recurso",
           featured: true,
           required: true,
-          values: ["Aprobado", "Sin aprobar"],
-          default: "Sin aprobar",
+          values: ["Aprobado", "No aprobado"],
+          default: "Por aprobar",
         },
         {
           type: "textArea",

@@ -467,7 +467,7 @@ export default {
         this.buttons.push({ text: "Administrar Recursos", route: "/files" });
         this.buttons.push({ text: "Usuarios", route: "/users" });
       }
-      if (localStorage.rol === "COORDINADOR") {
+      if (localStorage.rol === "EVALUADOR") {
         this.buttons.push({ text: "Revisar", route: "/revisar" });
         this.buttons.push({ text: "Mis Recursos", route: "/files" });
       }

@@ -166,7 +166,7 @@ export default {
 
       swi: {
         activar: false,
-        name: "Sin aprobar",
+        name: "No aprobado",
       },
     };
   },
@@ -257,7 +257,7 @@ export default {
       this.$router.push({ name: "revisar" });
     },
     getColor(state) {
-      if (state == "Sin aprobar") return "red";
+      if (state == "No aprobado") return "red";
       if (state == "Aprobado") return "green";
       else return "blue";
     },
@@ -270,9 +270,9 @@ export default {
         this.model.state = "Aprobado";
         this.modrev.estado = "Aprobado";
       } else {
-        this.swi.name = "Sin aprobar";
-        this.model.state = "Sin aprobar";
-        this.modrev.estado = "Sin aprobar";
+        this.swi.name = "No aprobado";
+        this.model.state = "No aprobado";
+        this.modrev.estado = "No aprobado";
       }
     },
   },

@@ -58,7 +58,10 @@ export default {
             placeholder: "Rol del usuario en la plataforma",
             featured: true,
             required: true,
-            values: ["ESTUDIANTE", "DOCENTE", "ADMINISTRADOR", "COORDINADOR"],
+            values: ["ESTUDIANTE", "DOCENTE", "ADMINISTRADOR", "EVALUADOR"],
+            selectOptions: {
+              noneSelectedText: "Haga clic para seleccionar una opción",
+            },
             default: "ESTUDIANTE",
             help: `rol que tendra el usuario en la plataforma`,
           },

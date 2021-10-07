@@ -90,10 +90,8 @@ export default {
             placeholder: "Idioma del recurso",
             featured: true,
             required: true,
-            values: ["Español", "Inglés", "Francés", "Alemán"],
-            selectOptions: {
-              noneSelectedText: "Haga clic para seleccionar una opción",
-            },
+            values: ["Español", "Inglés", "Francés", "Alemán", "Portugués"],
+
             default: "Español",
           },
           {
@@ -190,9 +188,7 @@ export default {
               "Infografía",
               "podcast",
             ],
-            selectOptions: {
-              noneSelectedText: "Haga clic para seleccionar una opción",
-            },
+
             help: "Seleccione la tipología de su recurso.",
           },
           /* {
@@ -218,9 +214,7 @@ export default {
             featured: true,
             required: true,
             values: ["Estudiantes", "Docentes", "Investigadores"],
-            selectOptions: {
-              noneSelectedText: "Haga clic para seleccionar una opción",
-            },
+
             help: "Seleccione la población a quien va dirigido este recurso.",
           },
           {
@@ -236,9 +230,7 @@ export default {
               "Educación media",
               "Educación Inicial",
             ],
-            selectOptions: {
-              noneSelectedText: "Haga clic para seleccionar una opción",
-            },
+
             help: "Entorno educativo en el que se utilizara el recurso.",
           },
 
@@ -314,9 +306,7 @@ export default {
               "Atribución-NoComercial-CompartirIgual",
               "Atribución-NoComercial-SinDerivadas",
             ],
-            selectOptions: {
-              noneSelectedText: "Haga clic para seleccionar una opción",
-            },
+
             default: "Atribución",
             help: `para mas información <a target="_blank" href="https://creativecommons.org/licenses/?lang=es">Creative Commons</a>`,
           },

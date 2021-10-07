@@ -155,7 +155,7 @@ export default {
   },
   methods: {
     retrieveFiles() {
-      if (localStorage.rol == "DOCENTE" || localStorage.rol == "COORDINADOR") {
+      if (localStorage.rol == "DOCENTE" || localStorage.rol == "EVALUADOR") {
         filesService
           .getFilesByEmail(localStorage.email)
           .then((response) => {
@@ -213,7 +213,7 @@ export default {
       this.dialog = false;
     },
     getColor(state) {
-      if (state == "Sin aprobar") return "red";
+      if (state == "No aprobado") return "red";
       if (state == "Aprobado") return "green";
       else return "blue";
     },

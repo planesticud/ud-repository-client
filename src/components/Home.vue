@@ -113,7 +113,7 @@ export default {
       ];
     }
      //cmbnoe
-    if (localStorage.rol === "COORDINADOR") {
+    if (localStorage.rol === "EVALUADOR") {
       this.buttons = [
         {
           text: "Inicio",
