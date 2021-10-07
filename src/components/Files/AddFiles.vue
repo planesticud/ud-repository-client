@@ -8,14 +8,18 @@
         <h3 class="blue lighten-4 text-md-center">Recurso</h3>
         <p>&nbsp;</p>
         <p>
-          Para cargar el recurso tenga en cuenta las siguientes extensiones en
-          los archivos a cargar: (imagen, audio, video, Zip, Rar, Tar, HTML,
-          htm, PDF, Word, Excel)
+          Para cargar el recurso tenga en cuenta que el tamaño máximo es de 100
+          MB y las siguientes extensiones en los archivos a cargar:
+          <br />Imagen (JPG, PNG) <br />Página Web (HTML, htm) <br />Comprimido
+          (Zip, Rar, Tar.Gz) <br />Documento portable (PDF, Word, Excel)
+          <br />Video (WMV, AVI, MOV, MPG) *Audio (WAV, MP3)
         </p>
         <v-file-input
           v-model="file"
+          :rules="rules"
           show-size
           counter
+          required
           label="Adjuntar archivo"
           accept="image/*, audio/*, video/*, application/pdf, .docx, .xlsx, 
                     application/zip, application/rar, application/rar, application/tar, 
@@ -91,24 +95,31 @@
     </v-row>
     <v-row justify="space-around">
       <v-col cols="auto">
-        <v-dialog v-model="dialog_der" persistent max-width="600px">
+        <v-dialog v-model="dialog_der" persistent max-width="70%">
           <template v-slot:activator="{ on, attrs }">
             <v-btn color="primary" dark v-bind="attrs" v-on="on">
-              Ver autorización de derechos de autor
+              Autorización de derechos de autor
             </v-btn>
           </template>
           <v-card>
-            <v-card-title> AUTORIZACIÓN DE DERECHOS DE AUTOR </v-card-title>
-            <v-card-text>
-              PRIMERO. -ALCANCE DE LA AUTORIZACIÓN: La presente autorización, no
-              exclusiva, para usos académicos y promocionales de la
-              investigación de la Universidad Distrital Francisco José de
-              Caldas, se otorga para: •La reproducción por cualquier forma o
-              procedimiento, en especial para medios impresos o electrónicos;
-              •La inclusión en bases de datos de la Universidad Distrital
-              Francisco José de Caldas o de entidades aliadas para fines
-              académicos; •La inclusión de referencia en catálogos, bases de
-              datos e índices bibliográficos, jornadas de socialización y
+            <v-card-title>
+              <span class="text-h5">AUTORIZACIÓN DE DERECHOS DE AUTOR </span>
+            </v-card-title>
+            <p></p>
+
+            <v-card-text class="textcent">
+              <span class="textder"
+                >PRIMERO. -ALCANCE DE LA AUTORIZACIÓN:
+              </span>
+              <br />
+              La presente autorización, no exclusiva, para usos académicos y
+              promocionales de la investigación de la Universidad Distrital
+              Francisco José de Caldas, se otorga para: •La reproducción por
+              cualquier forma o procedimiento, en especial para medios impresos
+              o electrónicos; •La inclusión en bases de datos de la Universidad
+              Distrital Francisco José de Caldas o de entidades aliadas para
+              fines académicos; •La inclusión de referencia en catálogos, bases
+              de datos e índices bibliográficos, jornadas de socialización y
               portales web de la Universidad Distrital Francisco José de Caldas;
               •La comunicación pública por cualquier medio que sirva para
               difundir las palabras, los signos, los sonidos o las imágenes en
@@ -122,23 +133,36 @@
               académicos y de investigación de la Universidad Distrital
               Francisco José de Caldas; •La inclusión en soportes multimedia,
               colecciones, recopilaciones, o en general, servir de base para
-              cualquier otra obra derivada. PARÁGRAFO ÚNICO:La presente
+              cualquier otra obra derivada.
+              <br />
+              <span class="textder">PARÁGRAFO ÚNICO:</span>La presente
               autorización de los anteriores derechos mencionados en este
               artículo implica, de igual forma, el respeto al derecho moral de
               autor, bajo el reconocimiento del autor y su obra y a oponerse a
               toda deformación o desfiguración de la misma. Sin embargo, los
               cambios, adaptaciones y transformaciones que realice la
               Universidad son consentidos y no afectarán ningún derecho moral.
-              SEGUNDA. -DURACIÓN Y CAMPO DE APLICACIÓN:La presente autorización
-              se otorga a título gratuito, por una duración de 70 años de
-              acuerdo con el artículo 4º de la Ley 1915 de 2018, contados a
-              partir del presente escrito y sin ningún tipo de limitación dentro
-              del ámbito territorial, para los fines académicos o de difusión
-              científica. TERCERA. -DECLARACIÓN DE LEGALIDAD: Manifiesto que
-              detento la titularidad originaria de los derechos patrimoniales
-              sobre la obra que autorizo mediante el presente documento y, por
-              lo tanto, no infrinjo o usurpo derechos de autor de terceros.
-              Además, manifiesto que la obra no contiene citas ni
+            </v-card-text>
+
+            <v-card-text class="textcent">
+              <span class="textder"
+                >SEGUNDA. -DURACIÓN Y CAMPO DE APLICACIÓN:</span
+              >
+              <br />
+              presente autorización se otorga a título gratuito, por una
+              duración de 70 años de acuerdo con el artículo 4º de la Ley 1915
+              de 2018, contados a partir del presente escrito y sin ningún tipo
+              de limitación dentro del ámbito territorial, para los fines
+              académicos o de difusión científica.
+            </v-card-text>
+
+            <v-card-text class="textcent">
+              <span class="textder"> TERCERA. -DECLARACIÓN DE LEGALIDAD: </span>
+              <br />
+              Manifiesto que detento la titularidad originaria de los derechos
+              patrimoniales sobre la obra que autorizo mediante el presente
+              documento y, por lo tanto, no infrinjo o usurpo derechos de autor
+              de terceros. Además, manifiesto que la obra no contiene citas ni
               transcripciones de otras obras protegidas por fuera de los límites
               autorizados por la ley, según los usos honrados para los fines
               previstos; ni tampoco contiene declaraciones difamatorias contra
@@ -149,30 +173,52 @@
               contribuciones y que han sido reproducidas total o parcialmente en
               el artículo autorizado, cuentan con la debida autorización escrita
               de los titulares de los derechos en el caso que sea necesario].
-              CUARTA. -INDEMNIDAD:Manifiesto que los derechos sobre la obra
-              objeto de la presente autorización no han sido cedidos con
-              antelación y que sobre ellos no pesa ningún gravamen ni limitación
-              en su uso o utilización. Por lo anterior, manifiesto que, en caso
-              de presentarse cualquier reclamación o acción por parte de un
-              tercero en cuanto a los derechos de autor sobre el recurso digital
-              en cuestión, asumiré toda la responsabilidad y saldré en defensa
-              de los derechos que consagra la autorización respectiva; para los
-              efectos la Universidad Distrital Francisco José de Caldas actúa
-              como un tercero de buena fe. QUINTA -IMÁGENES DE TERCEROS Y DE
-              MENORES DE EDAD:Manifiesto que las imágenes que han sido captadas
-              en fotografías y/o videos y/o de terceros o de menores de edad,
-              incluidos en la obra la cual autorizado o que soportan el mismo,
-              cuentan con la debida autorización, atendiendo que las mimas
-              tienen por finalidad destinarlas a la promoción institucional y
-              académica en los medios que la Universidad Distrital Francisco
-              José de Caldas considere pertinentes. SEXTA- LEGISLACIÓN
-              APLICABLE: La legislación aplicable para efectos de interpretar la
-              presente autorización será la Decisión Andina 351 de 1993, la Ley
-              23 de 1982, Ley 1915 de 2018 y el artículo 181 de la Ley 1955 de
-              2019. SÉPTIMA. -NOTIFICACIONES: Manifiesto que, para todos los
-              efectos relacionados con la ejecución de esta autorización,
-              recibiré notificaciones y correspondencia en la dirección de
-              correo electrónico registrada en el repositorio.
+            </v-card-text>
+
+            <v-card-text class="textcent">
+              <span class="textder">CUARTA. -INDEMNIDAD:</span>
+              <br />
+              Manifiesto que los derechos sobre la obra objeto de la presente
+              autorización no han sido cedidos con antelación y que sobre ellos
+              no pesa ningún gravamen ni limitación en su uso o utilización. Por
+              lo anterior, manifiesto que, en caso de presentarse cualquier
+              reclamación o acción por parte de un tercero en cuanto a los
+              derechos de autor sobre el recurso digital en cuestión, asumiré
+              toda la responsabilidad y saldré en defensa de los derechos que
+              consagra la autorización respectiva; para los efectos la
+              Universidad Distrital Francisco José de Caldas actúa como un
+              tercero de buena fe.
+            </v-card-text>
+
+            <v-card-text class="textcent">
+              <span class="textder"
+                >QUINTA -IMÁGENES DE TERCEROS Y DE MENORES DE EDAD:</span
+              >
+              <br />
+              Manifiesto que las imágenes que han sido captadas en fotografías
+              y/o videos y/o de terceros o de menores de edad, incluidos en la
+              obra la cual autorizado o que soportan el mismo, cuentan con la
+              debida autorización, atendiendo que las mimas tienen por finalidad
+              destinarlas a la promoción institucional y académica en los medios
+              que la Universidad Distrital Francisco José de Caldas considere
+              pertinentes.
+            </v-card-text>
+
+            <v-card-text class="textcent">
+              <span class="textder">SEXTA- LEGISLACIÓN APLICABLE: </span>
+              <br />
+              La legislación aplicable para efectos de interpretar la presente
+              autorización será la Decisión Andina 351 de 1993, la Ley 23 de
+              1982, Ley 1915 de 2018 y el artículo 181 de la Ley 1955 de 2019.
+            </v-card-text>
+
+            <v-card-text class="textcent">
+              <span class="textder">SÉPTIMA. -NOTIFICACIONES: </span>
+              <br />
+              Manifiesto que, para todos los efectos relacionados con la
+              ejecución de esta autorización, recibiré notificaciones y
+              correspondencia en la dirección de correo electrónico registrada
+              en el repositorio.
             </v-card-text>
 
             <v-card-actions>
@@ -213,13 +259,18 @@
 
 <script>
 import FilesService from "../../services/files";
-//import AddFilesModel from "../../models/addFilesModel"
+
 export default {
   data() {
     const formatDate = new Date().toISOString().slice(0, 10);
 
     return {
+      msjVal: "",
       file: [],
+      rules: [
+        (value) =>
+          !value || value.size < 100000000 || "El tamaño minimo son 100 MB!",
+      ],
       progress: 0,
       currentFile: undefined,
       dialog: false,
@@ -360,7 +411,8 @@ export default {
               "Videotutorial",
               "Manual",
               "Plantilla",
-              "Infografía, podcast",
+              "Infografía", 
+              "podcast",
             ],
             help: "Los tipos de recursos mediante los cuales se muestra el contenido del recurso.",
           },
@@ -464,7 +516,7 @@ export default {
           {
             type: "label",
             label:
-              "Actuando en nombre propio como autor o representante del contenido creado, autorizo previa y expresamente a la la Universidad Distrital Francisco José de Caldas para la utilización de la obra adjunta " +
+              "Actuando en nombre propio como autor o representante del contenido creado, autorizo previa y expresamente a la Universidad Distrital Francisco José de Caldas para la utilización de la obra adjunta " +
               ", conceptualización, de mi autoría, bajo la licencia que se relaciona a continuación:",
             model: "texto1",
             styleClasses: "lighten-4 text-md-left",
@@ -504,50 +556,128 @@ export default {
       },
     };
   },
-  methods: {
+    methods: {
     submit(model) {
-      const file = this.file;
-      this.progress = 0;
-      this.currentFile = true;
-      FilesService.upload(file, (event) => {
-        this.progress = Math.round((100 * event.loaded) / event.total);
-      })
-        .then(({ data }) => {
-          model.format = data.format;
-          model.location = data.url;
-          model.size = data.size.size;
-          FilesService.createFile(model)
-            .then((response) => {
-              this.dialog = true;
-              this.result = {
-                text: `el recurso fue creado ${response.data.id}`,
-                color: "green lighten-2",
-                state: true,
-              };
-              this.model = {};
-              this.file = [];
-              this.progress = 0;
-              this.currentFile = undefined;
-            })
-            .catch((e) => {
-              this.dialog = true;
-              this.result = {
-                text: `error: ${e}`,
-                color: "red lighten-2",
-                state: true,
-              };
-            });
+      if (this.validadata(model)) {
+        const file = this.file;
+        this.progress = 0;
+        this.currentFile = true;
+        FilesService.upload(file, (event) => {
+          this.progress = Math.round((100 * event.loaded) / event.total);
         })
-        .catch((e) => {
-          this.dialog = true;
-          this.result = {
-            text: `error: ${e}`,
-            color: "red lighten-2",
-            state: false,
-          };
-        });
+          .then(({ data }) => {
+            model.format = data.format;
+            model.location = data.url;
+            model.size = data.size.size;
+            FilesService.createFile(model)
+              .then((response) => {
+                this.dialog = true;
+                this.result = {
+                  text: `el recurso fue creado ${response.data.id}`,
+                  color: "green lighten-2",
+                  state: true,
+                };
+                this.model = {};
+                this.file = [];
+                this.progress = 0;
+                this.currentFile = undefined;
+              })
+              .catch((e) => {
+                this.dialog = true;
+                this.result = {
+                  text: `error: ${e}`,
+                  color: "red lighten-2",
+                  state: false,
+                };
+              });
+          })
+          .catch((e) => {
+            this.dialog = true;
+            this.result = {
+              text: `error: ${e}`,
+              color: "red lighten-2",
+              state: false,
+            };
+          });
+      } else {
+        this.dialog = true;
+        this.result = {
+          text:
+            "Verifique los siguientes campos obligatorios para poder crear el recurso: " +
+            this.msjVal,
+          color: "red lighten-2",
+          state: false,
+        };
+      }
     },
-  acepto(valor) {
+
+    validadata(model) {
+      this.msjVal = "";
+      let x = true;
+      if (!model.language) {
+        x = false;
+        this.msjVal = "idioma, " + this.msjVal;
+      }
+      if (!model.description) {
+        x = false;
+        this.msjVal = "descripción, " + this.msjVal;
+      }
+      if (!model.key_words) {
+        x = false;
+        this.msjVal = "palabras clave, " + this.msjVal;
+      }
+      if (!model.title) {
+        x = false;
+        this.msjVal = "título, " + this.msjVal;
+      }
+      if (!model.version) {
+        x = false;
+        this.msjVal = "versión, " + this.msjVal;
+      }
+      if (!model.state) {
+        x = false;
+        this.msjVal = "estado, " + this.msjVal;
+      }
+      if (!model.participants) {
+        x = false;
+        this.msjVal = "autores, " + this.msjVal;
+      }
+      if (!model.type_of_educational_resource) {
+        x = false;
+        this.msjVal = "tipo de recurso educativo, " + this.msjVal;
+      }
+      if (!model.objetive_poblation) {
+        x = false;
+        this.msjVal = "población objetivo, " + this.msjVal;
+      }
+
+      if (!model.context) {
+        x = false;
+        this.msjVal = "contexto, " + this.msjVal;
+      }
+      if (!model.purpose) {
+        x = false;
+        this.msjVal = "clasificación, " + this.msjVal;
+      }
+      if (!model.copyright) {
+        x = false;
+        this.msjVal = "copyright, " + this.msjVal;
+      }
+
+      if (this.file) {
+        if (this.file.size > 100000000) {
+          x = false;
+          this.msjVal = "archivo excede el máximo , " + this.msjVal;
+        }
+      } else {
+        x = false;
+        this.msjVal = "adjuntar archivo, " + this.msjVal;
+      }
+
+      return x;
+    },
+
+    acepto(valor) {
       this.swi.activar = valor;
       if (this.swi.activar) {
         this.swi.name = "Si, Acepto";
@@ -558,9 +688,6 @@ export default {
       return false;
     },
 
-    selectFile() {
-      this.file = this.$refs.file.files[0];
-    },
     volver() {
       this.$router.push({ name: "files" });
     },
