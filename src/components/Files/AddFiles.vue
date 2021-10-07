@@ -315,6 +315,9 @@ export default {
             featured: true,
             required: true,
             values: ["Español", "Inglés", "Francés", "Alemán", "Portugués"],
+            selectOptions: {
+              noneSelectedText: "Haga clic para seleccionar una opción",
+            },
             default: "Español",
             help: "Seleccione el idioma en el cual está escrito su recurso",
           },
@@ -327,7 +330,7 @@ export default {
             placeholder: "Descripción del recurso",
             featured: true,
             required: true,
-            help: "Escriba de manera breve el objetivo del recurso, qué intención tiene para el aprendizaje de la temática en particular que desea compartir.",
+            help: "Escriba de manera breve el objetivo del recurso, qué intención tiene para el aprendizaje de la temática en particular que desea compartir. Se recomienda no superar los 100 caracteres.",
           },
           {
             type: "textArea",
@@ -350,12 +353,12 @@ export default {
             inputType: "number",
             label: "Versión",
             model: "version",
-            min: 0,
+            min: 1,
             max: 200,
             placeholder: "Número de la versión del recurso",
             featured: true,
             required: true,
-            help: "Seleccione la versión del recurso. En caso que lo desee reemplazar, pordrá cargarlo en este mismo espacio y actualizar la versión correspondiente.",
+            help: "Seleccione la versión del recurso. En caso que lo desee reemplazar, podrá cargarlo en este mismo espacio y actualizar la versión correspondiente.",
           },
           {
             type: "input",
@@ -376,7 +379,7 @@ export default {
             max: 200,
             placeholder: "Nombres de los autores separados por coma",
             rows: 2,
-            help: "Relacione su nombre completo como autor intelectual del recurso a carga. ",
+            help: "Relacione su nombre completo como autor intelectual del recurso a cargar. En caso de ser varios autores, podrá incluir los que desee y separarlos por coma (,). Aclaración: tenga en cuenta que la relación de autor en esta plataforma, no será considerada en la descarga del recurso. ",
           },
           {
             type: "label",
@@ -402,7 +405,7 @@ export default {
             inputType: "text",
             label: "Tipo de recurso educativo",
             model: "type_of_educational_resource",
-            placeholder: "Tipo de recurso educativo",
+            placeholder: "Seleccione la tipología de su recurso",
             featured: true,
             required: true,
             values: [
@@ -411,9 +414,12 @@ export default {
               "Videotutorial",
               "Manual",
               "Plantilla",
-              "Infografía", 
+              "Infografía",
               "podcast",
             ],
+            selectOptions: {
+              noneSelectedText: "Haga clic para seleccionar una opción",
+            },
             help: "Los tipos de recursos mediante los cuales se muestra el contenido del recurso.",
           },
           /*{
@@ -437,6 +443,9 @@ export default {
             featured: true,
             required: true,
             values: ["Estudiantes", "Docentes", "Investigadores"],
+            selectOptions: {
+              noneSelectedText: "Haga clic para seleccionar una opción",
+            },
             help: "Seleccione la población a quien va dirigido este recurso.",
           },
           {
@@ -452,6 +461,9 @@ export default {
               "Educación media",
               "Educación Inicial",
             ],
+            selectOptions: {
+              noneSelectedText: "Haga clic para seleccionar una opción",
+            },
             help: "Entorno educativo en el que se utilizara el recurso.",
           },
 
@@ -494,7 +506,7 @@ export default {
               "Ingeniería, Arquitectura, Urbanismo y afines",
               "Matemáticas y Ciencia Naturales",
             ],
-            help: "Areas donde se determina que pertence el recurso",
+            help: "Seleccione el área de conocimiento con el cual está relacionado su recurso. Puede seleccionar varias opciones si así lo considera",
           },
           {
             type: "input",
@@ -515,9 +527,7 @@ export default {
           },
           {
             type: "label",
-            label:
-              "Actuando en nombre propio como autor o representante del contenido creado, autorizo previa y expresamente a la Universidad Distrital Francisco José de Caldas para la utilización de la obra adjunta " +
-              ", conceptualización, de mi autoría, bajo la licencia que se relaciona a continuación:",
+            label: `<p>Actuando en nombre propio como autor o representante del contenido creado <strong class="textder"> autorizo previa y expresamente </strong> a la Universidad Distrital Francisco José de Caldas para la utilización de la obra adjunta, conceptualización, de mi autoría, bajo la licencia que se relaciona a continuación:</p>`,
             model: "texto1",
             styleClasses: "lighten-4 text-md-left",
           },
@@ -538,6 +548,9 @@ export default {
               "Atribución-NoComercial-CompartirIgual",
               "Atribución-NoComercial-SinDerivadas",
             ],
+            selectOptions: {
+              noneSelectedText: "Haga clic para seleccionar una opción",
+            },
             default: "Atribución",
             help: `para mas información <a target="_blank" href="https://co.creativecommons.net/tipos-de-licencias/">Creative Commons</a>`,
           },
@@ -552,11 +565,11 @@ export default {
       formOptions: {
         validateAfterLoad: true,
         validateAfterChanged: true,
-        //validateAsync: true,
+        validateAsync: true,
       },
     };
   },
-    methods: {
+  methods: {
     submit(model) {
       if (this.validadata(model)) {
         const file = this.file;
