@@ -84,13 +84,13 @@ export default {
           text: "Inicio",
           route: "/home",
           description: "Inicio repositorio",
-          icon: "mdi-home",
+          icon: "mdi-home-account",
         },
         {
           text: "Usuarios",
           route: "/users",
           description: "Administración de usuarios",
-          icon: "mdi-account",
+          icon: "mdi-account-group",
         },
         {
           text: "Recursos",
@@ -104,12 +104,7 @@ export default {
           description: "Uso de los recursos",
           icon: "mdi-elevation-rise",
         },
-        {
-          text: "Historial",
-          route: "/hisotry",
-          description: "Historial de acciones en el repositorio",
-          icon: "mdi-search-web",
-        },
+
       ];
     }
      //cmbnoe
@@ -119,7 +114,7 @@ export default {
           text: "Inicio",
           route: "/home",
           description: "Inicio repositorio",
-          icon: "mdi-home",
+          icon: "mdi-home-account",
         },
         {
           text: "Mis Recursos",
@@ -132,7 +127,7 @@ export default {
           text: "Revisar",
           route: "/revisar",
           description: "Revisar recursos",
-          icon: "mdi-file",
+          icon: "mdi-clipboard-check-outline",
         },
         {
           text: "Estadísticas",
@@ -149,7 +144,7 @@ export default {
           text: "Inicio",
           route: "/home",
           description: "Inicio repositorio",
-          icon: "mdi-account",
+          icon: "mdi-home-account",
         },
         {
           text: "Mis Recursos",
@@ -165,7 +160,7 @@ export default {
           text: "Inicio",
           route: "/home",
           description: "Inicio repositorio",
-          icon: "mdi-account",
+          icon: "mdi-home-account",
         },
         {
           text: "Busqueda de Recursos",
