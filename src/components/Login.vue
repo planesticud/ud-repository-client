@@ -1,14 +1,13 @@
 <template>
   <div class="container">
     <div class="google-icon center">
-      <a href="https://apirepository.planestic.udistrital.edu.co/api/google" class="white--text sinLine">
+      <a href="https://apirepository.planestic.udistrital.edu.co/api/google">
         <button class="btn btn-light">
           <img
             class="google-icon center"
-            src="../assets/images/img_cuenta.png"
-            v-b-tooltip.hover title="Iniciar Sesión"
+            src="../assets/images/googleicon.png"
           />
-         
+          <p>Inicio de sesión</p>
         </button>
         <!--href="https://apirepository.planestic.udistrital.edu.co/api/google"-->
       </a>
@@ -57,8 +56,8 @@ export default {
   margin: auto;
 }
 .google-icon {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
 }
 .center {
   margin: auto;
@@ -67,9 +66,5 @@ export default {
 .text-access {
   max-width: 300px;
   margin: auto;
-}
-.sinLine {
-  text-decoration: none;
-  text-size-adjust: 2px;
 }
 </style>
