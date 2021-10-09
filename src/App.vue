@@ -72,10 +72,11 @@
             <a @click="logout"> Cerrar Sesion {{ rol }} </a>
           </div>
           <a
-            class="pull-right"
+            class="pull-right sinLine mr-2"
             v-else
             href="https://apirepository.planestic.udistrital.edu.co/api/google"
           >
+            <v-icon> mdi-account </v-icon>
             Iniciar Sesion
           </a>
         </div>
@@ -107,9 +108,15 @@
               class="mx-6 white--text"
               icon
             >
-              <v-icon size="36px" :title="lik.des">
-                {{ lik.icons }}
-              </v-icon>
+              <v-hover v-slot="{ hover }" open-delay="200">
+                <v-icon
+                  :title="lik.des"
+                  :size="hover ? '64px' : '36px'"
+                  :class="{ 'on-hover': hover }"
+                >
+                  {{ lik.icons }}
+                </v-icon>
+              </v-hover>
             </v-btn>
           </v-card-text>
         </v-card>
@@ -249,13 +256,13 @@
                 </v-card-text>
                 <v-divider></v-divider>
                 <v-card-text class="text-lg-center">
-                  Avenida Ciudad de quito # 64 - 81 
+                  Avenida Ciudad de quito # 64 - 81
                   <br />
                   Bogotá D.C. Republica de Colombia
                 </v-card-text>
                 <v-divider></v-divider>
                 <v-card-text class="text-lg-center">
-                  3239300 ext: 6368 planesticud@udistrital.edu.co 
+                  3239300 ext: 6368 planesticud@udistrital.edu.co
                   <br />
                   Lunes a viernes de 8 a.m. a 5 p.m.
                 </v-card-text>
@@ -287,7 +294,7 @@ export default {
       linkk: [
         {
           icons: "mdi-home",
-          route: "https://planestic.udistrital.edu.co/",
+          route: "/home",
           des: "Inicio",
         },
         {
@@ -317,7 +324,7 @@ export default {
           des: "Contacto",
         },
       ],
-      title: "Repositorio UD",
+      title: "RDigital UD",
       isLogin: false,
       url_image: "",
       buttons: [],
@@ -456,7 +463,7 @@ export default {
       this.isMobile = window.innerWidth < 800;
     },
   },
- mounted() {
+  mounted() {
     if (localStorage.name) {
       this.name = localStorage.name;
     }
@@ -472,11 +479,17 @@ export default {
         this.buttons.push({ text: "Mis Recursos", route: "/files" });
       }
       if (localStorage.rol === "DOCENTE") {
-        this.buttons.push({ text: "Busqueda de Recursos", route: "/filesbuscar" });
+        this.buttons.push({
+          text: "Busqueda de Recursos",
+          route: "/filesbuscar",
+        });
         this.buttons.push({ text: "Mis Recursos", route: "/files" });
       }
       if (localStorage.rol === "ESTUDIANTE") {
-        this.buttons.push({ text: "Busqueda de Recursos", route: "/filesbuscar" });
+        this.buttons.push({
+          text: "Busqueda de Recursos",
+          route: "/filesbuscar",
+        });
       }
     }
     this.image();
