@@ -7,9 +7,9 @@
             class="google-icon center"
             src="../assets/images/googleicon.png"
           />
-          <p>Inicio de sesión</p>
+          <!--  <p>Inicio de sesión</p>-->
         </button>
-        <!--href="https://apirepository.planestic.udistrital.edu.co/api/google"-->
+       <!-- href="https://apirepository.planestic.udistrital.edu.co/api/google"-->
       </a>
     </div>
   </div>
@@ -56,8 +56,8 @@ export default {
   margin: auto;
 }
 .google-icon {
-  width: 70px;
-  height: 70px;
+  width: 1px;
+  height: 1px;
 }
 .center {
   margin: auto;
@@ -66,5 +66,9 @@ export default {
 .text-access {
   max-width: 300px;
   margin: auto;
+}
+.sinLine {
+  text-decoration: none;
+  text-size-adjust: 2px;
 }
 </style>

@@ -41,7 +41,11 @@
               :key="index"
               text
             >
-              {{ button.text }}
+              <v-hover v-slot="{ hover }" open-delay="200">
+                <label :class="hover ? 'osc' : ''">
+                  {{ button.text }}
+                </label>
+              </v-hover>
             </v-btn>
           </div>
         </div>
@@ -69,7 +73,10 @@
             <v-avatar class="pull-right">
               <img :src="url_image" :alt="name" />
             </v-avatar>
-            <a @click="logout"> Cerrar Sesion {{ rol }} </a>
+            <a>&nbsp;{{ rol }}&nbsp; </a>
+            <a @click="logout">
+              <v-icon title="Salir" size="36px"> mdi-exit-run </v-icon>
+            </a>
           </div>
           <a
             class="pull-right sinLine mr-2"
@@ -96,7 +103,6 @@
       </v-container>
       <!--Fin cmbnoe1 -->
       <router-view />
-
       <v-card dark padless>
         <v-card flat tile color="#8b1919" class="white--text text-center">
           <v-card-text>
@@ -435,7 +441,7 @@ export default {
         this.url_image = localStorage.url_image;
         // cmbnoe1
         this.isMobile2 = true;
-        this.rol = localStorage.rol.toLowerCase();
+        this.rol = localStorage.rol;
         // fin cmbnoe1
       } else {
         this.isLogin = false;
@@ -503,7 +509,6 @@ export default {
 .pull-right {
   margin-left: auto;
 }
-
 .banner-all {
   background-color: #8b1919;
   max-height: 170px;
@@ -522,5 +527,12 @@ export default {
 }
 .sinLine {
   text-decoration: none;
+}
+.osc {
+  background-color: #393939;
+  color: #f3f3f3;
+}
+.cla {
+  background-color: #f3f3f3;
 }
 </style>
