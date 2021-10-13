@@ -345,14 +345,20 @@ export default {
         "background-color": "#F3F3F3",
       },
       items: [
-        {
-          src: "https://planestic.aulasvirtuales.udistrital.edu.co/sites/default/files/images/inicio/banner_cursos_carousel.jpg",
+         {
+          src: "https://repository-planesticud.s3.amazonaws.com/1634147784064Banner-01.jpg",
         },
         {
-          src: "https://planestic.aulasvirtuales.udistrital.edu.co/sites/default/files/images/inicio/banner-blog.jpg",
+          src: "https://repository-planesticud.s3.amazonaws.com/1634151412113Banner-03.jpg",
         },
         {
-          src: "https://planestic.aulasvirtuales.udistrital.edu.co/sites/default/files/images/inicio/banner-inicio.png",
+          src: "https://repository-planesticud.s3.amazonaws.com/1634151473464Banner-04.jpg",
+        },
+           {
+          src: "https://repository-planesticud.s3.amazonaws.com/1634151552809Banner-05.jpg",
+        },
+           {
+          src: "https://repository-planesticud.s3.amazonaws.com/1634151628179Banner-06.jpg",
         },
       ],
       isMobile2: false,
