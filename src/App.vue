@@ -3,7 +3,7 @@
     <div v-if="!isMobile" class="banner-all" :style="myStyle">
       <img
         class="logo-planestic1"
-        src="./assets/images/LOGO-UD-BLANCO-13-13.png"
+        src="./assets/images/logo_rdigital.png"
       />
       <img
         class="logo-planestic2"
