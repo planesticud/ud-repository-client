@@ -63,7 +63,7 @@ export default {
         {
           class: "",
           key: "type_of_educational_resource",
-          value: "Tipo de recurso educacional:",
+          value: "Clasificación de recurso educativo:",
         },
         /*{
           class: "",
