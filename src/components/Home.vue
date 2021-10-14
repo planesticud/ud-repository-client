@@ -23,7 +23,7 @@
         >
           <a
             :href="button.route"
-            class="v-list-item v-list-item--link theme--light"
+            class="v-list-item v-list-item--link"
             tabindex="0"
           >
             <div class="v-list-item__icon">
@@ -49,7 +49,7 @@ export default {
       isLogin: false,
       buttons: [],
       items: [
-       {
+        {
           src: "https://repository-planesticud.s3.amazonaws.com/1634147784064Banner-01.jpg",
         },
         {
@@ -58,10 +58,10 @@ export default {
         {
           src: "https://repository-planesticud.s3.amazonaws.com/1634151473464Banner-04.jpg",
         },
-           {
+        {
           src: "https://repository-planesticud.s3.amazonaws.com/1634151552809Banner-05.jpg",
         },
-           {
+        {
           src: "https://repository-planesticud.s3.amazonaws.com/1634151628179Banner-06.jpg",
         },
       ],
@@ -110,10 +110,9 @@ export default {
           description: "Uso de los recursos",
           icon: "mdi-elevation-rise",
         },
-
       ];
     }
-     //cmbnoe
+    //cmbnoe
     if (localStorage.rol === "EVALUADOR") {
       this.buttons = [
         {
