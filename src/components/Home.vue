@@ -3,7 +3,7 @@
     <v-container>
       <h2>{{ title }} {{ name }}</h2>
     </v-container>
-    <v-carousel :show-arrows="true" v-if="!isMobile">
+    <v-carousel :show-arrows="true" v-if="!isMobile" height="auto">
       <v-carousel-item
         v-for="(item, i) in items"
         :key="i"

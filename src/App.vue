@@ -93,7 +93,7 @@
       <br />
       <v-container class="lighten-5">
         <br />
-        <v-carousel :show-arrows="true" v-if="!isMobile2">
+        <v-carousel :show-arrows="true" v-if="!isMobile2" height="auto">
           <v-carousel-item
             v-for="(item, i) in items"
             :key="i"
