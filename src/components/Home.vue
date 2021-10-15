@@ -17,7 +17,7 @@
         class="col-sm-6 col-lg-4 col-12"
       >
         <div
-          class="overflow-hidden v-sheet v-sheet--outlined theme--light rounded"
+          class="overflow-hidden v-sheet v-sheet--outlined rounded"
           min-height="61"
           style="min-height: 61px"
         >
@@ -27,7 +27,9 @@
             tabindex="0"
           >
             <div class="v-list-item__icon">
-              <v-icon x-large :title="button.text">{{ button.icon }}</v-icon>
+              <v-icon x-large :title="button.text">{{
+                 button.icon
+                  }}</v-icon>
             </div>
             <div class="v-list-item__content">
               <div class="v-list-item__title">{{ button.text }}</div>
