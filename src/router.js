@@ -64,6 +64,11 @@ const router = new Router({
       component: () => import("./components/Files/DetailFiles")
     },
     {
+      path: "/estadisticas",
+      name: "estadisticas",
+      component: () => import("./components/Estadisticas/Estadisticas")
+    },
+    {
       path: "/home",
       name: "home",
       component: () => import("./components/Home")
