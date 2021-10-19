@@ -128,7 +128,7 @@
             </v-expand-transition>
           </v-card>
         </v-flex>
-              <!--------- ------------>
+        <!--------- ------------>
 
         <v-flex d-flex xl4 lg4 sm6 xs12>
           <v-card v-if="showIdioma" class="container">
@@ -218,7 +218,9 @@
                     :size="hover ? '48px' : '36px'"
                     :class="{ 'on-hover': hover }"
                     >{{
-                      show0_idioma ? "mdi-information-outline" : "mdi-information"
+                      show0_idioma
+                        ? "mdi-information-outline"
+                        : "mdi-information"
                     }}</v-icon
                   >
                 </v-hover>
@@ -349,7 +351,9 @@
                     :size="hover ? '48px' : '36px'"
                     :class="{ 'on-hover': hover }"
                     >{{
-                      show0_contexto ? "mdi-information-outline" : "mdi-information"
+                      show0_contexto
+                        ? "mdi-information-outline"
+                        : "mdi-information"
                     }}</v-icon
                   >
                 </v-hover>
@@ -441,7 +445,7 @@ export default {
       showD_idioma: false,
       showB_idioma: true,
       show0_idioma: false,
-    
+
       showContexto: false,
       esta_contexto: {
         Superior: 0,
@@ -453,7 +457,7 @@ export default {
       showD_contexto: true,
       showB_contexto: false,
       show0_contexto: false,
-       };
+    };
   },
   methods: {
     getConteosP() {
@@ -618,7 +622,13 @@ export default {
         }
       }
     },
- 
+
+    actualizaIdioma() {
+      this.showIdioma = false;
+      this.getConteoIdioma();
+      this.showIdioma = true;
+    },
+
     getConteoContexto() {
       const datoContexto1 = { context: "Educación superior" };
       FilesService.getPedagogicalConteo(datoContexto1)
@@ -669,7 +679,7 @@ export default {
         }
         case 4: {
           this.esta_contexto.Inicial = dato;
-          this.showContexto=true;
+          this.showContexto = true;
           break;
         }
       }
@@ -698,7 +708,7 @@ export default {
     },
     actualizaContexto() {
       this.showContexto = false;
-      this.getPedagogicalConteo();
+      this.getConteoContexto();
       this.showContexto = true;
     },
   },
