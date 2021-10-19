@@ -237,7 +237,7 @@ export default {
               "Educación superior",
               "Educación tecnológica",
               "Educación media",
-              "Educación Inicial",
+              "Educación inicial",
             ],
 
             help: "Entorno educativo en el que se utilizara el recurso.",
@@ -307,17 +307,15 @@ export default {
             placeholder: "Tipo de derechos",
             featured: true,
             required: true,
-            values: [
+           values: [
               "Atribución",
-              "Atribución-CompartirIgual",
-              "Atribución-SinDerivadas",
               "Atribución-NoComercial",
               "Atribución-NoComercial-CompartirIgual",
-              "Atribución-NoComercial-SinDerivadas",
+              "Atribución-CompartirIgual",
             ],
 
             default: "Atribución",
-            help: `para mas información <a target="_blank" href="https://creativecommons.org/licenses/?lang=es">Creative Commons</a>`,
+            help: `para mas información <a target="_blank" href="https://co.creativecommons.net/tipos-de-licencias/">Creative Commons</a>`,
           },
           {
             type: "submit",

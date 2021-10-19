@@ -293,7 +293,7 @@
                   ['Superior', esta_contexto.Superior],
                   ['Tecnológica', esta_contexto.Tecnológica],
                   ['Media ', esta_contexto.Media],
-                  ['Inicial', esta_contexto.inicial],
+                  ['Inicial', esta_contexto.Inicial],
                 ]"
                 :colors="[['#ffff75', '#ff7575', '#75ffff', '#ff75ff']]"
                 download="estados_de_recursos"
