@@ -3,7 +3,7 @@
     <v-container>
       <h2>{{ title }} {{ name }}</h2>
     </v-container>
-    <v-carousel :show-arrows="true" v-if="!isMobile" height="auto">
+    <v-carousel cycle :show-arrows="true" v-if="!isMobile" height="auto">
       <v-carousel-item
         v-for="(item, i) in items"
         :key="i"
@@ -107,8 +107,8 @@ export default {
           icon: "mdi-file",
         },
         {
-          text: "Estadisticas",
-          route: "/statistics",
+          text: "Estadísticas",
+          route: "/estadisticas",
           description: "Uso de los recursos",
           icon: "mdi-elevation-rise",
         },
@@ -138,7 +138,7 @@ export default {
         },
         {
           text: "Estadísticas",
-          route: "/statistics",
+          route: "/estadisticas",
           description: "Uso de los recursos",
           icon: "mdi-elevation-rise",
         },
@@ -158,6 +158,12 @@ export default {
           route: "/files",
           description: "Administración de recursos",
           icon: "mdi-file",
+        },
+                {
+          text: "Estadísticas",
+          route: "/estadisticas",
+          description: "Uso de los recursos",
+          icon: "mdi-elevation-rise",
         },
       ];
     }

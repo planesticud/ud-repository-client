@@ -73,10 +73,11 @@
             <v-avatar class="pull-right">
               <img :src="url_image" :alt="name" />
             </v-avatar>
-            <a>&nbsp;{{ rol }}&nbsp; </a>
+            &nbsp;{{ name }}&nbsp; 
             <a @click="logout">
               <v-icon title="Salir" size="36px"> mdi-exit-run </v-icon>
             </a>
+            <p class="nombre mx-4">{{ rol }}</p>
           </div>
           <a
             class="pull-right sinLine mr-2"
@@ -93,7 +94,7 @@
       <br />
       <v-container class="lighten-5">
         <br />
-        <v-carousel :show-arrows="true" v-if="!isMobile2" height="auto">
+        <v-carousel cycle :show-arrows="true" v-if="!isMobile2" height="auto">
           <v-carousel-item
             v-for="(item, i) in items"
             :key="i"
@@ -485,10 +486,12 @@ export default {
       if (localStorage.rol === "ADMINISTRADOR") {
         this.buttons.push({ text: "Administrar Recursos", route: "/files" });
         this.buttons.push({ text: "Usuarios", route: "/users" });
+        this.buttons.push({ text: "Estadísticas", route: "/estadisticas" });
       }
       if (localStorage.rol === "EVALUADOR") {
         this.buttons.push({ text: "Revisar", route: "/revisar" });
         this.buttons.push({ text: "Mis Recursos", route: "/files" });
+        this.buttons.push({ text: "Estadísticas", route: "/estadisticas" });
       }
       if (localStorage.rol === "DOCENTE") {
         this.buttons.push({
@@ -496,6 +499,7 @@ export default {
           route: "/filesbuscar",
         });
         this.buttons.push({ text: "Mis Recursos", route: "/files" });
+        this.buttons.push({ text: "Estadísticas", route: "/estadisticas" });
       }
       if (localStorage.rol === "ESTUDIANTE") {
         this.buttons.push({
@@ -514,6 +518,7 @@ export default {
 <style >
 .pull-right {
   margin-left: auto;
+   padding-top: 4px;
 }
 .banner-all {
   background-color: #8b1919;
@@ -540,5 +545,11 @@ export default {
 }
 .cla {
   background-color: #f3f3f3;
+}
+
+.nombre {
+  line-height: 0;
+  padding-left: 55px;
+  font-size: 12px;
 }
 </style>
