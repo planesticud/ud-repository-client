@@ -381,7 +381,7 @@ export default {
             participants: response.participants,
             format: response.format,
             size: response.size,
-            location: response.location,
+           // location: response.location,
             requierements: response.requierements || "",
             class_learning: response.class_learning,
             type_of_educational_resource: response.type_of_educational_resource,
