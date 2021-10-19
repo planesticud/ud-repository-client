@@ -3,6 +3,11 @@ const repositoryUrl = 'https://apirepository.planestic.udistrital.edu.co/api'
 //const repositoryUrl = 'http://192.168.0.9:3005';
 class PublicarService {
 
+    getPublicarConteo(dato) {
+        const data = dato
+        return axios.get(`${repositoryUrl}/publicar/contar`, { params: data });
+    }
+
     getPublicar() {
         const data = {}
         return axios.get(`${repositoryUrl}/publicar`, { params: data });

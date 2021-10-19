@@ -38,6 +38,22 @@ class FilesService {
             onUploadProgress
         })
     }
+
+    getListLifecyConteo(dato) {
+        const data = dato
+        return axios.get(`${repositoryUrl}/lifecycle/contar`, { params: data });
+    }
+
+    getGeneralConteo(dato) {
+        const data = dato
+        return axios.get(`${repositoryUrl}/files/general/contar`, { params: data });
+    }
+
+    getPedagogicalConteo(dato) {
+        const data = dato
+        return axios.get(`${repositoryUrl}/pedagogical_requirements/contar`, { params: data });
+    }
+
 }
 
 export default new FilesService();
