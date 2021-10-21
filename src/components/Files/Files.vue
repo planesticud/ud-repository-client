@@ -84,6 +84,7 @@
 
 <script>
 import filesService from "../../services/files";
+import stadisticsService from "../../services/stadistics";
 export default {
   name: "files-list",
   data() {
@@ -215,6 +216,15 @@ export default {
         .deleteFilesById(id)
         .then(() => {
           this.refreshList();
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      stadisticsService
+        .getStadisticsByid(id)
+        .then((response) => {
+          let idStadistic = response.data[0].id;
+          stadisticsService.deleteStadisticsById(idStadistic);
         })
         .catch((e) => {
           console.log(e);
