@@ -68,18 +68,18 @@ const router = new Router({
       name: "estadisticas",
       component: () => import("./components/Estadisticas/Estadisticas")
     },
-        //josedavid
-        {
-          path: "/stadistics",
-          name: "stadistics",
-          component: () => import("./components/Stadistics/Stadistics")
-        },
-        {
-          path: "/stadistics/graficas",
-          name: "grafica",
-          component: () => import("./components/Stadistics/Graphics")
-        },
-        //end josedavid
+    //josedavid
+    {
+      path: "/stadistics",
+      name: "stadistics",
+      component: () => import("./components/Stadistics/Stadistics")
+    },
+    {
+      path: "/stadistics/graficas",
+      name: "grafica",
+      component: () => import("./components/Stadistics/Graphics")
+    },
+    //end josedavid
     {
       path: "/home",
       name: "home",
