@@ -88,7 +88,7 @@ export default {
   name: "files-list",
   data() {
     return {
-          espera: true,
+      espera: true,
       filEmail: "",
       dialog: false,
       elim: "",
@@ -167,7 +167,7 @@ export default {
           .getFilesByEmail(localStorage.email)
           .then((response) => {
             this.files = response.data;
-               this.espera = false;
+            this.espera = false;
           })
           .catch((e) => {
             console.log(e);
@@ -177,7 +177,7 @@ export default {
           .getFiles()
           .then((response) => {
             this.files = response.data;
-               this.espera = false;
+            this.espera = false;
           })
           .catch((e) => {
             console.log(e);

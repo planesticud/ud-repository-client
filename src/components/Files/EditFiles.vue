@@ -91,7 +91,9 @@ export default {
             featured: true,
             required: true,
             values: ["Español", "Inglés", "Francés", "Alemán", "Portugués"],
-
+            selectOptions: {
+              noneSelectedText: "Haga clic para seleccionar una opción",
+            },
             default: "Español",
           },
           {
@@ -382,9 +384,9 @@ export default {
             format: response.format,
             size: response.size,
             requierements: response.requierements || "",
-            class_learning: response.class_learning,
+            // class_learning: response.class_learning,
             type_of_educational_resource: response.type_of_educational_resource,
-            level_of_interaction: response.level_of_interaction,
+            //level_of_interaction: response.level_of_interaction,
             objetive_poblation: response.objetive_poblation,
             context: response.context,
             cost: response.cost || "",

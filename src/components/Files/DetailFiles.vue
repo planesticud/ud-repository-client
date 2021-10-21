@@ -27,13 +27,13 @@
             <!--josedavid -->
       <v-row justify-lg="center" v-show="showranking">
         <v-rating
-          readonly="false"
+          readonly
           v-model="rating"
           background-color="yellow"
           color="green"
           large
           half-icon="$ratingHalf"
-          half-increments="true"
+          half-increments
           dark
         ></v-rating>
       </v-row>
@@ -62,7 +62,7 @@
               color="green"
               large
               half-icon="$ratingHalf"
-              half-increments="true"
+              half-increments
               dark
             ></v-rating>
             <p>{{ rating }}</p>
