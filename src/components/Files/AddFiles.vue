@@ -278,6 +278,7 @@
 
 <script>
 import FilesService from "../../services/files";
+import StadisticsService from "../../services/stadistics";
 
 export default {
   data() {
@@ -286,6 +287,17 @@ export default {
     return {
       msjVal: "",
       file: [],
+      //beginning josedavid
+      stadistic: {
+        id_obj: 0,
+        name_obj: "",
+        ranking: 0,
+        num_view: 0,
+        num_download: 0,
+        autor: "",
+      },
+      //end josedavid
+
       rules: [
         (value) =>
           !value || value.size < 100000000 || "El tamaño minimo son 100 MB!",
@@ -608,6 +620,12 @@ export default {
             model.size = data.size.size;
             FilesService.createFile(model)
               .then((response) => {
+                //josedavid
+                this.stadistic.id_obj = response.data.id;
+                this.stadistic.autor = localStorage.name;
+                this.stadistic.name_obj = model.title;
+                StadisticsService.addStadistics(this.stadistic);
+                //end josedavid
                 this.dialog = true;
                 this.result = {
                   text: `el recurso fue creado ${response.data.id}`,

@@ -13,9 +13,6 @@
             target="_blank"
           >
             Ver recurso
-            <v-icon small class="mr-2" title="Copiar recurso"
-              >mdi-checkbox-multiple-blank-outline</v-icon
-            >
           </a>
           <v-chip
             v-else-if="item.key == 'state'"
@@ -27,15 +24,85 @@
           <span v-else :class="item.class">{{ model[item.key] }}</span>
         </p>
       </template>
+            <!--josedavid -->
+      <v-row justify-lg="center" v-show="showranking">
+        <v-rating
+          readonly="false"
+          v-model="rating"
+          background-color="yellow"
+          color="green"
+          large
+          half-icon="$ratingHalf"
+          half-increments="true"
+          dark
+        ></v-rating>
+      </v-row>
+
+      <v-row justify="center" v-show="true">
+        <v-dialog v-model="dialog" persistent max-width="290">
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              v-show="dialogo"
+              color="primary"
+              dark
+              v-bind="attrs"
+              v-on="on"
+              @click="consultarranking"
+            >
+              Calificar Recurso
+            </v-btn>
+          </template>
+          <v-card>
+            <v-card-title class="text-h5">
+              Que tanto te gusto el recurso?
+            </v-card-title>
+            <v-rating
+              v-model="rating"
+              background-color="yellow"
+              color="green"
+              large
+              half-icon="$ratingHalf"
+              half-increments="true"
+              dark
+            ></v-rating>
+            <p>{{ rating }}</p>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="green darken-1" text @click="dialog = false">
+                No calificar
+              </v-btn>
+              <!-- <v-btn color="green darken-1" text @click="dialog = false">-->
+              <v-btn color="green darken-1" text @click="calificarRecurso">
+                Guardar
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-row>
+      <!--end josedavid -->
     </div>
   </v-container>
 </template>
 
 <script>
+
+
+
 import FilesService from "../../services/files";
+import stadisticsService from "../../services/stadistics";
 export default {
   data() {
     return {
+       //josedavid
+      showranking: false,
+      stateranking: false,
+      dialogo: true,
+      dialog: false,
+      stadistic: [],
+      rating: 0,
+      rankingold: 0,
+      value: 0,
+      //end josedavid
       title: { text: "Detalle de recurso", icon: "mdi-file-outline" },
       model: {},
       header: [
@@ -59,7 +126,7 @@ export default {
           class: "blue lighten-4 text-md-center",
           value: "Caracteristicas pedagogicas",
         },
-       /* { class: "", key: "class_learning", value: "Tipo de apdrendizaje:" },*/
+        /* { class: "", key: "class_learning", value: "Tipo de apdrendizaje:" },*/
         {
           class: "",
           key: "type_of_educational_resource",
@@ -146,6 +213,39 @@ export default {
       if (state == "Aprobado") return "green";
       else return "blue";
     },
+     //Jose David
+    consultarranking() {
+      stadisticsService
+        .getStadisticsByid(this.$route.params.id)
+        .then((response) => {
+          console.log(response.data);
+          this.rating = response.data[0].ranking;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    calificarRecurso() {
+      stadisticsService
+        .getStadisticsByid(this.$route.params.id)
+        .then((response) => {
+          this.stadistic = response.data;
+          this.rankingold = response.data[0].ranking;
+          this.rating = (this.rankingold + this.rating) / 2;
+          this.stadistic[0].ranking = this.rating;
+          stadisticsService.updateStadistics(
+            this.stadistic[0],
+            this.stadistic[0].id
+          );
+          this.dialog = false;
+          this.dialogo = false;
+          this.showranking = true;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    //Jose David
   },
 
   mounted() {

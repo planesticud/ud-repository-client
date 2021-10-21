@@ -28,7 +28,11 @@
       </template>
 
       <template v-slot:[`item.location`]="{ item }">
-        <a target="_blank" :href="item.location">
+        <a
+          target="_blank"
+          :href="item.location"
+          v-on:click="view_resource(item.id)"
+        >
           {{ url }}
         </a>
       </template>
@@ -48,6 +52,8 @@
 
 <script>
 import filesService from "../../services/files";
+import stadisticsService from "../../services/stadistics";
+
 export default {
   name: "files-list-buscar",
   data() {
@@ -60,6 +66,10 @@ export default {
       files: [],
       title: "",
       url: "Ver recurso",
+      //josedavid
+      counter: 1,
+      stadistic: {},
+      //end josedavid
       headers: [
         {
           text: "Título",
@@ -112,7 +122,7 @@ export default {
         },
       ],
       actions: {
-          detail: {
+        detail: {
           title: "Detalle de recurso",
           icon: " mdi-format-list-bulleted",
         },
@@ -126,14 +136,30 @@ export default {
           .getFilesByState("Aprobado")
           .then((response) => {
             this.files = response.data;
-        
           })
           .catch((e) => {
             console.log(e);
           });
       }
     },
-
+ //josedavid
+    view_resource(id_obj) {
+      stadisticsService
+        .getStadisticsByid(id_obj)
+        .then((response) => {
+          this.stadistic = response.data;
+          this.stadistic[0].num_view = this.stadistic[0].num_view +=
+            this.counter;
+          stadisticsService.updateStadistics(
+            this.stadistic[0],
+            this.stadistic[0].id
+          );
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    //end josedavid
     refreshList() {
       this.retrieveFiles();
     },

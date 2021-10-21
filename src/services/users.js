@@ -23,6 +23,11 @@ class UsersService {
     updateUser(data, id) {
         return axios.put(`${repositoryUrl}/users`, data, { params: { id } })
     }
+    
+    getUserConteo(dato) {
+        const data = dato
+        return axios.get(`${repositoryUrl}/users/contar`, { params: data });
+    }
 }
    
 export default new UsersService();

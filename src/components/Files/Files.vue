@@ -22,7 +22,13 @@
     <v-spacer></v-spacer>
     &nbsp; &nbsp; &nbsp;
 
-    <v-data-table :headers="headers" :items="files" :search="search">
+    <v-data-table
+      :headers="headers"
+      :items="files"
+      :search="search"
+      :loading="espera"
+      loading-text="Cargando registros"
+    >
       <template v-slot:[`item.state`]="{ item }">
         <v-chip :color="getColor(item.state)" dark>
           {{ item.state }}
@@ -82,6 +88,7 @@ export default {
   name: "files-list",
   data() {
     return {
+          espera: true,
       filEmail: "",
       dialog: false,
       elim: "",
@@ -160,6 +167,7 @@ export default {
           .getFilesByEmail(localStorage.email)
           .then((response) => {
             this.files = response.data;
+               this.espera = false;
           })
           .catch((e) => {
             console.log(e);
@@ -169,6 +177,7 @@ export default {
           .getFiles()
           .then((response) => {
             this.files = response.data;
+               this.espera = false;
           })
           .catch((e) => {
             console.log(e);

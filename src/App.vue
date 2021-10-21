@@ -486,12 +486,12 @@ export default {
       if (localStorage.rol === "ADMINISTRADOR") {
         this.buttons.push({ text: "Administrar Recursos", route: "/files" });
         this.buttons.push({ text: "Usuarios", route: "/users" });
-        this.buttons.push({ text: "Estadísticas", route: "/estadisticas" });
+        this.buttons.push({ text: "Estadísticas", route: "/stadistics" });
       }
       if (localStorage.rol === "EVALUADOR") {
         this.buttons.push({ text: "Revisar", route: "/revisar" });
         this.buttons.push({ text: "Mis Recursos", route: "/files" });
-        this.buttons.push({ text: "Estadísticas", route: "/estadisticas" });
+        this.buttons.push({ text: "Estadísticas", route: "/stadistics" });
       }
       if (localStorage.rol === "DOCENTE") {
         this.buttons.push({
@@ -499,7 +499,7 @@ export default {
           route: "/filesbuscar",
         });
         this.buttons.push({ text: "Mis Recursos", route: "/files" });
-        this.buttons.push({ text: "Estadísticas", route: "/estadisticas" });
+        this.buttons.push({ text: "Estadísticas", route: "/stadistics" });
       }
       if (localStorage.rol === "ESTUDIANTE") {
         this.buttons.push({
