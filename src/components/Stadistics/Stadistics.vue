@@ -93,7 +93,7 @@
           </v-list-item>
           <v-card-text>
             <v-row>
-              <v-col class="text-h4 text-right" cols="6"> enero - 10 </v-col>
+              <v-col class="text-h4 text-right" cols="6"> 10 </v-col>
               <v-col cols="6">
                 <v-icon size="64px">mdi-calendar-check</v-icon>
               </v-col>
@@ -251,7 +251,7 @@ export default {
       url: "Ver recurso",
       headers: [
         {
-          text: "Objeto",
+          text: "Recurso",
           value: "name_obj",
           align: "start",
           sortable: true,

@@ -300,7 +300,7 @@ export default {
 
       rules: [
         (value) =>
-          !value || value.size < 100000000 || "El tamaño minimo son 100 MB!",
+          !value || value.size < 100000000 || "El tamaño máximo son 100 MB!",
       ],
       progress: 0,
       currentFile: undefined,

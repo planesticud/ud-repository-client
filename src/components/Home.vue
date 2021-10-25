@@ -3,7 +3,7 @@
     <v-container>
       <h2>{{ title }} {{ name }}</h2>
     </v-container>
-    <v-carousel cycle :show-arrows="true" v-if="!isMobile" height="auto">
+    <v-carousel :show-arrows="true" v-if="!isMobile" height="auto">
       <v-carousel-item
         v-for="(item, i) in items"
         :key="i"
@@ -50,7 +50,7 @@ export default {
       buttons: [],
       items: [
         {
-          src: "https://repository-planesticud.s3.amazonaws.com/1635123031272banner-01.jpg",
+          src: "https://repository-planesticud.s3.amazonaws.com/1635204858047banner-01ok.jpg",
         },
         {
           src: "https://repository-planesticud.s3.amazonaws.com/1635123148623banner-03.jpg",
@@ -62,7 +62,7 @@ export default {
           src: "https://repository-planesticud.s3.amazonaws.com/1635123404214banner-05.jpg",
         },
         {
-          src: "https://repository-planesticud.s3.amazonaws.com/1635123530624banner-06.jpg",
+          src: "https://repository-planesticud.s3.amazonaws.com/1635204972706banner-06ok.jpg",
         },
       ],
       isMobile: false,
