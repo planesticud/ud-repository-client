@@ -1,10 +1,7 @@
 <template>
   <div>
     <div v-if="!isMobile" class="banner-all" :style="myStyle">
-      <img
-        class="logo-planestic1"
-        src="./assets/images/logo_rdigital.png"
-      />
+      <img class="logo-planestic1" src="./assets/images/logo_rdigital.png" />
       <img
         class="logo-planestic2"
         src="./assets/images/logo_planestic2-01.png"
@@ -73,7 +70,7 @@
             <v-avatar class="pull-right">
               <img :src="url_image" :alt="name" />
             </v-avatar>
-            &nbsp;{{ name }}&nbsp; 
+            &nbsp;{{ name }}&nbsp;
             <a @click="logout">
               <v-icon title="Salir" size="36px"> mdi-exit-run </v-icon>
             </a>
@@ -346,20 +343,20 @@ export default {
         "background-color": "#F3F3F3",
       },
       items: [
-         {
-          src: "https://repository-planesticud.s3.amazonaws.com/1634147784064Banner-01.jpg",
+        {
+          src: "https://repository-planesticud.s3.amazonaws.com/1635123031272banner-01.jpg",
         },
         {
-          src: "https://repository-planesticud.s3.amazonaws.com/1634151412113Banner-03.jpg",
+          src: "https://repository-planesticud.s3.amazonaws.com/1635123148623banner-03.jpg",
         },
         {
-          src: "https://repository-planesticud.s3.amazonaws.com/1634151473464Banner-04.jpg",
+          src: "https://repository-planesticud.s3.amazonaws.com/1635123301914banner-04.jpg",
         },
-           {
-          src: "https://repository-planesticud.s3.amazonaws.com/1634151552809Banner-05.jpg",
+        {
+          src: "https://repository-planesticud.s3.amazonaws.com/1635123404214banner-05.jpg",
         },
-           {
-          src: "https://repository-planesticud.s3.amazonaws.com/1634151628179Banner-06.jpg",
+        {
+          src: "https://repository-planesticud.s3.amazonaws.com/1635123530624banner-06.jpg",
         },
       ],
       isMobile2: false,
@@ -518,7 +515,7 @@ export default {
 <style >
 .pull-right {
   margin-left: auto;
-   padding-top: 4px;
+  padding-top: 4px;
 }
 .banner-all {
   background-color: #8b1919;

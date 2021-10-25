@@ -24,7 +24,7 @@
           <span v-else :class="item.class">{{ model[item.key] }}</span>
         </p>
       </template>
-            <!--josedavid -->
+      <!--josedavid -->
       <v-row justify-lg="center" v-show="showranking">
         <v-rating
           readonly
@@ -85,15 +85,12 @@
 </template>
 
 <script>
-
-
-
 import FilesService from "../../services/files";
 import stadisticsService from "../../services/stadistics";
 export default {
   data() {
     return {
-       //josedavid
+      //josedavid
       showranking: false,
       stateranking: false,
       dialogo: true,
@@ -213,7 +210,7 @@ export default {
       if (state == "Aprobado") return "green";
       else return "blue";
     },
-     //Jose David
+    //Jose David
     consultarranking() {
       stadisticsService
         .getStadisticsByid(this.$route.params.id)
@@ -230,9 +227,12 @@ export default {
         .getStadisticsByid(this.$route.params.id)
         .then((response) => {
           this.stadistic = response.data;
-          this.rankingold = response.data[0].ranking;
-          this.rating = (this.rankingold + this.rating) / 2;
-          this.stadistic[0].ranking = this.rating;
+          if (this.stadistic[0].ranking === 0) {
+            this.stadistic[0].ranking = this.rating;
+          } else {
+            this.stadistic[0].ranking =
+              (this.stadistic[0].ranking + this.ranking) / 2;
+          }
           stadisticsService.updateStadistics(
             this.stadistic[0],
             this.stadistic[0].id

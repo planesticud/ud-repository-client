@@ -50,19 +50,19 @@ export default {
       buttons: [],
       items: [
         {
-          src: "https://repository-planesticud.s3.amazonaws.com/1634147784064Banner-01.jpg",
+          src: "https://repository-planesticud.s3.amazonaws.com/1635123031272banner-01.jpg",
         },
         {
-          src: "https://repository-planesticud.s3.amazonaws.com/1634151412113Banner-03.jpg",
+          src: "https://repository-planesticud.s3.amazonaws.com/1635123148623banner-03.jpg",
         },
         {
-          src: "https://repository-planesticud.s3.amazonaws.com/1634151473464Banner-04.jpg",
+          src: "https://repository-planesticud.s3.amazonaws.com/1635123301914banner-04.jpg",
         },
         {
-          src: "https://repository-planesticud.s3.amazonaws.com/1634151552809Banner-05.jpg",
+          src: "https://repository-planesticud.s3.amazonaws.com/1635123404214banner-05.jpg",
         },
         {
-          src: "https://repository-planesticud.s3.amazonaws.com/1634151628179Banner-06.jpg",
+          src: "https://repository-planesticud.s3.amazonaws.com/1635123530624banner-06.jpg",
         },
       ],
       isMobile: false,
