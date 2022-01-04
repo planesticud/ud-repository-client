@@ -86,6 +86,11 @@ const router = new Router({
       component: () => import("./components/Home")
     },
     {
+      path: "/acercade",
+      name: "acercade",
+      component: () => import("./components/Acercade")
+    },
+    {
       path: "/",
       name: "init",
       component: () => import("./components/Home")

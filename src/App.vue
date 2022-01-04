@@ -9,9 +9,9 @@
     </div>
     <v-app>
       <v-app-bar app style="position: absolute">
-        <div v-if="!isMobile" class="d-flex align-center mr-2">
+        <!-- <div v-if="!isMobile" class="d-flex align-center mr-2">
           {{ title }}
-        </div>
+        </div>-->
         <v-menu left bottom v-if="isMobile">
           <template v-slot:activator="{ on, attrs }">
             <v-btn icon v-bind="attrs" v-on="on">
@@ -479,7 +479,9 @@ export default {
     }
     if (localStorage.token) {
       this.token = localStorage.token;
-      this.buttons = [{ text: "Inicio", route: "/home" }];
+      this.buttons = [{ text: this.title, route: "/acercade" }];
+      this.buttons.push({ text: "Inicio", route: "/home" });
+      
       if (localStorage.rol === "ADMINISTRADOR") {
         this.buttons.push({ text: "Administrar Recursos", route: "/files" });
         this.buttons.push({ text: "Usuarios", route: "/users" });
