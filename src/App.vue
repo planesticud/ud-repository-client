@@ -31,6 +31,13 @@
           </v-list>
         </v-menu>
         <div v-else>
+          <div v-if="!token">
+            <v-btn text @click="ver_acerca">
+              <v-hover v-slot="{ hover }" open-delay="200">
+                <label :class="hover ? 'osc' : ''">{{ title }} </label>
+              </v-hover>
+            </v-btn>
+          </div>
           <div v-if="token">
             <v-btn
               :to="button.route"
@@ -76,6 +83,7 @@
             </a>
             <p class="nombre mx-4">{{ rol }}</p>
           </div>
+
           <a
             class="pull-right sinLine mr-2"
             v-else
@@ -86,10 +94,9 @@
           </a>
         </div>
       </v-app-bar>
-
       <!-- cmbnoe1 -->
       <br />
-      <v-container class="lighten-5">
+      <v-container class="lighten-5" v-if="!acerca">
         <br />
         <v-carousel :show-arrows="true" v-if="!isMobile2" height="auto">
           <v-carousel-item
@@ -98,6 +105,134 @@
             :src="item.src"
           ></v-carousel-item>
         </v-carousel>
+      </v-container>
+      <v-container class="lighten-5" v-if="acerca">
+        <br /><br />
+        <v-expansion-panels focusable>
+          <v-expansion-panel>
+            <v-expansion-panel-header disable-icon-rotate
+              ><h2>¿Qué es RDigital -UD?</h2>
+              <template v-slot:actions>
+                <v-icon color="teal"> mdi-check </v-icon>
+              </template>
+            </v-expansion-panel-header>
+            <v-expansion-panel-content class="text-h6">
+              <p>
+                Es un espacio virtual de recursos y objetos de aprendizaje que
+                ofrece a la comunidad universitaria almacenar, catalogar y
+                acceder a recursos digitales que apoyan la academia cuyo
+                propósito es fortalecer los procesos de enseñanza – aprendizaje
+                en las diferentes áreas del conocimiento y facultades de la
+                Universidad.
+              </p>
+              <p>
+                Para ello el repositorio da acceso a recursos creados por
+                docentes y estudiantes tales como: manuales, plantillas de
+                trabajo, videos, videotutoriales, infografías, presentaciones
+                interactivas, entre otras tipologías de uso libre con el
+                objetivo de aportar a la formación e investigación.
+              </p>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header disable-icon-rotate
+              ><h2>¿Cuál es el papel de Planestic- UD?</h2>
+              <template v-slot:actions>
+                <v-icon color="teal"> mdi-check </v-icon>
+              </template>
+            </v-expansion-panel-header>
+            <v-expansion-panel-content class="text-h6">
+              Como parte del Plan Estratégico de Incorporación de Medios y
+              Tecnologías de la Información en Procesos Educativos (2011 –
+              2020), desde PlanEsTIC-UD se busca incentivar la creación,
+              construcción y reutilización de Recursos Educativos Abiertos -
+              REA, para el uso, adaptación y aplicación de contenidos digitales
+              al interior de las aulas y espacios académicos de la universidad
+              en pro de la gestión del conocimiento; para ello se orienta a la
+              comunidad académica en la generación de diversos recursos y OVAS a
+              ser publicados, socializados y dispuesto para toda la institución.
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header disable-icon-rotate
+              ><h2>¿Para qué se desarrolló esta iniciativa?</h2>
+              <template v-slot:actions>
+                <v-icon color="teal"> mdi-check </v-icon>
+              </template>
+            </v-expansion-panel-header>
+            <v-expansion-panel-content class="text-h6">
+              El objetivo de esta iniciativa es responder a los intereses y
+              necesidades de la comunidad universitaria: estudiantes, docentes e
+              investigadores, a fin divulgar y gestionar la producción académica
+              tanto de estudiantes como de docente en la creación de contenidos
+              digitales, que puede ser compartidos en el repositorio y por lo
+              tanto de consulta para toda la comunidad académica, fortaleciendo
+              la gestión de conocimiento en la producción de dichos recursos.
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header disable-icon-rotate
+              ><h2>
+                ¿Qué debe tener en cuenta para participar en el repositorio?
+              </h2>
+              <template v-slot:actions>
+                <v-icon color="teal"> mdi-check </v-icon>
+              </template>
+            </v-expansion-panel-header>
+            <v-expansion-panel-content class="text-h6">
+              <p>
+                Para participar en este espacio, se debe tener en cuenta los
+                siguientes aspectos:
+              </p>
+
+              <ul>
+                <li>
+                  Ser parte de la comunidad académica de la Universidad
+                  Distrital Francisco José de Caldas (estudiantes, docentes,
+                  egresados)
+                </li>
+                <li>
+                  Tener activo el correo institucional de la Universidad
+                  Francisco José de Caldas.
+                </li>
+                <li>
+                  Tener un recurso digital finalizado y previamente estructurado
+                  acerca de una temática en particular, recuerde que este podrá
+                  ser de la tipología que considere (video, imagen, manual,
+                  entre otras).
+                </li>
+                <li>
+                  Estar dispuesto a compartir el recurso con otras personas de
+                  acuerdo con la aprobación de la autorización de derechos de
+                  autor (Anexar formato)
+                </li>
+                <li>
+                  Usar el contenido descargado de manera responsable,
+                  reconociendo al autor moral, su obra y la licencia de uso con
+                  el cual está etiquetado el recurso.
+                </li>
+                <li>
+                  Estar en condiciones de recibir apoyo de PlanEsTIC en la
+                  preparación y adecuación del recurso.
+                </li>
+                <li>Ser avalado el recurso para su publicación</li>
+              </ul>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header disable-icon-rotate
+              ><h2>¿Quiénes pueden utilizar de este espacio?</h2>
+              <template v-slot:actions>
+                <v-icon color="teal"> mdi-check </v-icon>
+              </template>
+            </v-expansion-panel-header>
+            <v-expansion-panel-content class="text-h6">
+              Todos los docentes, investigadores, estudiantes y egresados
+              adscritos a la Universidad Francisco José de Caldas que quieran
+              participar de este espacio.
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
       </v-container>
       <!--Fin cmbnoe1 -->
       <router-view />
@@ -295,6 +430,7 @@ export default {
   name: "app",
   data() {
     return {
+      acerca: false,
       linkk: [
         {
           icons: "mdi-home",
@@ -472,6 +608,9 @@ export default {
     onResize() {
       this.isMobile = window.innerWidth < 800;
     },
+        ver_acerca() {
+      this.acerca = !this.acerca;
+    },
   },
   mounted() {
     if (localStorage.name) {
@@ -479,9 +618,10 @@ export default {
     }
     if (localStorage.token) {
       this.token = localStorage.token;
+      
       this.buttons = [{ text: this.title, route: "/acercade" }];
       this.buttons.push({ text: "Inicio", route: "/home" });
-      
+
       if (localStorage.rol === "ADMINISTRADOR") {
         this.buttons.push({ text: "Administrar Recursos", route: "/files" });
         this.buttons.push({ text: "Usuarios", route: "/users" });
