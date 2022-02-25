@@ -225,7 +225,9 @@ export default {
             featured: true,
             required: true,
             values: ["Estudiantes", "Docentes", "Investigadores"],
-
+            selectOptions: {
+              noneSelectedText: "Haga clic para seleccionar una opción",
+            },
             help: "Seleccione la población a quien va dirigido este recurso.",
           },
           {
@@ -241,7 +243,9 @@ export default {
               "Educación media",
               "Educación inicial",
             ],
-
+            selectOptions: {
+              noneSelectedText: "Haga clic para seleccionar una opción",
+            },
             help: "Entorno educativo en el que se utilizara el recurso.",
           },
 
@@ -315,7 +319,9 @@ export default {
               "Atribución-NoComercial-CompartirIgual",
               "Atribución-CompartirIgual",
             ],
-
+            selectOptions: {
+              noneSelectedText: "Haga clic para seleccionar una opción",
+            },
             default: "Atribución",
             help: `para mas información <a target="_blank" href="https://co.creativecommons.net/tipos-de-licencias/">Creative Commons</a>`,
           },
@@ -339,6 +345,7 @@ export default {
       this.dialog = false;
       const id = this.$route.params.id;
       model.state = "Por aprobar";
+
       FilesService.updateFiles(model, id)
         .then(({ data }) => {
           this.result = {
@@ -382,7 +389,8 @@ export default {
             state: response.state,
             participants: response.participants,
             format: response.format,
-            size: response.size,
+          //  size: response.size,
+          
             requierements: response.requierements || "",
             // class_learning: response.class_learning,
             type_of_educational_resource: response.type_of_educational_resource,

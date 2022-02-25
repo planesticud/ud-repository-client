@@ -508,7 +508,7 @@ export default {
     actualizaData() {
       this.exi = false;
       this.getConteosP();
-      console.log("datosActual: " + JSON.stringify(this.esta_std));
+      //console.log("datosActual: " + JSON.stringify(this.esta_std));
       this.exi = true;
     },
     cambioA(graf) {

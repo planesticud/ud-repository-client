@@ -14,6 +14,7 @@
           >
             Ver recurso
           </a>
+
           <v-chip
             v-else-if="item.key == 'state'"
             :color="getColor(model[item.key])"
@@ -24,7 +25,7 @@
           <span v-else :class="item.class">{{ model[item.key] }}</span>
         </p>
       </template>
-      <!--josedavid -->
+
       <v-row justify-lg="center" v-show="showranking">
         <v-rating
           readonly
@@ -39,7 +40,7 @@
       </v-row>
 
       <v-row justify="center" v-show="true">
-        <v-dialog v-model="dialog" persistent max-width="290">
+        <v-dialog v-model="dialog" persistent max-width="390">
           <template v-slot:activator="{ on, attrs }">
             <v-btn
               v-show="dialogo"
@@ -47,9 +48,9 @@
               dark
               v-bind="attrs"
               v-on="on"
-              @click="consultarranking"
+              @click="consultarranking()"
             >
-              Calificar Recurso
+              Calificar y Descargar
             </v-btn>
           </template>
           <v-card>
@@ -64,6 +65,7 @@
               half-icon="$ratingHalf"
               half-increments
               dark
+              @input="calcu()"
             ></v-rating>
             <p>{{ rating }}</p>
             <v-card-actions>
@@ -72,14 +74,18 @@
                 No calificar
               </v-btn>
               <!-- <v-btn color="green darken-1" text @click="dialog = false">-->
-              <v-btn color="green darken-1" text @click="calificarRecurso">
-                Guardar
+              <v-btn
+                color="green darken-1"
+                :disabled="btnd"
+                text
+                @click="calificarRecurso()"
+              >
+                Guardar y Descargar
               </v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
       </v-row>
-      <!--end josedavid -->
     </div>
   </v-container>
 </template>
@@ -90,7 +96,6 @@ import stadisticsService from "../../services/stadistics";
 export default {
   data() {
     return {
-      //josedavid
       showranking: false,
       stateranking: false,
       dialogo: true,
@@ -98,8 +103,9 @@ export default {
       stadistic: [],
       rating: 0,
       rankingold: 0,
+      btnd: true,
       value: 0,
-      //end josedavid
+
       title: { text: "Detalle de recurso", icon: "mdi-file-outline" },
       model: {},
       header: [
@@ -164,6 +170,7 @@ export default {
             parseInt(response.date, 10)
           ).toLocaleDateString("en-US");
 
+
           this.model = {
             title: response.title,
             language: response.language,
@@ -210,42 +217,56 @@ export default {
       if (state == "Aprobado") return "green";
       else return "blue";
     },
-    //Jose David
+
+    calcu() {
+      //console.log("cambio000");
+      this.btnd = false;
+    },
     consultarranking() {
       stadisticsService
         .getStadisticsByid(this.$route.params.id)
         .then((response) => {
-          console.log(response.data);
-          this.rating = response.data[0].ranking;
+          if (response.data[0]) {
+            this.stadistic[0] = response.data[0];
+            this.rating = response.data[0].ranking;
+           // console.log("existe y consulto rankin: " + this.rating);
+          } else {
+           // console.log("No existe se debe crear");
+          }
         })
         .catch((e) => {
           console.log(e);
         });
     },
     calificarRecurso() {
+      if (
+        this.stadistic[0].ranking === null ||
+        this.stadistic[0].ranking === 0.0
+      ) {
+ 
+        this.stadistic[0].num_download = 1;
+        this.stadistic[0].ranking = this.rating;
+      } else {
+     
+        //this.stadistic[0].ranking =   (this.stadistic[0].ranking + this.ranking) / 2;
+        this.stadistic[0].ranking =
+          (this.stadistic[0].ranking * this.stadistic[0].num_download +
+            this.rating) /
+          (this.stadistic[0].num_download + 1);
+        this.stadistic[0].num_download = this.stadistic[0].num_download + 1;
+      }
       stadisticsService
-        .getStadisticsByid(this.$route.params.id)
-        .then((response) => {
-          this.stadistic = response.data;
-          if (this.stadistic[0].ranking === 0) {
-            this.stadistic[0].ranking = this.rating;
-          } else {
-            this.stadistic[0].ranking =
-              (this.stadistic[0].ranking + this.ranking) / 2;
-          }
-          stadisticsService.updateStadistics(
-            this.stadistic[0],
-            this.stadistic[0].id
-          );
-          this.dialog = false;
-          this.dialogo = false;
-          this.showranking = true;
-        })
+        .updateStadistics(this.stadistic[0], this.stadistic[0].id)
         .catch((e) => {
           console.log(e);
         });
+      this.dialog = false;
+      this.dialogo = false;
+      this.showranking = true;
+
+      window.open(this.model.location, "_blank");
     },
-    //Jose David
+    
   },
 
   mounted() {
