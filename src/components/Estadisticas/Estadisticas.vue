@@ -128,7 +128,7 @@
             </v-expand-transition>
           </v-card>
         </v-flex>
-        <!--------- ------------>
+        
 
         <v-flex d-flex xl4 lg4 sm6 xs12>
           <v-card v-if="showIdioma" class="container">
@@ -270,7 +270,7 @@
             </v-expand-transition>
           </v-card>
         </v-flex>
-        <!--------- ------------>
+       
 
         <v-flex d-flex xl4 lg4 sm6 xs12>
           <v-card v-if="showContexto" class="container">
@@ -508,7 +508,7 @@ export default {
     actualizaData() {
       this.exi = false;
       this.getConteosP();
-      //console.log("datosActual: " + JSON.stringify(this.esta_std));
+      console.log("datosActual: " + JSON.stringify(this.esta_std));
       this.exi = true;
     },
     cambioA(graf) {
