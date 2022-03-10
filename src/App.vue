@@ -66,7 +66,7 @@
               <template v-slot:activator="{ on, attrs }">
                 <v-btn icon v-bind="attrs" v-on="on">
                   <v-icon> mdi-account </v-icon>
-                  Acceder &nbsp;&nbsp;&nbsp;
+                  Acceder &nbsp; &nbsp; &nbsp;
                 </v-btn>
               </template>
               <span>Iniciar Sesión</span>
@@ -508,7 +508,7 @@ export default {
       }
     },
     logout() {
-        this.isLogin = false;
+      this.isLogin = false;
       localStorage.clear();
       this.image();
       this.$router.push({ name: "home" });
@@ -527,9 +527,9 @@ export default {
     }
     if (localStorage.token) {
       this.token = localStorage.token;
-   
-   //  this.buttons = [{ text: this.title, route: "/acercade" }];
-    //  this.buttons.push({ text: "Inicio", route: "/home" });
+
+      //  this.buttons = [{ text: this.title, route: "/acercade" }];
+      //  this.buttons.push({ text: "Inicio", route: "/home" });
 
       if (localStorage.rol === "ADMINISTRADOR") {
         this.buttons.push({ text: "Administrar Recursos", route: "/files" });

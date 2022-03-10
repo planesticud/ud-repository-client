@@ -1,5 +1,6 @@
 <template>
   <v-container class="lighten-5">
+    <br/> <br/>
     <h1>{{title}}</h1>
     <v-row align="center" class="list px-3 mx-auto">
       <v-card class="mx-auto" max-width="344">

@@ -1,5 +1,6 @@
 <template>
   <v-container class="lighten-5 rvcontainer">
+    <br/> <br/>
     <div>
       <h1 align="center">
         {{ h1.text }} <v-icon :title="title.text" medium> {{ h1.icon }}</v-icon>

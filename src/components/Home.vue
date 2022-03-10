@@ -1,6 +1,7 @@
 <template>
   <v-container class="lighten-5 hcontainer">
-    <v-container>
+    <br />
+    <v-container v-if="name">
       <h2>{{ title }} {{ name }}</h2>
     </v-container>
     <v-carousel :show-arrows="true" v-if="!isMobile" height="auto">

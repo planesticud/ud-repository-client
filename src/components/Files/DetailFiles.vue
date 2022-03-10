@@ -1,5 +1,6 @@
 <template>
   <v-container class="lighten-5 dtcontainer">
+    <br/> <br/>
     <div>
       <h1>
         {{ title.text }} <v-icon :title="title.text">{{ title.icon }}</v-icon>

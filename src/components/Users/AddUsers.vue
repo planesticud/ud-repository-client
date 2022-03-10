@@ -1,5 +1,6 @@
 <template>
   <v-container class="lighten-5 aduscontainer">
+    <br/> <br/>
     <div>
       <h1>{{ title }}</h1>
     </div>

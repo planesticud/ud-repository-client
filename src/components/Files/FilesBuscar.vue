@@ -1,5 +1,7 @@
 <template>
   <v-container class="lighten-5 flcontainer">
+    <br />
+    <br />
     <div>
       <h1 align="center">
         {{ h1.text }} <v-icon :title="title.text">{{ h1.icon }}</v-icon>
@@ -504,7 +506,7 @@ export default {
       amp_img: 200,
       img_lic: "",
       h1: {
-        text: "Repositorio de Recusrsos Digitales",
+        text: "Repositorio de Recursos Digitales",
         icon: "mdi-file-outline",
       },
       search: "",

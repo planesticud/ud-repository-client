@@ -1,5 +1,6 @@
 <template>
   <v-container class="lighten-5 rvcontainer">
+    <br/> <br/>
     <div>
       <h1 align="center">
         {{ h1.text }} <v-icon :title="title.text" medium> {{ h1.icon }}</v-icon>
@@ -235,7 +236,7 @@ export default {
       usuarios: 0,
       filEmail: "",
       h1: {
-        text: "Estadisticas de Recursos ",
+        text: "Estadísticas de Recursos ",
         icon: "mdi-chart-histogram",
         color: "red",
       },
@@ -279,7 +280,7 @@ export default {
           class: "text-button",
         },
         {
-          text: "Autor",
+          text: "Publicador",
           value: "autor",
           sortable: true,
           align: "start",

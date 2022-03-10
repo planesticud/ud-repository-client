@@ -1,5 +1,7 @@
 <template>
   <v-container class="lighten-5 uscontainer">
+    <br />
+    <br />
     <div>
       <h1 align="center">
         {{ h1.text }} <v-icon :title="title.text">{{ h1.icon }}</v-icon>
@@ -13,6 +15,7 @@
         single-line
         hide-details
       ></v-text-field>
+      <v-spacer></v-spacer>
       <v-btn small color="success" :href="add.route">
         {{ add.button }}
       </v-btn>
@@ -20,7 +23,7 @@
     <v-spacer></v-spacer>
     <v-spacer></v-spacer>
     &nbsp;
-    <v-data-table :headers="headers" :items="users" :search="search" >
+    <v-data-table :headers="headers" :items="users" :search="search">
       <template v-slot:[`item.actions`]="{ item }">
         <v-icon
           medium
@@ -62,10 +65,21 @@ export default {
       users: [],
       title: "",
       headers: [
-        { text: "Nombre", value: "name", align: "start", sortable: true, class:"text-button" },
-        { text: "email", value: "email", sortable: true, class:"text-button" },
-        { text: "Rol", value: "rol", sortable: true, class:"text-button" },
-        { text: "Actions", value: "actions", sortable: false, class:"text-button" },
+        {
+          text: "Nombre",
+          value: "name",
+          align: "start",
+          sortable: true,
+          class: "text-button",
+        },
+        { text: "email", value: "email", sortable: true, class: "text-button" },
+        { text: "Rol", value: "rol", sortable: true, class: "text-button" },
+        {
+          text: "Actions",
+          value: "actions",
+          sortable: false,
+          class: "text-button",
+        },
       ],
       actions: {
         edit: { title: "Editar usuario", icon: "mdi-pencil" },
