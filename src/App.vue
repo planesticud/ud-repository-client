@@ -9,232 +9,135 @@
     </div>
     <v-app>
       <v-app-bar app style="position: absolute">
-        <!-- <div v-if="!isMobile" class="d-flex align-center mr-2">
-          {{ title }}
-        </div>-->
-        <v-menu left bottom v-if="isMobile">
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn icon v-bind="attrs" v-on="on">
-              <v-app-bar-nav-icon></v-app-bar-nav-icon>
-            </v-btn>
-          </template>
+        <v-app-bar-nav-icon
+          @click="menu_izq = !menu_izq"
+          v-if="isMobile"
+        ></v-app-bar-nav-icon>
+        <v-toolbar-title>
+          <div class="d-flex align-center mr-6">{{ title }} &nbsp;</div>
+        </v-toolbar-title>
 
-          <v-list>
-            <v-list-item
-              :to="button.route"
-              v-for="(button, index) in buttons"
-              :key="index"
-              text
-            >
-              <v-list-item-title>{{ button.text }}</v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-menu>
-        <div v-else>
-          <div v-if="!token">
-            <v-btn text @click="ver_acerca">
-              <v-hover v-slot="{ hover }" open-delay="200">
-                <label :class="hover ? 'osc' : ''">{{ title }} </label>
-              </v-hover>
-            </v-btn>
-          </div>
-          <div v-if="token">
-            <v-btn
-              :to="button.route"
-              v-for="(button, index) in buttons"
-              :key="index"
-              text
-            >
-              <v-hover v-slot="{ hover }" open-delay="200">
-                <label :class="hover ? 'osc' : ''">
-                  {{ button.text }}
-                </label>
-              </v-hover>
-            </v-btn>
-          </div>
-        </div>
-        <div>
-          <v-tooltip v-if="$vuetify.theme.dark" bottom>
-            <template v-slot:activator="{ on }">
-              <v-btn v-on="on" color="info" small fab @click="darkMode">
-                <v-icon class="mr-1">mdi-moon-waxing-crescent</v-icon>
-              </v-btn>
-            </template>
-            <span>Dark Mode On</span>
-          </v-tooltip>
+        <v-tabs align-with-title v-if="!isMobile">
+          <v-tab
+            :to="button.route"
+            v-for="(button, index) in buttons"
+            :key="index"
+            text
+          >
+            {{ button.text }}
+          </v-tab>
 
-          <v-tooltip v-else bottom>
-            <template v-slot:activator="{ on }">
-              <v-btn v-on="on" color="info" small fab @click="darkMode">
-                <v-icon color="yellow">mdi-white-balance-sunny</v-icon>
-              </v-btn>
-            </template>
-            <span>Dark Mode Off</span>
-          </v-tooltip>
-        </div>
+          <v-tab>
+            <v-tooltip v-if="$vuetify.theme.dark" bottom>
+              <template v-slot:activator="{ on }">
+                <v-btn v-on="on" color="info" small fab @click="darkMode">
+                  <v-icon class="mr-1">mdi-moon-waxing-crescent</v-icon>
+                </v-btn>
+              </template>
+              <span>Modo Oscuro Activo</span>
+            </v-tooltip>
+
+            <v-tooltip v-else bottom>
+              <template v-slot:activator="{ on }">
+                <v-btn v-on="on" color="info" small fab @click="darkMode">
+                  <v-icon color="yellow">mdi-white-balance-sunny</v-icon>
+                </v-btn>
+              </template>
+              <span>Modo Oscuro Desactivo</span>
+            </v-tooltip>
+          </v-tab>
+        </v-tabs>
+
+        <v-spacer></v-spacer>
+
         <div class="pull-right">
           <div class="pull-right" v-if="isLogin">
-            <v-avatar class="pull-right">
+            <v-avatar class="pull-right" @click="drawer = !drawer">
               <img :src="url_image" :alt="name" />
             </v-avatar>
-            &nbsp;{{ name }}&nbsp;
-            <a @click="logout">
-              <v-icon title="Salir" size="36px"> mdi-exit-run </v-icon>
-            </a>
-            <p class="nombre mx-4">{{ rol }}</p>
           </div>
-
+          <!-- <a class="pull-right" v-else href="https://apirepository.planestic.udistrital.edu.co/api/google" >-->
           <a
             class="pull-right sinLine mr-2"
             v-else
             href="https://apirepository.planestic.udistrital.edu.co/api/google"
           >
-            <v-icon> mdi-account </v-icon>
-            Iniciar Sesion
+            <v-tooltip bottom top>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn icon v-bind="attrs" v-on="on">
+                  <v-icon> mdi-account </v-icon>
+                  Acceder &nbsp;&nbsp;&nbsp;
+                </v-btn>
+              </template>
+              <span>Iniciar Sesión</span>
+            </v-tooltip>
           </a>
         </div>
       </v-app-bar>
-      <!-- cmbnoe1 -->
-      <br />
-      <v-container class="lighten-5" v-if="!acerca">
-        <br />
-        <v-carousel :show-arrows="true" v-if="!isMobile2" height="auto">
-          <v-carousel-item
-            v-for="(item, i) in items"
-            :key="i"
-            :src="item.src"
-          ></v-carousel-item>
-        </v-carousel>
-      </v-container>
-      <v-container class="lighten-5" v-if="acerca">
-        <br /><br />
-        <v-expansion-panels focusable>
-          <v-expansion-panel>
-            <v-expansion-panel-header disable-icon-rotate
-              ><h2>¿Qué es RDigital -UD?</h2>
-              <template v-slot:actions>
-                <v-icon color="teal"> mdi-check </v-icon>
-              </template>
-            </v-expansion-panel-header>
-            <v-expansion-panel-content class="text-h6">
-              <p>
-                Es un espacio virtual de recursos y objetos de aprendizaje que
-                ofrece a la comunidad universitaria almacenar, catalogar y
-                acceder a recursos digitales que apoyan la academia cuyo
-                propósito es fortalecer los procesos de enseñanza – aprendizaje
-                en las diferentes áreas del conocimiento y facultades de la
-                Universidad.
-              </p>
-              <p>
-                Para ello el repositorio da acceso a recursos creados por
-                docentes y estudiantes tales como: manuales, plantillas de
-                trabajo, videos, videotutoriales, infografías, presentaciones
-                interactivas, entre otras tipologías de uso libre con el
-                objetivo de aportar a la formación e investigación.
-              </p>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-          <v-expansion-panel>
-            <v-expansion-panel-header disable-icon-rotate
-              ><h2>¿Cuál es el papel de Planestic- UD?</h2>
-              <template v-slot:actions>
-                <v-icon color="teal"> mdi-check </v-icon>
-              </template>
-            </v-expansion-panel-header>
-            <v-expansion-panel-content class="text-h6">
-              Como parte del Plan Estratégico de Incorporación de Medios y
-              Tecnologías de la Información en Procesos Educativos (2011 –
-              2020), desde PlanEsTIC-UD se busca incentivar la creación,
-              construcción y reutilización de Recursos Educativos Abiertos -
-              REA, para el uso, adaptación y aplicación de contenidos digitales
-              al interior de las aulas y espacios académicos de la universidad
-              en pro de la gestión del conocimiento; para ello se orienta a la
-              comunidad académica en la generación de diversos recursos y OVAS a
-              ser publicados, socializados y dispuesto para toda la institución.
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-          <v-expansion-panel>
-            <v-expansion-panel-header disable-icon-rotate
-              ><h2>¿Para qué se desarrolló esta iniciativa?</h2>
-              <template v-slot:actions>
-                <v-icon color="teal"> mdi-check </v-icon>
-              </template>
-            </v-expansion-panel-header>
-            <v-expansion-panel-content class="text-h6">
-              El objetivo de esta iniciativa es responder a los intereses y
-              necesidades de la comunidad universitaria: estudiantes, docentes e
-              investigadores, a fin divulgar y gestionar la producción académica
-              tanto de estudiantes como de docente en la creación de contenidos
-              digitales, que puede ser compartidos en el repositorio y por lo
-              tanto de consulta para toda la comunidad académica, fortaleciendo
-              la gestión de conocimiento en la producción de dichos recursos.
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-          <v-expansion-panel>
-            <v-expansion-panel-header disable-icon-rotate
-              ><h2>
-                ¿Qué debe tener en cuenta para participar en el repositorio?
-              </h2>
-              <template v-slot:actions>
-                <v-icon color="teal"> mdi-check </v-icon>
-              </template>
-            </v-expansion-panel-header>
-            <v-expansion-panel-content class="text-h6">
-              <p>
-                Para participar en este espacio, se debe tener en cuenta los
-                siguientes aspectos:
-              </p>
+      <v-navigation-drawer v-model="menu_izq" absolute temporary>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>{{ title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
 
-              <ul>
-                <li>
-                  Ser parte de la comunidad académica de la Universidad
-                  Distrital Francisco José de Caldas (estudiantes, docentes,
-                  egresados)
-                </li>
-                <li>
-                  Tener activo el correo institucional de la Universidad
-                  Francisco José de Caldas.
-                </li>
-                <li>
-                  Tener un recurso digital finalizado y previamente estructurado
-                  acerca de una temática en particular, recuerde que este podrá
-                  ser de la tipología que considere (video, imagen, manual,
-                  entre otras).
-                </li>
-                <li>
-                  Estar dispuesto a compartir el recurso con otras personas de
-                  acuerdo con la aprobación de la autorización de derechos de
-                  autor (Anexar formato)
-                </li>
-                <li>
-                  Usar el contenido descargado de manera responsable,
-                  reconociendo al autor moral, su obra y la licencia de uso con
-                  el cual está etiquetado el recurso.
-                </li>
-                <li>
-                  Estar en condiciones de recibir apoyo de PlanEsTIC en la
-                  preparación y adecuación del recurso.
-                </li>
-                <li>Ser avalado el recurso para su publicación</li>
-              </ul>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-          <v-expansion-panel>
-            <v-expansion-panel-header disable-icon-rotate
-              ><h2>¿Quiénes pueden utilizar de este espacio?</h2>
-              <template v-slot:actions>
-                <v-icon color="teal"> mdi-check </v-icon>
-              </template>
-            </v-expansion-panel-header>
-            <v-expansion-panel-content class="text-h6">
-              Todos los docentes, investigadores, estudiantes y egresados
-              adscritos a la Universidad Francisco José de Caldas que quieran
-              participar de este espacio.
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels>
-      </v-container>
-      <!--Fin cmbnoe1 -->
+        <v-divider></v-divider>
+        <v-list dense>
+          <v-list-item
+            :to="button.route"
+            v-for="(button, index) in buttons"
+            :key="index"
+            link
+          >
+            <v-list-item-content>
+              <v-list-item-title> {{ button.text }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+
+      <!------- Menu Usuario------>
+      <v-navigation-drawer app v-model="drawer" right absolute temporary>
+        <v-list-item>
+          <v-list-item-avatar>
+            <v-img :src="url_image"></v-img>
+          </v-list-item-avatar>
+
+          <v-list-item-content>
+            <v-list-item-title>{{ name }}</v-list-item-title>
+            <v-list-item-subtitle>{{ rol }}</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-divider></v-divider>
+
+        <v-list dense>
+          <!-- <v-list-item v-for="item in items" :key="item.title" link>
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          --->
+          <v-divider></v-divider>
+          <v-list-item @click="logout">
+            <v-list-item-icon>
+              <v-icon>mdi-exit-run</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>Salir</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+      <!-------Fin Menu Usuario------>
+
+      <br />
+
       <router-view />
       <v-card dark padless>
         <v-card flat tile color="#8b1919" class="white--text text-center">
@@ -283,7 +186,6 @@
                   Resolución Nº 23096 del 15 de diciembre de 2016.
                 </v-card-text>
                 <v-divider></v-divider>
-
                 <v-card-title class="justify-center">
                   Planestic - UD
                 </v-card-title>
@@ -389,20 +291,19 @@
                   <strong>Contáctenos</strong>
                 </v-card-title>
                 <v-card-text class="text-lg-center">
-                  Coordinador José Ignacio Palacios
-                  <br />
+                  Coordinador <br />
+                  Fernando Martínez Rodríguez<br />
                   coordinadorplanestic@udistrital.edu.co
                 </v-card-text>
                 <v-divider></v-divider>
                 <v-card-text class="text-lg-center">
-                  Avenida Ciudad de quito # 64 - 81
-                  <br />
-                  Bogotá D.C. Republica de Colombia
+                  Avenida Ciudad de quito # 64 - 81<br />
+                  Bogotá D.C. República de Colombia<br />
                 </v-card-text>
                 <v-divider></v-divider>
                 <v-card-text class="text-lg-center">
-                  3239300 ext: 6368 planesticud@udistrital.edu.co
-                  <br />
+                  3239300 ext: 6368 <br />
+                  planesticud@udistrital.edu.co <br />
                   Lunes a viernes de 8 a.m. a 5 p.m.
                 </v-card-text>
                 <v-divider></v-divider>
@@ -431,6 +332,9 @@ export default {
   data() {
     return {
       acerca: false,
+      menu_izq: false,
+      drawer: false,
+      isLogin: false,
       linkk: [
         {
           icons: "mdi-home",
@@ -465,9 +369,11 @@ export default {
         },
       ],
       title: "RDigital UD",
-      isLogin: false,
       url_image: "",
-      buttons: [],
+      buttons: [
+        { text: "Inicio", route: "/home" },
+        { text: "Nosotros", route: "/acercade" },
+      ],
       name: "",
       token: "",
       isMobile: false,
@@ -478,6 +384,7 @@ export default {
       backStyle: {
         "background-color": "#F3F3F3",
       },
+
       items: [
         {
           src: "https://repository-planesticud.s3.amazonaws.com/1635204858047banner-01ok.jpg",
@@ -574,6 +481,7 @@ export default {
     if (typeof window === "undefined") return;
     window.removeEventListener("resize", this.onResize, { passive: true });
   },
+
   methods: {
     image() {
       if (localStorage.url_image) {
@@ -600,15 +508,16 @@ export default {
       }
     },
     logout() {
+        this.isLogin = false;
       localStorage.clear();
       this.image();
-      this.$router.push({ name: "login" });
+      this.$router.push({ name: "home" });
       location.reload();
     },
     onResize() {
       this.isMobile = window.innerWidth < 800;
     },
-        ver_acerca() {
+    ver_acerca() {
       this.acerca = !this.acerca;
     },
   },
@@ -618,18 +527,20 @@ export default {
     }
     if (localStorage.token) {
       this.token = localStorage.token;
-      
-      this.buttons = [{ text: this.title, route: "/acercade" }];
-      this.buttons.push({ text: "Inicio", route: "/home" });
+   
+   //  this.buttons = [{ text: this.title, route: "/acercade" }];
+    //  this.buttons.push({ text: "Inicio", route: "/home" });
 
       if (localStorage.rol === "ADMINISTRADOR") {
         this.buttons.push({ text: "Administrar Recursos", route: "/files" });
         this.buttons.push({ text: "Usuarios", route: "/users" });
+
         this.buttons.push({ text: "Estadísticas", route: "/stadistics" });
       }
       if (localStorage.rol === "EVALUADOR") {
         this.buttons.push({ text: "Revisar", route: "/revisar" });
         this.buttons.push({ text: "Mis Recursos", route: "/files" });
+
         this.buttons.push({ text: "Estadísticas", route: "/stadistics" });
       }
       if (localStorage.rol === "DOCENTE") {
@@ -638,6 +549,7 @@ export default {
           route: "/filesbuscar",
         });
         this.buttons.push({ text: "Mis Recursos", route: "/files" });
+
         this.buttons.push({ text: "Estadísticas", route: "/stadistics" });
       }
       if (localStorage.rol === "ESTUDIANTE") {
@@ -659,6 +571,7 @@ export default {
   margin-left: auto;
   padding-top: 4px;
 }
+
 .banner-all {
   background-color: #8b1919;
   max-height: 170px;

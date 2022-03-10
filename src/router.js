@@ -68,7 +68,7 @@ const router = new Router({
       name: "estadisticas",
       component: () => import("./components/Estadisticas/Estadisticas")
     },
-    //josedavid
+
     {
       path: "/stadistics",
       name: "stadistics",
@@ -79,7 +79,8 @@ const router = new Router({
       name: "grafica",
       component: () => import("./components/Stadistics/Graphics")
     },
-    //end josedavid
+
+
     {
       path: "/home",
       name: "home",
@@ -88,11 +89,11 @@ const router = new Router({
     {
       path: "/acercade",
       name: "acercade",
-      component: () => import("./components/Acercade")
+      component: () => import("./views/Acercade.vue")
     },
     {
       path: "/",
-      name: "init",
+      name: "home",
       component: () => import("./components/Home")
     },
     {
@@ -104,9 +105,12 @@ const router = new Router({
 });
 router.beforeEach((to, from, next) => {
   let ls = localStorage.getItem('token');
-  if (to.name !== 'login' && ls === null) next({ name: 'login' })
-  else if (to.name === 'login' && ls !== null) next({ name: 'home' })
-  else next()
+  if (to.name !== 'login' && to.name !== 'acercade' && to.name !== 'home' && ls === null)
+    next({ name: 'login' })
+  else if (to.name === 'login' && ls !== null)
+    next({ name: 'home' })
+  else
+    next()
 
 });
 
