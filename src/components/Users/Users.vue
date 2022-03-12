@@ -15,7 +15,7 @@
         single-line
         hide-details
       ></v-text-field>
-      <v-spacer></v-spacer>
+      <v-spacer> </v-spacer>
       <v-btn small color="success" :href="add.route">
         {{ add.button }}
       </v-btn>

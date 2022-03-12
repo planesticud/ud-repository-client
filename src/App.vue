@@ -123,7 +123,7 @@
           </v-list-item>
           --->
           <v-divider></v-divider>
-          <v-list-item @click="logout">
+          <v-list-item @click="logout()">
             <v-list-item-icon>
               <v-icon>mdi-exit-run</v-icon>
             </v-list-item-icon>
@@ -532,12 +532,20 @@ export default {
       //  this.buttons.push({ text: "Inicio", route: "/home" });
 
       if (localStorage.rol === "ADMINISTRADOR") {
+        this.buttons.push({
+          text: "Búsqueda de Recursos",
+          route: "/filesbuscar",
+        });
         this.buttons.push({ text: "Administrar Recursos", route: "/files" });
         this.buttons.push({ text: "Usuarios", route: "/users" });
 
         this.buttons.push({ text: "Estadísticas", route: "/stadistics" });
       }
       if (localStorage.rol === "EVALUADOR") {
+        this.buttons.push({
+          text: "Búsqueda de Recursos",
+          route: "/filesbuscar",
+        });
         this.buttons.push({ text: "Revisar", route: "/revisar" });
         this.buttons.push({ text: "Mis Recursos", route: "/files" });
 

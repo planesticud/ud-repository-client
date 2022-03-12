@@ -92,6 +92,8 @@
                 </v-row>
                 <v-row>
                   <p class="textder">Copyright:</p>
+                </v-row>
+                <v-row>
                   <p>
                     <v-img
                       :src="img_lic"
@@ -100,18 +102,20 @@
                       :alt="objact.copyright"
                       :title="objact.copyright"
                     ></v-img>
+                    <br />
+                    {{ objact.copyright }}
                   </p>
                 </v-row>
 
                 <v-row>
                   <p class="textder">
                     Valoración:
+                    <span class="text-caption mr-2"> ({{ rt }}) </span>
                     <v-rating
                       readonly
                       v-model="stadistic.ranking"
                       background-color="green"
                       color="green"
-                      large
                       half-increments
                       dark
                       :title="stadistic.ranking"
@@ -134,32 +138,22 @@
                     @mouseenter="onMenuContex('my_img')"
                   ></v-img>
                 </center>
-                &nbsp;
+                <br />
 
                 <v-divider color="#E0E0E0"></v-divider>
-                &nbsp;
+                <br />
+                <br />
                 <v-row>
-                  <v-chip
-                    class="my-2 font-weight-bold"
-                    color="primary"
-                    outlined
-                    pill
-                  >
+                  <span class="text-h6 blue--text">
                     {{ stadistic.num_view }} Visitas
-                    <v-icon right> mdi-eye-check </v-icon>
-                  </v-chip>
+                  </span>
+                  <v-icon color="blue darken-2" right> mdi-eye-check </v-icon>
+                  &nbsp; &nbsp; &nbsp; &nbsp;
 
-                  &nbsp; &nbsp; &nbsp;
-
-                  <v-chip
-                    class="my-2 font-weight-bold"
-                    color="primary"
-                    outlined
-                    pill
-                  >
-                    {{ stadistic.num_download }} Descargas
-                    <v-icon right> mdi-cloud-download </v-icon>
-                  </v-chip>
+                  <v-btn color="primary" dark @click="dialog = true">
+                    Descargar
+                    <v-icon dark right> mdi-cloud-download </v-icon>
+                  </v-btn>
                 </v-row>
               </v-col>
             </v-row></v-container
@@ -213,16 +207,19 @@
                     :alt="objact.copyright"
                     :title="objact.copyright"
                   ></v-img>
-                  &nbsp;
+                  <br />
+                  {{ objact.copyright }}
                 </p>
-                <p class="textder">Valoración:</p>
+                <p class="textder">
+                  Valoración:
+                  <span class="text-caption mr-2"> ({{ rt }}) </span>
+                </p>
                 <p>
                   <v-rating
                     readonly
                     v-model="stadistic.ranking"
                     background-color="green"
                     color="green"
-                    large
                     half-increments
                     dark
                     :title="stadistic.ranking"
@@ -258,27 +255,16 @@
                 <v-divider color="#E0E0E0"></v-divider>
                 &nbsp;
                 <v-row>
-                  <v-chip
-                    class="my-2 font-weight-bold"
-                    color="primary"
-                    outlined
-                    pill
-                  >
+                  <span class="text-h6 blue--text">
                     {{ stadistic.num_view }} Visitas
-                    <v-icon right> mdi-eye-check </v-icon>
-                  </v-chip>
-
+                  </span>
+                  <v-icon color="blue darken-2" right> mdi-eye-check </v-icon>
                   &nbsp; &nbsp; &nbsp;
-
-                  <v-chip
-                    class="my-2 font-weight-bold"
-                    color="primary"
-                    outlined
-                    pill
-                  >
-                    {{ stadistic.num_download }} Descargas
-                    <v-icon right> mdi-cloud-download </v-icon>
-                  </v-chip>
+                  <v-spacer></v-spacer>
+                  <v-btn color="primary" dark @click="dialog = true">
+                    Descargar
+                    <v-icon dark right> mdi-cloud-download </v-icon>
+                  </v-btn>
                 </v-row>
               </v-col>
             </v-row></v-container
@@ -331,16 +317,19 @@
                     :alt="objact.copyright"
                     :title="objact.copyright"
                   ></v-img>
-                  &nbsp;
+                  <br />
+                  {{ objact.copyright }}
                 </p>
-                <p class="textder">Valoración:</p>
+                <p class="textder">
+                  Valoración:
+                  <span class="text-caption mr-2"> ({{ rt }}) </span>
+                </p>
                 <p>
                   <v-rating
                     readonly
                     v-model="stadistic.ranking"
                     background-color="green"
                     color="green"
-                    large
                     half-increments
                     dark
                     :title="stadistic.ranking"
@@ -360,33 +349,24 @@
                 <video
                   id="myVideo"
                   width="100%"
-                  height="90%"
+                  height="93%"
                   :src="objact.location"
                   type="video/mp4"
                   @mouseenter="onMenuContex('myVideo')"
                   @click="onclickMplay()"
-                ></video
-                ><v-row>
-                  <v-chip
-                    class="my-2 font-weight-bold"
-                    color="primary"
-                    outlined
-                    pill
-                  >
+                ></video>
+                <v-row>
+                  <br />
+                  <span class="text-h6 blue--text">
                     {{ stadistic.num_view }} Visitas
-                    <v-icon right> mdi-eye-check </v-icon>
-                  </v-chip>
-                  &nbsp; &nbsp; &nbsp;
-
-                  <v-chip
-                    class="my-2 font-weight-bold"
-                    color="primary"
-                    outlined
-                    pill
-                  >
-                    {{ stadistic.num_download }} Descargas
-                    <v-icon right> mdi-cloud-download </v-icon>
-                  </v-chip>
+                  </span>
+                  <v-icon color="blue darken-2" right> mdi-eye-check </v-icon>
+                  &nbsp; &nbsp;
+                  <v-spacer></v-spacer>
+                  <v-btn color="primary" dark @click="dialog = true">
+                    Descargar
+                    <v-icon dark right> mdi-cloud-download </v-icon>
+                  </v-btn>
                 </v-row>
               </v-col>
             </v-row></v-container
@@ -394,8 +374,47 @@
         </v-card-text>
       </v-card>
     </v-dialog>
-
     <!--////////////////////////////// Fin vista previa Video /////////////-->
+
+    <!--//////////////////// Ventana de calificacion y descarga////////////--->
+    <v-dialog v-model="dialog" persistent max-width="390">
+      <v-card>
+        <center>
+          <v-card-title class="text-h5">
+            Que tanto te gusto el recurso?
+          </v-card-title>
+
+          <v-rating
+            v-model="rating"
+            background-color="yellow"
+            color="green"
+            large
+            half-icon="$ratingHalf"
+            half-increments
+            dark
+            @input="calcu()"
+          ></v-rating>
+          <p>{{ rating }}</p>
+        </center>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="green darken-1" text @click="cancelarCal()">
+            No calificar
+          </v-btn>
+          <!-- <v-btn color="green darken-1" text @click="dialog = false">-->
+          <v-btn
+            color="green darken-1"
+            :disabled="btnd"
+            text
+            @click="calificarRecurso()"
+          >
+            Guardar y Descargar
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
+    <!--//////////////////// Finnn Ventana de calificacion y descarga////////////--->
 
     <!--////////////////////////////// vista previa PDF ///////////// -->
     <v-dialog
@@ -421,25 +440,17 @@
                 </center>
                 &nbsp; &nbsp;
                 <v-row>
-                  <v-chip
-                    class="my-2 font-weight-bold"
-                    color="primary"
-                    outlined
-                    pill
-                  >
+                  &nbsp;
+                  <v-btn color="primary" dark @click="dialog = true">
+                    Descargar
+                    <v-icon dark right> mdi-cloud-download </v-icon>
+                  </v-btn>
+                  <v-spacer></v-spacer>
+                  <span class="text-h6 blue--text">
                     {{ stadistic.num_view }} Visitas
-                    <v-icon right> mdi-eye-check </v-icon>
-                  </v-chip>
+                  </span>
+                  <v-icon color="blue darken-2" right> mdi-eye-check </v-icon>
                   &nbsp; &nbsp;
-                  <v-chip
-                    class="my-2 font-weight-bold"
-                    color="primary"
-                    outlined
-                    pill
-                  >
-                    {{ stadistic.num_download }} Descargas
-                    <v-icon right> mdi-cloud-download </v-icon>
-                  </v-chip>
                 </v-row>
               </v-col>
 
@@ -465,15 +476,19 @@
                     :alt="objact.copyright"
                     :title="objact.copyright"
                   ></v-img>
+                  <br />
+                  {{ objact.copyright }}
                 </p>
                 &nbsp;
-                <p class="textder">Valoración:</p>
+                <p class="textder">
+                  Valoración:
+                  <span class="text-caption mr-2"> ({{ rt }}) </span>
+                </p>
                 <v-rating
                   readonly
                   v-model="stadistic.ranking"
                   background-color="green"
                   color="green"
-                  large
                   dark
                   half-increments
                   :title="stadistic.ranking"
@@ -498,6 +513,9 @@ export default {
   name: "files-list-buscar",
   data() {
     return {
+      dialog: false,
+      btnd: true,
+      rating: 0,
       mplay: true,
       ver_pdf: false,
       ver_video: false,
@@ -516,6 +534,7 @@ export default {
 
       counter: 1,
       stadistic: {},
+      rt: "",
       objact: {},
 
       headers: [
@@ -580,7 +599,12 @@ export default {
 
   methods: {
     retrieveFiles() {
-      if (localStorage.rol === "DOCENTE" || localStorage.rol === "ESTUDIANTE") {
+      if (
+        localStorage.rol === "DOCENTE" ||
+        localStorage.rol === "ESTUDIANTE" ||
+        localStorage.rol === "ADMINISTRADOR" ||
+        localStorage.rol === "EVALUADOR"
+      ) {
         filesService
           .getFilesByState("Aprobado")
           .then((response) => {
@@ -636,11 +660,13 @@ export default {
           break;
         }
       }
+
       stadisticsService
         .getStadisticsByid(id_obj.id)
         .then((response) => {
           this.stadistic = response.data[0];
           this.stadistic.num_view = this.stadistic.num_view + 1;
+          this.rt = ("" + this.stadistic.ranking).substring(0, 3);
           //console.log(JSON.stringify(this.stadistic));
         })
         .catch((e) => {
@@ -685,6 +711,42 @@ export default {
       } else {
         vid.pause();
       }
+    },
+    calcu() {
+      this.btnd = false;
+    },
+    cancelarCal() {
+      this.dialog = false;
+      this.btnd = true;
+      this.rating = 0;
+    },
+    calificarRecurso() {
+      this.dialog = false;
+      this.ver_video = false;
+      this.ver_pdf = false;
+      this.ver_img = false;
+      this.ver_otros = false;
+      this.btnd = true;
+      this.rating = 0;
+      if (this.stadistic.ranking === null || this.stadistic.ranking === 0.0) {
+        //  console.log("es un mulo jaja " + this.ranking);
+        this.stadistic.num_download = 1;
+        this.stadistic.ranking = this.rating;
+      } else {
+        //      console.log("no es nulo");
+        //this.stadistic[0].ranking =   (this.stadistic[0].ranking + this.ranking) / 2;
+        this.stadistic.ranking =
+          (this.stadistic.ranking * this.stadistic.num_download + this.rating) /
+          (this.stadistic.num_download + 1);
+        this.stadistic.num_download = this.stadistic.num_download + 1;
+      }
+      stadisticsService
+        .updateStadistics(this.stadistic, this.stadistic.id)
+        .catch((e) => {
+          console.log(e);
+        });
+
+      window.open(this.objact.location, "_blank");
     },
   },
   mounted() {

@@ -50,9 +50,11 @@ export default {
       isLogin: false,
       buttons: [],
       items: [
+      /*
         {
           src: "https://repository-planesticud.s3.amazonaws.com/1635204858047banner-01ok.jpg",
         },
+*/
         {
           src: "https://repository-planesticud.s3.amazonaws.com/1635123148623banner-03.jpg",
         },
