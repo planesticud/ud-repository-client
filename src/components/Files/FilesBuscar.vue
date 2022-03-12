@@ -727,7 +727,7 @@ export default {
       this.ver_img = false;
       this.ver_otros = false;
       this.btnd = true;
-      this.rating = 0;
+
       if (this.stadistic.ranking === null || this.stadistic.ranking === 0.0) {
         //  console.log("es un mulo jaja " + this.ranking);
         this.stadistic.num_download = 1;
@@ -745,7 +745,7 @@ export default {
         .catch((e) => {
           console.log(e);
         });
-
+      this.rating = 0;
       window.open(this.objact.location, "_blank");
     },
   },
