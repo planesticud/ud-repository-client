@@ -1,5 +1,5 @@
 import axios from "axios";
-const repositoryUrl = 'https://apirepository.planestic.udistrital.edu.co/api'
+const repositoryUrl = 'https://rdigital.planestic.udistrital.edu.co/api'
 //const repositoryUrl = 'http://192.168.0.10:3005';
 
 class StadisticsService {

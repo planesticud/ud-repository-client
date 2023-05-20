@@ -60,7 +60,7 @@
           <a
             class="pull-right sinLine mr-2"
             v-else
-            href="https://apirepository.planestic.udistrital.edu.co/api/google"
+            href="https://rdigital.planestic.udistrital.edu.co/api/microsoft"
           >
             <v-tooltip bottom top>
               <template v-slot:activator="{ on, attrs }">
