@@ -13,7 +13,7 @@ services:
         - campus_virtual
      labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.ud-repository-client.rule=Host(`repository.planestic.udistrital.edu.co`)"
+      - "traefik.http.routers.ud-repository-client.rule=Host(`rdigital.planestic.udistrital.edu.co`)"
       - "traefik.http.routers.ud-repository-client.tls=true"
       - "traefik.http.routers.ud-repository-client.tls.certresolver=le"
       - "traefik.http.services.ud-repository-client.loadbalancer.server.port=80"           
