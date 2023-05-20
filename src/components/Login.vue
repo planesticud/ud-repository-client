@@ -2,11 +2,11 @@
   <div class= "container">
     
     <div class ="center">
-    <a href="https://apirepository.planestic.udistrital.edu.co/api/google">
-    <div id='icon-div'>
-    <img  class = "google-icon " src="../assets/images/googleicon.png" >
-    </div>
-    <button class="google-signin-button"> Continue with Google</button>
+    <a href="https://rdigital.planestic.udistrital.edu.co/api/microsoft">
+   
+    <img  class = "google-icon " src="../assets/images/microsoftlogo.png" >
+   
+   
     </a>
     
     </div>
@@ -36,10 +36,10 @@
   background-color: white;
 }
 .google-icon {
-  display: inline-block;
-  margin-right:1px;
-  width: 50px;
-  height: 50px;
+
+
+  width: 200px;
+  height: 100px;
   background-color: white;
 }
 .center {
@@ -47,7 +47,7 @@
   height:52px;
   margin: auto;
   padding: 1px;
-  background-color: #8b1919;
+  
   
 }
 .text-access {
