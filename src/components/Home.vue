@@ -1,32 +1,43 @@
 <template>
-  <v-container class="lighten-5 hcontainer">
+  <v-container style="max-width: 100%;">
     <br />
-    <v-container v-if="name">
-      <h2>{{ title }} {{ name }}</h2>
-    </v-container>
-    <v-carousel :show-arrows="true" v-if="!isMobile" height="auto">
-      <v-carousel-item
-        v-for="(item, i) in items"
-        :key="i"
-        :src="item.src"
-      ></v-carousel-item>
-    </v-carousel>
+
+    <div class="row">
+      <div class="col">
+        <v-carousel :show-arrows="true" v-if="!isMobile" height="auto" class="hcontainer">
+          <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src"></v-carousel-item>
+        </v-carousel>
+      </div>
+      <div class="col">
+        <v-container v-if="name">
+          <h2>{{ title }} {{ name }}</h2>
+        </v-container>
+        <v-text-field v-model="search" append-icon="mdi-magnify" label="¿ Que recurso estas buscando?" single-line
+          hide-details></v-text-field>
+      </div>
+    </div>
+    <div class="row" style="max-width: 100%;">
+      <div class="col" style="background-color: #4A7C2F;" >
+        <img  src="../assets/images/como-publicar.png" class="notes"/>
+      </div>
+      <div class="col" style="background-color: #D63716;">
+        <img  src="../assets/images/quienes.png" class="notes"/>
+      </div>
+      <div class="col" style="background-color: #99050F; ">
+        <img  src="../assets/images/que_es.png" class="notes" />
+      </div>
+    </div>
+    <div class="row" style="max-width: 100%;">
+     
+        <img  src="../assets/images/licencia.png" class="notes2" />
+
+    </div>
+    
+    <!-------------
     <div class="row row--dense">
-      <div
-        v-for="(button, index) in buttons"
-        :key="index"
-        class="col-sm-6 col-lg-4 col-12"
-      >
-        <div
-          class="overflow-hidden v-sheet v-sheet--outlined rounded"
-          min-height="61"
-          style="min-height: 61px"
-        >
-          <a
-            :href="button.route"
-            class="v-list-item v-list-item--link"
-            tabindex="0"
-          >
+      <div v-for="(button, index) in buttons" :key="index" class="col-sm-6 col-lg-4 col-12">
+        <div class="overflow-hidden v-sheet v-sheet--outlined rounded" min-height="61" style="min-height: 61px">
+          <a :href="button.route" class="v-list-item v-list-item--link" tabindex="0">
             <div class="v-list-item__icon">
               <v-icon x-large :title="button.text">{{ button.icon }}</v-icon>
             </div>
@@ -38,6 +49,7 @@
         </div>
       </div>
     </div>
+     ---------------->
   </v-container>
 </template>
 
@@ -50,11 +62,11 @@ export default {
       isLogin: false,
       buttons: [],
       items: [
-      /*
-        {
-          src: "https://repository-planesticud.s3.amazonaws.com/1635204858047banner-01ok.jpg",
-        },
-*/
+        /*
+          {
+            src: "https://repository-planesticud.s3.amazonaws.com/1635204858047banner-01ok.jpg",
+          },
+  */
         {
           src: "https://repository-planesticud.s3.amazonaws.com/1635123148623banner-03.jpg",
         },
@@ -192,7 +204,7 @@ export default {
 };
 </script>
 
- <style scoped>
+<style scoped>
 .v-list-item__content {
   align-items: center;
   align-self: center;
@@ -202,15 +214,24 @@ export default {
   overflow: hidden;
   padding: 12px 0;
 }
+
 .hcontainer {
-  max-width: 100%;
-  padding-right: 5%;
-  padding-left: 5%;
-  margin-right: auto;
-  margin-left: auto;
+
+  max-width: 1000px;
+  max-height: 100%;
+  padding-left: 0px;
 }
+
 .list-item__icon {
   display: inline-flex;
   min-width: 24px;
+}
+
+.notes {
+  max-width: 40%;
+}
+.notes2 {
+  max-width: 90%;
+  max-height: 100%;
 }
 </style>
