@@ -2,34 +2,57 @@
   <div>
     <div v-if="!isMobile" class="banner-all" :style="logoStyle">
       <img class="logo-planestic1" src="./assets/images/logo2.png" />
-      <img
-        class="logo-planestic2"
-        src="./assets/images/logo_planestic.png"
-      />
-       <div class="trapezoid">
-        <v-icon style="color: aliceblue;"> mdi-account </v-icon> 
-       <p> {{rol}}</p> 
-       <p>{{name}}</p> 
-       
+      <img class="logo-planestic2" src="./assets/images/logo_planestic.png" />
+      <div class="trapezoid" @click="dialog = true">
+        <div v-if="isLogin">
+          <v-icon style="color: aliceblue;"> mdi-account </v-icon>
+          {{ rol }}
+          {{ name }}
+
+        </div>
+        <div v-else>
+          Iniciar Sesion
+        </div>
       </div>
-      
+      <v-dialog v-model="dialog" activator="parent" width="auto" style="background-color:#940611 ;">
+
+        <v-card style="background-color:#940611 ;">
+          <v-card-actions>
+
+            <v-btn style="background-color: black; color: aliceblue;" icon="mdi-calendar" size="x-large"
+              @click="dialog = false">X</v-btn>
+          </v-card-actions>
+          <v-card-text>
+
+            <a href="https://rdigital.planestic.udistrital.edu.co/api/microsoft">
+              <v-btn v-if="!isLogin" rounded style="background-color: aliceblue;" class="btn btn-light">
+                <img class="ms-icon center" src="./assets/images/microsoftlogo.png" />
+
+              </v-btn>
+              <!--href="http://localhost:3000/google"-->
+            </a>
+
+
+            <v-btn v-if="isLogin" rounded style="background-color: aliceblue;" class="btn btn-light" @click="logout()">
+              Cerrar sesion
+
+            </v-btn>
+
+
+          </v-card-text>
+
+        </v-card>
+      </v-dialog>
+
     </div>
     <hr class="solid">
     <v-app>
       <v-app-bar app style="position: absolute;">
-        <v-app-bar-nav-icon
-          @click="menu_izq = !menu_izq"
-          v-if="isMobile"
-        ></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon @click="menu_izq = !menu_izq" v-if="isMobile"></v-app-bar-nav-icon>
 
 
         <v-tabs align-with-title v-if="!isMobile">
-          <v-tab
-            :to="button.route"
-            v-for="(button, index) in buttons"
-            :key="index"
-            text
-          >
+          <v-tab :to="button.route" v-for="(button, index) in buttons" :key="index" text>
             {{ button.text }}
           </v-tab>
 
@@ -47,12 +70,7 @@
 
         <v-divider></v-divider>
         <v-list dense>
-          <v-list-item
-            :to="button.route"
-            v-for="(button, index) in buttons"
-            :key="index"
-            link
-          >
+          <v-list-item :to="button.route" v-for="(button, index) in buttons" :key="index" link>
             <v-list-item-content>
               <v-list-item-title> {{ button.text }}</v-list-item-title>
             </v-list-item-content>
@@ -106,20 +124,10 @@
       <v-card dark padless>
         <v-card flat tile color="#8b1919" class="white--text text-center">
           <v-card-text>
-            <v-btn
-              :href="lik.route"
-              :target="lik.route"
-              v-for="lik in linkk"
-              :key="lik.icons"
-              class="mx-6 white--text"
-              icon
-            >
+            <v-btn :href="lik.route" :target="lik.route" v-for="lik in linkk" :key="lik.icons" class="mx-6 white--text"
+              icon>
               <v-hover v-slot="{ hover }" open-delay="200">
-                <v-icon
-                  :title="lik.des"
-                  :size="hover ? '64px' : '36px'"
-                  :class="{ 'on-hover': hover }"
-                >
+                <v-icon :title="lik.des" :size="hover ? '64px' : '36px'" :class="{ 'on-hover': hover }">
                   {{ lik.icons }}
                 </v-icon>
               </v-hover>
@@ -139,6 +147,7 @@ export default {
   name: "app",
   data() {
     return {
+      dialog: false,
       acerca: false,
       menu_izq: false,
       drawer: false,
@@ -398,31 +407,38 @@ export default {
   background-color: #8b1919;
   max-height: 170px;
 }
+
 .logo-planestic1 {
   margin-left: 20px;
   max-height: 80px;
 }
+
 .logo-planestic2 {
   max-height: 60px;
   margin: auto;
   margin-top: 5px;
 }
+
 .logo-planestic3 {
   max-height: 60px;
   margin: auto;
   margin-top: 60px;
   float: right;
 }
+
 .backStyle {
   background-color: #f3f3f3;
 }
+
 .sinLine {
   text-decoration: none;
 }
+
 .osc {
   background-color: #393939;
   color: #f3f3f3;
 }
+
 .cla {
   background-color: #f3f3f3;
 }
@@ -438,12 +454,27 @@ hr.solid {
 }
 
 .trapezoid {
-	border-bottom: 50px solid #8B1919;
-	border-left: 25px solid transparent;
-	height: 0;
-	width: 300px;
+  border-bottom: 50px solid #8B1919;
+  border-left: 25px solid transparent;
+  height: 0;
+  width: 300px;
   margin-top: 35px;
   float: right;
   color: #f3f3f3;
+  font-family: "Roboto", sans-serif;
+}
+
+.trapezoidbtn {
+  color: #8B1919;
+}
+
+.ms-icon {
+  width: 140px;
+  height: 70px;
+}
+
+.center {
+  margin: auto;
+  padding: 1px;
 }
 </style>

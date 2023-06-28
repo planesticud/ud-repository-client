@@ -17,39 +17,123 @@
       </div>
     </div>
     <div class="row" style="max-width: 100%;">
-      <div class="col" style="background-color: #4A7C2F;" >
-        <img  src="../assets/images/como-publicar.png" class="notes"/>
+      <div class="col" style="background-color: #4A7C2F;" @click="dialog2 = true">
+        <img src="../assets/images/como-publicar.png" class="notes" />
       </div>
-      <div class="col" style="background-color: #D63716;">
-        <img  src="../assets/images/quienes.png" class="notes"/>
+      <div class="col" style="background-color: #D63716;"  @click="dialog3 = true">
+        <img src="../assets/images/quienes.png" class="notes" />
       </div>
-      <div class="col" style="background-color: #99050F; ">
-        <img  src="../assets/images/que_es.png" class="notes" />
+      <div class="col" style="background-color: #99050F; "  @click="dialog4 = true">
+        <img src="../assets/images/que_es.png" class="notes" />
       </div>
     </div>
     <div class="row" style="max-width: 100%;">
-     
-        <img  src="../assets/images/licencia.png" class="notes2" />
+
+      <img src="../assets/images/licencia.png" class="notes2" />
 
     </div>
-    
-    <!-------------
-    <div class="row row--dense">
-      <div v-for="(button, index) in buttons" :key="index" class="col-sm-6 col-lg-4 col-12">
-        <div class="overflow-hidden v-sheet v-sheet--outlined rounded" min-height="61" style="min-height: 61px">
-          <a :href="button.route" class="v-list-item v-list-item--link" tabindex="0">
-            <div class="v-list-item__icon">
-              <v-icon x-large :title="button.text">{{ button.icon }}</v-icon>
-            </div>
-            <div class="v-list-item__content">
-              <div class="v-list-item__title">{{ button.text }}</div>
-              <div class="v-list-item__subtitle">{{ button.description }}</div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-     ---------------->
+
+    <v-dialog v-model="dialog2" activator="parent" width="auto" style="background-color:#940611 ;">
+
+      <v-card style="background-color:#940611 ;">
+        <v-card-actions>
+
+          <v-btn style="background-color: black; color: aliceblue;" icon="mdi-calendar" size="x-large"
+            @click="dialog2 = false">X</v-btn>
+        </v-card-actions>
+        <v-card-text>
+
+          <h1 style=" color: aliceblue;">¿Qué es RDigital -UD?</h1>
+          &nbsp;
+          <h3 style=" color: aliceblue;">
+            Es un espacio virtual de recursos y objetos de aprendizaje que
+            ofrece a la comunidad universitaria almacenar, catalogar y
+            acceder a recursos digitales que apoyan la academia cuyo
+            propósito es fortalecer los procesos de enseñanza – aprendizaje
+            en las diferentes áreas del conocimiento y facultades de la
+            Universidad.
+            Para ello el repositorio da acceso a recursos creados por
+            docentes y estudiantes tales como: manuales, plantillas de
+            trabajo, videos, videotutoriales, infografías, presentaciones
+            interactivas, entre otras tipologías de uso libre con el objetivo de
+            aportar a la formación e investigación
+
+          </h3>
+        </v-card-text>
+
+      </v-card>
+    </v-dialog>
+
+    <v-dialog v-model="dialog3" activator="parent" width="auto" style="background-color:#940611 ;">
+
+<v-card style="background-color:#940611 ;">
+  <v-card-actions>
+
+    <v-btn style="background-color: black; color: aliceblue;" icon="mdi-calendar" size="x-large"
+      @click="dialog3 = false">X</v-btn>
+  </v-card-actions>
+  <v-card-text>
+
+    <h1 style=" color: aliceblue;">¿Cuál es el papel de Planestic- UD?</h1>
+    &nbsp;
+    <h3 style=" color: aliceblue;">
+      
+Como parte del Plan Estratégico de 
+Incorporación de Medios y Tecnologías de la 
+Información en Procesos Educativos (2011 – 
+2020), desde PlanEsTIC-UD se busca 
+incentivar la creación, construcción y 
+reutilización de Recursos Educativos Abiertos 
+- REA, para el uso, adaptación y aplicación de 
+contenidos digitales al interior de las aulas y 
+espacios académicos de la universidad en pro 
+de la gestión del conocimiento; para ello se 
+orienta a la comunidad académica en la 
+generación de diversos recursos y OVAS a ser 
+publicados, socializados y dispuesto para toda 
+la institución
+
+    </h3>
+  </v-card-text>
+
+</v-card>
+</v-dialog>
+
+<v-dialog v-model="dialog4" activator="parent" width="auto" style="background-color:#940611 ;">
+
+<v-card style="background-color:#940611 ;">
+  <v-card-actions>
+
+    <v-btn style="background-color: black; color: aliceblue;" icon="mdi-calendar" size="x-large"
+      @click="dialog4 = false">X</v-btn>
+  </v-card-actions>
+  <v-card-text>
+
+    <h1 style=" color: aliceblue;">¿Cuál es el papel de Planestic- UD?</h1>
+    &nbsp;
+    <h3 style=" color: aliceblue;">
+      
+Como parte del Plan Estratégico de 
+Incorporación de Medios y Tecnologías de la 
+Información en Procesos Educativos (2011 – 
+2020), desde PlanEsTIC-UD se busca 
+incentivar la creación, construcción y 
+reutilización de Recursos Educativos Abiertos 
+- REA, para el uso, adaptación y aplicación de 
+contenidos digitales al interior de las aulas y 
+espacios académicos de la universidad en pro 
+de la gestión del conocimiento; para ello se 
+orienta a la comunidad académica en la 
+generación de diversos recursos y OVAS a ser 
+publicados, socializados y dispuesto para toda 
+la institución
+
+    </h3>
+  </v-card-text>
+
+</v-card>
+</v-dialog>
+
   </v-container>
 </template>
 
@@ -57,6 +141,9 @@
 export default {
   data() {
     return {
+      dialog2: false,
+      dialog3: false,
+      dialog4: false,
       title: "Bienvenido",
       name: "",
       isLogin: false,
@@ -230,6 +317,7 @@ export default {
 .notes {
   max-width: 40%;
 }
+
 .notes2 {
   max-width: 90%;
   max-height: 100%;

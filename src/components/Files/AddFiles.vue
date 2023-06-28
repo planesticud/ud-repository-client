@@ -6,7 +6,7 @@
     </div>
     <v-row align="center" class="list px-3 mx-auto">
       <div class="panel-body">
-        <h3 class="blue lighten-4 text-md-center">Recurso</h3>
+        <h3 class=" lighten-4 text-md-center">Recurso</h3>
         <p>&nbsp;</p>
         <p>
           Para cargar el recurso tenga en cuenta que el tamaño máximo es de 100
@@ -317,7 +317,7 @@ export default {
         activar: false,
         name: "No, Acepto",
       },
-      title: "Crear recursos",
+      title: "Carga Recursos",
       result: { state: false },
       schema: {
         fields: [
@@ -325,7 +325,7 @@ export default {
             type: "label",
             label: "<h3>General</h3>",
             model: "created",
-            styleClasses: "blue lighten-4 text-md-center",
+            styleClasses: "lighten-4 text-md-center",
           },
           {
             type: "input",
@@ -378,7 +378,7 @@ export default {
             type: "label",
             label: "<h3>Ciclo de vida</h3>",
             model: "created",
-            styleClasses: "blue lighten-4 text-md-center",
+            styleClasses: " lighten-4 text-md-center",
           },
           {
             type: "input",
@@ -838,5 +838,9 @@ fieldset {
 .textcent {
   font-size: 14px;
   color: black;
+}
+
+h3 {
+background-color: red;
 }
 </style>
