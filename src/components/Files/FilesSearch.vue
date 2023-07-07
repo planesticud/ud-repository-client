@@ -96,7 +96,7 @@
 
     <v-dialog v-model="ver_otros" transition="dialog-bottom-transition" persistent max-width="40%" max-height="50%">
       <v-card>
-        <v-toolbar color="primary" class="justify-center" dark>
+        <v-toolbar color="#8B1919" class="justify-center" dark>
           <v-toolbar-title>Vista previa otros formatos </v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
@@ -171,7 +171,7 @@
                   <v-icon color="blue darken-2" right> mdi-eye-check </v-icon>
                   &nbsp; &nbsp; &nbsp; &nbsp;
 
-                  <v-btn color="primary" dark @click="dialog = true">
+                  <v-btn color="#8B1919" dark @click="dialog = true">
                     Descargar
                     <v-icon dark right> mdi-cloud-download </v-icon>
                   </v-btn>
@@ -188,7 +188,7 @@
 
     <v-dialog v-model="ver_img" transition="dialog-bottom-transition" persistent max-width="70%" max-height="90%">
       <v-card>
-        <v-toolbar color="primary" class="justify-center" dark>
+        <v-toolbar color="#8B1919" class="justify-center" dark>
           <v-toolbar-title>Vista previa imagen </v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
@@ -247,7 +247,7 @@
                   <v-icon color="blue darken-2" right> mdi-eye-check </v-icon>
                   &nbsp; &nbsp; &nbsp;
                   <v-spacer></v-spacer>
-                  <v-btn color="primary" dark @click="dialog = true">
+                  <v-btn color="#8B1919" dark @click="dialog = true">
                     Descargar
                     <v-icon dark right> mdi-cloud-download </v-icon>
                   </v-btn>
@@ -262,58 +262,24 @@
 
     <!--////////////////////////////// vista previa Video ///////////// -->
 
-    <v-dialog v-model="ver_video" transition="dialog-bottom-transition" persistent max-width="70%">
+    <v-dialog v-model="ver_video" transition="dialog-bottom-transition" persistent max-width="70%" max-height="70%">
       <v-card>
-        <v-toolbar color="primary" class="justify-center" dark>
-          <v-toolbar-title>Vista previa </v-toolbar-title>
+        <v-toolbar color="#8B1919" class="justify-center" dark>
+          <v-toolbar-title>{{ objact.title }}</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
             <v-btn dark text @click="ver_video = salir()"> Salir </v-btn>
           </v-toolbar-items>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          &nbsp;
         </v-toolbar>
 
         <v-card-text>
           <v-container>
-            <v-row>
-              <v-col cols="3">
-                <p class="margen"></p>
-                <p class="textder">Título:</p>
-                <p>{{ objact.title }}</p>
-                <p class="textder">Descripción:</p>
-                <p>{{ objact.description }}</p>
-                <p class="textder">Palabras claves</p>
-                <p>{{ objact.key_words }}</p>
-                <p class="textder">Autores:</p>
-                <p>{{ objact.participants }}</p>
-                <p class="textder">Formato:</p>
-                <p>{{ objact.format }}</p>
 
-                <p class="textder">Copyright:</p>
-                <p>
-                  <v-img :src="img_lic" max-height="34" max-width="107" :alt="objact.copyright"
-                    :title="objact.copyright"></v-img>
-                  <br />
-                  {{ objact.copyright }}
-                </p>
-                <p class="textder">
-                  Valoración:
-                  <span class="text-caption mr-2"> ({{ rt }}) </span>
-                </p>
-                <p>
-                  <v-rating readonly v-model="statistic.ranking" background-color="green" color="green" half-increments
-                    dark :title="statistic.ranking">
-                    {{ statistic.ranking }}
-                  </v-rating>
-                </p>
-                <!---<v-divider color="#E0E0E0"></v-divider>
-                <center>
-                  <v-btn class="my-4" color="primary" width="80%" dark>
-                    <v-icon dark left>mdi-download </v-icon>
-                    Descargar
-                  </v-btn>
-                </center>-->
-              </v-col>
-              <v-col cols="9">
+            <v-row>
+              <v-col cols="12">
                 <video id="myVideo" width="100%" height="93%" :src="objact.location" type="video/mp4"
                   @mouseenter="onMenuContex('myVideo')" @click="onclickMplay()"></video>
                 <v-row>
@@ -324,7 +290,7 @@
                   <v-icon color="blue darken-2" right> mdi-eye-check </v-icon>
                   &nbsp; &nbsp;
                   <v-spacer></v-spacer>
-                  <v-btn color="primary" dark @click="dialog = true">
+                  <v-btn color="#8B1919" dark @click="dialog = true">
                     Descargar
                     <v-icon dark right> mdi-cloud-download </v-icon>
                   </v-btn>
@@ -366,7 +332,7 @@
     <!--////////////////////////////// vista previa PDF ///////////// -->
     <v-dialog v-model="ver_pdf" max-width="70%" transition="dialog-bottom-transition" persistent>
       <v-card>
-        <v-toolbar color="primary" dark absolute width="100%" height="58px">
+        <v-toolbar color="#8B1919" dark absolute width="100%" height="58px">
           <v-toolbar-title>Vista previa </v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
@@ -383,7 +349,7 @@
                 &nbsp; &nbsp;
                 <v-row>
                   &nbsp;
-                  <v-btn color="primary" dark @click="dialog = true">
+                  <v-btn color="#8B1919" dark @click="dialog = true">
                     Descargar
                     <v-icon dark right> mdi-cloud-download </v-icon>
                   </v-btn>
