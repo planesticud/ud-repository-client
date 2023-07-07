@@ -46,7 +46,7 @@ const router = new Router({
     {
       path: "/files/add",
       name: "addfiles",
-      component: () => import("./components/Files/AddFiles")
+      component: () => import("./components/Files/AddFiles.vue")
     },
     {
       path: "/files/edit/:id",
