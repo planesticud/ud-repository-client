@@ -1,0 +1,107 @@
+.list {
+  max-width: 800px;
+}
+
+.flcontainer {
+  max-width: 1536px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.myframe {
+  height: 630px;
+  width: 100%;
+  border: 3px;
+}
+
+.textder {
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  padding-right: 15px;
+  padding-left: 5px;
+}
+
+.margen {
+  margin-top: 60px;
+}
+
+.container {
+  background-color: #D8D8D8;
+}
+
+.v-input {
+  background-color: white;
+  border-radius: 25px;
+}
+
+
+
+.theme--light.v-data-table {
+  border-radius: 25px;
+}
+
+
+
+.circle {
+  background-color: #8B1919;
+  width: 60px;
+  height: 240px;
+  border-radius: 15px;
+  text-align: center;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.text-tilte {
+  background-color: #8B1919;
+}
+
+.vue-form-generator {
+  color: #8B1919;
+  border-style: none;
+}
+
+fieldset {
+  color: #8B1919;
+  border-style: none;
+}
+
+label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.field-wrap {
+  display: inline-block !important;
+}
+
+label {
+  display: inline-block;
+}
+
+.wrapper{
+  width: 100px;
+}
+
+.vue-form-generator .field-input .wrapper{
+  width: 400px;
+}
+
+.vue-form-generator .field-wrap .form-control{
+  width: 400px;
+  border-radius: 10px;
+  border-color: #8B1919;
+}
+
+.btnsave {
+  background-color:  #8B1919 !important;
+  color: white !important;
+  border-radius: 15px;
+}
+
+.form {
+  color:  #8B1919 !important;
+}

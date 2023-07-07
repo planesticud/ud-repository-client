@@ -93,7 +93,7 @@
 
 <script>
 import FilesService from "../../services/files";
-import stadisticsService from "../../services/stadistics";
+import statisticsService from "../../services/statistics";
 export default {
   data() {
     return {
@@ -101,7 +101,7 @@ export default {
       stateranking: false,
       dialogo: true,
       dialog: false,
-      stadistic: [],
+      statistic: [],
       rating: 0,
       rankingold: 0,
       btnd: true,
@@ -224,11 +224,11 @@ export default {
       this.btnd = false;
     },
     consultarranking() {
-      stadisticsService
+      statisticsService
         .getStadisticsByid(this.$route.params.id)
         .then((response) => {
           if (response.data[0]) {
-            this.stadistic[0] = response.data[0];
+            this.statistic[0] = response.data[0];
             this.rating = response.data[0].ranking;
            // console.log("existe y consulto rankin: " + this.rating);
           } else {
@@ -241,23 +241,23 @@ export default {
     },
     calificarRecurso() {
       if (
-        this.stadistic[0].ranking === null ||
-        this.stadistic[0].ranking === 0.0
+        this.statistic[0].ranking === null ||
+        this.statistic[0].ranking === 0.0
       ) {
  
-        this.stadistic[0].num_download = 1;
-        this.stadistic[0].ranking = this.rating;
+        this.statistic[0].num_download = 1;
+        this.statistic[0].ranking = this.rating;
       } else {
      
-        //this.stadistic[0].ranking =   (this.stadistic[0].ranking + this.ranking) / 2;
-        this.stadistic[0].ranking =
-          (this.stadistic[0].ranking * this.stadistic[0].num_download +
+        //this.statistic[0].ranking =   (this.statistic[0].ranking + this.ranking) / 2;
+        this.statistic[0].ranking =
+          (this.statistic[0].ranking * this.statistic[0].num_download +
             this.rating) /
-          (this.stadistic[0].num_download + 1);
-        this.stadistic[0].num_download = this.stadistic[0].num_download + 1;
+          (this.statistic[0].num_download + 1);
+        this.statistic[0].num_download = this.statistic[0].num_download + 1;
       }
-      stadisticsService
-        .updateStadistics(this.stadistic[0], this.stadistic[0].id)
+      statisticsService
+        .updateStadistics(this.statistic[0], this.statistic[0].id)
         .catch((e) => {
           console.log(e);
         });

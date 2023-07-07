@@ -89,7 +89,7 @@
 
 <script>
 import filesService from "../../services/files";
-import stadisticsService from "../../services/stadistics";
+import statisticsService from "../../services/statistics";
 export default {
   name: "files-list",
   data() {
@@ -225,11 +225,11 @@ export default {
         .catch((e) => {
           console.log(e);
         });
-      stadisticsService
+      statisticsService
         .getStadisticsByid(id)
         .then((response) => {
           let idStadistic = response.data[0].id;
-          stadisticsService.deleteStadisticsById(idStadistic);
+          statisticsService.deleteStadisticsById(idStadistic);
         })
         .catch((e) => {
           console.log(e);

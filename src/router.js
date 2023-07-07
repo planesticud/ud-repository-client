@@ -26,28 +26,23 @@ const router = new Router({
       name: "detailusers",
       component: () => import("./components/Users/DetailUsers")
     },
+
     {
       path: "/files",
       name: "files",
-      component: () => import("./components/Files/Files")
-    },
-    // cmbnoe
-    {
-      path: "/filesbuscar",
-      name: "filesbuscar",
-      component: () => import("./components/Files/FilesBuscar")
+      component: () => import("./components/Files/FilesSearch")
     },
     {
-      path: "/revisar",
-      name: "revisar",
-      component: () => import("./components/Revisar/Revisar")
+      path: "/review",
+      name: "review",
+      component: () => import("./components/Review/Review")
     },
     {
       path: "/files/detail/:id",
-      name: "valorar",
-      component: () => import("./components/Revisar/DetailObserv")
+      name: "score",
+      component: () => import("./components/Review/DetailObserv")
     },
-    //fin cmbnoe
+
     {
       path: "/files/add",
       name: "addfiles",
@@ -63,33 +58,15 @@ const router = new Router({
       name: "detailfiles",
       component: () => import("./components/Files/DetailFiles")
     },
-    {
-      path: "/estadisticas",
-      name: "estadisticas",
-      component: () => import("./components/Estadisticas/Estadisticas")
-    },
-
-    {
-      path: "/stadistics",
-      name: "stadistics",
-      component: () => import("./components/Stadistics/Stadistics")
-    },
-    {
-      path: "/stadistics/graficas",
-      name: "grafica",
-      component: () => import("./components/Stadistics/Graphics")
-    },
-
-
-    {
+   {
       path: "/home",
       name: "home",
-      component: () => import("./components/Home")
+      component: () => import("./components/Home.vue")
     },
     {
-      path: "/acercade",
-      name: "acercade",
-      component: () => import("./views/Acercade.vue")
+      path: "/about",
+      name: "about",
+      component: () => import("./views/About.vue")
     },
     {
       path: "/",
