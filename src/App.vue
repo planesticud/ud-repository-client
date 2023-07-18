@@ -127,7 +127,7 @@
       <router-view />
       <v-card dark padless>
         <v-row style="background-color: #8B1919;"> 
-          <v-col sm="4" >
+          <v-col sm="5">
            <h2 style="text-align: right;padding: 4%;">Síguenos en redes sociales</h2>
           </v-col>
           <v-col sm="6"> 
@@ -146,6 +146,63 @@
       </v-col> 
       </v-row>
       </v-card>
+      <v-footer dark padless>
+        
+        <div style="background-color:#373737; width:100%;">
+          <v-row style="padding-top: 1%;font-size: 14px;padding-right: 10%;padding-left: 8%;">
+            <v-col sm="4">
+              <strong>Universidad Distrital Francisco José de Caldas</strong><br>
+              <strong>NIT.899.999.230-7</strong><br><br>
+              <p>Institución de Educación Superior sujeta 
+                 a inspección y vigilancia por el 
+                 Ministerio de Educación Nacional</p><br>
+                 <p>Acuerdo de creación N° 10 de 1948 del 
+                    Concejo de Bogotá
+                    Acreditación Institucional de Alta 
+                    Calidad - Resolución N° 23096 del 15 de 
+                    diciembre del 2016</p>
+            </v-col>
+            <v-col >
+              <strong>Nosotros</strong><br><br>
+              <p>Acerca de PlanEsTIC-UD</p>
+              <p>Comité PlanEsTIC-UD</p>
+              <p>Grupo PlanEsTIC-UD</p>
+              <p>Campos de Acción</p>
+              <p>Educación virtual</p>
+            </v-col>
+            <v-col>
+              <strong>Servicios</strong><br><br>
+              <p>Solicitud Turnitin</p>
+              <p>Inscripción cursos</p>
+              <p>Video tutoriales</p>
+              <p>Centro de ayuda</p>
+              <p>Facultades</p>
+              <p>Portafolio de servicios</p>
+            </v-col>
+            <v-col>
+              <strong>Novedades</strong><br><br>
+              <p>Noticias</p>
+              <p>Publicaciones</p>
+              <p>Galería</p>
+              <p>Blog</p>
+            </v-col>
+            <v-col >
+              <strong>Contáctenos</strong><br><br>
+              <p>Coordinador<br>
+                Carlos Enrique Montenegro Marín
+                cemontenegrom@udistrital.edu.co</p><br>
+                <p>Cl. 13 #31-75<br>
+                  Bogotá D.C. Republica de Colombia</p><br>
+                <p>323 9300 ext: 6368<br>
+                  planesticud@udistrital.edu.co<br>
+                  Lunes a viernes de 8 a.m. a 5 p.m</p>
+            </v-col>
+          </v-row>
+        </div>
+        
+        
+        <div class="px-4 py-8 bg-black" ></div>
+       </v-footer>
 
 
 
