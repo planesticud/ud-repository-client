@@ -12,7 +12,8 @@
         <v-container v-if="name">
           <h2>{{ title }} {{ name }}</h2>
         </v-container>
-        <v-text-field v-model="search" append-icon="mdi-magnify" label="¿ Que recurso estas buscando?" single-line
+        <h3 style="padding-top: 15%;">Bienvenido a R-Digital</h3>
+        <v-text-field v-model="search" append-icon="mdi-magnify" label="Buscar recurso" single-line
           hide-details></v-text-field>
       </div>
     </div>
@@ -29,10 +30,43 @@
     </div>
     <div class="row" style="max-width: 100%;">
 
-      <img src="../assets/images/licencia.png" class="notes2" />
+    <img src="../assets/images/banco_recursos.png"  class="notes2"/>
 
     </div>
+    <div class="row" style="max-width: 100%;">
 
+      <img src="../assets/images/recursos_mas_usados_2.png"  class="notes2"/>
+
+    </div>
+    <div class="row" style="max-width: 100%;">
+
+    <img src="../assets/images/cita_profesor.png"  class="notes2"/>
+
+      </div>
+      <h2 style="padding-left: 9%; padding-bottom: 2%; background-color:#fffbfbfb;">Preguntas más frecuentes</h2>
+    <v-row justify="center" style="padding-left: 10%; padding-right: 10%; padding-bottom: 10%; background-color: #fffbfbfb;">
+    
+      <v-expansion-panels accordion  >
+      <v-expansion-panel style="background-color: #fffbfbfb;">
+        <v-expansion-panel-header class="border" style="background-color: #fffbfbfb;">¿Qué es RDigital-UD?</v-expansion-panel-header>
+        <v-expansion-panel-content style="background-color: #fffbfbfb;" >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+      <v-expansion-panel style="background-color: #fffbfbfb;">
+        <v-expansion-panel-header class="border" style="background-color: #fffbfbfb;">¿Cúal es el papel de Planestic-UD?</v-expansion-panel-header>
+        <v-expansion-panel-content style="background-color: #fffbfbfb;" >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+      <v-expansion-panel style="background-color: #fffbfbfb;">
+        <v-expansion-panel-header class="border" style="background-color: #fffbfbfb;">¿Para qué se desarrolló esta iniciativa?</v-expansion-panel-header>
+        <v-expansion-panel-content style="background-color: #fffbfbfb;" >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+    </v-expansion-panels>
+  </v-row>
     <v-dialog v-model="dialog2" activator="parent" width="auto" style="background-color:#940611 ;">
 
       <v-card style="background-color:#940611 ;">
