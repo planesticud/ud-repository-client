@@ -11,7 +11,7 @@
 
         </div>
         <div v-else>
-          Iniciar Sesion
+          Iniciar Sesión
         </div>
       </div>
       <v-dialog v-model="dialog" activator="parent" width="auto" style="background-color:#940611 ;">
