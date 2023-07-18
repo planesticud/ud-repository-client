@@ -18,13 +18,13 @@
     </div>
     <div class="row" style="max-width: 100%;">
       <div class="col" style="background-color: #4A7C2F;" @click="dialog2 = true">
-        <img src="../assets/images/como-publicar.png" class="notes" />
+        <img src="../assets/images/que_es_r_digital.png" class="notes" />
       </div>
       <div class="col" style="background-color: #D63716;"  @click="dialog3 = true">
-        <img src="../assets/images/quienes.png" class="notes" />
+        <img src="../assets/images/papel_planestic.png" class="notes" />
       </div>
-      <div class="col" style="background-color: #99050F; "  @click="dialog4 = true">
-        <img src="../assets/images/que_es.png" class="notes" />
+      <div class="col" style="background-color: #95bce3; "  @click="dialog4 = true">
+        <img src="../assets/images/desarrollo_iniciativa.png" class="notes" />
       </div>
     </div>
     <div class="row" style="max-width: 100%;">

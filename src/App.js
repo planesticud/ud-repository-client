@@ -45,6 +45,8 @@ export default {
       buttons: [
         { text: "Inicio", route: "/home" },
         { text: "Nosotros", route: "/about" },
+        { text: "Recursos", route: "/"},
+        { text: "Estadistica", route: "/"}
       ],
       name: "",
       token: "",

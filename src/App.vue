@@ -10,23 +10,27 @@
           {{ name }}
 
         </div>
-        <div v-else>
-          Iniciar Sesión
+        
+        <div class="login" v-else>
+          Iniciar Sesión  
         </div>
+        
       </div>
       <v-dialog v-model="dialog" activator="parent" width="auto" style="background-color:#940611 ;">
 
         <v-card style="background-color:#940611 ;">
-          <v-card-actions>
+          <v-card-actions >
 
-            <v-btn style="background-color: black; color: aliceblue;" icon="mdi-calendar" size="x-large"
-              @click="dialog = false">X</v-btn>
-          </v-card-actions>
+          <v-btn  style="background-color: aliceblue; color: black;" icon="mdi-calendar" size="x-large"
+             @click="dialog = false">X</v-btn>
+            </v-card-actions>
           <v-card-text>
 
-            <a href="https://rdigital.planestic.udistrital.edu.co/api/microsoft">
-              <v-btn v-if="!isLogin" rounded style="background-color: aliceblue;" class="btn btn-light">
-                <img class="ms-icon center" src="./assets/images/microsoftlogo.png" />
+            <h2 style="color: aliceblue; padding: 15px; ">¡Únete y conoce todos los recursos que te ayudarán!</h2>
+            <p style="color: aliceblue; padding: 10px; padding-left: 20%; font-size: 18px;">Comienza utilizando tu cuenta Microsoft</p>
+            <a href="https://rdigital.planestic.udistrital.edu.co/api/microsoft" style="padding-left: 35%;">
+              <v-btn  v-if="!isLogin" rounded style="background-color: aliceblue;  "  class="btn btn-ligh">
+                <img class="ms-icon center"  src="./assets/images/microsoftlogo.png" />
 
               </v-btn>
               <!--href="http://localhost:3000/google"-->
