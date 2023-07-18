@@ -192,7 +192,7 @@
                 Carlos Enrique Montenegro Marín
                 cemontenegrom@udistrital.edu.co</p><br>
                 <p>Cl. 13 #31-75<br>
-                  Bogotá D.C. Republica de Colombia</p><br>
+                  Bogotá D.C. República de Colombia</p><br>
                 <p>323 9300 ext: 6368<br>
                   planesticud@udistrital.edu.co<br>
                   Lunes a viernes de 8 a.m. a 5 p.m</p>

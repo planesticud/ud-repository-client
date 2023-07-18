@@ -67,19 +67,21 @@
       </v-expansion-panel>
     </v-expansion-panels>
   </v-row>
-    <v-dialog v-model="dialog2" activator="parent" width="auto" style="background-color:#940611 ;">
+    <v-dialog v-model="dialog2" activator="parent" width="800" style="background-color:#940611 ;">
 
       <v-card style="background-color:#940611 ;">
         <v-card-actions>
 
-          <v-btn style="background-color: black; color: aliceblue;" icon="mdi-calendar" size="x-large"
+          <v-btn style="background-color:aliceblue ; color:black;" icon="mdi-calendar" size="x-large"
             @click="dialog2 = false">X</v-btn>
         </v-card-actions>
         <v-card-text>
 
           <h1 style=" color: aliceblue;">¿Qué es RDigital -UD?</h1>
           &nbsp;
-          <h3 style=" color: aliceblue;">
+          <v-row>
+            <v-col >
+          <p style=" color: aliceblue; font-size: 16px; padding-top: 5%;">
             Es un espacio virtual de recursos y objetos de aprendizaje que
             ofrece a la comunidad universitaria almacenar, catalogar y
             acceder a recursos digitales que apoyan la academia cuyo
@@ -92,25 +94,32 @@
             interactivas, entre otras tipologías de uso libre con el objetivo de
             aportar a la formación e investigación
 
-          </h3>
+          </p>
+        </v-col >
+        <v-col sm="4" style="text-align:center;">
+          <img src="../assets/images/recurso2.png" height="300" >
+        </v-col>
+          </v-row>
         </v-card-text>
 
       </v-card>
     </v-dialog>
 
-    <v-dialog v-model="dialog3" activator="parent" width="auto" style="background-color:#940611 ;">
+    <v-dialog v-model="dialog3" activator="parent" width="800" style="background-color:#940611 ;">
 
 <v-card style="background-color:#940611 ;">
   <v-card-actions>
 
-    <v-btn style="background-color: black; color: aliceblue;" icon="mdi-calendar" size="x-large"
+    <v-btn style="background-color: aliceblue; color: black;" icon="mdi-calendar" size="x-large"
       @click="dialog3 = false">X</v-btn>
   </v-card-actions>
   <v-card-text>
-
+    
     <h1 style=" color: aliceblue;">¿Cuál es el papel de Planestic- UD?</h1>
     &nbsp;
-    <h3 style=" color: aliceblue;">
+    <v-row>
+      <v-col>
+    <p style=" color: aliceblue; font-size: 16px; padding-top: 5%;">
       
 Como parte del Plan Estratégico de 
 Incorporación de Medios y Tecnologías de la 
@@ -127,7 +136,13 @@ generación de diversos recursos y OVAS a ser
 publicados, socializados y dispuesto para toda 
 la institución
 
-    </h3>
+    </p>
+  </v-col>
+    <v-col sm="6" style="text-align:center;">
+          <img src="../assets/images/recurso3.png" height="300" >
+  
+  </v-col>
+  </v-row>
   </v-card-text>
 
 </v-card>
@@ -138,7 +153,7 @@ la institución
 <v-card style="background-color:#940611 ;">
   <v-card-actions>
 
-    <v-btn style="background-color: black; color: aliceblue;" icon="mdi-calendar" size="x-large"
+    <v-btn style="background-color: aliceblue; color: black;" icon="mdi-calendar" size="x-large"
       @click="dialog4 = false">X</v-btn>
   </v-card-actions>
   <v-card-text>
