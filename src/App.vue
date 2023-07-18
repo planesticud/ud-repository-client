@@ -122,9 +122,14 @@
 
       <router-view />
       <v-card dark padless>
-        <v-card flat tile color="#8b1919" class="white--text text-center">
-          <v-card-text>
-            <v-btn :href="lik.route" :target="lik.route" v-for="lik in linkk" :key="lik.icons" class="mx-6 white--text"
+        <v-row style="background-color: #8B1919;"> 
+          <v-col sm="4" >
+           <h2 style="text-align: right;padding: 4%;">Síguenos en redes sociales</h2>
+          </v-col>
+          <v-col sm="6"> 
+        <v-card flat tile color="#8b1919" class="white--text text-center" style="background-color: #8B1919;">
+          <v-card-text style="padding-left: 0%;"> 
+            <v-btn :href="lik.route" :target="lik.route" v-for="lik in linkk" :key="lik.icons" class="mx-4 white--text"
               icon>
               <v-hover v-slot="{ hover }" open-delay="200">
                 <v-icon :title="lik.des" :size="hover ? '64px' : '36px'" :class="{ 'on-hover': hover }">
@@ -134,6 +139,8 @@
             </v-btn>
           </v-card-text>
         </v-card>
+      </v-col> 
+      </v-row>
       </v-card>
 
 
