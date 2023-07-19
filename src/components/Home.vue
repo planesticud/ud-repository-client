@@ -49,30 +49,40 @@
 
       <v-expansion-panels accordion>
         <v-expansion-panel style="background-color: #fffbfbfb;">
-          <v-expansion-panel-header class="border" style="background-color: #fffbfbfb;">¿Qué es
-            RDigital-UD?</v-expansion-panel-header>
+          <v-expansion-panel-header class="border" style="background-color: #fffbfbfb;">¿Puedo cargar recursos de mi
+            autoría en RDigital -UD? </v-expansion-panel-header>
           <v-expansion-panel-content style="background-color: #fffbfbfb;">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.
+            Sí. Su perfil para cargar recursos deberá ser autorizado por el administrador de plataforma, por tanto, deberá
+            escribir un correo a: planesticforma@udistrital.edu.co mencionando su interés en ser creador de contenido y
+            compartir su primer recurso para que sea revisado por el equipo de Planestic-UD el cual cambiará el perfil de
+            visualizador.
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel style="background-color: #fffbfbfb;">
-          <v-expansion-panel-header class="border" style="background-color: #fffbfbfb;">¿Cúal es el papel de
-            Planestic-UD?</v-expansion-panel-header>
+          <v-expansion-panel-header class="border" style="background-color: #fffbfbfb;">¿Quiénes pueden utilizar este
+            espacio?</v-expansion-panel-header>
           <v-expansion-panel-content style="background-color: #fffbfbfb;">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.
+            Todos los docentes, investigadores, estudiantes y egresados adscritos a la Universidad Francisco José de
+            Caldas que quieran participar de este espacio.
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel style="background-color: #fffbfbfb;">
-          <v-expansion-panel-header class="border" style="background-color: #fffbfbfb;">¿Para qué se desarrolló esta
-            iniciativa?</v-expansion-panel-header>
+          <v-expansion-panel-header class="border" style="background-color: #fffbfbfb;">¿Puedo descargar recursos de la
+            plataforma? </v-expansion-panel-header>
           <v-expansion-panel-content style="background-color: #fffbfbfb;">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.
+            Sí, una vez registrado en la plataforma con el correo institucional, podrá acceder a la plataforma, visualizar
+            y descargar los recursos digitales que están disponibles. Así mismo, podrá ser creador de contenido y cargar
+            sus recursos propios en plataforma. Tenga en cuenta las consideraciones de las licencias en la sección:
+            RECURSOS.
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel style="background-color: #fffbfbfb;">
+          <v-expansion-panel-header class="border" style="background-color: #fffbfbfb;">¿Mi recurso se publicará
+            automáticamente en la plataforma? </v-expansion-panel-header>
+          <v-expansion-panel-content style="background-color: #fffbfbfb;">
+            En el momento de cargar un recurso en plataforma, se hará un proceso de evaluación desde el área de
+            PlanesTIC-UD para aprobar y publicar el recurso. Deberá contar con los criterios mínimos que encontrará en la
+            sección: RECURSOS.
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
@@ -102,7 +112,7 @@
                 docentes y estudiantes tales como: manuales, plantillas de
                 trabajo, videos, videotutoriales, infografías, presentaciones
                 interactivas, entre otras tipologías de uso libre con el objetivo de
-                aportar a la formación e investigación
+                aportar a la formación e investigación.
 
               </p>
             </v-col>
@@ -143,7 +153,7 @@
                 orienta a la comunidad académica en la
                 generación de diversos recursos y OVAS a ser
                 publicados, socializados y dispuesto para toda
-                la institución
+                la institución.
 
               </p>
             </v-col>
@@ -157,7 +167,7 @@
       </v-card>
     </v-dialog>
 
-    <v-dialog v-model="dialog4" activator="parent" width="auto" style="background-color:#940611 ;">
+    <v-dialog v-model="dialog4" activator="parent" width="800" style="background-color:#940611 ;">
 
       <v-card style="background-color:#940611 ;">
         <v-card-actions>
@@ -167,31 +177,29 @@
         </v-card-actions>
         <v-card-text>
 
-          <h1 style=" color: aliceblue;">¿Cuál es el papel de Planestic- UD?</h1>
+          <h1 style=" color: aliceblue;">¿Por qué se desarrolló esta iniciativa?</h1>
           &nbsp;
-          <h3 style=" color: aliceblue;">
+          <v-row>
+            <v-col>
+              <p style=" color: aliceblue; font-size: 16px; padding-top: 5%;">
+                El objetivo de esta iniciativa es responder a los intereses y necesidades de la comunidad universitaria:
+                estudiantes, docentes e investigadores, a fin divulgar y gestionar la producción académica a través de la
+                creación de contenidos digitales que pueden ser compartidos en el repositorio de manera libre respetando
+                los
+                derechos de autor y fortaleciendo la producción de material digital en diferentes áreas.
+              </p>
+            </v-col>
+            <v-col sm="7" style="text-align:center;">
+              <img src="../assets/images/recurso4.png" height="250">
 
-            Como parte del Plan Estratégico de
-            Incorporación de Medios y Tecnologías de la
-            Información en Procesos Educativos (2011 –
-            2020), desde PlanEsTIC-UD se busca
-            incentivar la creación, construcción y
-            reutilización de Recursos Educativos Abiertos
-            - REA, para el uso, adaptación y aplicación de
-            contenidos digitales al interior de las aulas y
-            espacios académicos de la universidad en pro
-            de la gestión del conocimiento; para ello se
-            orienta a la comunidad académica en la
-            generación de diversos recursos y OVAS a ser
-            publicados, socializados y dispuesto para toda
-            la institución
+            </v-col>
+          </v-row>
+        </v-card-text>
 
-          </h3>
-      </v-card-text>
+      </v-card>
+    </v-dialog>
 
-    </v-card>
-  </v-dialog>
-
-</v-container></template>
+  </v-container>
+</template>
 <script src="./Home.js"></script>
 <style src="./Home.css"></style>
