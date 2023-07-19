@@ -198,8 +198,9 @@
 
       </v-card>
     </v-dialog>
-
+   
   </v-container>
+ 
 </template>
 <script src="./Home.js"></script>
 <style src="./Home.css"></style>
