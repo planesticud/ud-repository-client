@@ -3,6 +3,7 @@ export default {
   data() {
     return {
       dialog: false,
+      dialog2: false,
       acerca: false,
       menu_izq: false,
       drawer: false,

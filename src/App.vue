@@ -3,34 +3,36 @@
     <div v-if="!isMobile" class="banner-all" :style="logoStyle">
       <img class="logo-planestic1" src="./assets/images/logo2.png" />
       <img class="logo-planestic2" src="./assets/images/logo_planestic.png" />
-      <div class="trapezoid" @click="dialog = true">
+      <div class="trapezoid">
         <div v-if="isLogin">
           <v-icon style="color: aliceblue;"> mdi-account </v-icon>
           {{ rol }}
           {{ name }}
 
         </div>
-        
+
         <div class="login" v-else>
-          Iniciar Sesión  
+          <v-btn style="background-color: #8B1919; color: aliceblue;" @click="dialog2 = true"> Crear cuenta</v-btn>
+          <v-btn style="background-color: #8B1919; color: aliceblue;" @click="dialog = true"> Iniciar Sesión</v-btn>
         </div>
-        
+
+
       </div>
       <v-dialog v-model="dialog" activator="parent" width="auto" style="background-color:#940611 ;">
-
         <v-card style="background-color:#940611 ;">
-          <v-card-actions >
+          <v-card-actions>
 
-          <v-btn  style="background-color: aliceblue; color: black;" icon="mdi-calendar" size="x-large"
-             @click="dialog = false">X</v-btn>
-            </v-card-actions>
+            <v-btn style="background-color: aliceblue; color: black;" icon="mdi-calendar" size="x-large"
+              @click="dialog = false">X</v-btn>
+          </v-card-actions>
           <v-card-text>
 
             <h2 style="color: aliceblue; padding: 15px; ">¡Únete y conoce todos los recursos que te ayudarán!</h2>
-            <p style="color: aliceblue; padding: 10px; padding-left: 20%; font-size: 18px;">Comienza utilizando tu cuenta Microsoft</p>
+            <p style="color: aliceblue; padding: 10px; padding-left: 20%; font-size: 18px;">Comienza utilizando tu cuenta
+              Microsoft</p>
             <a href="https://rdigital.planestic.udistrital.edu.co/api/microsoft" style="padding-left: 35%;">
-              <v-btn  v-if="!isLogin" rounded style="background-color: aliceblue;  "  class="btn btn-ligh">
-                <img class="ms-icon center"  src="./assets/images/microsoftlogo.png" />
+              <v-btn v-if="!isLogin" rounded style="background-color: aliceblue;  " class="btn btn-ligh">
+                <img class="ms-icon center" src="./assets/images/microsoftlogo.png" />
 
               </v-btn>
               <!--href="http://localhost:3000/google"-->
@@ -45,6 +47,39 @@
 
           </v-card-text>
 
+        </v-card>
+      </v-dialog>
+      <v-dialog v-model="dialog2" activator="parent" width="auto" style="background-color:#940611 ;">
+        <v-card style="background-color:#940611 ;">
+          <v-card-actions>
+            <v-btn style="background-color: aliceblue; color: black;" icon="mdi-calendar" size="x-large"
+              @click="dialog2 = false">X</v-btn>
+          </v-card-actions>
+          <v-card-text >
+
+            <h2 style="color: aliceblue; padding: 15px;text-align: center; ">Crea tu cuenta</h2>
+            <p style="color: aliceblue; padding: 10px;text-align: center; font-size: 18px;">Accede a nuestro contenido, publica y 
+avanza en tu conocimiento.</p>
+            <a href="https://rdigital.planestic.udistrital.edu.co/api/microsoft" style="padding-left: 35%;">
+              <v-btn v-if="!isLogin" rounded style="background-color: aliceblue;  " class="btn btn-ligh">
+                <img class="ms-icon center" src="./assets/images/microsoftlogo.png" />
+
+              </v-btn>
+              <!--href="http://localhost:3000/google"-->
+            </a>
+            <div style="text-align: center;padding-top: 2%;"> 
+            <v-btn v-if="!isLogin" rounded style="background-color: aliceblue;" class="btn btn-ligh">
+                Conecta con correo
+              </v-btn>
+            </div>
+
+            <v-btn v-if="isLogin" rounded style="background-color: aliceblue;" class="btn btn-light" @click="logout()">
+              Cerrar sesion
+
+            </v-btn>
+
+
+          </v-card-text>
         </v-card>
       </v-dialog>
 
@@ -126,83 +161,78 @@
 
       <router-view />
       <v-card dark padless>
-        <v-row style="background-color: #8B1919;"> 
+        <v-row style="background-color: #8B1919;">
           <v-col sm="5">
-           <h2 style="text-align: right;padding: 4%;">Síguenos en redes sociales</h2>
+            <h2 style="text-align: right;padding: 4%;">Síguenos en redes sociales</h2>
           </v-col>
-          <v-col sm="6"> 
-        <v-card flat tile color="#8b1919" class="white--text text-center" style="background-color: #8B1919;">
-          <v-card-text style="padding-left: 0%;"> 
-            <v-btn :href="lik.route" :target="lik.route" v-for="lik in linkk" :key="lik.icons" class="mx-4 white--text"
-              icon>
-              <v-hover v-slot="{ hover }" open-delay="200">
-                <v-icon :title="lik.des" :size="hover ? '64px' : '36px'" :class="{ 'on-hover': hover }">
-                  {{ lik.icons }}
-                </v-icon>
-              </v-hover>
-            </v-btn>
-          </v-card-text>
-        </v-card>
-      </v-col> 
-      </v-row>
+          <v-col sm="6">
+            <v-card flat tile color="#8b1919" class="white--text text-center" style="background-color: #8B1919;">
+              <v-card-text style="padding-left: 0%;">
+                <v-btn :href="lik.route" :target="lik.route" v-for="lik in linkk" :key="lik.icons"
+                  class="mx-4 white--text" icon>
+                  <v-hover v-slot="{ hover }" open-delay="200">
+                    <v-icon :title="lik.des" :size="hover ? '64px' : '36px'" :class="{ 'on-hover': hover }">
+                      {{ lik.icons }}
+                    </v-icon>
+                  </v-hover>
+                </v-btn>
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
       </v-card>
       <v-footer dark padless>
-        
+
         <div style="background-color:#373737; width:100%;">
           <v-row style="padding-top: 1%;font-size: 14px;padding-right: 10%;padding-left: 8%;">
             <v-col sm="4">
               <strong>Universidad Distrital Francisco José de Caldas</strong><br>
               <strong>NIT.899.999.230-7</strong><br><br>
-              <p>Institución de Educación Superior sujeta 
-                 a inspección y vigilancia por el 
-                 Ministerio de Educación Nacional</p><br>
-                 <p>Acuerdo de creación N° 10 de 1948 del 
-                    Concejo de Bogotá
-                    Acreditación Institucional de Alta 
-                    Calidad - Resolución N° 23096 del 15 de 
-                    diciembre del 2016</p>
+              <p>Institución de Educación Superior sujeta
+                a inspección y vigilancia por el
+                Ministerio de Educación Nacional</p><br>
+              <p>Acuerdo de creación N° 10 de 1948 del
+                Concejo de Bogotá
+                Acreditación Institucional de Alta
+                Calidad - Resolución N° 23096 del 15 de
+                diciembre del 2016</p>
             </v-col>
-            <v-col >
+            <v-col>
               <strong>Nosotros</strong><br><br>
-              <p>Acerca de PlanEsTIC-UD</p>
-              <p>Comité PlanEsTIC-UD</p>
-              <p>Grupo PlanEsTIC-UD</p>
-              <p>Campos de Acción</p>
-              <p>Educación virtual</p>
+
+              <a v-for="nos in nosotros" :key="nos.name" style="color: aliceblue;" target="_blank" :href="nos.route"> {{
+                nos.name }} <br><br>
+              </a>
             </v-col>
             <v-col>
               <strong>Servicios</strong><br><br>
-              <p>Solicitud Turnitin</p>
-              <p>Inscripción cursos</p>
-              <p>Video tutoriales</p>
-              <p>Centro de ayuda</p>
-              <p>Facultades</p>
-              <p>Portafolio de servicios</p>
+              <a v-for="servicio in servicios" :key="servicio.name" style="color: aliceblue;" target="_blank"
+                :href="servicio.route"> {{ servicio.name }} <br><br>
+              </a>
             </v-col>
             <v-col>
               <strong>Novedades</strong><br><br>
-              <p>Noticias</p>
-              <p>Publicaciones</p>
-              <p>Galería</p>
-              <p>Blog</p>
+              <a v-for="novedad in novedades" :key="novedad.name" style="color: aliceblue;" target="_blank"
+                :href="novedad.route"> {{ novedad.name }} <br><br>
+              </a>
             </v-col>
-            <v-col >
+            <v-col>
               <strong>Contáctenos</strong><br><br>
               <p>Coordinador<br>
                 Carlos Enrique Montenegro Marín
                 cemontenegrom@udistrital.edu.co</p><br>
-                <p>Cl. 13 #31-75<br>
-                  Bogotá D.C. República de Colombia</p><br>
-                <p>323 9300 ext: 6368<br>
-                  planesticud@udistrital.edu.co<br>
-                  Lunes a viernes de 8 a.m. a 5 p.m</p>
+              <p>Cl. 13 #31-75<br>
+                Bogotá D.C. República de Colombia</p><br>
+              <p>323 9300 ext: 6368<br>
+                planesticud@udistrital.edu.co<br>
+                Lunes a viernes de 8 a.m. a 5 p.m</p>
             </v-col>
           </v-row>
         </div>
-        
-        
-        <div class="px-4 py-8 bg-black" ></div>
-       </v-footer>
+
+
+        <div class="px-4 py-8 bg-black"></div>
+      </v-footer>
 
 
 

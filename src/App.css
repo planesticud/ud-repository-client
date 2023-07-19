@@ -57,7 +57,7 @@ hr.solid {
   border-bottom: 50px solid #8B1919;
   border-left: 25px solid transparent;
   height: 0;
-  width: 300px;
+  width: 350px;
   margin-top: 35px;
   float: right;
   color: #f3f3f3;
@@ -79,6 +79,7 @@ hr.solid {
 }
 
 .login {
-  padding: 15px;
+  padding: 10px;
+  padding-left: 0%;
 
 }
