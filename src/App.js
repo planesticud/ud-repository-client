@@ -4,6 +4,7 @@ export default {
     return {
       dialog: false,
       dialog2: false,
+      dialog3: false,
       acerca: false,
       menu_izq: false,
       drawer: false,

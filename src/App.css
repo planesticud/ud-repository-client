@@ -83,3 +83,17 @@ hr.solid {
   padding-left: 0%;
 
 }
+
+.form {
+  background-color: aliceblue;
+  border-radius: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 0%;
+  padding-bottom: 0%;
+  
+}
+
+.v-label.theme--light {
+  color: aliceblue !important;
+}

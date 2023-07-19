@@ -55,11 +55,12 @@
             <v-btn style="background-color: aliceblue; color: black;" icon="mdi-calendar" size="x-large"
               @click="dialog2 = false">X</v-btn>
           </v-card-actions>
-          <v-card-text >
+          <v-card-text>
 
             <h2 style="color: aliceblue; padding: 15px;text-align: center; ">Crea tu cuenta</h2>
-            <p style="color: aliceblue; padding: 10px;text-align: center; font-size: 18px;">Accede a nuestro contenido, publica y 
-avanza en tu conocimiento.</p>
+            <p style="color: aliceblue; padding: 10px;text-align: center; font-size: 18px;">Accede a nuestro contenido,
+              publica y
+              avanza en tu conocimiento.</p>
             <a href="https://rdigital.planestic.udistrital.edu.co/api/microsoft" style="padding-left: 35%;">
               <v-btn v-if="!isLogin" rounded style="background-color: aliceblue;  " class="btn btn-ligh">
                 <img class="ms-icon center" src="./assets/images/microsoftlogo.png" />
@@ -67,8 +68,9 @@ avanza en tu conocimiento.</p>
               </v-btn>
               <!--href="http://localhost:3000/google"-->
             </a>
-            <div style="text-align: center;padding-top: 2%;"> 
-            <v-btn v-if="!isLogin" rounded style="background-color: aliceblue;" class="btn btn-ligh">
+            <div style="text-align: center;padding-top: 2%;">
+              <v-btn v-if="!isLogin" rounded style="background-color: aliceblue;" class="btn btn-ligh"
+                @click="dialog3 = true">
                 Conecta con correo
               </v-btn>
             </div>
@@ -82,6 +84,41 @@ avanza en tu conocimiento.</p>
           </v-card-text>
         </v-card>
       </v-dialog>
+      <v-dialog v-model="dialog3" activator="parent" width="auto" style="background-color:#940611 ;">
+        <v-card style="background-color:#940611 ;">
+          <v-card-actions>
+            <v-btn style="background-color: aliceblue; color: black;" icon="mdi-calendar" size="x-large"
+              @click="dialog3 = false">X</v-btn>
+          </v-card-actions>
+          <v-card-text>
+
+            <h2 style="color: aliceblue; padding: 15px;text-align: center; ">Completa tu registro
+              llenando tus datos</h2>
+            <v-form>
+              <h3 style="color: aliceblue;padding-bottom: 2%;">Nombres y apellidos</h3>
+              <v-text-field class="form"> </v-text-field>
+              <h3 style="color: aliceblue;padding-bottom: 2%; padding-top: 4%;">Correo electrónico</h3>
+              <v-text-field class="form"> </v-text-field>
+              <h3 style="color: aliceblue;padding-bottom: 2%; padding-top: 4%;">Contraseña</h3>
+              <v-text-field class="form"> </v-text-field>
+              <h3 style="color: aliceblue;padding-bottom: 2%; padding-top: 4%;">Número de teléfono (opcional)</h3>
+              <v-text-field class="form"> </v-text-field>
+
+              <v-checkbox color="white" v-model="checkbox" :rules="[v => !!v || 'Debes aceptar para continuar!']"
+                label="Autorizo el tratamiento de mis datos" required></v-checkbox>
+              <v-checkbox color="white" v-model="checkbox"  
+                label="Deseo recibir actualizaciones" required></v-checkbox>
+                <div style="text-align:center">
+                <v-btn rounded style="background-color:  aliceblue; color:black;" class="btn btn-ligh"
+                >Continuar </v-btn></div>
+                
+            </v-form>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
+
+
+
 
     </div>
     <hr class="solid">
