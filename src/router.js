@@ -28,6 +28,27 @@ const router = new Router({
     },
 
     {
+      path: "/roles",
+      name: "roles",
+      component: () => import("./components/Roles/Roles")
+    },
+    {
+      path: "/roles/add",
+      name: "addroles",
+      component: () => import("./components/Roles/AddRoles")
+    },
+    {
+      path: "/roles/edit/:id",
+      name: "editroles",
+      component: () => import("./components/Roles/EditRoles")
+    },
+    {
+      path: "/roles/detail/:id",
+      name: "detailroles",
+      component: () => import("./components/Roles/DetailRoles")
+    },
+
+    {
       path: "/files",
       name: "files",
       component: () => import("./components/Files/FilesSearch")
