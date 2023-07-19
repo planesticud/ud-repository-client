@@ -15,7 +15,7 @@
         recursos digitales abiertos como una representación de trabajo colaborativo al interior de la comunidad académica.
 
         Para conocer más de PlanesTIC-UD y su implementación en varios proyectos en torno a las TIC podrá explorar la
-        página principal del proyecto: https://planestic.udistrital.edu.co/
+        página principal del proyecto: <a href="https://planestic.udistrital.edu.co/" target="_blank">https://planestic.udistrital.edu.co/</a>
 
 
       </p>

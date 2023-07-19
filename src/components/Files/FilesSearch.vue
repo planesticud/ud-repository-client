@@ -25,7 +25,7 @@
           <router-link to="/files">
             <v-btn class="mx-2" fab dark small color="#8B1919">
               <v-icon dark>
-                mdi-heart
+                mdi:file-multiple
               </v-icon>
             </v-btn>
           </router-link>
@@ -34,7 +34,7 @@
           <router-link to="/files/add">
             <v-btn class="mx-2" fab dark small color="#8B1919">
               <v-icon dark>
-                mdi-heart
+                mdi:cloud-upload
               </v-icon>
             </v-btn>
           </router-link>
