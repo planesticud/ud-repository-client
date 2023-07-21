@@ -127,8 +127,8 @@
         <v-app-bar-nav-icon @click="menu_izq = !menu_izq" v-if="isMobile"></v-app-bar-nav-icon>
 
 
-        <v-tabs  align-with-title v-if="!isMobile">
-          <v-tab :to="button.route" v-for="(button, index) in buttons" :key="index" text>
+        <v-tabs  centered color="black" v-if="!isMobile">
+          <v-tab  :to="button.route" v-for="(button, index) in buttons" :key="index" text>
             {{ button.text }}
           </v-tab>
 
