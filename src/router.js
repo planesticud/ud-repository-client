@@ -98,12 +98,20 @@ const router = new Router({
       path: "/login",
       name: "login",
       component: () => import("./components/Login")
+    },
+    {
+      path: "/colaborador",
+      name: "colaborador",
+      component: () => import("./views/Colaborador.vue")
     }
+    
+      
   ]
 });
+
 router.beforeEach((to, from, next) => {
   let ls = localStorage.getItem('token');
-  if (to.name !== 'login' && to.name !== 'acercade' && to.name !== 'home' && ls === null)
+  if (to.name !== 'login' && to.name !== 'acercade' && to.name !== 'home' && ls === null && to.name !== 'colaborador')
     next({ name: 'login' })
   else if (to.name === 'login' && ls !== null)
     next({ name: 'home' })
