@@ -17,7 +17,7 @@
           hide-details></v-text-field>
       </div>
     </div>
-    <div class="row" style="max-width: 100%;">
+    <div class="row" style="max-width: 100%; padding-bottom: 8%;">
       <div class="col" style="background-color: #4A7C2F;" @click="dialog2 = true">
         <img src="../assets/images/rdigital.png" class="notes" />
       </div>
@@ -34,11 +34,11 @@
 
 
 
-    <v-row justify="center">
+    <v-row class="bg" justify="center">
       <v-row>
-        <h2 style="margin-left: 110%; margin-top: 20%; "> Recursos</h2>
+        <h1 style="margin-left: 110%; margin-top: 20%; color: aliceblue; font-size:200%; "> Recursos</h1>
       </v-row>
-      <v-row>
+      <v-row style="margin-top: 4%;">
         <v-card class="mx-10 my-12" max-width="300">
           <v-img height="250" src="../assets/images/criterios-minimos.png"></v-img>
           <v-card-title>Criterios mínimos</v-card-title>
@@ -79,11 +79,11 @@
         </v-card></v-row>
     </v-row>
 
-    <div class="row" style="padding-bottom: 5%; padding-left: 15%;">
-      <v-col cols="5" >
+    <v-row class="bg-1" style="margin-bottom: 10%; margin-top: 10%; padding-left: 15%;">
+      <v-col cols="5" style="margin-top: 5%; ">
 
 
-        <v-carousel height="300" hide-delimiter-background cycle style="border-style: solid;padding-top:5%">
+        <v-carousel height="300" elevation="24" hide-delimiters hide-delimiter-background cycle style="padding-top:5%; border-style: solid;">
           <v-carousel-item v-for="(slide, i) in slides" :key="i">
             <v-sheet height="60%" tile>
               <v-row class="fill-height" justify="center">
@@ -114,8 +114,8 @@
 
 
       </v-col>
-      <v-col cols="5"><v-card style="background-color:#D63716; color:#fffbfbfb">
-          <v-card-title style="font-size:26px">Hacerse colaborador </v-card-title>
+      <v-col cols="5"><v-card flat style="background-color:#D63716; color:#fffbfbfb">
+          <v-card-title style="font-size:26px;font-weight: bold;">Hacerse colaborador </v-card-title>
           <v-card-text style=" color:#fffbfbfb" > La plataforma cuenta con dos perfiles de acuerdo
             con el interés que tenga: <br><br>
             <h3>Visualizador</h3>
@@ -128,18 +128,23 @@
             aprendizaje! Aquí encontrarás una plataforma donde puedes dar
             vida a tus ideas y contribuir al enriquecimiento de la educación a
             través de la creación de materiales interactivos y atractivos.</v-card-text>
+            <v-card-actions>
+            <v-btn  color="white darken-4" text @click="reserve">
+              > Más detalles
+            </v-btn>
+          </v-card-actions>
 
 
 
         </v-card></v-col>
 
-    </div>
-    <h2 style="padding-left: 9%; padding-bottom: 2%; background-color:#fffbfbfb;">Preguntas más frecuentes</h2>
+      </v-row>
+    <h2 style="padding-left: 9%; padding-bottom: 2%; background-color:white;">Preguntas más frecuentes</h2>
     <v-row justify="center"
-      style="padding-left: 10%; padding-right: 10%; padding-bottom: 10%; background-color: #fffbfbfb;">
+      style="padding-left: 10%; padding-right: 10%; padding-bottom: 10%; background-color: white;">
 
       <v-expansion-panels accordion>
-        <v-expansion-panel style="background-color: #fffbfbfb;">
+        <v-expansion-panel style="background-color: white;">
           <v-expansion-panel-header class="border" style="background-color: #fffbfbfb;">¿Puedo cargar recursos de mi
             autoría en RDigital -UD? </v-expansion-panel-header>
           <v-expansion-panel-content style="background-color: #fffbfbfb;">

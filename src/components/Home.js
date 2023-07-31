@@ -34,7 +34,7 @@ export default {
         {
           txt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut est ut urna rhoncus porta ac in lectus",
           img: "https://cdn.vuetifyjs.com/images/john.png",
-          name: "John",
+          name: "Carlos",
           cargo: "Rector",
         }
       ],

@@ -49,3 +49,12 @@
   background-image: url('../assets/images/fondo-citas.png');
 
 }
+
+.bg {
+  background: url("../assets/images/fondo-azul.png") no-repeat left/85%100% ;
+ }
+
+ .bg-1 {
+  background: url("../assets/images/fondo-naranja.png") no-repeat right/70%100% ;
+  
+ }
