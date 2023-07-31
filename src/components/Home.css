@@ -37,3 +37,15 @@
   border-radius: 25px;
   background-color: #fffbfbfb;
 }
+
+.ventana {
+  background-color:aliceblue;
+  border-radius: 30px;
+
+}
+
+.citas{
+ 
+  background-image: url('../assets/images/fondo-citas.png');
+
+}

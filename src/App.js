@@ -46,8 +46,8 @@ export default {
       url_image: "",
       buttons: [
         { text: "Inicio", route: "/home" },
-        { text: "Nosotros", route: "/about" },
-        { text: "Estadistica", route: "/"},
+        { text: "Recursos", route: "/"},
+        { text: "Estadística", route: "/"},
         { text: "Hazte colaborador", route: "/colaborador"}
       ],
       name: "",

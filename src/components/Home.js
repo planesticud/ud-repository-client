@@ -5,6 +5,7 @@ export default {
       dialog2: false,
       dialog3: false,
       dialog4: false,
+      dialog5: false,
       title: "Bienvenido",
       name: "",
       isLogin: false,
@@ -22,6 +23,20 @@ export default {
         {
           src: "https://repository-planesticud.s3.amazonaws.com/1635204972706banner-06ok.jpg",
         },
+      ],
+      slides: [
+        {
+          txt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut est ut urna rhoncus porta ac in lectus",
+          img: "https://cdn.vuetifyjs.com/images/john.png",
+          name: "Carlos Montenegro",
+          cargo: "Docente",
+        },
+        {
+          txt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut est ut urna rhoncus porta ac in lectus",
+          img: "https://cdn.vuetifyjs.com/images/john.png",
+          name: "John",
+          cargo: "Rector",
+        }
       ],
       isMobile: false,
     };

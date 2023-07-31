@@ -12,8 +12,12 @@
         </div>
 
         <div class="login" v-else>
-          <v-btn style="background-color: #8B1919; color: aliceblue;" @click="dialog2 = true"> Crear cuenta</v-btn>
-          <v-btn style="background-color: #8B1919; color: aliceblue;" @click="dialog = true"> Iniciar Sesión</v-btn>
+          
+          
+              <v-btn style="background-color: #8B1919; color: aliceblue;"  @click="dialog2 = true"> Crear cuenta</v-btn> 
+              <v-btn style="background-color: #8B1919; color: aliceblue;" @click="dialog = true"> Iniciar Sesión</v-btn>
+            
+         
         </div>
 
 
@@ -106,12 +110,11 @@
 
               <v-checkbox color="white" v-model="checkbox" :rules="[v => !!v || 'Debes aceptar para continuar!']"
                 label="Autorizo el tratamiento de mis datos" required></v-checkbox>
-              <v-checkbox color="white" v-model="checkbox"  
-                label="Deseo recibir actualizaciones" required></v-checkbox>
-                <div style="text-align:center">
-                <v-btn rounded style="background-color:  aliceblue; color:black;" class="btn btn-ligh"
-                >Continuar </v-btn></div>
-                
+              <v-checkbox color="white" v-model="checkbox" label="Deseo recibir actualizaciones" required></v-checkbox>
+              <div style="text-align:center">
+                <v-btn rounded style="background-color:  aliceblue; color:black;" class="btn btn-ligh">Continuar </v-btn>
+              </div>
+
             </v-form>
           </v-card-text>
         </v-card>
@@ -127,8 +130,8 @@
         <v-app-bar-nav-icon @click="menu_izq = !menu_izq" v-if="isMobile"></v-app-bar-nav-icon>
 
 
-        <v-tabs  centered color="black" v-if="!isMobile">
-          <v-tab  :to="button.route" v-for="(button, index) in buttons" :key="index" text>
+        <v-tabs centered color="black" v-if="!isMobile">
+          <v-tab :to="button.route" v-for="(button, index) in buttons" :key="index" text>
             {{ button.text }}
           </v-tab>
 
