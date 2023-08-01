@@ -49,33 +49,33 @@ const router = new Router({
     },
 
     {
-      path: "/files",
+      path: "/resource",
       name: "files",
       component: () => import("./components/Files/FilesSearch")
     },
     {
-      path: "/review",
+      path: "/validation",
       name: "review",
       component: () => import("./components/Review/Review")
     },
     {
-      path: "/files/detail/:id",
+      path: "/resource/detail/:id",
       name: "score",
       component: () => import("./components/Review/DetailObserv")
     },
 
     {
-      path: "/files/add",
+      path: "/resource/add",
       name: "addfiles",
       component: () => import("./components/Files/AddFiles.vue")
     },
     {
-      path: "/files/edit/:id",
+      path: "/resource/edit/:id",
       name: "editfiles",
       component: () => import("./components/Files/EditFiles")
     },
     {
-      path: "/files/detail/:id",
+      path: "/resource/detail/:id",
       name: "detailfiles",
       component: () => import("./components/Files/DetailFiles")
     },
@@ -92,7 +92,7 @@ const router = new Router({
     {
       path: "/",
       name: "home",
-      component: () => import("./components/Home")
+      component: () => import("./components/Home.vue")
     },
     {
       path: "/login",

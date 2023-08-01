@@ -59,8 +59,8 @@ export default {
             placeholder: "Rol del usuario en la plataforma",
             featured: true,
             required: true,
-            values: ["ESTUDIANTE", "DOCENTE", "ADMINISTRADOR", "EVALUADOR"],
-            default: "ESTUDIANTE",
+            values: ["VISUALIZADOR", "CREADOR", "ADMINISTRADOR", "EVALUADOR"],
+            default: "VISUALIZADOR",
             help: `rol que tendra el usuario en la plataforma`,
           },
           {

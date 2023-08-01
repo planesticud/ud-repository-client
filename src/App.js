@@ -1,3 +1,4 @@
+import UsersService from "./services/users";
 export default {
   name: "app",
   data() {
@@ -46,9 +47,7 @@ export default {
       url_image: "",
       buttons: [
         { text: "Inicio", route: "/home" },
-        { text: "Recursos", route: "/"},
-        { text: "Estadística", route: "/"},
-        { text: "Hazte colaborador", route: "/colaborador"}
+        { text: "Hazte colaborador", route: "/colaborador" }
       ],
       name: "",
       token: "",
@@ -209,25 +208,22 @@ export default {
     }
     if (localStorage.token) {
       this.token = localStorage.token;
+      UsersService.getUsersByEmail(localStorage.email)
+        .then((userInfo) => {
+          let permisions = userInfo.data[0].permisions
+          console.log(permisions)
+          permisions.forEach(permision => {
+            const principal = permision.split("_")
+            if (principal[0] == "GET") {
+              this.buttons.push({ text: principal[1].toLowerCase(), route: "/" + principal[1].toLowerCase() })
+            }
 
-      if (localStorage.rol === "ADMINISTRADOR") {
+          });
+        })
+        .catch((e) => {
+          console.log(e);
+        });
 
-        this.buttons.push({ text: "Recursos", route: "/files" });
-        this.buttons.push({ text: "Usuarios", route: "/users" });
-
-      }
-      if (localStorage.rol === "EVALUADOR") {
-
-        this.buttons.push({ text: "Revisar", route: "/review" });
-        this.buttons.push({ text: "Mis Recursos", route: "/files" });
-
-      }
-      if (localStorage.rol === "DOCENTE") {
-        this.buttons.push({ text: "Mis Recursos", route: "/files" });
-      }
-      if (localStorage.rol === "ESTUDIANTE") {
-        this.buttons.push({ text: "Mis Recursos", route: "/files" });
-      }
     }
     this.image();
     this.onResize();
