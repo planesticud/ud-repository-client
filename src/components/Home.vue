@@ -47,9 +47,10 @@
             cumplir con los siguientes requisitos
             mínimos.</v-card-text>
           <v-card-actions>
-            <v-btn color="red darken-4" text @click="reserve">
-              > Más detalles
-            </v-btn>
+            <router-link to="/minimos">
+              <v-btn color="red darken-4" text @click="reserve">
+                > Más detalles
+              </v-btn> </router-link>
           </v-card-actions>
         </v-card>
         <v-card class="mx-10 my-12" max-width="300">
@@ -59,9 +60,11 @@
             contemplará bajo las siguientes
             consideraciones.</v-card-text>
           <v-card-actions>
-            <v-btn color="red darken-4" text @click="reserve">
-              > Más detalles
-            </v-btn>
+            <router-link to="/materiales">
+              <v-btn color="red darken-4" text @click="reserve">
+                > Más detalles
+              </v-btn>
+            </router-link>
           </v-card-actions>
         </v-card>
         <v-card class="mx-10 my-12" max-width="300">
@@ -72,9 +75,10 @@
             Commons que nos permite compartir
             una obra.</v-card-text>
           <v-card-actions>
-            <v-btn color="red darken-4" text @click="reserve">
-              > Más detalles
-            </v-btn>
+            <router-link to="/licencias">
+              <v-btn color="red darken-4" text @click="reserve">
+                > Más detalles
+              </v-btn></router-link>
           </v-card-actions>
         </v-card></v-row>
     </v-row>
@@ -83,14 +87,16 @@
       <v-col cols="5" style="margin-top: 5%; ">
 
 
-        <v-carousel height="300" elevation="24" hide-delimiters hide-delimiter-background cycle style="padding-top:5%; border-style: solid;">
+        <v-carousel height="300" elevation="24" hide-delimiters hide-delimiter-background cycle
+          style="padding-top:5%; border-style: solid;">
           <v-carousel-item v-for="(slide, i) in slides" :key="i">
             <v-sheet height="60%" tile>
               <v-row class="fill-height" justify="center">
                 <v-icon left size="45" color="red darken-2">
                   mdi-format-quote-close
                 </v-icon>
-                <p style="padding-top: 10%; padding-left: 20%; padding-right: 15%; align-content: center;">
+                <p
+                  style="padding-top: 10%; padding-left: 20%; padding-right: 15%; align-content: center;font-weight: bold;">
                   {{ slide.txt }}
                 </p>
               </v-row>
@@ -116,36 +122,38 @@
       </v-col>
       <v-col cols="5"><v-card flat style="background-color:#D63716; color:#fffbfbfb">
           <v-card-title style="font-size:26px;font-weight: bold;">Hacerse colaborador </v-card-title>
-          <v-card-text style=" color:#fffbfbfb" > La plataforma cuenta con dos perfiles de acuerdo
+          <v-card-text style=" color:#fffbfbfb"> La plataforma cuenta con dos perfiles de acuerdo
             con el interés que tenga: <br><br>
             <h3>Visualizador</h3>
             ¡Bienvenido/a al mundo de los recursos multimedia de aprendizaje!
             Aquí encontrarás una amplia gama de herramientas y materiales
             interactivos que te permitirán adquirir conocimientos de manera
-            dinámica y entretenida.  <br><br>
+            dinámica y entretenida. <br><br>
             <h3>Creador</h3>
             ¡Bienvenido/a al mundo de los creadores de recursos multimedia de
             aprendizaje! Aquí encontrarás una plataforma donde puedes dar
             vida a tus ideas y contribuir al enriquecimiento de la educación a
-            través de la creación de materiales interactivos y atractivos.</v-card-text>
-            <v-card-actions>
-            <v-btn  color="white darken-4" text @click="reserve">
+            través de la creación de materiales interactivos y atractivos.
+          </v-card-text>
+          <v-card-actions>
+            <router-link to="/colaborador">
+            <v-btn color="white darken-4" text @click="reserve">
               > Más detalles
-            </v-btn>
+            </v-btn></router-link>
           </v-card-actions>
 
 
 
         </v-card></v-col>
 
-      </v-row>
+    </v-row>
     <h2 style="padding-left: 9%; padding-bottom: 2%; background-color:white;">Preguntas más frecuentes</h2>
-    <v-row justify="center"
-      style="padding-left: 10%; padding-right: 10%; padding-bottom: 10%; background-color: white;">
+    <v-row justify="center" style="padding-left: 10%; padding-right: 10%; padding-bottom: 10%; background-color: white;">
 
       <v-expansion-panels accordion>
         <v-expansion-panel style="background-color: white;">
-          <v-expansion-panel-header class="border" style="background-color: #fffbfbfb;">¿Puedo cargar recursos de mi
+          <v-expansion-panel-header class="border" style="background-color: #fffbfbfb;font-weight: bold;">¿Puedo cargar
+            recursos de mi
             autoría en RDigital -UD? </v-expansion-panel-header>
           <v-expansion-panel-content style="background-color: #fffbfbfb;">
             Sí. Su perfil para cargar recursos deberá ser autorizado por el administrador de plataforma, por tanto, deberá
@@ -155,7 +163,8 @@
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel style="background-color: #fffbfbfb;">
-          <v-expansion-panel-header class="border" style="background-color: #fffbfbfb;">¿Quiénes pueden utilizar este
+          <v-expansion-panel-header class="border" style="background-color: #fffbfbfb;font-weight: bold; ">¿Quiénes pueden
+            utilizar este
             espacio?</v-expansion-panel-header>
           <v-expansion-panel-content style="background-color: #fffbfbfb;">
             Todos los docentes, investigadores, estudiantes y egresados adscritos a la Universidad Francisco José de
@@ -163,7 +172,8 @@
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel style="background-color: #fffbfbfb;">
-          <v-expansion-panel-header class="border" style="background-color: #fffbfbfb;">¿Puedo descargar recursos de la
+          <v-expansion-panel-header class="border" style="background-color: #fffbfbfb;font-weight: bold;">¿Puedo descargar
+            recursos de la
             plataforma? </v-expansion-panel-header>
           <v-expansion-panel-content style="background-color: #fffbfbfb;">
             Sí, una vez registrado en la plataforma con el correo institucional, podrá acceder a la plataforma, visualizar
@@ -173,7 +183,8 @@
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel style="background-color: #fffbfbfb;">
-          <v-expansion-panel-header class="border" style="background-color: #fffbfbfb;">¿Mi recurso se publicará
+          <v-expansion-panel-header class="border" style="background-color: #fffbfbfb;font-weight: bold;">¿Mi recurso se
+            publicará
             automáticamente en la plataforma? </v-expansion-panel-header>
           <v-expansion-panel-content style="background-color: #fffbfbfb;">
             En el momento de cargar un recurso en plataforma, se hará un proceso de evaluación desde el área de
@@ -331,7 +342,6 @@
       </v-card>
     </v-dialog>
 
-  </v-container>
-</template>
+</v-container></template>
 <script src="./Home.js"></script>
 <style src="./Home.css"></style>
