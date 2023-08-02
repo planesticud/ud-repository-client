@@ -48,7 +48,7 @@
             mínimos.</v-card-text>
           <v-card-actions>
             <router-link to="/minimos">
-              <v-btn color="red darken-4" text @click="reserve">
+              <v-btn color="red darken-4" text >
                 > Más detalles
               </v-btn> </router-link>
           </v-card-actions>
@@ -137,7 +137,7 @@
           </v-card-text>
           <v-card-actions>
             <router-link to="/colaborador">
-            <v-btn color="white darken-4" text @click="reserve">
+            <v-btn color="white darken-4" text>
               > Más detalles
             </v-btn></router-link>
           </v-card-actions>

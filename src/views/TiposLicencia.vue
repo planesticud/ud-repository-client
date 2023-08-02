@@ -48,14 +48,15 @@
 
                 <v-row style="margin-top: 5%; margin-left: 10%;">
                     <v-col>
+                        <router-link to="/materiales">
                         <v-btn rounded style="background-color: #940611; color: aliceblue;">
                             Publicación de materiales
-                        </v-btn>
+                        </v-btn></router-link>
                     </v-col>
-                    <v-col>
+                    <v-col><router-link to="/licencias">
                         <v-btn rounded style="background-color: #940611; color: aliceblue;">
                             Tipos de licencia
-                        </v-btn>
+                        </v-btn></router-link>
                     </v-col>
                 </v-row>
 

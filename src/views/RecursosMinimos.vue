@@ -48,14 +48,15 @@
 
                 <v-row style="margin-top: 5%; margin-left: 10%;">
                     <v-col>
+                        <router-link to="/materiales">
                         <v-btn rounded style="background-color: #940611; color: aliceblue;">
                             Publicación de materiales
-                        </v-btn>
+                        </v-btn></router-link>
                     </v-col>
-                    <v-col>
+                    <v-col><router-link to="/licenciss">
                         <v-btn rounded style="background-color: #940611; color: aliceblue;">
                             Tipos de licencia
-                        </v-btn>
+                        </v-btn></router-link>
                     </v-col>
                 </v-row>
 
@@ -63,7 +64,7 @@
 
 
         </v-row>
-        <v-row style="background-color:#fafbfd; padding-left: 15%; padding-right: 15%;">
+        <v-row id="section-one" style="background-color:#fafbfd; padding-left: 15%; padding-right: 15%;">
             <h1 style="color: #940611; font-size: 40px;">Criterios mínimos</h1>
             <v-card-text style="font-size: 18px;">Los recursos que se encuentran cargados en RDigital -UD deberán cumplir con los
                 siguientes requisitos mínimos</v-card-text><br>

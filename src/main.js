@@ -7,6 +7,9 @@ import 'vue-form-generator/dist/vfg.css'
 import Chartkick from 'vue-chartkick'
 import Chart from 'chart.js'
 
+
+
+
 Vue.use(Chartkick.use(Chart))
 
 Vue.use(VueFormGenerator)
