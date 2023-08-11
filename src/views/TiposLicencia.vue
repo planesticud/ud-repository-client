@@ -49,14 +49,16 @@
                 <v-row style="margin-top: 5%; margin-left: 10%;">
                     <v-col>
                         <router-link to="/materiales">
-                        <v-btn rounded style="background-color: #940611; color: aliceblue;">
+                            <v-hover v-slot="{ hover }">
+                        <v-btn rounded style="background-color: #940611; color: aliceblue;" :class="{ 'btns': hover }">
                             Publicación de materiales
-                        </v-btn></router-link>
+                        </v-btn></v-hover></router-link>
                     </v-col>
                     <v-col><router-link to="/licencias">
-                        <v-btn rounded style="background-color: #940611; color: aliceblue;">
+                        <v-hover v-slot="{ hover }">
+                        <v-btn rounded style="background-color: #940611; color: aliceblue;" :class="{ 'btns': hover }">
                             Tipos de licencia
-                        </v-btn></router-link>
+                        </v-btn></v-hover></router-link>
                     </v-col>
                 </v-row>
 
@@ -64,7 +66,7 @@
 
 
         </v-row>
-
+        <licencias id='licencia'/>
         <v-row style="background-color:#fafbfd;padding-left: 10%;padding-right: 10%;">
             <h1 style="color: #940611; font-size: 40px;">Tipos de licencia</h1>
             <v-card-text style="font-size: 18px;">Los recursos habilitados para descarga cuentan con un tipo de licencia

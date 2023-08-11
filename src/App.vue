@@ -12,12 +12,18 @@
         </div>
 
         <div class="login" v-else>
-          
-          
-              <v-btn style="background-color: #8B1919; color: aliceblue;"  @click="dialog2 = true"> Crear cuenta</v-btn> 
-              <v-btn style="background-color: #8B1919; color: aliceblue;" @click="dialog = true"> Iniciar Sesión</v-btn>
-            
-         
+
+
+
+          <v-hover v-slot="{ hover }">
+            <v-btn rounded @click="dialog2 = true" style="background-color: #8B1919; color: aliceblue;"
+              :class="{ 'btns': hover }">Crear cuenta</v-btn>
+          </v-hover>
+          <v-hover v-slot="{ hover }">
+            <v-btn rounded style="background-color: #8B1919; color: aliceblue;" @click="dialog = true" :class="{ 'btns': hover }">
+              Iniciar Sesión</v-btn>
+          </v-hover>
+
         </div>
 
 
