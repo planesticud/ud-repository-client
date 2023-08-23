@@ -305,7 +305,7 @@
 
       </v-card>
     </v-dialog>
-    <v-dialog v-model="dialog5" activator="parent" width="800" style="background-color:#940611 ;">
+    <v-dialog v-model="dialog5" activator="parent"  style="background-color:#940611 ;">
 
       <v-card style="background-color:aliceblue ;border-radius: 30px;border-color: black;border-style: solid; ">
         <v-card-actions>
