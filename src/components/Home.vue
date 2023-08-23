@@ -40,7 +40,7 @@
       </v-row>
       <v-row style="margin-top: 4%;">
         <v-card class="mx-10 my-12" max-width="300">
-          <v-img height="250" src="../assets/images/criterios-minimos.png"></v-img>
+          <v-img alt="checklist" height="250" src="../assets/images/criterios-minimos.png"></v-img>
           <v-card-title>Criterios mínimos</v-card-title>
           <v-card-text>Los recursos que se encuentran
             cargados en RDigital -UD deberán
@@ -54,7 +54,7 @@
           </v-card-actions>
         </v-card>
         <v-card class="mx-10 my-12" max-width="300">
-          <v-img height="250" src="../assets/images/publicacion-materiales.png"></v-img>
+          <v-img alt="materiales" height="250" src="../assets/images/publicacion-materiales.png"></v-img>
           <v-card-title>Publicación de materiales</v-card-title>
           <v-card-text>El recurso cargado por usted se
             contemplará bajo las siguientes
@@ -68,7 +68,7 @@
           </v-card-actions>
         </v-card>
         <v-card class="mx-10 my-12" max-width="300">
-          <v-img height="250" src="../assets/images/tipos-licencia.png"></v-img>
+          <v-img alt="creative commons" height="250" src="../assets/images/tipos-licencia.png"></v-img>
           <v-card-title>Tipos de licencia</v-card-title>
           <v-card-text>Los recursos habilitados para descarga
             cuentan con un tipo de licencia Creative
@@ -224,7 +224,7 @@
               </p>
             </v-col>
             <v-col sm="4" style="text-align:center;">
-              <img src="../assets/images/recurso2.png" height="300">
+              <img alt="profesor" src="../assets/images/recurso2.png" height="300">
             </v-col>
           </v-row>
         </v-card-text>
@@ -265,7 +265,7 @@
               </p>
             </v-col>
             <v-col sm="6" style="text-align:center;">
-              <img src="../assets/images/recurso3.png" height="300">
+              <img alt="estudiantes"  src="../assets/images/recurso3.png" height="300">
 
             </v-col>
           </v-row>
@@ -297,7 +297,7 @@
               </p>
             </v-col>
             <v-col sm="7" style="text-align:center;">
-              <img src="../assets/images/recurso4.png" height="250">
+              <img alt="estudiante" src="../assets/images/recurso4.png" height="250">
 
             </v-col>
           </v-row>

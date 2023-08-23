@@ -1,12 +1,11 @@
-<template>
-    <v-row style="padding:5%;">
-        <v-row style="margin-bottom: 5%;margin-top: 5%;">
+<template >
+    <v-container style="padding-bottom: 5%;"> <v-row style="margin-bottom: 5%;margin-top: 5%;">
             <v-col sm="6">
 
                 <h1 style="color: #940611; font-size: 40px; text-align: center;">Hacerse colaborador</h1><br>
                 <v-card-text style="color: black; font-size: 18px;">La plataforma cuenta con dos perfiles de
                     acuerdo con el interés que tenga:</v-card-text>
-                
+
                 <div style="text-align:center">
                     <v-btn rounded style="background-color: #8B1919; color:aliceblue;" class="btn btn-ligh">Hazte
                         colaborador </v-btn>
@@ -14,19 +13,22 @@
 
             </v-col>
             <v-col>
-                <img src="../assets/images/recurso4.png" height="300">
+                <img alt="colaborador" src="../assets/images/recurso4.png" height="300">
 
             </v-col>
         </v-row>
-        <v-row>
+        <v-row style="margin: auto;">
+
             <v-icon style="color: #8B1919;padding-right: 1%;">
                 mdi-monitor
             </v-icon>
             <h2 style="color: #940611; font-size: 30px;">Visualizador</h2>
+
         </v-row>
+
         <v-row style="margin-top: 5%; margin-bottom: 5%;">
             <v-col>
-                <v-img height="150" contain src="../assets/images/icon1.png"></v-img>
+                <v-img alt="icono usuario" height="150" contain src="../assets/images/icon1.png"></v-img>
 
                 <v-card-text style="color: black; font-size: 18px;">
                     Para acceder a la
@@ -40,7 +42,7 @@
 
             </v-col>
             <v-col>
-                <v-img height="150" contain src="../assets/images/icon2.png"></v-img>
+                <v-img alt="icono lupa"  height="150" contain src="../assets/images/icon2.png"></v-img>
 
                 <v-card-text style="color: black; font-size: 18px;">
                     Una vez haya ingresado
@@ -50,7 +52,7 @@
 
             </v-col>
             <v-col>
-                <v-img height="150" contain src="../assets/images/icon3.png"></v-img>
+                <v-img alt="icono descarga"  height="150" contain src="../assets/images/icon3.png"></v-img>
 
                 <v-card-text style="color: black; font-size: 18px;">
                     En caso de observar algún
@@ -83,7 +85,7 @@
 
         <v-row style="margin-top: 5%; margin-bottom: 5%;">
             <v-col>
-                <v-img height="150" contain src="../assets/images/icon4.png"></v-img>
+                <v-img alt="icono visualizador"  height="150" contain src="../assets/images/icon4.png"></v-img>
 
                 <v-card-text style="color: black; font-size: 18px;">
                     Contar con el perfil de
@@ -96,7 +98,7 @@
 
             </v-col>
             <v-col>
-                <v-img height="150" contain src="../assets/images/icon5.png"></v-img>
+                <v-img alt="icono correo"  height="150" contain src="../assets/images/icon5.png"></v-img>
 
                 <v-card-text style="color: black; font-size: 18px;">
                     Escribir un correo a:
@@ -113,7 +115,7 @@
 
             </v-col>
             <v-col>
-                <v-img height="150" contain src="../assets/images/icon6.png"></v-img>
+                <v-img alt="icono cargar"  height="150" contain src="../assets/images/icon6.png"></v-img>
 
                 <v-card-text style="color: black; font-size: 18px;">
                     Una vez se haga el ajuste del
@@ -136,9 +138,9 @@
             <v-divider color="#940611"></v-divider>
         </v-container>
 
-        <v-img height="850" contain style="margin-top: 5%;" src="../assets/images/infografia.png"></v-img>
+        <v-img alt="infografia" height="850" contain style="margin-top: 5%;" src="../assets/images/infografia.png"></v-img>
 
-    </v-row>
+    </v-container>
 </template>
   
 <style src="./Colaborador.css"></style>
