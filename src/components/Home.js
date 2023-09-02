@@ -6,7 +6,7 @@ export default {
       dialog3: false,
       dialog4: false,
       dialog5: false,
-      title: "Bienvenido",
+      title: "Bienvenido a R-Digital",
       name: "",
       isLogin: false,
       buttons: [],
@@ -53,8 +53,11 @@ export default {
     },
   },
   mounted() {
-
-
+this.getName()
+    if (this.$route.query.reload && localStorage.reload !== "OK") {
+      localStorage.reload = "OK";
+      location.reload();
+    }
     window.addEventListener("resize", this.onResize, { passive: true });
   },
 };

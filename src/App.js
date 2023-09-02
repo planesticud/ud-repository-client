@@ -168,10 +168,8 @@ export default {
       if (localStorage.url_image) {
         this.isLogin = true;
         this.url_image = localStorage.url_image;
-        // cmbnoe1
         this.isMobile2 = true;
         this.rol = localStorage.rol;
-        // fin cmbnoe1
       } else {
         this.isLogin = false;
       }
