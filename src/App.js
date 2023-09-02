@@ -201,13 +201,14 @@ export default {
     },
   },
   mounted() {
-    this.getName()
+    
     if (localStorage.token) {
       this.token = localStorage.token;
       UsersService.getUsersByEmail(localStorage.email)
         .then((userInfo) => {
           let permisions = userInfo.data[0].permisions
-          console.log(permisions)
+          localStorage.rol = userInfo.data[0].rol
+
           permisions.forEach(permision => {
             const principal = permision.split("_")
             if (principal[0] == "GET") {
@@ -221,6 +222,7 @@ export default {
         });
 
     }
+    this.getName()
     this.onResize();
 
     window.addEventListener("resize", this.onResize, { passive: true });
