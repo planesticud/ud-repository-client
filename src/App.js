@@ -161,6 +161,7 @@ export default {
     getName() {
       if (localStorage.name) {
         this.name = localStorage.name;
+        this.isLogin = true;
         this.rol = localStorage.rol
       }
     },
@@ -189,7 +190,6 @@ export default {
     logout() {
       this.isLogin = false;
       localStorage.clear();
-      this.image();
       this.$router.push({ name: "home" });
       location.reload();
     },
@@ -201,9 +201,7 @@ export default {
     },
   },
   mounted() {
-    if (localStorage.name) {
-      this.name = localStorage.name;
-    }
+    this.getName()
     if (localStorage.token) {
       this.token = localStorage.token;
       UsersService.getUsersByEmail(localStorage.email)
@@ -223,7 +221,6 @@ export default {
         });
 
     }
-    this.image();
     this.onResize();
 
     window.addEventListener("resize", this.onResize, { passive: true });

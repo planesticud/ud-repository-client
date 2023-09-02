@@ -43,7 +43,10 @@ export default {
   },
   methods: {
     getName() {
-      if (localStorage.name) {
+      console.log("entro al get name")
+      console.log(localStorage)
+      if (localStorage.name != null) {
+        console.log("entro al get name if")
         this.isLogin = true;
         this.name = localStorage.name;
       }
@@ -53,9 +56,10 @@ export default {
     },
   },
   mounted() {
-this.getName()
-    if (this.$route.query.reload && localStorage.reload !== "OK") {
+    this.getName()
+    if (this.$route.query.reload && localStorage.reload != "OK") {
       localStorage.reload = "OK";
+      this.$router.push({ name: "home" });
       location.reload();
     }
     window.addEventListener("resize", this.onResize, { passive: true });
