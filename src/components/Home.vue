@@ -9,10 +9,7 @@
         </v-carousel>
       </div>
       <div class="col">
-        <v-container v-if="name">
-          <h2>{{ title }} {{ name }}</h2>
-        </v-container>
-        <h3 style="padding-top: 15%;">Bienvenido a R-Digital</h3>
+        <h3 style="padding-top: 15%;">{{ title }} {{ name }}</h3>
         <v-text-field v-model="search" append-icon="mdi-magnify" label="Buscar recurso" single-line
           hide-details></v-text-field>
       </div>

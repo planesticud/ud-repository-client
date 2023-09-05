@@ -90,7 +90,7 @@ export default {
   methods: {
     retrieveFiles() {
       //.getFiles()
-      if (localStorage.rol == "EVALUADOR") {
+
         filesService
           .getFiles()
           .then((response) => {
@@ -99,7 +99,7 @@ export default {
           .catch((e) => {
             console.log(e);
           });
-      }
+      
     },
 
     refreshList() {

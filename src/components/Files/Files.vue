@@ -168,9 +168,9 @@ export default {
   },
   methods: {
     retrieveFiles() {
-      if (localStorage.rol == "DOCENTE" || localStorage.rol == "EVALUADOR") {
+      if  (localStorage.rol == "ADMINISTRADOR") {
         filesService
-          .getFilesByEmail(localStorage.email)
+          .getFiles()
           .then((response) => {
             this.files = response.data;
             this.espera = false;
@@ -178,9 +178,11 @@ export default {
           .catch((e) => {
             console.log(e);
           });
-      } else if (localStorage.rol == "ADMINISTRADOR") {
+
+        
+      } else {
         filesService
-          .getFiles()
+          .getFilesByEmail(localStorage.email)
           .then((response) => {
             this.files = response.data;
             this.espera = false;

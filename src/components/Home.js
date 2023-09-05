@@ -6,7 +6,7 @@ export default {
       dialog3: false,
       dialog4: false,
       dialog5: false,
-      title: "Bienvenido",
+      title: "Bienvenido a R-Digital",
       name: "",
       isLogin: false,
       buttons: [],
@@ -43,7 +43,10 @@ export default {
   },
   methods: {
     getName() {
-      if (localStorage.name) {
+      console.log("entro al get name")
+      console.log(localStorage)
+      if (localStorage.name != null) {
+        console.log("entro al get name if")
         this.isLogin = true;
         this.name = localStorage.name;
       }
@@ -53,8 +56,12 @@ export default {
     },
   },
   mounted() {
-
-
+    this.getName()
+    if (this.$route.query.reload && localStorage.reload != "OK") {
+      localStorage.reload = "OK";
+      this.$router.push({ name: "home" });
+      location.reload();
+    }
     window.addEventListener("resize", this.onResize, { passive: true });
   },
 };

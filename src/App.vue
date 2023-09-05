@@ -7,14 +7,12 @@
         <div v-if="isLogin">
           <v-icon style="color: aliceblue;"> mdi-account </v-icon>
           {{ rol }}
-          {{ name }}
-
+          <v-btn rounded style="background-color: #8B1919; color: aliceblue;" @click="logout() " :class="{ 'btns': hover }">
+              Cerrar sesion
+            </v-btn>
         </div>
 
         <div class="login" v-else>
-
-
-
           <v-hover v-slot="{ hover }">
             <v-btn rounded @click="dialog2 = true" style="background-color: #8B1919; color: aliceblue;"
               :class="{ 'btns': hover }">Crear cuenta</v-btn>
@@ -38,8 +36,10 @@
           <v-card-text>
 
             <h2 style="color: aliceblue; padding: 15px; ">¡Únete y conoce todos los recursos que te ayudarán!</h2>
+           
             <p style="color: aliceblue; padding: 10px; padding-left: 20%; font-size: 18px;">Comienza utilizando tu cuenta
               Microsoft</p>
+
             <a href="https://rdigital.planestic.udistrital.edu.co/api/microsoft" style="padding-left: 35%;">
               <v-btn v-if="!isLogin" rounded style="background-color: aliceblue;  " class="btn btn-ligh">
                 <img class="ms-icon center" src="./assets/images/microsoftlogo.png" />
@@ -49,10 +49,7 @@
             </a>
 
 
-            <v-btn v-if="isLogin" rounded style="background-color: aliceblue;" class="btn btn-light" @click="logout()">
-              Cerrar sesion
 
-            </v-btn>
 
 
           </v-card-text>
