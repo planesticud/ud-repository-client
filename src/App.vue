@@ -131,7 +131,7 @@
 
     </div>
     <hr class="solid">
-    <v-app>
+    <v-app class="myFont">
       <v-app-bar app style="position: absolute;">
         <v-app-bar-nav-icon @click="menu_izq = !menu_izq" v-if="isMobile"></v-app-bar-nav-icon>
 
