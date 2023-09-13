@@ -12,16 +12,17 @@ export default {
       buttons: [],
       items: [
         {
-          src: "https://repository-planesticud.s3.amazonaws.com/1635123148623banner-03.jpg",
+          src: require('../assets/images/banner1.png')
+        },
+        
+        {
+          src:  require('../assets/images/banner2.png')
         },
         {
-          src: "https://repository-planesticud.s3.amazonaws.com/1635123301914banner-04.jpg",
+          src:  require('../assets/images/banner3.png')
         },
         {
-          src: "https://repository-planesticud.s3.amazonaws.com/1635123404214banner-05.jpg",
-        },
-        {
-          src: "https://repository-planesticud.s3.amazonaws.com/1635204972706banner-06ok.jpg",
+          src:  require('../assets/images/banner4.png')
         },
       ],
       slides: [

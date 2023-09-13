@@ -4,7 +4,8 @@
 
     <div class="row">
       <div class="col">
-        <v-carousel :show-arrows="true" v-if="!isMobile" height="auto" class="hcontainer">
+        <v-carousel hide-delimiters :show-arrows="true" v-if="!isMobile" height="auto" class="hcontainer">
+          
           <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src"></v-carousel-item>
         </v-carousel>
       </div>
