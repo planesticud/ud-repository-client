@@ -22,8 +22,8 @@
         <p></p>
         <div class="circle">
           &nbsp;
-          <router-link to="/files">
-            <v-btn class="mx-2" fab dark small color="#8B1919">
+          <router-link to="/resources">
+            <v-btn class="mx-2" fab dark small color="#8B1919" aria-label="Mis Recursos">
               <v-icon dark>
                 mdi-file-multiple
               </v-icon>
@@ -31,29 +31,14 @@
           </router-link>
 
           <p></p>
-          <router-link to="/files/add">
-            <v-btn class="mx-2" fab dark small color="#8B1919">
+          <router-link to="/resource/add">
+            <v-btn class="mx-2" fab dark small color="#8B1919" aria-label="Agregar Recursos">
               <v-icon dark>
                 mdi-cloud-upload
               </v-icon>
             </v-btn>
           </router-link>
 
-          <p></p> <router-link to="/profile">
-            <v-btn class="mx-2" fab dark small color="#8B1919">
-              <v-icon dark>
-                mdi-heart
-              </v-icon>
-            </v-btn>
-          </router-link>
-
-          <p></p> <router-link to="/profile">
-            <v-btn class="mx-2" fab dark small color="#8B1919">
-              <v-icon dark>
-                mdi-heart
-              </v-icon>
-            </v-btn>
-          </router-link>
 
           <p></p>
         </div>

@@ -201,7 +201,13 @@ export default {
     },
   },
   mounted() {
-    
+    let transale = {
+      "GET_RESOURCE": "RECURSOS",
+      "GET_STATISTICS": "ESTADISTICAS",
+      "GET_VALIDATION": "VALIDACIÓN",
+      "GET_ROLES": "ROLES",
+      "GET_USERS": "USUARIOS",
+    }
     if (localStorage.token) {
       this.token = localStorage.token;
       UsersService.getUsersByEmail(localStorage.email)
@@ -212,7 +218,7 @@ export default {
           permisions.forEach(permision => {
             const principal = permision.split("_")
             if (principal[0] == "GET") {
-              this.buttons.push({ text: principal[1].toLowerCase(), route: "/" + principal[1].toLowerCase() })
+              this.buttons.push({ text: transale[permision], route: "/" + principal[1].toLowerCase() })
             }
 
           });

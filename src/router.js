@@ -54,13 +54,18 @@ const router = new Router({
       component: () => import("./components/Files/FilesSearch")
     },
     {
+      path: "/resources",
+      name: "files",
+      component: () => import("./components/Files/Files")
+    },
+    {
       path: "/validation",
       name: "review",
       component: () => import("./components/Review/Review")
     },
     {
-      path: "/resource/detail/:id",
-      name: "score",
+      path: "/validation/detail/:id",
+      name: "detailReview",
       component: () => import("./components/Review/DetailObserv")
     },
 

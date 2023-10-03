@@ -118,7 +118,7 @@ export default {
     },
 
     detalleFiles(id) {
-      this.$router.push({ name: "valorar", params: { id: id } });
+      this.$router.push({ name: "detailReview", params: { id: id } });
     },
     getColor(state) {
       if (state == "No aprobado") return "red";

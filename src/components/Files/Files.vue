@@ -98,7 +98,7 @@ export default {
       filEmail: "",
       dialog: false,
       elim: "",
-      h1: { text: "Listado de recursos", icon: "mdi-file-outline" },
+      h1: { text: "Mis recursos", icon: "mdi-file-outline" },
       search: "",
       find: { label: "Buscar por correo electrónico", button: "Buscar" },
       add: { button: "Agregar", route: "/files/add" },

@@ -91,12 +91,7 @@ export default {
 
   methods: {
     retrieveFiles() {
-      if (
-        localStorage.rol === "DOCENTE" ||
-        localStorage.rol === "ESTUDIANTE" ||
-        localStorage.rol === "ADMINISTRADOR" ||
-        localStorage.rol === "EVALUADOR"
-      ) {
+
         filesService
           .getFilesByState("Aprobado")
           .then((response) => {
@@ -105,7 +100,7 @@ export default {
           .catch((e) => {
             console.log(e);
           });
-      }
+      
     },
 
     view_resource(id_obj) {
