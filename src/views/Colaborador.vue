@@ -7,7 +7,7 @@
                     acuerdo con el interés que tenga:</v-card-text>
 
                 <div style="text-align:center">
-                    <v-btn rounded style="background-color: #8B1919; color:aliceblue;" class="btn btn-ligh">Hazte
+                    <v-btn @click="addColaborador()" rounded style="background-color: #8B1919; color:aliceblue;" class="btn btn-ligh">Hazte
                         colaborador </v-btn>
                 </div>
 
@@ -142,5 +142,21 @@
 
     </v-container>
 </template>
-  
+<script>
+
+
+export default {
+  data() {
+    return {
+      model: {},
+      
+    };
+  },
+  methods: {
+    addColaborador() {
+      this.$router.push({ name: "addColaborador" });
+    },
+  },
+};
+</script>
 <style src="./Colaborador.css"></style>

@@ -28,6 +28,10 @@ class UsersService {
         const data = dato
         return axios.get(`${repositoryUrl}/users/contar`, { params: data });
     }
+
+    createColaborador(data) {
+        return axios.post(`${repositoryUrl}/colaborator`, data)
+    }
 }
    
 export default new UsersService();

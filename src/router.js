@@ -110,6 +110,11 @@ const router = new Router({
       component: () => import("./views/Colaborador.vue")
     },
     {
+      path: "/colaborador/add",
+      name: "addColaborador",
+      component: () => import("./views/AddColaborador.vue")
+    },
+    {
       path: "/minimos",
       name: "minimos",
       component: () => import("./views/RecursosMinimos.vue")
