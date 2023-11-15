@@ -37,7 +37,7 @@
         <h1 style="margin-left: 110%; margin-top: 20%; color: aliceblue; font-size:200%; "> Recursos</h1>
       </v-row>
       <v-row style="margin-top: 4%;">
-        <v-card class="mx-10 my-12" max-width="300">
+        <v-card class="mx-10 my-12" max-width="300" style="background-color: aliceblue;">
           <v-img alt="checklist" height="250" src="../assets/images/criterios-minimos.png"></v-img>
           <v-card-title>Criterios mínimos</v-card-title>
           <v-card-text>Los recursos que se encuentran
@@ -51,7 +51,7 @@
               </v-btn> </router-link>
           </v-card-actions>
         </v-card>
-        <v-card class="mx-10 my-12" max-width="300">
+        <v-card class="mx-10 my-12" max-width="300" >
           <v-img alt="materiales" height="250" src="../assets/images/publicacion-materiales.png"></v-img>
           <v-card-title>Publicación de materiales</v-card-title>
           <v-card-text>El recurso cargado por usted se
