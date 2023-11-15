@@ -82,11 +82,15 @@
               </v-btn>
             </div>
 
-            <v-btn v-if="isLogin" rounded style="background-color: aliceblue;" class="btn btn-light" @click="logout()">
+            <v-hover v-slot="{ hover }">
+            <v-btn v-if="isLogin" rounded @click="logout()" style="background-color: #8B1919; color: aliceblue;" :class="{ 'btns': hover }" >
               Cerrar sesion
 
             </v-btn>
-
+            </v-hover>
+            
+            
+  
 
           </v-card-text>
         </v-card>
