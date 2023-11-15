@@ -46,7 +46,7 @@
 
 
 .circle {
-  background-color: #8B1919;
+  /*background-color: #8B1919;*/
   width: 60px;
   height: 160px;
   border-radius: 15px;
@@ -56,7 +56,7 @@
 }
 
 .text-tilte {
-  background-color: #8B1919;
+ /* background-color: #8B1919;*/
 }
 
 .vue-form-generator {
@@ -97,7 +97,7 @@ label {
 }
 
 .btnsave {
-  background-color:  #8B1919 !important;
+/*  background-color:  #8B1919 !important;*/
   color: white !important;
   border-radius: 15px;
 }
