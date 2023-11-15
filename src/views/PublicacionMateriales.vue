@@ -20,7 +20,7 @@
                             </v-icon>
                         </v-btn>
                     </router-link>
-
+                    <!-- 
                     <p></p> <router-link to="/profile">
                         <v-btn class="mx-2" fab dark small color="#8B1919">
                             <v-icon dark>
@@ -36,7 +36,7 @@
                             </v-icon>
                         </v-btn>
                     </router-link>
-
+                    -->
                     <p></p>
                 </div>
             </v-col>
