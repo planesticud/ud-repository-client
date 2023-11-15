@@ -7,9 +7,11 @@
         <div v-if="isLogin">
           <v-icon style="color: aliceblue;"> mdi-account </v-icon>
           {{ rol }}
+          <v-hover v-slot="{ hover }">
           <v-btn rounded style="background-color: #8B1919; color: aliceblue;" @click="logout() " :class="{ 'btns': hover }">
-              Cerrar sesion
+              Cerrar sesión
             </v-btn>
+          </v-hover>
         </div>
 
         <div class="login" v-else>
@@ -81,10 +83,10 @@
                 Conecta con correo
               </v-btn>
             </div>
-
+            <v-hover v-slot="{ hover }">
             <v-btn rounded style="background-color: #8B1919; color: aliceblue;" @click="logout() " :class="{ 'btns': hover }">
               Cerrar sesión
-            </v-btn>
+            </v-btn></v-hover>
             
             
   
