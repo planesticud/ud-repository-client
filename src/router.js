@@ -56,7 +56,7 @@ const router = new Router({
     {
       path: "/resources",
       name: "files",
-      component: () => import("./components/Files/Files")
+      component: () => import("./components/Files/Files.vue")
     },
     {
       path: "/validation",
