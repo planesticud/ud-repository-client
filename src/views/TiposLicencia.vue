@@ -72,7 +72,7 @@
             <v-card-text style="font-size: 18px;">Los recursos habilitados para descarga cuentan con un tipo de licencia
                 Creative Commons que nos permite compartir
                 una obra bajo seis consideraciones:</v-card-text><br>
-            <v-card style=" background-color:	#F5F5F5; border-radius: 20px; margin-bottom: 2%;">
+            <v-card style=" background-color:	#F5F5F5; border-radius: 20px; margin-bottom: 2%;" width="1600">
                 <v-card-title style="font-weight: bold; font-size: 20px;">
                     Atribución
 
@@ -87,7 +87,7 @@
                     difusión y utilización de los materiales sujetos a la licencia.
                 </v-card-text>
             </v-card>
-            <v-card style=" background-color:	#F5F5F5; border-radius: 20px; margin-bottom: 2%;">
+            <v-card style=" background-color:	#F5F5F5; border-radius: 20px; margin-bottom: 2%;" width="1600">
                 <v-card-title style="font-weight: bold; font-size: 20px;">
                     Atribución - Sin Derivar
                     <v-col class="d-flex align-end flex-column"> <v-img contain height="40"
@@ -99,7 +99,7 @@
                     cambios, dando el crédito que corresponde.
                 </v-card-text>
             </v-card>
-            <v-card style=" background-color:	#F5F5F5; border-radius: 20px; margin-bottom: 2%;">
+            <v-card style=" background-color:	#F5F5F5; border-radius: 20px; margin-bottom: 2%;" width="1600">
                 <v-card-title style="font-weight: bold; font-size: 20px;">
                     Atribución – No comercial – Sin Derivar
                     <v-col class="d-flex align-end flex-column"> <v-img contain height="40"
@@ -112,7 +112,7 @@
                     reconozca su autoría, pero no se pueden cambiar de ninguna manera ni se pueden utilizar comercialmente.
                 </v-card-text>
             </v-card>
-            <v-card style=" background-color:	#F5F5F5; border-radius: 20px; margin-bottom: 2%;">
+            <v-card style=" background-color:	#F5F5F5; border-radius: 20px; margin-bottom: 2%;" width="1600">
                 <v-card-title style="font-weight: bold; font-size: 20px;">
                     Atribución – No comercial
                     <v-col class="d-flex align-end flex-column"> <v-img contain height="40"
@@ -125,7 +125,7 @@
                     mismas condiciones.
                 </v-card-text>
             </v-card>
-            <v-card style=" background-color:	#F5F5F5; border-radius: 20px; margin-bottom: 2%;">
+            <v-card style=" background-color:	#F5F5F5; border-radius: 20px; margin-bottom: 2%;" width="1600">
                 <v-card-title style="font-weight: bold; font-size: 20px;">
                     Atribución – No comercial – Compartir igual
                     <v-col class="d-flex align-end flex-column"> <v-img contain height="40"
@@ -138,7 +138,7 @@
                     creaciones bajo las mismas condiciones.
                 </v-card-text>
             </v-card>
-            <v-card style=" background-color:	#F5F5F5; border-radius: 20px; margin-bottom: 2%;">
+            <v-card style=" background-color:	#F5F5F5; border-radius: 20px; margin-bottom: 2%;" width="1600">
                 <v-card-title style="font-weight: bold; font-size: 20px;">
                     Atribución – Compartir igual
                     <v-col class="d-flex align-end flex-column"> <v-img contain height="40"
