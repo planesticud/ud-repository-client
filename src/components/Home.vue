@@ -51,7 +51,7 @@
               </v-btn> </router-link>
           </v-card-actions>
         </v-card>
-        <v-card class="mx-10 my-12" max-width="300" >
+        <v-card class="mx-10 my-12" max-width="300" style="background-color: aliceblue;" >
           <v-img alt="materiales" height="250" src="../assets/images/publicacion-materiales.png"></v-img>
           <v-card-title>Publicación de materiales</v-card-title>
           <v-card-text>El recurso cargado por usted se
@@ -65,7 +65,7 @@
             </router-link>
           </v-card-actions>
         </v-card>
-        <v-card class="mx-10 my-12" max-width="300">
+        <v-card class="mx-10 my-12" max-width="300" style="background-color: aliceblue;">
           <v-img alt="creative commons" height="250" src="../assets/images/tipos-licencia.png"></v-img>
           <v-card-title>Tipos de licencia</v-card-title>
           <v-card-text>Los recursos habilitados para descarga
