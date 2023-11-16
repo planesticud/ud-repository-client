@@ -7,8 +7,11 @@
                     acuerdo con el interés que tenga:</v-card-text>
 
                 <div style="text-align:center">
-                    <v-btn @click="addColaborador()" rounded style="background-color: #8B1919; color:aliceblue;" class="btn btn-ligh">Hazte
-                        colaborador </v-btn>
+                    <v-hover v-slot="{ hover }">
+                    <v-btn @click="addColaborador()" rounded style="background-color: #8B1919; color:aliceblue;" :class="{ 'btns': hover }">Hazte
+                        colaborador </v-btn></v-hover>
+
+                       
                 </div>
 
             </v-col>

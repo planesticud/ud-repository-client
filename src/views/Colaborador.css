@@ -10,3 +10,7 @@
 .title{
     color: #940611; font-size: 40px; text-align: center;
 }
+.btns {
+    background-color: aliceblue  !important;
+    color: #8B1919 !important;
+  }
